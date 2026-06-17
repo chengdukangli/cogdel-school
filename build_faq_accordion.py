@@ -1,0 +1,402 @@
+#!/usr/bin/env python3
+"""Build accordion FAQ pages (ZH + EN) with reordered sections"""
+import os, json
+
+# ====== FAQ DATA ======
+# Each section: {title, questions: [{q, a}]}
+# Order: 理念 → 课程 → 学生培养 → 办学特色 → 升学成果 → 寄宿生活 → 招生
+
+sections_zh = {
+    "理念": {
+        "title": "学校理念",
+        "questions": [
+            {"q": "成都康礼学校是一所什么样的学校？",
+             "a": '<p>成都康礼学校（Cogdel School Chengdu）是一所坐落于成都市大邑县安仁古镇、拥有80年建校历史的国际化学校。学校为小学、初中、高中12年一贯制，提供IGCSE、A-Level、AP等主流国际课程（IB-PYP候选校，IBDP申请中），是剑桥大学考评院CAIE官方考点、培生爱德思官方考点、剑桥英语KET/PET官方考点、美国大学理事会AP课程授权校，同时获得Cognia全球国际学校权威认证。</p><p>学校以"培养能够自豪行走世界的领袖人才"为使命，由清华校友、前科技投资人陆琨女士担任校董兼执行校长。学校每年招收约100名学生，坚持小规模、高品质办学。</p>'},
+            {"q": "学校的具体地址在哪里？校园环境怎么样？",
+             "a": '<p>学校位于成都市大邑县安仁镇迎宾路二段247号，坐落于国家5A级旅游景区安仁古镇内，建筑为民国风貌文物保护建筑，被誉为"藏在80年书香里的校园"。校园绿树成荫，有松鼠、孔雀等小动物栖息。</p><p>许多家长和学生第一次踏进校园就被环境吸引——学校称之为"一见钟情"的择校理由。同时，校园配备现代化实验室、艺术创作空间、创客空间（Innovation Hub）、创业咖啡馆、五彩运动场、专业摄影棚和数字媒体创作室等先进设施。</p>'},
+            {"q": "学校获得了哪些国际认证和荣誉？",
+             "a": '<p>成都康礼学校拥有多项国际权威认证：</p><ul><li>剑桥大学国际考评部（CAIE）IGCSE/A-Level 官方考点</li><li>培生爱德思（Edexcel）IGCSE/A-Level 官方考点</li><li>剑桥大学英语考评部 KET/PET 官方考点</li><li>美国大学理事会 AP 课程官方授权认证</li><li>IB-PYP（小学项目）官方候选校</li><li>Cognia 全球非盈利性国际学校权威认证</li><li>爱丁堡公爵国际奖执行中心</li><li>教育部中外人文交流中心"中外人文交流特色学校"</li></ul><p>近期荣誉：连续三年获培生"杰出学校奖"、2026年获剑桥东亚团队"十年学校奖"、2026国际学校品牌价值百强榜上榜学校。</p>'},
+            {"q": "学校的师资团队怎么样？",
+             "a": '<p>成都康礼师资以"硬核"著称。核心数据：40% 教师毕业于英国G5和美国藤校，60% 毕业于国内C5等世界顶级名校；60% 拥有硕士或博士学历；100% 拥有海外学习或工作经验；100% 持有A-Level/AP官方认证教学资质。</p><p>管理团队由中外资深教育者组成：陆琨校长（清华大学航空航天工程本科、中欧国际工商学院MBA）；多位副校长持有英国诺丁汉大学PGCEi、密歇根州立大学教育学硕士等学位及15年以上国际教育经验。</p><p>高中阶段实行"1+N 导师制"——1名班级导师 + 学业、竞赛、升学等专项导师，为每个学生定制培养方案。</p>'},
+            {"q": "成都康礼的办学理念和传统学校有什么不同？",
+             "a": '<p>校长陆琨从三个教育痛点出发设计学校：</p><p>第一，打破单一评价体系。康礼用"8维竞争力成长档案"替代传统成绩单——追踪视野、学习力、身心健康、内驱力、创新力、领导力、协作力、责任意识8个维度。</p><p>第二，让学校和社会不脱节。通过项目制学习、六年级启动职业探索、投资人俱乐部、Career Fair等，打开孩子的眼界。</p><p>第三，把软技能培养从"玄学"变成"科学"。以学期看领导力表现，这就是康礼的成绩单。</p><p>一句话概括：用工程逻辑，定制面向未来的教育。</p>'},
+        ]
+    },
+    "课程": {
+        "title": "课程体系",
+        "questions": [
+            {"q": "成都康礼开设哪些国际课程？",
+             "a": '<p>全学段主流国际课程体系覆盖：</p><ul><li>小学（1-5年级）：IB-PYP + 国家义务教育课程融合，双轨并行</li><li>初中（6-8年级）：国家课程 + 国际化校本课程（融合英国Key Stage 3）</li><li>高中（9-12年级）：IGCSE + A-Level（21门学科）、AP课程；IBDP正在申请中</li><li>额外提供美国大学双学分课程（URP、Design Thinking）</li></ul>'},
+            {"q": "小学阶段的课程有什么特色？",
+             "a": '<p>小学部有四大核心特色：</p><p><strong>双轨发展</strong>——语文、数学对标成都中心城区顶级公办校标准，同时融合国际化教学方法。</p><p><strong>IB-PYP探究</strong>——通过六大超学科主题探究单元，培养批判性思维、创新思维、交流能力和跨学科研究能力。</p><p><strong>英语分层</strong>——跨年级分层教学，外教+中教协作备课授课，沉浸式双语环境，五年级达到KET最高级别。</p><p><strong>个性化定制</strong>——"一生一群"定制化反馈机制：每周学术小结、每月PYP探究报告、每学期三方会谈。</p>'},
+            {"q": "初中阶段如何做好衔接和过渡？",
+             "a": '<p>康礼做了系统的"小初顺滑衔接"设计：</p><ul><li>6年级即归属中学部——提前开启中学科学课程，继续IB-PYP探究</li><li>中西融合课程——数理科以国家课纲为主，融合英国Key Stage 3；理科实验占比提高到40%</li><li>生涯超前规划——6年级启动升学规划，学科体验+个人测评+职业探索</li><li>英语强化——分层教学，采用欧洲CLIL学科语言融合理念，8年级通过PET</li><li>竞赛全覆盖——100%学生参与AMC、BPhO等国际竞赛</li></ul>'},
+            {"q": "高中阶段有哪些课程可选？",
+             "a": '<p>高中部以"课程自由选"为核心理念：</p><ul><li>开全IGCSE、A-Level（21门学科）、AP等主流国际课程，文理艺自由组合</li><li>特聘雅思名师定制语言课程，校内即可完成标化英语备考</li><li>"1+N导师制"——1名班级导师 + 学业、竞赛、升学等专项导师</li><li>美国大学双学分课程（URP、Design Thinking），高中即可提前修读海外高校学分</li><li>校内提供薄弱学科补习、新生专属衔接辅导、考前专属复习计划与竞赛辅导</li></ul>'},
+            {"q": "学校有艺术方向的升学项目吗？",
+             "a": '<p>有"全球艺术名校升学项目"，面向9年级学生，为艺术方向定制专属培养路径。</p><p>课程："2年IGCSE + 2年A-Level"学制。覆盖纯艺、建筑、动画、插画、音乐五大赛道。</p><p>成果——艺术大考A/B率超90%（远超全球平均水平）；近5届毕业生100%斩获QS艺术设计类TOP10院校offer；连续两年包揽A-Level艺术设计中国区最高分。</p>'},
+            {"q": '什么是"一人一课表"的个性化定制？',
+             "a": '<p>"一人一课表"是康礼个性化教育的核心实践。学校实行全科走班制——教室按学科固定设置，学生在不同科目教室间走班上课。</p><p>以真实案例说明：一名五年级学生，英语在小学水平，但物理、化学、生物已达初中水平。学校为其个人定制跨学部课表——英语和人文课在小学部上，科学课跨学部到初中部参与实验和研究。</p><p>高中阶段则体现为"21门A-Level自由组合 + 分层英语教学 + 1+N导师定制"。</p>'},
+        ]
+    },
+    "学生培养": {
+        "title": "学生培养",
+        "questions": [
+            {"q": "学校如何培养学生的领导力？",
+             "a": '<p>康礼围绕五种核心能力构建领导力培养体系：</p><ul><li><strong>批判性思维</strong>——课堂上追问"你的依据是什么"，不鼓励标准答案</li><li><strong>创造力</strong>——科创项目、艺术创作、创业计划，鼓励做"没有先例"的事</li><li><strong>协作能力</strong>——跨年龄跨学科项目制学习，在真实团队中学会倾听、妥协、引领</li><li><strong>沟通能力</strong>——双语表达是基本功，更在意能否清晰表达观点</li><li><strong>公民意识</strong>——根植中国、走向世界，成为关心社会问题的世界公民</li></ul>'},
+            {"q": "学生在学校可以使用手机吗？",
+             "a": '<p>康礼实行科学的电子设备管理制度，核心理念是"自律和自由是一枚硬币的两面"。</p><p>管理方式：每周日住校生返校时将手机交生活老师统一管理入柜；周中白天所有学生无权利带手机外出；每隔一天晚上有30分钟使用手机与家人联系。</p><p>这个制度由学生先提出"我们需要使用设备的权利"，学校、学生和家长三方共同协商。</p>'},
+            {"q": "学校有哪些课外活动和社团？",
+             "a": '<p>康礼拥有丰富的全人培养活动生态：</p><p><strong>学术竞赛</strong>——全员参加国际竞赛，覆盖BPhO、SMC、AMC10、UKChO、NEC等</p><p><strong>学生社团</strong>——模拟联合国、机器人社、商业挑战赛社、金融投资社、辩论社、创客社、乐队、戏剧社等</p><p><strong>校园活动</strong>——英文戏剧节、科创节、国际文化节、新年音乐会、熊猫视觉国际电影节等</p>'},
+            {"q": "体育教育在学校中占什么位置？",
+             "a": '<p>校长陆琨明确提出"体育才是自信的第一来源"——因为体育给孩子的反馈是最直接、最真实的。</p><p>体育教会孩子三件事：输得起、坚持得住、团队协作。</p><p>学校打造了五彩运动场，开设跑酷课等特色体育课程，拓展课还有橄榄球、羽毛球、排球、网球等多项选择。</p>'},
+            {"q": "学校如何帮助孩子找到真正的兴趣和热爱？",
+             "a": '<p>陆琨校长总结了一套完整的"发现与培养热爱"方法论：</p><p><strong>先观察三个信号</strong>——① 心流状态；② 失败了多次仍然愿意坚持；③ 特别愿意主动投入更多时间和精力。</p><p><strong>再通过三个步骤培养热爱的土壤</strong>——① 让孩子多去试；② 创设安全环境；③ 将学习与真实世界连接。</p><p>学校强调："真正的热爱不是找到的，而是在安全的试错中长出来的。"</p>'},
+            {"q": "偏科的孩子在康礼能得到怎样的支持？",
+             "a": '<p>康礼恰恰是偏科孩子的理想选择——A-Level课程体系本身就是为"扬长避短"设计的。学生只需从21门学科中选择3-4门最擅长、最热爱的科目深入学习，不需要在所有科目上平均用力。</p><p><strong>具体支持措施：</strong></p><ul><li><strong>自由选课，发挥优势</strong>——数学强就选进阶数学，理化强就选物理化学，不喜欢文科完全可以不选</li><li><strong>1:3师生比 + 分层教学</strong>——每个孩子在自己的"最近发展区"被精准关注，弱项不拖后腿，强项得到充分发展</li><li><strong>"1+N导师制"定制培养</strong>——每个学生有班级导师+学业导师+竞赛导师+升学导师，针对个人特点制定学习方案</li><li><strong>真实案例</strong>——曾有学生英语一般但数学极强，学校为其定制跨学部课表，数学到高年级参与进阶课程和AMC竞赛训练，最终进入G5名校数学专业</li></ul><p>一句话：在康礼，偏科不是问题——它是找到孩子天赋入口的线索。</p>'},
+            {"q": "康礼的项目制学习（PBL）和研究学习是怎么开展的？",
+             "a": '<p>PBL（Project-Based Learning）是康礼教学的核心方法之一，贯穿小学到高中全学段：</p><p><strong>小学阶段</strong>——IB-PYP超学科探究：六大跨学科主题探究单元，通过"提出问题→探究→行动→反思"的完整闭环，培养批判性思维和研究能力。</p><p><strong>初中阶段</strong>——每年至少完成2个跨学科研究项目；每年举办Research Fair（研究展），学生在真实观众面前展示研究成果。</p><p><strong>高中阶段</strong>——开设EPQ（Extended Project Qualification）独立研究项目；PBL融入日常学科教学；创新中心（Innovation Hub）支持学生动手实践。</p><p><strong>核心理念</strong>——"如果你在这个地方搞砸什么都没事"（Innovation Hub的原则），没有心理安全就没有真正的探索。</p><p>此外，康礼在2025世界数字教育大会上发表AI课程实践演讲，PBL+AI的跨学科融合实践获得了与会专家的认可。</p>'},
+            {"q": "英语基础一般的孩子能在康礼适应吗？",
+             "a": '<p>完全可以。康礼专门为此设计了"分层英语教学 + 双师协作"体系：</p><ul><li><strong>入学诊断</strong>——使用国际通用的MAP评估系统精准定位英语水平</li><li><strong>分层走班</strong>——根据实际水平编入对应英语班级，不与年级强行绑定</li><li><strong>中外教协作</strong>——中国教师侧重听读输入，外教侧重说写输出，双向提升</li><li><strong>CLIL教学法</strong>——初中阶段通过学科内容与语言融合教学，学生在学科学的过程中自然习得英语</li><li><strong>分级阅读平台</strong>——3000+本英文分级读物，确保每个孩子都有适合自己水平的阅读材料</li><li><strong>暑期衔接营</strong>——每年8月开设学术衔接营，由高中部全科教师帮助新生平滑过渡</li></ul><p>一句话：学校不看孩子"英语现在有多好"，而是看孩子"在适合的体系中能进步多快"。</p>'},
+        ]
+    },
+    "办学特色": {
+        "title": "办学特色",
+        "questions": [
+            {"q": "康礼的AI教育有哪些特色？",
+             "a": '<p>康礼围绕"驾驭AI而非被AI驾驭"的理念，构建了覆盖小学到高中的AI World课程体系：</p><ul><li><strong>初级（小学）</strong>——互动游戏、可视化编程，培养计算思维</li><li><strong>进阶（初中）</strong>——编程基础、算法入门、AI伦理讨论</li><li><strong>高阶（高中）</strong>——真实世界跨学科AI项目、数据科学应用</li></ul><p><strong>亮点实践：</strong></p><ul><li>设立<strong>AI创意中心</strong>，配备专业设备供学生实践</li><li>校长陆琨亲自开设<strong>AI通识拓展课</strong>——"不是教技术，而是教孩子看透AI本质的思维"</li><li>在<strong>2025世界数字教育大会</strong>上，康礼作为中国K12学校代表发表AI课程实践演讲</li><li>将AI与PBL深度结合——学生用AI工具进行跨学科研究</li></ul><p>核心目标：不是培养"会用AI的人"，而是培养"能理解、善用、并负责任地驾驭AI的领袖人才"。</p>'},
+            {"q": "什么是8维竞争力成长档案？能举一个真实的例子吗？",
+             "a": '<p>8维竞争力成长档案是康礼独创的核心教育体系，替代传统学校的成绩单。八个维度分别是：全球视野、学习力、身心健康、内驱力、创新力、领导力、协作力、责任意识。</p><p>每一位老师都是"发现成长事实的传感器"——不是期末写几句主观评语，而是在学期中持续捕捉、记录每个维度的具体变化。</p><p><strong>一个真实的例子：</strong></p><p>某位学生在七年级的"领导力"维度记录为："在四人小组讨论中表达了自己的观点"。到八年级时演化为："将组员的观点归纳整理成结构化的提案"。到九年级时则是："带领跨年级项目团队，向校外访客完成了30分钟的英语演讲展示"。每一个变化都具体、可追溯、可展示。</p><p>每个学生在期末都会收到一本<strong>完整的成长档案</strong>——不是一张分数条，而是一份记录了八个维度成长轨迹的"个人能力画像"。用工程逻辑，把软技能培养从"黑盒子"变成可追踪、可评估、可管理的科学。</p>'},
+            {"q": "AI时代，孩子在康礼能学到什么面向未来的能力？",
+             "a": '<p>校长陆琨的回答是："如果教育只为满足应试和筛选，孩子一定赢不过算法。在康礼，我们给孩子的，是那些AI拿不走的能力。"</p><p>核心培养三个"不可替代"的能力：</p><ul><li><strong>判断力</strong>——在投资人课堂上，学会"不迷信光环、不盲从概念"</li><li><strong>共情力</strong>——通过戏剧、电影节、项目合作，学会理解他人的情感和立场</li><li><strong>担当</strong>——通过学生会自治、社区服务、爱丁堡公爵奖等项目，培养责任意识</li></ul>'},
+            {"q": "成都康礼与别的国际学校比有什么独特之处？",
+             "a": '<p>六大差异化优势：</p><ul><li><strong>80年历史文脉 + 现代国际教育的独特融合</strong></li><li><strong>"全人教育工程化"理念</strong>——8维竞争力成长档案</li><li><strong>极致的个性化定制</strong>——全科走班制、"一人一课表"、超低师生比</li><li><strong>硬核师资</strong>——40%英美G5/藤校、60%硕博、100%海外背景</li><li><strong>清华+投资人背景的校长</strong></li><li><strong>小而精的办学规模</strong>——每年招收约100名学生</li></ul>'},
+        ]
+    },
+    "升学成果": {
+        "title": "升学成果",
+        "questions": [
+            {"q": "成都康礼的升学成果怎么样？",
+             "a": '<p>核心升学数据：</p><ul><li>曾获牛津、剑桥大学录取和面试邀请</li><li>毕业生97% 进入世界排名前100大学</li><li>艺术方向：近5届毕业生100% 斩获QS艺术设计类TOP10院校offer</li><li>艺术大考A/B率超90%，远超全球平均水平</li></ul>'},
+            {"q": "毕业生主要去了哪些大学？",
+             "a": '<p><strong>英国方向</strong>：剑桥大学、牛津大学、LSE、UCL等G5超级精英大学</p><p><strong>美国方向</strong>：常春藤盟校及Top30大学</p><p><strong>艺术方向</strong>：伦敦艺术大学（UAL）、帕森斯设计学院、伯克利音乐学院等</p><p><strong>其他</strong>：加拿大、澳大利亚、新加坡、中国香港地区名校均有录取</p>'},
+            {"q": "学校如何帮助学生做升学规划？",
+             "a": '<p>康礼的升学规划是从六年级到毕业的"贯通培养"，不是高三才开始的突击：</p><ul><li><strong>六年级</strong>——启动学科体验、个人测评、职业探索</li><li><strong>职业探索课程</strong>——通过真实企业参访、科创机构实践</li><li><strong>专属升学导师</strong>——"1+N导师制"中配备升学导师全程跟踪</li><li><strong>高中阶段</strong>——雅思定制课程、21门A-Level自由组合、双学分大学课程</li></ul>'},
+        ]
+    },
+    "寄宿生活": {
+        "title": "寄宿生活",
+        "questions": [
+            {"q": "学校的寄宿条件怎么样？",
+             "a": '<p>康礼以"家庭式关怀"构建寄宿环境。标准配置为3人公寓，配备原木风家具、人体工学可调节桌椅、青少年护脊偏硬床垫。</p><p>近期学校对两栋宿舍楼90多个房间完成了全面升级，所有家具均为环保原木材质。有特殊需求的孩子可基于评估申请一人间或两人间。</p>'},
+            {"q": "学生在校的饮食和健康如何保障？",
+             "a": '<p><strong>餐饮方面</strong>：食堂由专业营养团队定制菜单，每月推出世界美食主题，每周轮换中国地方特色菜系。</p><p><strong>医疗与心理保障</strong>：24小时驻校校医和心理咨询师；每层楼配备专属生活导师；倡导"一人一档"的全人关怀机制。</p>'},
+            {"q": "寄宿生的一天是怎样安排的？",
+             "a": '<p>寄宿管理遵循"严格科学作息"原则：</p><ul><li><strong>早晨</strong>：按时起床、早餐，准备上课</li><li><strong>白天</strong>：按"一人一课表"走班上课</li><li><strong>晚间</strong>：晚自习（有老师辅导），每隔一天晚上安排30分钟手机与家人联系</li><li><strong>周末</strong>：住校生参与学院制特色寄宿活动</li></ul><p>学校将宿舍定位为"终身能力孵化器"——"学会生活、学会关爱、学会成长"的重要教育场景。</p>'},
+            {"q": "学校位于大邑县安仁古镇，交通是否方便？",
+             "a": '<p>成都康礼学校位于成都市大邑县安仁古镇迎宾路二段247号，距成都市中心约50分钟车程。学校是全寄宿制，学生日常学习和生活都在校园内，交通不是日常问题。</p><p><strong>交通方式：</strong></p><ul><li><strong>自驾</strong>——成温邛高速 + 大邑迎宾大道直达，导航搜索"成都康礼学校"即可</li><li><strong>公共交通</strong>——成都茶店子客运站有直达安仁古镇的班车</li><li><strong>高铁</strong>——成蒲铁路大邑站下车，打车约15分钟到达</li></ul><p><strong>更重要的是——</strong>安仁古镇本身是国家5A级旅游景区，坐拥80年历史民国风貌文物建筑群。40幢古建筑错落有致，52%绿化覆盖率，松鼠与孔雀自由栖息。许多家长第一次来到校园就说"这就是我想让孩子在这里读书的地方"。地理位置不是劣势，而是康礼最独特的文化教育资产。</p>'},
+        ]
+    },
+    "招生": {
+        "title": "招生入学",
+        "questions": [
+            {"q": "学校招生流程是怎样的？如何报名？",
+             "a": '<p>招生流程共五步：</p><ol><li><strong>咨询预约</strong>——与招生老师沟通学生年级、学习背景、兴趣方向及家庭关注点</li><li><strong>校园访校</strong>——实地体验校园环境、课程特色、学生支持体系与寄宿生活</li><li><strong>入学评估</strong>——根据申请年级进行学术测试、英语测试、面谈或作品集等综合评估</li><li><strong>录取沟通</strong>——学校根据评估结果提供课程路径建议、升学方向建议与录取沟通</li><li><strong>注册入学</strong>——完成录取确认、学籍/入学材料提交与开学前衔接准备</li></ol><p>学校全年滚动招生，主要入学节点为秋季（9月）和春季（2月）。</p>'},
+            {"q": "入学需要什么条件？有入学考试吗？",
+             "a": '<p>入学需参加综合评估，包括学术能力测试（数学、英语为主）、学生面谈以及家长面谈。</p><p>不同年级评估侧重点不同：低年级更注重学习潜力和行为习惯；高年级关注学术基础和升学方向匹配度。艺术方向申请者需提交作品集。</p><p>学校采取"匹配式录取"原则——不单纯看分数，更关注学生是否适应学校的教育理念和培养模式。</p>'},
+            {"q": "国际学校的学费贵不贵？一年大概多少钱？",
+             "a": '<p>具体学费标准因学段不同有所差异，建议拨打招生热线 400-803-6661 或预约访校时详细咨询。</p><p>陆琨校长对此有坦诚分享：从小学到高中全程一两百万，买到的不是几张证书，而是三样东西：</p><p><strong>时间成本的优化</strong>——在更合适的体系里更早找到方向，少走弯路。</p><p><strong>长期能力而非短期分数</strong>——会学习、会表达、会面对不确定性，这些软能力在人生的后半程持续产生复利。</p><p><strong>家庭关系成本的节省</strong>——家长不再是天天催作业盯成绩的人，亲子关系回到支持和陪伴的位置。</p><p>一句话：值不值是匹配问题，不是绝对的价格问题。</p>'},
+            {"q": "从公立学校转轨国际学校，需要注意什么？",
+             "a": '<p>校长陆琨提出转轨前必须想清楚的三个关键问题：</p><p>第一，孩子的"痛苦"是什么性质？是"学不会"还是"不想学"？</p><p>第二，孩子适应的方向是什么？"慢热型"还是"探索型"？</p><p>第三，家庭准备好了吗？家长是否理解并认同国际教育理念？</p><p>学校每年8月开设"学术衔接营"，由高中部全科原班人马帮助新生平滑转轨，为期2周。</p>'},
+            {"q": "国际学校和公立学校最大的区别是什么？",
+             "a": '<p>从三个维度总结核心区别：</p><p><strong>评价体系的宽度</strong>——公立体系以笔试分数为单一标准，康礼用8维竞争力成长档案。</p><p><strong>与社会连接的紧密度</strong>——康礼通过项目制学习、职业探索、Career Fair等设计，让孩子接触真实世界。</p><p><strong>个性化程度</strong>——全科走班制、一人一课表、1:3超低师生比，让每个孩子被充分关注。</p>'},
+            {"q": "怎么联系学校？如何预约访校？",
+             "a": '<p>招生热线：400-803-6661</p><p>学校地址：成都市大邑县安仁镇迎宾路二段247号</p><p>访校预约方式：</p><ul><li>致电招生热线直接预约</li><li>通过学校官方自媒体平台私信预约（微信/小红书/抖音搜索"成都市大邑康礼外国语学校"）</li></ul><p>自媒体平台：微信公众号及视频号、小红书、抖音搜索"成都市大邑康礼外国语学校"；校长账号搜索"陆琨校长"。</p><p>学校定期举办全学段开放日、夏令营和主题营地活动，欢迎家长和学生实地感受康礼的教育氛围。</p>'},
+        ]
+    },
+}
+
+# ====== Build Accordion HTML ======
+def build_accordion(sections, lang="zh"):
+    accordion_css = '''
+<style>
+.afaq-sections { max-width: 900px; margin: 0 auto; }
+.afaq-card { background: var(--wh); border-radius: var(--rd); box-shadow: var(--sh); margin-bottom: 16px; overflow: hidden; }
+.afaq-header { padding: 20px 28px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; user-select: none; transition: .2s; }
+.afaq-header:hover { background: var(--pp); }
+.afaq-header h3 { font-size: 20px; color: var(--dp); margin: 0; }
+.afaq-arrow { font-size: 18px; color: var(--gd); transition: .3s; }
+.afaq-card.open .afaq-arrow { transform: rotate(180deg); }
+.afaq-body { display: none; padding: 0 28px 20px; }
+.afaq-card.open .afaq-body { display: block; }
+.afaq-body .faq-item { margin-bottom: 12px; border: 1px solid #eee; border-radius: 8px; overflow: hidden; }
+.afaq-body .faq-q { padding: 14px 18px; background: var(--pp); font-weight: 600; color: var(--dp); cursor: pointer; font-size: 15px; user-select: none; display: flex; justify-content: space-between; align-items: center; }
+.afaq-body .faq-q::after { content: '+'; font-size: 18px; color: var(--gd); transition: .3s; }
+.afaq-body .faq-item.open .faq-q::after { content: '−'; }
+.afaq-body .faq-a { display: none; padding: 0 18px 16px; font-size: 14px; color: var(--tx2); line-height: 2; }
+.afaq-body .faq-item.open .faq-a { display: block; }
+.afaq-summary { font-size: 13px; color: var(--tx2); margin: 0; }
+</style>
+'''
+
+    html_parts = [accordion_css]
+    html_parts.append('<div class="afaq-sections">')
+
+    for section_key, section in sections.items():
+        title = section["title"]
+        questions = section["questions"]
+        html_parts.append(f'<div class="afaq-card">')
+        html_parts.append(f'<div class="afaq-header" onclick="var p=this.parentElement;p.classList.toggle(\'open\')">')
+        html_parts.append(f'<h3>{title}</h3>')
+        html_parts.append(f'<span class="afaq-arrow">▼</span>')
+        html_parts.append(f'</div>')
+        html_parts.append(f'<div class="afaq-body">')
+        for item in questions:
+            q = item["q"]
+            a = item["a"]
+            html_parts.append(f'<div class="faq-item">')
+            html_parts.append(f'<div class="faq-q" onclick="var p=this.parentElement;p.classList.toggle(\'open\')">{q}</div>')
+            html_parts.append(f'<div class="faq-a">{a}</div>')
+            html_parts.append(f'</div>')
+        html_parts.append(f'</div>')
+        html_parts.append(f'</div>')
+
+    html_parts.append('</div>')
+    return '\n'.join(html_parts)
+
+
+# ====== SECTIONS EN ======
+sections_en = {
+    "philosophy": {
+        "title": "School Philosophy",
+        "questions": [
+            {"q": "What kind of school is Cogdel School Chengdu?",
+             "a": '<p>Cogdel School Chengdu is an international school located in Anren Ancient Town, Dayi County, Chengdu, with 80 years of history. It is a 12-year K-12 programme covering primary, middle, and high school, offering IGCSE, A-Level, and AP (IB-PYP candidate school, IBDP application in progress). It is an official CAIE examination centre, Edexcel official examination centre, Cambridge English KET/PET official centre, College Board AP authorized school, and holds Cognia global accreditation.</p><p>The school\'s mission is "Cultivating leaders who walk the world with pride." Principal Lu Kun (Tsinghua alumna) serves as Board Director &amp; Executive Principal. The school admits approximately 100 students per year, maintaining small-scale, high-quality education.</p>'},
+            {"q": "Where is the school located? What is the campus like?",
+             "a": '<p>The school is located at No.247 Section 2 Yingbin Road, Anren Town, Dayi County, Chengdu, within a National 5A-rated scenic area. The campus preserves heritage-listed Republican-era architecture and is known as "a school hidden in 80 years of scholarly heritage." Squirrels and peacocks roam freely across 52% green coverage.</p><p>Many parents and students describe their first campus visit as "love at first sight." The campus also features modern laboratories, art studios, an Innovation Hub, startup cafe, multi-sport fields, a professional photography studio, and a digital media creation lab.</p>'},
+            {"q": "What international accreditations and honors does the school hold?",
+             "a": '<ul><li>Cambridge Assessment International Education (CAIE) IGCSE/A-Level official examination centre</li><li>Pearson Edexcel IGCSE/A-Level official examination centre</li><li>Cambridge English Assessment KET/PET official examination centre</li><li>College Board (USA) AP authorized course provider</li><li>IB-PYP candidate school</li><li>Cognia global accreditation</li><li>Duke of Edinburgh International Award operating centre</li><li>Ministry of Education "Sino-Foreign Cultural Exchange Characteristic School"</li></ul><p>Recent honors: Pearson "Outstanding School Award" for three consecutive years; Cambridge East Asia "Decade School Award" 2026; listed in the International School Brand Value Top 100.</p>'},
+            {"q": "What is the faculty like?",
+             "a": '<p>Cogdel\'s faculty is known for being "hardcore." Key data: 40% graduated from UK G5 and US Ivy League; 60% from China\'s C9 top universities; 60% hold Master\'s or PhD; 100% have overseas study or work experience; 100% hold official A-Level/AP teaching certifications.</p><p>The leadership team includes Principal Lu Kun (Tsinghua University, CEIBS MBA) and vice principals with PGCEi from University of Nottingham, master\'s from Michigan State University, and 15+ years of international education experience.</p><p>The high school implements a "1+N Mentor System" -- 1 homeroom mentor plus specialized mentors in academics, competitions, and university guidance.</p>'},
+            {"q": "How is Cogdel\'s educational philosophy different from traditional schools?",
+             "a": '<p>Principal Lu Kun designed the school around three education pain points:</p><p>First: Breaking the single assessment system. Cogdel uses an "8-Dimension Competency Portfolio" replacing traditional report cards -- tracking Global Vision, Learning Ability, Physical &amp; Mental Health, Intrinsic Motivation, Innovation, Leadership, Collaboration, and Responsibility.</p><p>Second: Connecting school with society. Through project-based learning, career exploration starting from Grade 6, Investors\' Classroom, and Career Fair.</p><p>Third: Turning soft skills from "mysticism" into "science." Leadership development is tracked semester by semester.</p><p>In one sentence: Using engineering logic to customize future-oriented education.</p>'},
+        ]
+    },
+    "curriculum": {
+        "title": "Curriculum",
+        "questions": [
+            {"q": "What international courses does Cogdel offer?",
+             "a": '<ul><li>Primary (Grades 1-5): IB-PYP + National Compulsory Education Curriculum integration</li><li>Middle School (Grades 6-8): National Curriculum + international school-based curriculum (integrated UK Key Stage 3)</li><li>High School (Grades 9-12): IGCSE + A-Level (21 subjects) + AP; IBDP application pending</li><li>Additionally offers US university dual-enrolment (URP / Design Thinking)</li></ul>'},
+            {"q": "What are the highlights of the Primary programme?",
+             "a": '<p>Four core features:</p><p><strong>Dual-track development</strong> -- Chinese and Mathematics benchmarked against top-tier public schools in Chengdu, combined with international teaching methods.</p><p><strong>IB-PYP inquiry</strong> -- Six transdisciplinary theme units developing critical thinking, creativity, communication, and cross-disciplinary research.</p><p><strong>Differentiated English</strong> -- Cross-grade leveled teaching, Chinese-foreign co-teaching in an immersive bilingual environment. KET highest level by Grade 5.</p><p><strong>Personalized customization</strong> -- Weekly academic summaries, monthly PYP reports, and tri-annual three-way conferences.</p>'},
+            {"q": "How does Middle School handle the transition?",
+             "a": '<p>Cogdel has designed a systematic transition approach:</p><ul><li>Grade 6 starts as part of middle school -- early secondary science, continuing IB-PYP inquiry</li><li>China-West fusion -- Mathematics and sciences based on national curriculum with UK Key Stage 3; lab ratio increased to 40%</li><li>Early career planning -- University planning starts from Grade 6</li><li>English enhancement -- CLIL methodology, PET achieved by Grade 8</li><li>Full competition coverage -- 100% student participation in AMC, BPhO, etc.</li></ul>'},
+            {"q": "What courses are available in High School?",
+             "a": '<p>High School is built around "free course selection":</p><ul><li>Full IGCSE, A-Level (21 subjects), AP with free combination across disciplines</li><li>On-campus IELTS preparation with specialist teachers</li><li>"1+N Mentor System"</li><li>US university dual-enrolment (URP / Design Thinking)</li><li>On-campus academic support: tutoring, new student bridging, exam preparation, competition coaching</li></ul>'},
+            {"q": "Does the school have an art pathway programme?",
+             "a": '<p>Yes, the "Global Art School Programme" is available from Grade 9. Curriculum: "2 years IGCSE + 2 years A-Level" covering Fine Art, Architecture, Animation, Illustration, and Music.</p><p>Results: Art exam A/B rate exceeds 90%; 100% of art graduates in the past 5 years received QS Art &amp; Design TOP10 offers; two consecutive years of China\'s highest A-Level Art &amp; Design scores.</p>'},
+            {"q": "What does \"one student, one timetable\" mean?",
+             "a": '<p>This is the core practice of Cogdel\'s personalized education. The school implements full departmentalized scheduling -- students move between subject-specific classrooms.</p><p>A real example: A Grade 5 student with primary-level English but middle-school-level physics, chemistry, and biology was given a custom cross-division timetable -- English and humanities in Primary, science in Middle School for experiments and research.</p><p>At high school level, this manifests as "21 A-Level combinations + differentiated English + 1+N mentor customization."</p>'},
+        ]
+    },
+    "student": {
+        "title": "Student Development",
+        "questions": [
+            {"q": "How does Cogdel develop student leadership?",
+             "a": '<ul><li><strong>Critical thinking</strong> -- Teachers ask "What is your evidence?" rather than seeking standard answers</li><li><strong>Creativity</strong> -- Encouraging things "without precedent"</li><li><strong>Collaboration</strong> -- Cross-age, cross-discipline project-based learning</li><li><strong>Communication</strong> -- Bilingual expression is fundamental</li><li><strong>Citizenship</strong> -- Rooted in China, facing the world</li></ul>'},
+            {"q": "Can students use phones at school?",
+             "a": '<p>Cogdel has a scientific device management policy: phones are stored with dorm staff upon Sunday return; no phone access during weekday daytimes; 30 minutes every other evening to contact family. This policy was co-designed by students, school, and parents.</p>'},
+            {"q": "What extracurricular activities and clubs are available?",
+             "a": '<p><strong>Academic competitions</strong> -- BPhO, SMC, AMC10, UKChO, NEC (100% participation)</p><p><strong>Student clubs</strong> -- Model UN, Robotics, Business Challenge, Financial Investment, Debate, Maker, Band, Drama, Photography</p><p><strong>Campus events</strong> -- English Drama Festival, Science Fair, International Culture Festival, New Year Concert, Panda Vision International Film Festival</p>'},
+            {"q": "What role does sports play at the school?",
+             "a": '<p>Principal Lu Kun states, "Sports are the primary source of confidence." Sports teach three things: how to lose, how to persist, and teamwork. The school has a multi-sport field offering parkour, rugby, badminton, volleyball, tennis, and more.</p>'},
+            {"q": "How does Cogdel help children find their true passion?",
+             "a": '<p>Principal Lu Kun\'s methodology: First, observe three signals -- flow state, persistence despite failure, voluntary investment of time. Then cultivate through three steps -- let them try many things, create a safe environment, connect learning to the real world. "True passion is not found -- it grows out of safe trial and error."</p>'},
+            {"q": "How does Cogdel support students with uneven subject strengths?",
+             "a": '<p>Cogdel is ideal for such students. A-Level allows choosing just 3-4 strongest subjects from 21 options. Support includes free course selection, 1:3 student-teacher ratio with differentiated instruction, the "1+N Mentor System," and real cases of students with exceptional math but average English progressing to G5 university mathematics programs.</p>'},
+            {"q": "How does Cogdel implement Project-Based Learning (PBL) and research learning?",
+             "a": '<p>PBL spans K-12: Primary -- IB-PYP transdisciplinary inquiry; Middle School -- 2+ cross-disciplinary projects per year with annual Research Fair; High School -- EPQ independent research and Innovation Hub. Cogdel presented AI+PBL practices at the 2025 World Digital Education Conference.</p>'},
+            {"q": "Can students with weaker English adapt to Cogdel?",
+             "a": '<p>Absolutely. Cogdel has a dedicated system: MAP diagnostic assessment, level-based grouping, Chinese-foreign co-teaching (Chinese teachers for input, foreign teachers for output), CLIL methodology, a 3,000+ book graded reading platform, and an August summer bridging camp. We focus on "how fast they can progress," not "how good their English is now."</p>'},
+        ]
+    },
+    "features": {
+        "title": "Distinctive Features",
+        "questions": [
+            {"q": "What are Cogdel\'s AI education features?",
+             "a": '<p>Cogdel has an AI World curriculum spanning K-12: Beginner (Primary) -- interactive games, visual programming; Intermediate (Middle School) -- programming, algorithms, AI ethics; Advanced (High School) -- real-world cross-disciplinary AI projects.</p><p>Highlights: AI Innovation Center, Principal Lu Kun\'s AI General Studies course, presentation at the 2025 World Digital Education Conference, and deep AI+PBL integration.</p>'},
+            {"q": "What is the 8-Dimension Competency Portfolio? Can you give a real example?",
+             "a": '<p>The eight dimensions: Global Vision, Learning Ability, Physical &amp; Mental Health, Intrinsic Motivation, Innovation, Leadership, Collaboration, and Responsibility. Every teacher is a "growth sensor." Real example: a student\'s Leadership dimension evolved from "expressed personal opinion in a four-person group" (Grade 7) to "organized viewpoints into a structured proposal" (Grade 8) to "led a cross-grade team to deliver a 30-minute English presentation" (Grade 9). Each change is concrete, traceable, and demonstrable.</p>'},
+            {"q": "What AI-proof skills can children learn at Cogdel?",
+             "a": '<p>Principal Lu Kun: "If education only serves exams, children cannot beat algorithms." Cogdel cultivates three irreplaceable abilities: judgment (seeing through to essence), empathy (understanding others through drama and collaboration), and responsibility (through student self-governance and community service).</p>'},
+            {"q": "What makes Cogdel different from other international schools?",
+             "a": '<p>Six distinctive advantages: 80-year heritage + modern international education; engineered whole-person education (8-Dimension Portfolio); extreme personalization (one student, one timetable, 1:3 ratio); world-class faculty (40% G5/Ivy, 60% Master\'s/PhD, 100% overseas); Tsinghua + investor principal; small-scale excellence (~100 students/year).</p>'},
+        ]
+    },
+    "results": {
+        "title": "University Results",
+        "questions": [
+            {"q": "What are Cogdel\'s university admissions results?",
+             "a": '<ul><li>Received Oxford and Cambridge offers and interview invitations</li><li>97% of graduates enter World TOP100 universities</li><li>Art: 100% of graduates in the past 5 years received QS Art &amp; Design TOP10 offers</li><li>Art exam A/B rate exceeds 90%</li></ul>'},
+            {"q": "Which universities have Cogdel graduates attended?",
+             "a": '<p><strong>UK:</strong> Cambridge, Oxford, LSE, UCL, Imperial College (G5 super-elite)</p><p><strong>US:</strong> Ivy League and Top 30 universities</p><p><strong>Art:</strong> UAL, Parsons, Berklee College of Music</p><p><strong>Others:</strong> Canada, Australia, Singapore, Hong Kong</p>'},
+            {"q": "How does Cogdel help students with university planning?",
+             "a": '<p>Cogdel\'s university planning is a "continuous pathway" from Grade 6, not a last-minute Grade 12 scramble: Grade 6 begins subject experience and career exploration; dedicated university guidance mentors track throughout; high school provides IELTS, 21 A-Level combinations, and dual-enrolment courses.</p>'},
+        ]
+    },
+    "boarding": {
+        "title": "Boarding Life",
+        "questions": [
+            {"q": "What are the boarding facilities like?",
+             "a": '<p>Cogdel provides family-style care in boarding. Standard configuration: 3-person apartments with natural wood furniture, ergonomic desks, and spine-protecting mattresses. Over 90 rooms across 2 buildings have been recently upgraded with eco-certified materials. Single or double rooms available upon assessment.</p>'},
+            {"q": "How are dining and health managed?",
+             "a": '<p><strong>Dining:</strong> Professional nutrition team with customized menus, monthly world cuisine themes, weekly regional Chinese specialties. Campus coffee shop for light meals and beverages.</p><p><strong>Health:</strong> 24-hour on-campus doctor and counselling psychologist; dedicated life mentors on each floor; one-student-one-file care mechanism.</p>'},
+            {"q": "What is a boarding student\'s daily schedule?",
+             "a": '<p><strong>Morning:</strong> Wake up, breakfast, prepare for class. <strong>Daytime:</strong> Classes on personalized timetables. <strong>Evening:</strong> Supervised study with teachers; 30 minutes phone time with family every other evening. <strong>Weekends:</strong> House-system boarding activities. The dorm is positioned as a "lifelong competency incubator."</p>'},
+            {"q": "The school is in Anren Ancient Town -- is the location convenient?",
+             "a": '<p>Cogdel is approximately 50 minutes\' drive from downtown Chengdu. As a full boarding school, daily transportation is not a concern. Transport: by car via Chengwenqiong Expressway; direct buses from Chadianzi Bus Terminal; high-speed rail to Dayi Station then 15-minute taxi. Anren Ancient Town is a National 5A-rated scenic area with 80-year heritage architecture -- the location is not a disadvantage but Cogdel\'s most unique cultural and educational asset.</p>'},
+        ]
+    },
+    "admissions": {
+        "title": "Admissions",
+        "questions": [
+            {"q": "What is the admissions process? How do I apply?",
+             "a": '<p>Five steps: (1) Consultation with admissions team; (2) Campus visit; (3) Assessment (academic testing, English, interview); (4) Admissions discussion; (5) Enrolment confirmation. Rolling admissions year-round, with main entry in September and February.</p>'},
+            {"q": "What are the entrance requirements? Is there an entrance exam?",
+             "a": '<p>A comprehensive assessment including academic testing (Math/English), student interview, and parent interview. Younger grades focus on learning potential; higher grades on academic foundations. Art applicants submit portfolios. The school uses "matching admissions" -- not just scores, but fit with the school\'s philosophy.</p>'},
+            {"q": "How much does tuition cost?",
+             "a": '<p>Tuition varies by grade level. Please call 400-803-6661 for details. Principal Lu Kun candidly shares: "Over the K-12 journey, what you\'re buying isn\'t certificates, but three things: optimized time cost, long-term capabilities over short-term scores, and preserved family relationships."</p>'},
+            {"q": "What should I consider when transferring from public school to an international school?",
+             "a": '<p>Principal Lu\'s three key questions: (1) What is the nature of the child\'s struggle -- "can\'t learn" or "won\'t learn"? (2) What direction suits the child -- "slow-burn" or "exploratory"? (3) Is the family ready? The school offers an August Academic Bridging Camp to help new students transition smoothly.</p>'},
+            {"q": "What is the biggest difference between international and public schools?",
+             "a": '<p>Three key differences: breadth of assessment (8-Dimension vs. single score), closeness to society (PBL and career exploration vs. classroom isolation), and degree of personalization (one student, one timetable, 1:3 ratio vs. standardized approach).</p>'},
+            {"q": "How can I contact the school or schedule a visit?",
+             "a": '<p>Admissions hotline: 400-803-6661. Address: No.247 Section 2 Yingbin Road, Anren Town, Dayi County, Chengdu. Book via phone, or direct message on WeChat/Xiaohongshu/Douyin (search "Cogdel School" or "Lu Kun" for the principal\'s accounts).</p>'},
+        ]
+    },
+}
+
+
+# ====== Build both pages ======
+def build_page(lang, sections):
+    # Placeholder for content - the actual HTML will be dropped into the template
+    accordion_html = build_accordion(sections, lang)
+
+    if lang == 'zh':
+        meta_title = "招生问答 - 成都康礼学校"
+        meta_desc = '成都康礼学校招生FAQ：解答PBL项目制学习、AI教育、个性化培养、寄宿生活、偏科支持等家长最关心的问题。'
+        meta_kw = '成都康礼学校,成都国际学校,招生问答,PBL,AI教育,个性化教育,A-Level,寄宿学校'
+        page_title = "家长最关心的问题"
+        page_sub = "涵盖课程体系、入学流程、PBL与AI教育、个性化成长等家长关注的核心问题"
+        lang_bar = '<a href="" class="active">中文</a><span>|</span><a href="../en/index.html">English</a>'
+        nav_html = '''<li><a href="about.html">学校介绍</a><div class="dropdown"><a href="about.html">关于康礼</a><a href="campus.html">环境设施</a><a href="team.html">管理团队</a><a href="faculty.html">师资团队</a></div></li>
+<li><a href="curriculum.html">课程体系</a><div class="dropdown"><a href="curriculum.html">课程总览</a><a href="primary.html">小学部</a><a href="middle.html">初中部</a><a href="highschool.html">高中部</a></div></li>
+<li><a href="student-life.html">学生成长</a></li>
+<li><a href="results.html">升学成果</a></li>
+<li><a href="news.html">新闻速递</a></li>
+<li><a href="principal.html">校长说</a><div class="dropdown"><a href="principal-guide.html">择校指南</a><a href="principal-teaching.html">课程与教学</a><a href="principal-growth.html">学生成长</a></div></li>
+<li><a href="faq.html">招生问答</a></li>
+<li><a href="apply.html" class="nav-cta">预约访校</a></li>
+<li><span class="nav-phone">&#9742; 400-803-6661</span></li>'''
+        cta_title = "招生热线"
+        cta_sub = "400-803-6661 | 全年滚动招生 | 主要入学节点：9月/2月"
+        footer_name = "成都康礼学校"
+        footer_addr = "成都市大邑县安仁古镇迎宾路二段247号"
+        footer_phone = "招生热线：400-803-6661"
+        footer_links = '<a href="about.html">学校介绍</a><br><a href="curriculum.html">课程体系</a><br><a href="student-life.html">学生成长</a><br><a href="results.html">升学成果</a><br><a href="faq.html">招生问答</a><br><a href="apply.html">预约访校</a>'
+        footer_social = "微信公众号：成都市大邑康礼外国语学校<br>视频号/小红书/抖音：成都市大邑康礼外国语学校<br>校长账号：陆琨校长"
+        kefu_text = "点击咨询客服"
+        breadcrumb = '<a href="index.html" style="font-weight:700;color:var(--dp);">🏠 首页</a> &#187; 招生问答'
+        org_schema = '{"@context":"https://schema.org","@type":"EducationalOrganization","name":"成都康礼学校","alternateName":"Cogdel School Chengdu","url":"https://www.cogdelschool.com","address":{"streetAddress":"安仁镇迎宾路二段247号","addressLocality":"成都市大邑县"},"telephone":"400-803-6661"}'
+    else:
+        meta_title = "FAQ - Cogdel School Chengdu"
+        meta_desc = "Frequently Asked Questions about Cogdel School Chengdu: PBL, AI education, personalized learning, boarding life, admissions, and more."
+        meta_kw = "Cogdel School,Chengdu international school,FAQ,A-Level,boarding school,PBL,AI education"
+        page_title = "Frequently Asked Questions"
+        page_sub = "Covering curriculum, admissions, PBL &amp; AI education, personalized growth, and more"
+        lang_bar = '<a href="../zh/faq.html">中文</a><span>|</span><a href="" class="active">English</a>'
+        nav_html = '''<li><a href="about.html">About</a><div class="dropdown"><a href="about.html">About Cogdel</a><a href="campus.html">Campus</a><a href="team.html">Leadership</a><a href="faculty.html">Faculty</a></div></li>
+<li><a href="curriculum.html">Curriculum</a><div class="dropdown"><a href="curriculum.html">Overview</a><a href="primary.html">Primary</a><a href="middle.html">Middle School</a><a href="highschool.html">High School</a></div></li>
+<li><a href="student-life.html">Student Life</a></li>
+<li><a href="results.html">Results</a></li>
+<li><a href="news.html">News</a></li>
+<li><a href="principal.html">Principal\'s Column</a><div class="dropdown"><a href="principal-guide.html">School Selection</a><a href="principal-teaching.html">Teaching</a><a href="principal-growth.html">Student Growth</a></div></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="apply.html" class="nav-cta">Book a Visit</a></li>
+<li><span class="nav-phone">&#9742; 400-803-6661</span></li>'''
+        cta_title = "Admissions Hotline"
+        cta_sub = "400-803-6661 | Rolling Admissions Year-Round | Entry: Sept / Feb"
+        footer_name = "Cogdel School Chengdu"
+        footer_addr = "No.247 Section 2 Yingbin Road, Anren Town, Dayi County, Chengdu"
+        footer_phone = "Admissions: +86 400-803-6661"
+        footer_links = '<a href="about.html">About</a><br><a href="curriculum.html">Curriculum</a><br><a href="student-life.html">Student Life</a><br><a href="results.html">Results</a><br><a href="faq.html">FAQ</a><br><a href="apply.html">Book a Visit</a>'
+        footer_social = "WeChat: Cogdel School Chengdu<br>Video/Xiaohongshu/Douyin: Cogdel School<br>Principal: Lu Kun"
+        kefu_text = "Contact Us"
+        breadcrumb = '<a href="index.html" style="font-weight:700;color:var(--dp);">🏠 Home</a> &#187; FAQ'
+        org_schema = '{"@context":"https://schema.org","@type":"EducationalOrganization","name":"Cogdel School Chengdu","url":"https://www.cogdelschool.com","address":{"streetAddress":"No.247 Section 2 Yingbin Road, Anren Town","addressLocality":"Dayi County, Chengdu"},"telephone":"+86-400-803-6661"}'
+
+    html = f'''<!DOCTYPE html>
+<html lang="{'zh-CN' if lang == 'zh' else 'en'}">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>{meta_title}</title>
+<meta name="description" content="{meta_desc}">
+<meta name="keywords" content="{meta_kw}">
+<link rel="stylesheet" href="../css/style.css?v=1781603834">
+<script type="application/ld+json">{org_schema}</script>
+</head>
+<body>
+<div class="lang-bar">{lang_bar}</div>
+<header class="header"><div class="header-inner">
+<a href="index.html" class="logo"><img src="../images/bg1.png" alt="Cogdel" class="logo-img"></a>
+<button class="menu-toggle" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
+<ul class="nav">{nav_html}</ul></div></header>
+<section class="page-banner"><div><h1>招生问答</h1><div class="en">FAQ</div></div></section>
+<div class="breadcrumb">{breadcrumb}</div>
+<main class="article"><h1>{page_title}</h1><div class="meta">{page_sub}</div><div class="content">
+
+{accordion_html}
+
+</div></main>
+<section class="cta-section"><div class="cta-inner"><h2>{cta_title}</h2><p>{cta_sub}</p><div class="cta-btns"><span class="cta-btn cta-phone">&#9742; 400-803-6661</span></div></div></section>
+<footer class="footer"><div class="footer-inner">
+<div><h4>{footer_name}</h4><p>{footer_addr}<br>{footer_phone}</p></div>
+<div><h4>{"快速链接" if lang == 'zh' else "Quick Links"}</h4><p>{footer_links}</p></div>
+<div><h4>{"关注我们" if lang == 'zh' else "Follow Us"}</h4><p>{footer_social}</p></div>
+</div><div class="footer-bottom">&copy; 2026 Cogdel School Chengdu. [2026-06-17 17:10 v3]</div></footer>
+<script src="../js/main.js?v=1781603834"></script>
+<a href="https://work.weixin.qq.com/kfid/kfc51319098bfc114c1" target="_blank" style="position:fixed; right:20px; bottom:80px; z-index:999; display:flex; align-items:center; gap:8px; background:var(--gd); color:#fff; border-radius:28px; box-shadow:0 4px 20px rgba(0,0,0,.2); padding:12px 20px 12px 14px; text-decoration:none; font-size:15px; font-weight:600; transition:.3s;" title="{'在线咨询' if lang == 'zh' else 'Contact Us'}">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/></svg>
+  {kefu_text}
+</a>
+</body></html>'''
+
+    return html
+
+# Fix EN banner title
+en_html = build_page('en', sections_en)
+# Fix the page banner title
+en_html = en_html.replace('<h1>招生问答</h1>', '<h1>FAQ</h1>')
+
+zh_html = build_page('zh', sections_zh)
+
+# Write files
+base = r'C:\Users\lsnyj\Desktop\cogdel-website'
+with open(os.path.join(base, 'zh/faq.html'), 'w', encoding='utf-8') as f:
+    f.write(zh_html)
+print('zh/faq.html written, size:', len(zh_html))
+
+with open(os.path.join(base, 'en/faq.html'), 'w', encoding='utf-8') as f:
+    f.write(en_html)
+print('en/faq.html written, size:', len(en_html))
+
+# Verify
+for path in ['zh/faq.html', 'en/faq.html']:
+    with open(os.path.join(base, path), 'r', encoding='utf-8') as f:
+        c = f.read()
+    cards = c.count('afaq-card')
+    print(f'{path}: {cards} accordion cards, valid HTML: {"</html>" in c}')
