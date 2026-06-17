@@ -78,7 +78,7 @@ function submitVisit(e) {
   document.getElementById('kh51').src = document.getElementById('kh51').src + '';
 }
 function tryBridge() {
-  if (bridgeDone) return;
+  if (bridgeDone || !waitingForSubmit) return;
   try {
     var doc = document.getElementById('kh51').contentDocument || document.getElementById('kh51').contentWindow.document;
     var all = doc.querySelectorAll('input, textarea, select');

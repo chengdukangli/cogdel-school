@@ -69,16 +69,17 @@
 
 <script>
 var bridgeDone = false;
+var waitingForSubmit = false;
 function submitVisit(e) {
   e.preventDefault();
   var btn = document.getElementById('submitBtn');
   btn.textContent = '提交中...';
   btn.disabled = true;
-  // Reload iframe to get fresh kehu51 form
+  waitingForSubmit = true;
   document.getElementById('kh51').src = document.getElementById('kh51').src + '';
 }
 function tryBridge() {
-  if (bridgeDone) return;
+  if (bridgeDone || !waitingForSubmit) return;
   try {
     var doc = document.getElementById('kh51').contentDocument || document.getElementById('kh51').contentWindow.document;
     var all = doc.querySelectorAll('input, textarea, select');
