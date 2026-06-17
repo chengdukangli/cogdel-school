@@ -40,18 +40,18 @@
 .afaq-arrow { font-size: 18px; color: var(--gd); transition: .3s; }
 .afaq-card.open .afaq-arrow { transform: rotate(180deg); }
 .afaq-body { display: none; padding: 0 28px 20px; }
-.afaq-card.open .afaq-body { display: block; }
+.afaq-card.open .afaq-body { display: block !important; }
 .afaq-body .faq-item { margin-bottom: 12px; border: 1px solid #eee; border-radius: 8px; overflow: hidden; }
 .afaq-body .faq-q { padding: 14px 18px; background: var(--pp); font-weight: 600; color: var(--dp); cursor: pointer; font-size: 15px; user-select: none; display: flex; justify-content: space-between; align-items: center; }
 .afaq-body .faq-q::after { content: '+'; font-size: 18px; color: var(--gd); transition: .3s; }
 .afaq-body .faq-item.open .faq-q::after { content: '−'; }
 .afaq-body .faq-a { display: none; padding: 0 18px 16px; font-size: 14px; color: var(--tx2); line-height: 2; }
-.afaq-body .faq-item.open .faq-a { display: block; }
+.afaq-body .faq-item.open .faq-a { display: block !important; }
 .afaq-summary { font-size: 13px; color: var(--tx2); margin: 0; }
 </style>
 
 <div class="afaq-sections">
-<div class="afaq-card">
+<div class="afaq-card open">
 <div class="afaq-header" onclick="var p=this.parentElement;p.classList.toggle('open')">
 <h3>学校理念</h3>
 <span class="afaq-arrow">▼</span>
