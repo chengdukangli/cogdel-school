@@ -8,11 +8,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Book a Visit - Cogdel School Chengdu</title>
 <meta name="description" content="Book a campus visit at Cogdel School Chengdu.">
-<meta name="keywords" content="Cogdel School,book a visit,campus tour,admissions">
 <link rel="stylesheet" href="../css/style.css?v=1781603834">
 </head>
 <body>
-<div class="lang-bar"><a href="" href="../zh/apply.html">中文</a><span>|</span><a href="../en/apply.html">class="active">English</a></div>
+<div class="lang-bar"><a href="../zh/apply.html">中文</a><span>|</span><a href="../en/apply.html">class="active">English</a></div>
 <header class="header"><div class="header-inner">
 <a href="index.html" class="logo"><img src="../images/bg1.png" alt="Cogdel" class="logo-img"></a>
 <button class="menu-toggle" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
@@ -22,40 +21,29 @@
 <li><a href="student-life.html">Student Life</a></li>
 <li><a href="results.html">Results</a></li>
 <li><a href="news.html">News</a></li>
-<li><a href="principal.html">Principal's Column</a><div class="dropdown"><a href="principal-guide.html">School Selection</a><a href="principal-teaching.html">Teaching</a><a href="principal-growth.html">Student Life</a></div></li>
+<li><a href="principal.html">From the Principal</a><div class="dropdown"><a href="principal-guide.html">School Selection</a><a href="principal-teaching.html">Teaching</a><a href="principal-growth.html">Student Life</a></div></li>
 <li><a href="faq.html">FAQ</a></li>
 <li><a href="apply.html" class="nav-cta">Book a Visit</a></li>
 <li><span class="nav-phone">&#9742; 400-803-6661</span></li>
 </ul></div></header>
-<section class="page-banner"><div><h1>Book a Visit</h1><div class="en">Book a Visit</div></div></section>
-<div class="breadcrumb"><a href="index.html">Home</a> &#187; Book a Visit</div>
-<main class="article"><h1>Book a Visit</h1><div class="meta">Experience the Future School in a 5A Scenic Area</div><div class="content">
+<section class="page-banner"><div><h1>Book a Campus Visit</h1><div class="en">Book a Visit</div></div></section>
+<div class="breadcrumb"><a href="index.html">Home</a> &#187; 预约访校</div>
+<main class="article"><h1>Book a Campus Visit</h1><div class="meta">Experience the Future School in a 5A Scenic Area</div><div class="content">
 
 <div class="highlight-box"><h3>Admissions Process</h3>
-<p><strong>Step 1: Consultation</strong> —— Discuss with our admissions team<br>
-<strong>Step 2: Campus Visit</strong> —— Experience our campus, curriculum, and boarding life<br>
-<strong>Step 3: Assessment</strong> —— Academic testing, English assessment, and interview<br>
-<strong>Step 4: Admissions Discussion</strong> —— Curriculum pathway and university guidance<br>
-<strong>Step 5: Enrolment</strong> —— Complete enrolment and pre-term preparation</p></div>
+<p><strong>Step 1: Consultation</strong> -- Discuss learning background, interests, and priorities with our admissions team<br>
+<strong>Step 2: Campus Visit</strong> -- Experience our campus, curriculum, student support, and boarding life<br>
+<strong>Step 3: Assessment</strong> -- Academic testing, English assessment, interview, or portfolio review (art applicants)<br>
+<strong>Step 4: Admissions Discussion</strong> -- Curriculum pathway recommendations, university guidance, and admissions discussion<br>
+<strong>Step 5: Enrolment</strong> -- Complete enrolment confirmation and pre-term preparation</p></div>
 
-<h2>Book a Campus Visit</h2><p>Please fill in the form below. Your information will be sent to our admissions system directly. Our team will contact you within 24 hours.</p>
+<h2>Book a Campus Visit</h2><p>Fill in the form below. Your information goes directly to our admissions system. We will contact you within 24 hours.</p>
 
-<form id="visitForm" style="margin:24px 0; max-width:600px;" onsubmit="return submitVisit(event)">
-<div style="margin-bottom:16px;"><label style="display:block; margin-bottom:6px; font-weight:600; color:var(--dp);">Student Name *</label><input type="text" id="sname" required style="width:100%; padding:12px 16px; border:2px solid #e0e0e0; border-radius:8px; font-size:15px;" placeholder="Student name"></div>
-<div style="margin-bottom:16px;"><label style="display:block; margin-bottom:6px; font-weight:600; color:var(--dp);">Current Grade *</label><select id="grade" required style="width:100%; padding:12px 16px; border:2px solid #e0e0e0; border-radius:8px; font-size:15px; background:white;"><option value="">Select grade</option><option>Grade 1</option><option>Grade 2</option><option>Grade 3</option><option>Grade 4</option><option>Grade 5</option><option>Grade 6</option><option>Grade 7</option><option>Grade 8</option><option>Grade 9</option><option>Grade 10</option><option>Grade 11</option><option>Grade 12</option></select></div>
-<div style="margin-bottom:16px;"><label style="display:block; margin-bottom:6px; font-weight:600; color:var(--dp);">Parent Phone *</label><input type="tel" id="phone" required style="width:100%; padding:12px 16px; border:2px solid #e0e0e0; border-radius:8px; font-size:15px;" placeholder="Phone number"></div>
-<div style="margin-bottom:16px;"><label style="display:block; margin-bottom:6px; font-weight:600; color:var(--dp);">WeChat (optional)</label><input type="text" id="wechat" style="width:100%; padding:12px 16px; border:2px solid #e0e0e0; border-radius:8px; font-size:15px;" placeholder="WeChat ID"></div>
-<div style="margin-bottom:24px;"><label style="display:block; margin-bottom:6px; font-weight:600; color:var(--dp);">Questions (optional)</label><textarea id="note" style="width:100%; padding:12px 16px; border:2px solid #e0e0e0; border-radius:8px; font-size:15px; min-height:80px; resize:vertical;" placeholder="Any questions?"></textarea></div>
-<button type="submit" id="submitBtn" style="width:100%; padding:16px; background:var(--gd); color:white; border:none; border-radius:28px; font-size:17px; font-weight:700; cursor:pointer;">Submit</button>
-</form>
-
-<div id="successMsg" style="display:none; text-align:center; padding:40px 20px; background:var(--gp); border-radius:var(--rd); margin:24px 0;">
-  <div style="font-size:48px; margin-bottom:16px;">&#9989;</div>
-  <h3 style="color:var(--dp);">Submitted Successfully!</h3>
-  <p style="color:var(--tx2);">Your information has been sent to our admissions system. Our team will contact you within 24 hours.</p>
+<div style="background:var(--wh); border-radius:12px; box-shadow:0 4px 24px rgba(0,0,0,.08); padding:8px; margin:24px 0; min-height:550px;">
+  <iframe src="https://f.kehu51.com/html/565955/20260313094149513.html" style="width:100%; height:550px; border:none;" scrolling="no"></iframe>
 </div>
 
-<div class="highlight-box"><h3>Principal's Column</h3><p>"We regularly hold open days, summer camps, and themed activities. We warmly invite parents and students to experience the Cogdel educational atmosphere in person."</p></div>
+<div class="highlight-box"><h3>From the Principal</h3><p>"We regularly hold open days, summer camps, and themed activities. We warmly invite parents and students to experience the Cogdel educational atmosphere in person."</p></div>
 
 </div></main>
 
@@ -64,55 +52,6 @@
 <div><h4>Quick Links</h4><p><a href="about.html">About</a><br><a href="curriculum.html">Curriculum</a><br><a href="student-life.html">Student Life</a><br><a href="results.html">Results</a><br><a href="faq.html">FAQ</a><br><a href="apply.html">Book a Visit</a></p></div>
 <div><h4>Follow Us</h4><p>WeChat: Cogdel School Chengdu<br>Video/Xiaohongshu/Douyin: Cogdel School<br>Principal: Lu Kun</p></div>
 </div><div class="footer-bottom">&copy; 2026 Cogdel School Chengdu. [2026-06-17 17:10 v3]</div></footer>
-
-<iframe name="kh51" id="kh51" src="https://f.kehu51.com/html/565955/20260313094149513.html" style="width:1px;height:1px;border:none;position:fixed;left:-9999px;top:0;" onload="tryBridge()"></iframe>
-
-<script>
-var bridgeDone = false;
-function submitVisit(e) {
-  e.preventDefault();
-  var btn = document.getElementById('submitBtn');
-  btn.textContent = 'Submitting...';
-  btn.disabled = true;
-  // Reload iframe to get fresh kehu51 form
-  document.getElementById('kh51').src = document.getElementById('kh51').src + '';
-}
-function tryBridge() {
-  if (bridgeDone || !waitingForSubmit) return;
-  try {
-    var doc = document.getElementById('kh51').contentDocument || document.getElementById('kh51').contentWindow.document;
-    var all = doc.querySelectorAll('input, textarea, select');
-    var name = document.getElementById('sname').value;
-    var grade = document.getElementById('grade').value;
-    var phone = document.getElementById('phone').value;
-    var wechat = document.getElementById('wechat').value;
-    var note = document.getElementById('note').value;
-    for (var i = 0; i < all.length; i++) {
-      var el = all[i];
-      var n = (el.name || el.id || '').toLowerCase();
-      var p = (el.placeholder || '').toLowerCase();
-      if (!el.value || el.value === '') {
-        if (n.indexOf('姓名')>=0 || p.indexOf('姓名')>=0) el.value = name;
-        else if (n.indexOf('年级')>=0 || p.indexOf('年级')>=0) el.value = grade;
-        else if (n.indexOf('手机')>=0 || n.indexOf('电话')>=0 || n.indexOf('tel')>=0 || p.indexOf('手机')>=0) el.value = phone;
-        else if (n.indexOf('微信')>=0 || p.indexOf('微信')>=0) el.value = wechat;
-        else if (n.indexOf('问题')>=0 || n.indexOf('备注')>=0 || n.indexOf('note')>=0 || n.indexOf('remark')>=0) el.value = note;
-      }
-    }
-    var btns = doc.querySelectorAll('button, input[type="submit"]');
-    for (var j = 0; j < btns.length; j++) {
-      if (btns[j].type === 'submit' || btns[j].tagName === 'BUTTON') {
-        btns[j].click();
-        bridgeDone = true;
-        break;
-      }
-    }
-  } catch(e) {}
-  // Show success regardless
-  document.getElementById('visitForm').style.display = 'none';
-  document.getElementById('successMsg').style.display = 'block';
-}
-</script>
 <script src="../js/main.js?v=1781603834"></script>
 </body>
 </html>
