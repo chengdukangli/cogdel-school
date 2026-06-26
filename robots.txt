@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://en.cogdelschool.com/sitemap.xml
