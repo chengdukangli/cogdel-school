@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>伊顿幼儿园潜能发掘测评 - 报告下载</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:linear-gradient(180deg,#0d0520,#1a0a2e,#2d1b4e);min-height:100vh;color:#fff;display:flex;align-items:center;justify-content:center;padding:20px}
+.card{width:100%;max-width:420px;background:rgba(255,255,255,0.06);border-radius:20px;padding:32px 24px;border:1px solid rgba(212,175,55,0.2);text-align:center}
+.logo{width:100px;margin:0 auto 16px;display:block}
+h1{font-size:20px;font-weight:700;color:#d4af37;margin-bottom:4px}
+.sub{font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:24px}
+.fg{margin-bottom:16px;text-align:left}
+.fg label{display:block;font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:6px}
+.fg input{width:100%;padding:12px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-size:15px;outline:none;transition:.2s}
+.fg input:focus{border-color:#d4af37;background:rgba(255,255,255,0.12)}
+.fg input::placeholder{color:rgba(255,255,255,0.25)}
+.suggestions{position:relative}
+.suggestions .list{position:absolute;top:100%;left:0;right:0;background:#1a0a2e;border:1px solid rgba(212,175,55,0.3);border-radius:10px;max-height:200px;overflow-y:auto;display:none;z-index:10;margin-top:2px}
+.suggestions .list div{padding:10px 14px;cursor:pointer;font-size:14px;color:rgba(255,255,255,0.8);text-align:left}
+.suggestions .list div:hover{background:rgba(212,175,55,0.15);color:#d4af37}
+.btn{width:100%;padding:14px;background:linear-gradient(135deg,#d4af37,#f4d03f);border:none;border-radius:12px;color:#1a0a2e;font-size:16px;font-weight:700;cursor:pointer;margin-top:8px;transition:.2s;letter-spacing:1px}
+.btn:hover{transform:scale(1.02);box-shadow:0 8px 24px rgba(212,175,55,0.3)}
+.btn:disabled{opacity:0.4;cursor:not-allowed;transform:none}
+.result{display:none;margin-top:20px;padding:16px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);border-radius:12px}
+.result h3{font-size:15px;color:#10b981;margin-bottom:8px}
+.result .dl{display:inline-block;padding:10px 24px;background:linear-gradient(135deg,#10b981,#34d399);border-radius:10px;color:#fff;text-decoration:none;font-weight:600;font-size:14px;margin-top:8px}
+.msg{font-size:12px;color:rgba(255,255,255,0.4);margin-top:16px}
+.error{color:#ef4444;font-size:12px;margin-top:4px;display:none}
+</style>
+</head>
+<body>
+<div class="card">
+    <img class="logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Ctext x='10' y='40' font-family='serif' font-size='28' fill='%23d4af37' font-weight='bold'%3E伊顿幼儿园%3C/text%3E%3C/svg%3E" alt="">
+    <h1>潜能发掘测评报告下载</h1>
+    <p class="sub">请输入学生姓名和家长手机号获取测评报告</p>
+
+    <div class="fg suggestions">
+        <label>学生姓名</label>
+        <input type="text" id="studentName" placeholder="请输入学生中文姓名" autocomplete="off">
+        <div class="list" id="suggestList"></div>
+        <div class="error" id="nameError">请从列表中选择正确的学生姓名</div>
+    </div>
+
+    <div class="fg">
+        <label>家长手机号</label>
+        <input type="tel" id="phone" placeholder="请输入家长手机号码" maxlength="11">
+        <div class="error" id="phoneError">请输入正确的11位手机号码</div>
+    </div>
+
+    <button class="btn" id="submitBtn" onclick="doSubmit()">获取测评报告</button>
+    <div class="msg">报告仅供家长本人查看，请勿外传</div>
+
+    <div class="result" id="result">
+        <h3>✅ 验证成功</h3>
+        <p style="font-size:14px;color:rgba(255,255,255,0.8);margin-bottom:12px" id="resultMsg"></p>
+        <a class="dl" id="dlLink" href="#" target="_blank">📥 下载测评报告</a>
+    </div>
+</div>
+
+<script>
+// Student data - populated from server
+var students = [];
+
+// Load student list
+fetch('students.json')
+    .then(function(r){ return r.json() })
+    .then(function(data){
+        students = data;
+    })
+    .catch(function(){
+        // Fallback: hardcoded list
+        students = [["请刷新页面","",""]];
+    });
+
+var nameInput = document.getElementById('studentName');
+var suggestList = document.getElementById('suggestList');
+var selectedStudent = null;
+
+nameInput.addEventListener('input', function(){
+    var val = this.value.trim();
+    suggestList.innerHTML = '';
+    selectedStudent = null;
+    if (!val || val.length < 1){ suggestList.style.display='none'; return; }
+
+    var matches = students.filter(function(s){
+        return s[0].indexOf(val) !== -1 || s[1].toLowerCase().indexOf(val.toLowerCase()) !== -1;
+    });
+
+    if (matches.length === 0){ suggestList.style.display='none'; return; }
+
+    matches.slice(0, 8).forEach(function(s){
+        var div = document.createElement('div');
+        div.textContent = s[0] + (s[1] ? ' (' + s[1] + ')' : '');
+        div.onclick = function(){
+            nameInput.value = s[0];
+            selectedStudent = s;
+            suggestList.style.display = 'none';
+            document.getElementById('nameError').style.display = 'none';
+        };
+        suggestList.appendChild(div);
+    });
+    suggestList.style.display = 'block';
+});
+
+document.addEventListener('click', function(e){
+    if (!nameInput.parentElement.contains(e.target)){
+        suggestList.style.display = 'none';
+    }
+});
+
+function doSubmit(){
+    var nameVal = nameInput.value.trim();
+    var phoneVal = document.getElementById('phone').value.trim();
+    var valid = true;
+
+    // Validate name
+    var match = null;
+    for (var i = 0; i < students.length; i++){
+        if (students[i][0] === nameVal){ match = students[i]; break; }
+    }
+    if (!match){
+        document.getElementById('nameError').style.display = 'block';
+        valid = false;
+    } else {
+        document.getElementById('nameError').style.display = 'none';
+        selectedStudent = match;
+    }
+
+    // Validate phone
+    if (!/^1[3-9]\d{9}$/.test(phoneVal)){
+        document.getElementById('phoneError').style.display = 'block';
+        valid = false;
+    } else {
+        document.getElementById('phoneError').style.display = 'none';
+    }
+
+    if (!valid || !match) return;
+
+    var cn = match[0];
+    var en = match[1];
+    var file = match[2];
+    var dlUrl = file;
+
+    // Show result
+    document.getElementById('resultMsg').textContent = cn + (en ? ' (' + en + ')' : '') + ' 同学的报告已就绪';
+    document.getElementById('dlLink').href = dlUrl;
+    document.getElementById('result').style.display = 'block';
+    document.getElementById('submitBtn').disabled = true;
+    document.getElementById('submitBtn').textContent = '报告已生成';
+
+    // Log the download via webhook (configurable)
+    try {
+        var logData = {
+            name: cn,
+            englishName: en,
+            phone: phoneVal,
+            time: new Date().toLocaleString('zh-CN'),
+        };
+        // ==== CONFIGURE YOUR WEBHOOK URL HERE ====
+        var webhookUrl = '';
+        // 飞书: 'https://open.feishu.cn/open-apis/bot/v2/hook/xxxxx'
+        // 企业微信: 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=xxxxx'
+        // 钉钉: 'https://oapi.dingtalk.com/robot/send?access_token=xxxxx'
+
+        if (webhookUrl) {
+            var msg = '📊 伊顿测评报告下载\n学生: ' + logData.name + (logData.englishName ? ' (' + logData.englishName + ')' : '') + '\n家长手机: ' + logData.phone + '\n时间: ' + logData.time;
+            fetch(webhookUrl, {
+                method: 'POST',
+                body: JSON.stringify({
+                    msgtype: 'text',
+                    text: {content: msg}
+                }),
+                headers: {'Content-Type': 'application/json'},
+                mode: 'no-cors'
+            }).catch(function(){});
+        }
+
+        // Also log to localStorage for admin review
+        var logs = JSON.parse(localStorage.getItem('yd_report_logs') || '[]');
+        logs.push(logData);
+        localStorage.setItem('yd_report_logs', JSON.stringify(logs));
+    } catch(e){}
+
+    // Open PDF in new tab
+    window.open(dlUrl, '_blank');
+}
+</script>
+</body>
+</html>
