@@ -78,7 +78,8 @@
 
 <!-- Hero Banner -->
 <div class="hero-slider">
-  <div class="hero-slide active"><img src="../images/banner1.jpg" alt=""></div>
+  <a href="../zh/news/scholarship-2026.html" class="hero-slide active"><img src="../images/scholarship_banner.jpg?v=1783041905" alt="Growing Forward: Cogdel School 2026 Scholarship Launch"></a>
+  <div class="hero-slide"><img src="../images/banner1.jpg" alt=""></div>
   <div class="hero-slide"><img src="../images/banner2.jpg" alt=""></div>
   <div class="hero-slide"><img src="../images/banner3.jpg" alt=""></div>
   <div class="hero-slide"><img src="../images/banner4.jpg" alt=""></div>
@@ -87,6 +88,7 @@
     <span class="hero-dot" onclick="currentSlide(1)"></span>
     <span class="hero-dot" onclick="currentSlide(2)"></span>
     <span class="hero-dot" onclick="currentSlide(3)"></span>
+    <span class="hero-dot" onclick="currentSlide(4)"></span>
   </div>
 </div>
 
@@ -326,7 +328,7 @@ function currentSlide(n){
   document.querySelectorAll(".hero-slide").forEach(function(s,i){s.classList.toggle("active",i===n)});
   document.querySelectorAll(".hero-dot").forEach(function(d,i){d.classList.toggle("active",i===n)});
 }
-setInterval(function(){si=(si+1)%4;currentSlide(si)},4500);
+setInterval(function(){si=(si+1)%5;currentSlide(si)},4500);
 </script>
 
 <!-- 在线客服 -->
