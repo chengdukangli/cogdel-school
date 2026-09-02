@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>桂月衔兔 · 掐丝珐琅 | 成都康礼学校中秋非遗课</title>
+<style>
+  :root{
+    --purple:#5A3580;--purple-dark:#43265f;--purple-deep:#2e1a44;
+    --gold:#c9a84c;--gold-light:#e6cf8f;--gold-deep:#a8892f;
+    --ink:#2b2333;--cream:#faf6ef;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{background:#e9e2d6;}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","STKaiti","KaiTi",serif;
+    display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:26px 14px;
+  }
+  .poster{
+    width:min(480px,100%);background:var(--cream);
+    border-radius:22px;overflow:hidden;box-shadow:0 20px 60px rgba(46,26,68,.28);
+  }
+
+  /* ===== 顶部标题 ===== */
+  .head{
+    position:relative;padding:34px 26px 26px;text-align:center;
+    background:linear-gradient(165deg,#2e1a44 0%,#5A3580 52%,#43265f 100%);color:#fff;overflow:hidden;
+  }
+  .head::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(circle at 80% 15%,rgba(230,207,143,.45),transparent 42%),
+               radial-gradient(circle at 15% 88%,rgba(201,168,76,.22),transparent 40%);}
+  .kicker{position:relative;display:inline-block;font-size:12.5px;letter-spacing:3px;color:var(--gold-light);
+    border:1px solid rgba(230,207,143,.6);border-radius:30px;padding:5px 18px;margin-bottom:16px;z-index:1;}
+  h1{position:relative;z-index:1;font-family:"KaiTi","STKaiti",serif;font-weight:700;font-size:44px;letter-spacing:2px;
+    line-height:1.1;text-shadow:0 3px 14px rgba(0,0,0,.35);}
+  h1 .en{display:block;font-family:Georgia,serif;font-style:italic;font-weight:400;font-size:12.5px;
+    color:var(--gold-light);letter-spacing:2px;margin-top:12px;}
+  .sub{position:relative;z-index:1;font-family:"KaiTi","STKaiti",serif;font-size:19px;color:#f7efd8;
+    margin-top:12px;letter-spacing:4px;}
+
+  /* ===== 成品图 ===== */
+  .figure{padding:26px 24px 6px;}
+  .frame{position:relative;border-radius:14px;overflow:hidden;
+    border:6px solid var(--gold-deep);box-shadow:0 10px 30px rgba(90,53,128,.18);}
+  .frame img{width:100%;display:block;}
+  .frame .cap{position:absolute;left:0;bottom:0;right:0;background:linear-gradient(transparent,rgba(46,26,68,.72));
+    color:#fff;text-align:center;font-family:"KaiTi","STKaiti",serif;font-size:16px;letter-spacing:2px;padding:20px 12px 12px;}
+
+  /* ===== 文案 ===== */
+  .body{padding:20px 28px 30px;text-align:center;}
+  .hook{font-size:16.5px;color:var(--ink);line-height:1.85;letter-spacing:.5px;}
+  .hook b{color:var(--purple);}
+  .hook .en{display:block;font-family:Georgia,serif;font-style:italic;font-size:12px;color:#8b8296;margin-top:8px;}
+
+  .features{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0;}
+  .feat{background:#fff;border:1px solid rgba(90,53,128,.12);border-radius:12px;padding:14px;
+    box-shadow:0 4px 12px rgba(90,53,128,.05);text-align:center;}
+  .feat .ico{font-size:22px;margin-bottom:6px;color:var(--purple);}
+  .feat .t{font-size:14px;color:var(--purple);font-weight:700;}
+  .feat .e{font-family:Georgia,serif;font-style:italic;font-size:10.5px;color:#8b8296;margin-top:2px;}
+
+  .note{font-size:13px;color:var(--gold-deep);letter-spacing:.5px;}
+  .note b{color:var(--purple);}
+
+  .foot{text-align:center;padding:0 28px 24px;color:#8b8296;font-size:11px;letter-spacing:1px;}
+  .foot .en{font-family:Georgia,serif;font-style:italic;}
+
+  @media(max-width:480px){h1{font-size:38px;}}
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <div class="head">
+    <div class="kicker">成都康礼学校 · 中秋非遗公益课</div>
+    <h1>桂 月 衔 兔<span class="en">Gilded Moon &amp; Jade Rabbit</span></h1>
+    <div class="sub">掐丝珐琅 · 东方美学</div>
+  </div>
+
+  <div class="figure">
+    <div class="frame">
+      <img src="images/zhongqiu.jpg" alt="桂月衔兔 · 掐丝珐琅茶盘">
+      <div class="cap">掐丝珐琅 · 中秋手作成品</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="hook">
+      以中秋为题，以金丝为笔。<br>
+      亲手掐制一件<b>「桂月衔兔」</b>掐丝珐琅茶盘，<br>
+      在一丝一缕间，感受非遗的温度与东方之美。
+      <span class="en">With gilded threads &amp; a mid-autumn moon, craft a keepsake of heritage &amp; beauty.</span>
+    </div>
+
+    <div class="features">
+      <div class="feat"><div class="ico">🏮</div><div class="t">非遗技艺</div><div class="e">Heritage Craft</div></div>
+      <div class="feat"><div class="ico">🌕</div><div class="t">中秋主题</div><div class="e">Mid-Autumn</div></div>
+      <div class="feat"><div class="ico">🎨</div><div class="t">精品手作</div><div class="e">Art Piece</div></div>
+      <div class="feat"><div class="ico">🤝</div><div class="t">公益同行</div><div class="e">Community</div></div>
+    </div>
+
+    <div class="note">走进社区 · 共赴一场<b>中秋雅集</b></div>
+  </div>
+
+  <div class="foot">
+    成都康礼学校 · Cogdel School Chengdu<br>
+    <span class="en">紫 #5A3580 · 金 #C9A84C</span>
+  </div>
+</div>
+</body>
+</html>
