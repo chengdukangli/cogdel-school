@@ -3,56 +3,147 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>成都康礼 · 资料主页 | Cogdel Chengdu Resource Hub</title>
+<title>成都康礼学校 · 资料库 | Cogdel School Chengdu Resource Hub</title>
 <style>
-  :root{--purple:#5A3580;--purple-dark:#43265f;--purple-deep:#2e1a44;--gold:#c9a84c;--gold-light:#e6cf8f;--gold-deep:#a8892f;--bg:#faf7f2;--card:#fff;--ink:#2b2333;--inc-soft:#5f5a6b;--line:rgba(90,53,128,.14);}
+  :root{
+    --purple:#5A3580;--purple-dark:#43265f;--purple-deep:#2e1a44;
+    --gold:#c9a84c;--gold-light:#e6cf8f;--gold-deep:#a8892f;
+    --bg:#f7f4ef;--card:#fff;--ink:#2b2333;--inc-soft:#6b6475;--line:rgba(90,53,128,.12);
+  }
   *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 24px 70px;}
-  header.hero{background:linear-gradient(135deg,var(--purple-deep),var(--purple) 55%,var(--purple-dark));color:#fff;padding:48px 24px;text-align:center;position:relative;overflow:hidden;}
-  header.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 18%,rgba(201,168,76,.45),transparent 45%),radial-gradient(circle at 12% 86%,rgba(230,207,143,.25),transparent 40%);pointer-events:none;}
-  .hero-inner{position:relative;z-index:1;max-width:900px;margin:0 auto;}
-  .hero .crest{font-size:36px;margin-bottom:8px;}
-  .hero h1{font-size:clamp(24px,3.6vw,36px);font-weight:800;letter-spacing:1px;}
-  .hero .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-light);font-size:16px;margin-top:8px;}
-  .hero .sub{display:inline-block;margin-top:18px;padding:7px 20px;border:1px solid rgba(230,207,143,.6);border-radius:40px;font-size:13px;color:#f4e9cf;}
-  section{margin-top:36px;}
-  .sec-head{display:flex;align-items:baseline;justify-content:space-between;border-bottom:2px solid var(--purple);padding-bottom:10px;margin-bottom:20px;flex-wrap:wrap;gap:8px;}
-  .sec-head h2{font-size:20px;color:var(--purple);font-weight:800;}
-  .sec-head .en{font-family:Georgia,serif;font-style:italic;color:var(--inc-soft);font-size:14px;}
-  .sec-head .count{font-size:13px;color:var(--gold-deep);font-weight:700;}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:0 5px 18px rgba(90,53,128,.06);border-top:4px solid var(--purple);display:flex;flex-direction:column;min-height:170px;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,"Segoe UI",sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1200px;margin:0 auto;padding:0 28px 90px;}
+
+  /* ===== 顶部导航 ===== */
+  nav.top{
+    position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);
+    background:rgba(255,255,255,.75);border-bottom:1px solid var(--line);
+  }
+  nav.top .inner{
+    max-width:1200px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  }
+  nav .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--purple);font-size:18px;}
+  nav .brand .mark{width:12px;height:12px;border-radius:3px;background:linear-gradient(135deg,var(--purple),var(--gold));}
+  nav .brand .en{font-family:Georgia,serif;font-style:italic;color:var(--inc-soft);font-weight:400;font-size:13px;}
+  nav .links{display:flex;gap:8px;flex-wrap:wrap;}
+  nav .links a{font-size:13.5px;color:var(--inc-soft);text-decoration:none;padding:6px 14px;border-radius:20px;transition:.15s;}
+  nav .links a:hover{color:var(--purple);background:rgba(90,53,128,.08);}
+
+  /* ===== Hero ===== */
+  header.hero{
+    background:linear-gradient(135deg,var(--purple-deep) 0%,var(--purple) 52%,var(--purple-dark) 100%);
+    color:#fff;padding:70px 28px 66px;text-align:center;position:relative;overflow:hidden;
+    margin-bottom:52px;
+  }
+  header.hero::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 84% 16%,rgba(201,168,76,.5),transparent 42%),
+               radial-gradient(circle at 10% 88%,rgba(230,207,143,.28),transparent 42%),
+               radial-gradient(circle at 100% 100%,rgba(201,168,76,.18),transparent 40%);
+  }
+  header.hero::after{content:"";position:absolute;left:-40px;right:-40px;bottom:-2px;height:120px;background:var(--bg);clip-path:polygon(0 100%,0 60%,100% 0,100% 100%);}
+  .hero-inner{position:relative;z-index:2;max-width:860px;margin:0 auto;}
+  .hero .crest{font-size:30px;margin-bottom:14px;letter-spacing:0;}
+  .hero h1{font-size:clamp(30px,4.6vw,46px);font-weight:800;letter-spacing:1.5px;line-height:1.15;}
+  .hero .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-light);font-size:clamp(14px,2.2vw,19px);margin-top:12px;letter-spacing:.5px;}
+  .hero .slogan{
+    display:inline-block;margin-top:26px;padding:9px 26px;border:1px solid rgba(230,207,143,.6);
+    border-radius:60px;font-size:14px;color:#f7efd8;letter-spacing:.5px;
+  }
+
+  /* ===== 区块 ===== */
+  section{scroll-margin-top:70px;margin-bottom:50px;}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;}
+  .sec-head .left{display:flex;align-items:center;gap:14px;}
+  .sec-head .idx{font-size:15px;font-weight:800;color:var(--gold-deep);letter-spacing:1px;}
+  .sec-head h2{font-size:clamp(22px,2.8vw,27px);color:var(--purple);font-weight:800;}
+  .sec-head .en{font-family:Georgia,serif;font-style:italic;color:var(--inc-soft);font-size:14px;margin-top:2px;}
+  .sec-head .count{font-size:13px;color:var(--inc-soft);background:rgba(90,53,128,.07);padding:5px 14px;border-radius:20px;}
+
+  /* ===== 资料卡片 ===== */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:22px;}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;
+    box-shadow:0 8px 26px rgba(90,53,128,.06);border-top:4px solid var(--purple);
+    display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(90,53,128,.12);}
   .card.gold{border-top-color:var(--gold);}
-  .card .type{font-size:12px;color:var(--gold-deep);font-weight:700;letter-spacing:1px;}
-  .card h3{font-size:16px;color:var(--purple);font-weight:800;margin:8px 0 4px;line-height:1.35;}
-  .card .date{font-size:13px;color:var(--inc-soft);margin-bottom:8px;}
-  .card .desc{font-size:13px;color:var(--inc-soft);flex:1;}
-  .card .link{margin-top:12px;font-size:13px;font-weight:700;color:var(--purple);text-decoration:none;border:1px solid var(--purple);border-radius:8px;padding:6px 12px;text-align:center;display:inline-block;transition:.15s;}
+  .card .type{font-size:11.5px;color:var(--gold-deep);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
+  .card h3{font-size:17px;color:var(--purple);font-weight:800;margin:10px 0 4px;line-height:1.4;}
+  .card .date{font-size:12.5px;color:var(--inc-soft);margin-bottom:10px;}
+  .card .desc{font-size:13.5px;color:var(--inc-soft);flex:1;}
+  .card .link{
+    margin-top:16px;font-size:13.5px;font-weight:700;text-decoration:none;text-align:center;
+    padding:8px 14px;border-radius:10px;display:inline-block;transition:.15s;
+    color:var(--purple);border:1px solid var(--purple);background:transparent;
+  }
   .card .link:hover{background:var(--purple);color:#fff;}
   .card .link.ext{color:var(--gold-deep);border-color:var(--gold-deep);}
   .card .link.ext:hover{background:var(--gold-deep);color:#fff;}
-  .empty{grid-column:1/-1;background:var(--card);border:1px dashed var(--line);border-radius:14px;padding:28px;text-align:center;color:var(--inc-soft);font-size:14px;}
-  footer{text-align:center;margin-top:44px;padding-top:22px;border-top:1px solid var(--line);color:var(--inc-soft);font-size:12px;}
-  footer .en{font-family:Georgia,serif;font-style:italic;}
-  @media(max-width:640px){.card{min-height:0;}}
+
+  /* ===== 更多上线 ===== */
+  .more{
+    grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:12px;
+    background:linear-gradient(135deg,rgba(90,53,128,.05),rgba(201,168,76,.08));
+    border:1px dashed var(--line);border-radius:16px;padding:22px;color:var(--inc-soft);font-size:14px;
+  }
+  .more .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(201,168,76,.18);}
+
+  /* ===== 页脚 ===== */
+  footer{background:var(--purple-deep);color:#dfd7e8;margin-top:40px;padding:40px 28px;text-align:center;}
+  footer .t{font-weight:700;color:#fff;font-size:16px;}
+  footer .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-light);font-size:13px;margin-top:6px;}
+  footer .meta{margin-top:18px;font-size:12.5px;color:#b3a9c0;}
+
+  @media(max-width:640px){
+    .wrap{padding:0 18px 60px;}
+    .hero{padding:54px 20px 52px;}
+    .card{padding:20px;}
+    nav .brand .en{display:none;}
+  }
 </style>
 </head>
 <body>
+
+<nav class="top">
+  <div class="inner">
+    <div class="brand"><span class="mark"></span>
+      <span>康礼资料库<span class="en">Resource Hub</span></span>
+    </div>
+    <div class="links">
+      <a href="#camp">活动方案</a>
+      <a href="#course">课程</a>
+      <a href="#faculty">师资</a>
+      <a href="#eca">ECA</a>
+      <a href="#uni">升学</a>
+      <a href="#comp">竞赛</a>
+      <a href="#admis">招生物料</a>
+    </div>
+  </div>
+</nav>
+
 <header class="hero">
   <div class="hero-inner">
     <div class="crest">🎓</div>
-    <h1>成都康礼 · 资料主页</h1>
-    <div class="en">Cogdel Chengdu · Resource Hub</div>
-    <div class="sub">点击任意资料卡片即可查看 ｜ Tap any card to open</div>
+    <h1>成都康礼学校 · 资料库</h1>
+    <div class="en">Cogdel School Chengdu · Resource Hub</div>
+    <div class="slogan">一所学校，四种性格 &nbsp;|&nbsp; One School, Four Characters</div>
   </div>
 </header>
 
 <div class="wrap">
 
-  <!-- 01 活动方案 -->
-  <section>
-    <div class="sec-head"><h2>01 · 活动方案</h2><span class="en">Activity Plans</span><span class="count">共 1 项</span></div>
+  <!-- 活动方案 -->
+  <section id="camp">
+    <div class="sec-head">
+      <div class="left"><span class="idx">01</span><div><h2>活动方案</h2><div class="en">Activity Plans</div></div></div>
+      <span class="count">已上线 1 项</span>
+    </div>
     <div class="grid">
       <div class="card">
         <div class="type">综合方案 · Integrated</div>
@@ -61,49 +152,71 @@
         <div class="desc">四学院开放日（一所学校，四种性格）＋ 迷你学期三天营地 ＋ Think in English 冬令营，含单场招生流程。</div>
         <a class="link ext" href="https://en.cogdelschool.com/concept/2026-2027-spring-open-day-camp.html">打开方案 →</a>
       </div>
+      <div class="more"><span class="dot"></span><span>更多活动方案陆续上线</span></div>
     </div>
   </section>
 
-  <!-- 02 课程 -->
-  <section>
-    <div class="sec-head"><h2>02 · 课程</h2><span class="en">Curriculum</span><span class="count">共 0 项</span></div>
-    <div class="grid"><div class="empty">暂无资料</div></div>
+  <!-- 课程 -->
+  <section id="course">
+    <div class="sec-head">
+      <div class="left"><span class="idx">02</span><div><h2>课程</h2><div class="en">Curriculum</div></div></div>
+      <span class="count">即将上线</span>
+    </div>
+    <div class="grid"><div class="more"><span class="dot"></span><span>课程资料即将上线，敬请期待</span></div></div>
   </section>
 
-  <!-- 03 师资 -->
-  <section>
-    <div class="sec-head"><h2>03 · 师资</h2><span class="en">Faculty</span><span class="count">共 0 项</span></div>
-    <div class="grid"><div class="empty">暂无资料</div></div>
+  <!-- 师资 -->
+  <section id="faculty">
+    <div class="sec-head">
+      <div class="left"><span class="idx">03</span><div><h2>师资</h2><div class="en">Faculty</div></div></div>
+      <span class="count">即将上线</span>
+    </div>
+    <div class="grid"><div class="more"><span class="dot"></span><span>师资资料即将上线，敬请期待</span></div></div>
   </section>
 
-  <!-- 04 ECA -->
-  <section>
-    <div class="sec-head"><h2>04 · ECA</h2><span class="en">ECA</span><span class="count">共 0 项</span></div>
-    <div class="grid"><div class="empty">暂无资料</div></div>
+  <!-- ECA -->
+  <section id="eca">
+    <div class="sec-head">
+      <div class="left"><span class="idx">04</span><div><h2>ECA</h2><div class="en">ECA</div></div></div>
+      <span class="count">即将上线</span>
+    </div>
+    <div class="grid"><div class="more"><span class="dot"></span><span>ECA 资料即将上线，敬请期待</span></div></div>
   </section>
 
-  <!-- 05 升学 -->
-  <section>
-    <div class="sec-head"><h2>05 · 升学</h2><span class="en">University Guidance</span><span class="count">共 0 项</span></div>
-    <div class="grid"><div class="empty">暂无资料</div></div>
+  <!-- 升学 -->
+  <section id="uni">
+    <div class="sec-head">
+      <div class="left"><span class="idx">05</span><div><h2>升学</h2><div class="en">University Guidance</div></div></div>
+      <span class="count">即将上线</span>
+    </div>
+    <div class="grid"><div class="more"><span class="dot"></span><span>升学资料即将上线，敬请期待</span></div></div>
   </section>
 
-  <!-- 06 竞赛 -->
-  <section>
-    <div class="sec-head"><h2>06 · 竞赛</h2><span class="en">Competitions</span><span class="count">共 0 项</span></div>
-    <div class="grid"><div class="empty">暂无资料</div></div>
+  <!-- 竞赛 -->
+  <section id="comp">
+    <div class="sec-head">
+      <div class="left"><span class="idx">06</span><div><h2>竞赛</h2><div class="en">Competitions</div></div></div>
+      <span class="count">即将上线</span>
+    </div>
+    <div class="grid"><div class="more"><span class="dot"></span><span>竞赛资料即将上线，敬请期待</span></div></div>
   </section>
 
-  <!-- 07 招生物料 -->
-  <section>
-    <div class="sec-head"><h2>07 · 招生物料</h2><span class="en">Admissions Materials</span><span class="count">共 0 项</span></div>
-    <div class="grid"><div class="empty">暂无资料</div></div>
+  <!-- 招生物料 -->
+  <section id="admis">
+    <div class="sec-head">
+      <div class="left"><span class="idx">07</span><div><h2>招生物料</h2><div class="en">Admissions Materials</div></div></div>
+      <span class="count">即将上线</span>
+    </div>
+    <div class="grid"><div class="more"><span class="dot"></span><span>招生物料即将上线，敬请期待</span></div></div>
   </section>
 
-  <footer>
-    <div>成都康礼 · 资料主页</div>
-    <div class="en">Cogdel Chengdu Resource Hub · 紫 #5A3580 · 金 #C9A84C</div>
-  </footer>
 </div>
+
+<footer>
+  <div class="t">成都康礼学校</div>
+  <div class="en">Cogdel School Chengdu</div>
+  <div class="meta">资料库 · Resource Hub &nbsp;·&nbsp; 紫 #5A3580 · 金 #C9A84C</div>
+</footer>
+
 </body>
 </html>
