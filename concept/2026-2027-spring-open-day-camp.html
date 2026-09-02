@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026-2027 春季学期开放日 &amp; 营地方案 | Cogdel Chengdu · Open Days &amp; Camps</title>
+<style>
+  :root{
+    --purple:#5A3580;      /* 主紫 */
+    --purple-dark:#43265f;
+    --purple-deep:#2e1a44;
+    --gold:#c9a84c;        /* 主金 */
+    --gold-light:#e6cf8f;
+    --gold-deep:#a8892f;
+    --bg:#faf7f2;
+    --card:#ffffff;
+    --ink:#2b2333;
+    --inc-soft:#5f5a6b;
+    --line:rgba(90,53,128,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,"Segoe UI",sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px 80px;}
+
+  /* ---------- 页头 ---------- */
+  header.hero{
+    background:linear-gradient(135deg,var(--purple-deep) 0%,var(--purple) 55%,var(--purple-dark) 100%);
+    color:#fff;padding:52px 24px 56px;text-align:center;position:relative;overflow:hidden;
+  }
+  header.hero::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 82% 20%,rgba(201,168,76,.45),transparent 45%),
+               radial-gradient(circle at 12% 85%,rgba(230,207,143,.25),transparent 40%);
+    pointer-events:none;
+  }
+  .hero-inner{position:relative;z-index:1;max-width:900px;margin:0 auto;}
+  .crest{font-size:38px;letter-spacing:4px;margin-bottom:10px;}
+  .hero h1{font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:1px;}
+  .hero .en{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:clamp(14px,2.2vw,19px);color:var(--gold-light);margin-top:10px;letter-spacing:.5px;}
+  .hero .sub{display:inline-block;margin-top:22px;padding:8px 22px;border:1px solid rgba(230,207,143,.6);border-radius:40px;font-size:14px;color:#f4e9cf;}
+
+  /* ---------- 区块标题 ---------- */
+  section{margin-top:56px;}
+  .sec-head{text-align:center;margin-bottom:34px;}
+  .sec-head .tag{display:inline-block;font-size:13px;letter-spacing:2px;color:var(--gold-deep);border:1px solid var(--gold);border-radius:20px;padding:4px 16px;margin-bottom:14px;font-weight:600;}
+  .sec-head h2{font-size:clamp(22px,3vw,30px);color:var(--purple);font-weight:800;}
+  .sec-head .en{font-family:Georgia,serif;font-style:italic;color:var(--inc-soft);font-size:15px;margin-top:6px;}
+  .sec-head p.lead{max-width:720px;margin:14px auto 0;color:var(--inc-soft);font-size:15px;}
+
+  /* ---------- 系列概念 ---------- */
+  .concept{
+    background:linear-gradient(135deg,var(--purple) 0%,var(--purple-dark) 100%);
+    color:#fff;border-radius:20px;padding:26px 32px;text-align:center;margin-top:34px;
+    box-shadow:0 12px 34px rgba(58,34,90,.28);
+  }
+  .concept h3{font-size:24px;font-weight:800;letter-spacing:1px;}
+  .concept .en{color:var(--gold-light);font-family:Georgia,serif;font-style:italic;margin-top:6px;font-size:16px;}
+  .concept p{margin-top:12px;font-size:15px;color:#efe8f6;max-width:760px;margin-left:auto;margin-right:auto;}
+
+  /* ---------- 学院卡片 ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;}
+  .col-card{
+    background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 24px;
+    box-shadow:0 6px 22px rgba(90,53,128,.06);display:flex;flex-direction:column;
+    border-top:5px solid var(--purple);position:relative;
+  }
+  .col-card .date{font-size:26px;color:var(--purple);font-weight:800;letter-spacing:1px;line-height:1.1;}
+  .col-card .college{font-size:13px;color:var(--inc-soft);margin-top:2px;}
+  .col-card .pick{display:inline-block;margin-top:8px;background:var(--gold);color:var(--purple-deep);font-weight:800;font-size:13px;padding:4px 14px;border-radius:20px;letter-spacing:.5px;}
+  .col-card .day-tag{font-size:22px;font-weight:800;color:var(--purple);margin:12px 0 2px;line-height:1.3;}
+  .col-card .day-en{font-family:Georgia,serif;font-style:italic;color:var(--gold-deep);font-size:14px;margin-bottom:14px;}
+  .col-card .title{font-size:18px;font-weight:700;color:var(--ink);}
+  .col-card .title-en{font-size:13px;color:var(--inc-soft);font-style:italic;margin-top:2px;}
+  .col-card .divider{height:1px;background:var(--line);margin:16px 0;}
+  .col-card .label{font-size:12px;color:var(--gold-deep);font-weight:700;letter-spacing:1px;margin-bottom:6px;}
+  .col-card .desc{font-size:14px;color:var(--ink);}
+  .col-card .desc.en{font-size:13px;color:var(--inc-soft);margin-top:6px;}
+  .col-card .desc .ch{display:block;margin-top:8px;}
+  .col-card .dir{margin-top:auto;padding-top:16px;font-size:13px;color:var(--purple-dark);}
+  .col-card .dir b{color:var(--gold-deep);}
+
+  /* ---------- 流程 ---------- */
+  .flow-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:34px;box-shadow:0 6px 22px rgba(90,53,128,.06);}
+  table{width:100%;border-collapse:collapse;}
+  th,td{text-align:left;padding:16px 18px;border-bottom:1px solid var(--line);vertical-align:top;}
+  thead th{background:var(--purple);color:#fff;font-size:14px;letter-spacing:1px;}
+  .time{white-space:nowrap;font-weight:800;color:var(--purple);font-size:20px;line-height:1.1;}
+  .step-name{font-weight:700;color:var(--ink);font-size:15px;}
+  .step-en{font-family:Georgia,serif;font-style:italic;color:var(--gold-deep);font-size:13px;margin-top:2px;}
+  tr:last-child td{border-bottom:none;}
+  .note{font-size:13px;color:var(--inc-soft);margin-top:16px;}
+  .badge{display:inline-block;background:var(--purple);color:#fff;border-radius:6px;padding:1px 9px;font-size:12px;margin-left:6px;}
+  .badge.g{background:var(--gold-deep);}
+
+  /* ---------- 营地 & 冬令营 ---------- */
+  .band{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:22px;}
+  .band-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:0 6px 22px rgba(90,53,128,.06);border-top:5px solid var(--purple);}
+  .band-card.winter{border-top:5px solid var(--gold);}
+  .band-card .k{font-size:13px;color:var(--gold-deep);font-weight:700;letter-spacing:1px;}
+  .band-card h3{font-size:22px;color:var(--purple);font-weight:800;margin:8px 0 2px;}
+  .band-card .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-deep);font-size:15px;}
+  .band-card .tagline{font-size:15px;font-weight:700;color:var(--ink);margin-top:12px;}
+  .band-card ul{margin-top:12px;padding-left:20px;}
+  .band-card ul li{font-size:14px;color:var(--inc-soft);margin-bottom:9px;}
+  .band-card .li-en{color:#9a94a6;font-size:12.5px;font-style:italic;}
+  .band-card .dates{font-size:20px;color:var(--purple);font-weight:800;margin-top:12px;}
+  .band-card .dates .en{font-size:14px;color:var(--inc-soft);font-weight:400;font-style:italic;margin-left:6px;}
+  .tier{background:var(--purple-deep);border-radius:18px;padding:26px 30px;color:#fff;margin-bottom:26px;}
+  .tier .t{font-size:19px;font-weight:800;color:var(--gold-light);}
+  .tier .t-en{font-family:Georgia,serif;font-style:italic;color:#cbbbd8;font-size:13px;margin:2px 0 8px;}
+  .tier p{font-size:14px;color:#efe8f6;}
+
+  /* ---------- 底部 ---------- */
+  footer{text-align:center;margin-top:64px;padding-top:26px;border-top:1px solid var(--line);color:var(--inc-soft);font-size:13px;}
+  footer .en{font-family:Georgia,serif;font-style:italic;}
+
+  @media(max-width:640px){
+    th,td{padding:12px 10px;font-size:13px;}
+    .flow-card{padding:20px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="crest">🎓</div>
+    <h1>2026-2027 春季学期开放日 &amp; 营地方案</h1>
+    <div class="en">Cogdel Chengdu · Spring 2026-2027 Open Days &amp; Camps Plan</div>
+    <div class="sub">四大学院 · 一所学校，四种性格&nbsp;&nbsp;|&nbsp;&nbsp;Four Houses · One School, Four Characters</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ===== 系列概念 ===== -->
+  <div class="concept">
+    <h3>一所学校，四种性格</h3>
+    <div class="en">One School, Four Characters</div>
+    <p>四大学院是康礼独有的结构——别的学校讲不清，也抄不走。四场开放日，每场聚焦一个学院、一种培养方向，跟完四场，家长就懂了整所学校。</p>
+    <p style="margin-top:6px;">The Four Houses are Cogdel's unique structure — impossible to replicate. Four Open Days, one per House. Attend all four and you truly understand the school.</p>
+  </div>
+
+  <!-- ===== 四场学院日 ===== -->
+  <section>
+    <div class="sec-head">
+      <div class="tag">四场学院日 · House Days</div>
+      <h2>开放日排期与主题</h2>
+      <div class="en">Open Day Schedule & Themes</div>
+      <p class="lead">每个月一场，深入一种性格。孩子上一堂真实的课，带走一件亲手做的东西。</p>
+    </div>
+
+    <div class="grid">
+
+      <!-- Harmony -->
+      <div class="col-card">
+        <div class="date">10.24</div>
+        <div class="college">Harmony · 思辨与社会</div>
+        <div class="day-tag">创业家日</div>
+        <div class="day-en">Entrepreneur Day</div>
+        <div class="title">让孩子当一天 CEO</div>
+        <div class="title-en">Let Your Child Be CEO for a Day</div>
+        <div class="divider"></div>
+        <div class="label">课堂内容 Demo Class</div>
+        <div class="desc">60 分钟商业实战课——模拟经营沙盘，孩子组队开公司、做决策、谈价格</div>
+        <div class="desc en">A 60-minute business lab: running a company via a business simulation — making decisions, negotiating prices.</div>
+        <div class="dir"><b>课程方向</b>｜商业财经 · 模拟经营 / 经济学 / 财商<br>Focus: Business & Finance</div>
+      </div>
+
+      <!-- Quest -->
+      <div class="col-card">
+        <div class="date">11.28</div>
+        <div class="college">Quest · 科学与探究</div>
+        <div class="day-tag">好奇心日</div>
+        <div class="day-en">Curiosity Day</div>
+        <div class="title">把好奇心上交给实验室</div>
+        <div class="title-en">Hand Your Curiosity to the Lab</div>
+        <div class="divider"></div>
+        <div class="label">课堂内容 Demo Class</div>
+        <div class="desc">60 分钟科学实验课——从 AI 创意到动手验证，孩子亲手做出一件科学作品</div>
+        <div class="desc en">A 60-minute science lab: from AI ideas to hands-on experiments — students create a real scientific work.</div>
+        <div class="dir"><b>课程方向</b>｜科学探究 · AI 创作 / 动手实验 / 跨学科项目<br>Focus: Science & Inquiry</div>
+      </div>
+
+      <!-- Muse -->
+      <div class="col-card">
+        <div class="date">12.12</div>
+        <div class="college">Muse · 设计与创意</div>
+        <div class="day-tag">创想家日</div>
+        <div class="day-en">Creator Day</div>
+        <div class="title">在 100 岁的校园里，造未来</div>
+        <div class="title-en">Create the Future in a 100-Year-Old Campus</div>
+        <div class="divider"></div>
+        <div class="label">课堂内容 Demo Class</div>
+        <div class="desc">60 分钟艺术创作课——设计、绘画、手作，孩子亲手做一件艺术作品</div>
+        <div class="desc en">A 60-minute art class — design, drawing &amp; craft — students create an artwork by hand.</div>
+        <div class="dir"><b>课程方向</b>｜艺术创意 · 设计 / 手作 / 数字媒体（内容由学院定）<br>Focus: Art &amp; Creativity</div>
+      </div>
+
+      <!-- Vigor -->
+      <div class="col-card">
+        <div class="date">1.23</div>
+        <div class="college">Vigor · 学术与竞技</div>
+        <div class="day-tag">挑战者日</div>
+        <div class="day-en">Challenger Day</div>
+        <div class="pick">🔀 本场二选一 · 由学院定</div>
+        <div class="divider"></div>
+        <div class="label">课堂内容 Demo Class</div>
+        <div class="title">数学，原来这么好玩</div>
+        <div class="title-en">Math Can Be This Fun</div>
+        <div class="desc">60 分钟趣味数学课——数学魔术 + 逻辑游戏，孩子当堂玩出兴趣</div>
+        <div class="desc en">A 60-minute fun math class: magic + logic games that spark real interest.</div>
+        <div class="desc"><span class="ch"><b>或者（二选一）｜Or</b></span></div>
+        <div class="title" style="margin-top:10px;">来康礼的赛场，赢一次</div>
+        <div class="title-en">Win Once on Our Field</div>
+        <div class="desc">60 分钟运动体验课——跑酷 / 美式橄榄球 / 躲避球，一场小比赛，孩子痛快赢一次</div>
+        <div class="desc en">A 60-minute sports class: parkour / American football / dodgeball in a real mini-match.</div>
+        <div class="dir"><b>课程方向</b>｜趣味数学（数理思维）或 运动体验（跑酷 / 橄榄球 / 躲避球）<br>Focus: Fun Math &nbsp;or&nbsp; Athletics</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== 招生流程 ===== -->
+  <section>
+    <div class="sec-head">
+      <div class="tag">开放日流程 · Schedule</div>
+      <h2>单场招生流程</h2>
+      <div class="en">Open Day Timeline</div>
+      <p class="lead">上午场 · 约 2 小时（10:00–12:00）｜Morning session · ≈2 hours</p>
+    </div>
+
+    <div class="flow-card">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:170px;">时间 Time</th>
+            <th>环节 Activity</th>
+            <th>内容 Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="time">10:00–10:10</td>
+            <td>
+              <div class="step-name">签到登记</div>
+              <div class="step-en">Check-in & Registration</div>
+            </td>
+            <td>签到、领取物料袋、贴姓名贴、按学段分组</td>
+          </tr>
+          <tr>
+            <td class="time">10:10–10:30</td>
+            <td>
+              <div class="step-name">校园导览</div>
+              <div class="step-en">Campus Tour</div>
+            </td>
+            <td>家庭按学段分两队（<span class="badge">初高</span><span class="badge g">小学</span>），各走一条路线，分组参观</td>
+          </tr>
+          <tr>
+            <td class="time">10:30–11:30</td>
+            <td>
+              <div class="step-name">体验课（孩子）/ 家长宣讲（家长）</div>
+              <div class="step-en">Demo Class (Students) / Info Session (Parents)</div>
+            </td>
+            <td>孩子进教室上一堂真实的课（60 分钟<strong>，在校生助教协助</strong>）；家长在报告厅听宣讲（课程体系 · 升学路径 · 师资）</td>
+          </tr>
+          <tr>
+            <td class="time">11:30–11:50</td>
+            <td>
+              <div class="step-name">成果展示</div>
+              <div class="step-en">Student Presentation</div>
+            </td>
+            <td>孩子向家长展示这节课亲手做出来的成果</td>
+          </tr>
+          <tr>
+            <td class="time">11:50–12:00</td>
+            <td>
+              <div class="step-name">一对一面谈 &amp; 茶歇</div>
+              <div class="step-en">One-on-one Q&amp;A &amp; Refreshments</div>
+            </td>
+            <td>家长与招生 / 学科老师短面谈、登记意向；12 点主体结束，有意向家庭另约深谈</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note">注：孩子按学段分班上课（初高班 / 小学班），由对应学段主课老师主讲，并配备在校生助教。</div>
+    </div>
+  </section>
+
+  <!-- ===== 营地 & 冬令营 ===== -->
+  <section>
+    <div class="sec-head">
+      <div class="tag">活动线 · Program Lines</div>
+      <h2>三天营地 &amp; 冬令营</h2>
+      <div class="en">3-Day Camp &amp; Winter Camp</div>
+      <p class="lead">开放日让家长看懂康礼，营地让孩子走进康礼，冬令营让孩子带走康礼。</p>
+    </div>
+
+    <!-- 三级递进 -->
+    <div class="tier">
+      <div class="t">看懂 → 走进 → 带走</div>
+      <div class="t-en">Understand · Experience · Take Away</div>
+      <p>开放日看懂一所学校，三天营地走进真实课堂，冬令营带走一周的成长。</p>
+    </div>
+
+    <div class="band">
+
+      <!-- 三天营地 -->
+      <div class="band-card">
+        <div class="k">三天营地 · 3-Day Camp</div>
+        <h3>迷你学期 · 遇见我的热爱</h3>
+        <div class="en">Mini Semester · Discover Your Passion</div>
+        <div class="dates">📅 10.5–10.7 ／ 11.11–11.13<span class="en">Oct 5-7 / Nov 11-13 · 两期同主题</span></div>
+        <div class="tagline">3 天走班选课——科学、艺术、运动、语言样样试，全程英文浸润</div>
+        <div class="tagline" style="font-weight:400;">3 days of elective-hopping across Science, Art, Sport &amp; Language — fully immersed in English.</div>
+        <ul>
+          <li>插班走班机制：孩子 2–4 人一组插进真实班级，按课表走班选听招牌课，每组配 1 名在读学伴／单独导师<span class="li-en">｜Real classroom integration with a peer buddy / dedicated mentor</span></li>
+          <li>覆盖四大课程支柱，看见康礼课程的丰富程度<span class="li-en">｜Explore four subject pillars — richness of the curriculum</span></li>
+          <li>结营交付「兴趣信号报告」：专注时长、提问质量、方向建议<span class="li-en">｜A personalised "Interest Signal Report"</span></li>
+        </ul>
+      </div>
+
+      <!-- 冬令营 -->
+      <div class="band-card winter">
+        <div class="k">冬令营 · Winter Camp</div>
+        <h3>Think in English · 用英语思考</h3>
+        <div class="en">Think in English, Create with AI, Shine on Stage</div>
+        <div class="dates">📅 1.25–1.29<span class="en">Jan 25-29 · 5 天</span></div>
+        <div class="tagline">从"用英语学"到"用英语想"——5 天 5 个真实英语场景</div>
+        <div class="tagline" style="font-weight:400;">Beyond "learning in English" to "thinking in English" — 5 days, 5 real English scenes.</div>
+        <ul>
+          <li>5 个真实英语场景：课堂、实验室、舞台、赛场、发布会<span class="li-en">｜Classroom, Lab, Stage, Field, Showcase</span></li>
+          <li>沿用学校现有师资模块：设计思维 · 创意 AI 与工程 · 音乐公共演讲 · 运动<span class="li-en">｜Design Thinking · AI &amp; Engineering · Music &amp; Speech · Sport</span></li>
+          <li>结营双语成果发布会，孩子把一周所学讲给家长看<span class="li-en">｜Closing bilingual showcase — students present to families</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div>成都康礼学校 · 市场招生部</div>
+    <div class="en">Cogdel School Chengdu · Admissions & Marketing</div>
+    <div style="margin-top:8px;color:var(--gold-deep);">紫 · #5A3580　金 · #C9A84C</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
