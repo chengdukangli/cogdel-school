@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>成都康礼学校 2026-2027 学年课表 | Cogdel School Chengdu Timetable</title>
+<style>
+  :root{--purple:#5A3580;--purple-dark:#43265f;--purple-deep:#2e1a44;--gold:#c9a84c;--gold-light:#e6cf8f;--gold-deep:#a8892f;--bg:#f7f4ef;--card:#fff;--ink:#2b2333;--inc-soft:#6b6475;--line:rgba(90,53,128,.14);}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 26px 90px;}
+  nav.top{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(255,255,255,.78);border-bottom:1px solid var(--line);}
+  nav.top .inner{max-width:1200px;margin:0 auto;padding:13px 26px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+  nav .brand{font-weight:800;color:var(--purple);font-size:17px;}
+  nav .brand .en{font-family:Georgia,serif;font-style:italic;color:var(--inc-soft);font-weight:400;font-size:12.5px;}
+  nav .links{display:flex;gap:7px;flex-wrap:wrap;}
+  nav .links a{font-size:13px;color:var(--inc-soft);text-decoration:none;padding:5px 13px;border-radius:18px;transition:.15s;}
+  nav .links a:hover{color:var(--purple);background:rgba(90,53,128,.08);}
+  header.hero{background:linear-gradient(135deg,var(--purple-deep),var(--purple) 52%,var(--purple-dark));color:#fff;padding:60px 26px 52px;text-align:center;position:relative;overflow:hidden;margin-bottom:46px;}
+  header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 84% 16%,rgba(201,168,76,.45),transparent 42%),radial-gradient(circle at 10% 88%,rgba(230,207,143,.25),transparent 42%);}
+  .hero-inner{position:relative;z-index:2;max-width:860px;margin:0 auto;}
+  .hero .crest{width:56px;height:56px;margin:0 auto 16px;border-radius:14px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--purple-deep);font-weight:800;font-size:26px;line-height:56px;box-shadow:0 6px 18px rgba(0,0,0,.25);}
+  .hero h1{font-size:clamp(27px,4.2vw,42px);font-weight:800;letter-spacing:1.5px;line-height:1.15;}
+  .hero .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-light);font-size:clamp(14px,2.2vw,18px);margin-top:12px;letter-spacing:.5px;}
+  .hero .slogan{display:inline-block;margin-top:24px;padding:8px 24px;border:1px solid rgba(230,207,143,.6);border-radius:60px;font-size:13.5px;color:#f7efd8;}
+  .part{margin:44px 0 26px;scroll-margin-top:70px;text-align:center;}
+  .part h2{font-size:clamp(23px,3vw,29px);color:var(--purple);font-weight:800;letter-spacing:1px;}
+  .part .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-deep);font-size:15px;margin-top:4px;}
+  /* 课表卡片 */
+  .tt{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 20px;margin-bottom:30px;box-shadow:0 6px 22px rgba(90,53,128,.06);}
+  .tt-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px;}
+  .tt-head h3{font-size:21px;color:var(--purple);font-weight:800;}
+  .tt-head .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-deep);font-size:14px;}
+  table.tt-table{width:100%;border-collapse:collapse;font-size:13px;}
+  .tt-table th,.tt-table td{border:1px solid var(--line);padding:7px 8px;text-align:center;vertical-align:middle;}
+  .tt-table thead th{background:var(--purple);color:#fff;font-weight:700;font-size:13px;}
+  .tt-table thead th.time{width:9%;}
+  .tt-table thead th.slot{width:9%;}
+  .tt-table td.time{background:rgba(90,53,128,.06);color:var(--inc-soft);font-size:11.5px;white-space:nowrap;}
+  .tt-table td.slot{background:rgba(90,53,128,.06);font-weight:700;color:var(--purple);font-size:12.5px;}
+  .tt-table td .t{color:var(--gold-deep);font-size:11.5px;}
+  .tt-table tr.break td{background:rgba(201,168,76,.14);color:var(--gold-deep);font-weight:700;font-size:12.5px;letter-spacing:.5px;}
+  .tt-table tr.break td.time{background:rgba(201,168,76,.14);color:var(--gold-deep);}
+  footer{background:var(--purple-deep);color:#dfd7e8;text-align:center;padding:36px 26px;margin-top:20px;}
+  footer .t{font-weight:700;color:#fff;font-size:15px;}
+  footer .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-light);font-size:12.5px;margin-top:5px;}
+  .no-print{ }
+  /* ===== 打印 ===== */
+  @media print{
+    @page{size:A4 landscape;margin:9mm;}
+    body{background:#fff;}
+    nav.top,header.hero,footer,.part .en{display:none !important;}
+    .wrap{padding:0;max-width:100%;}
+    .part{margin:14px 0 10px;text-align:left;page-break-after:avoid;}
+    .part h2{font-size:18px;}
+    .tt{border:none;box-shadow:none;padding:0;margin:0 0 6px;page-break-after:always;page-break-inside:avoid;}
+    .tt:last-of-type{page-break-after:auto;}
+    .tt-head h3{font-size:16px;}
+    table.tt-table{font-size:10.5px;}
+    .tt-table th,.tt-table td{padding:4px 5px;}
+    .tt-table thead th{background:var(--purple) !important;color:#fff !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .tt-table td.time,.tt-table td.slot{background:#f0ecf5 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .tt-table tr.break td{background:#f6efdd !important;color:var(--gold-deep) !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+<nav class="top"><div class="inner">
+  <div class="brand">康礼课表<span class="en">Timetable</span></div>
+  <div class="links"><a href="#primary">小学部</a><a href="#secondary">中学部</a></div>
+</div></nav>
+
+<header class="hero"><div class="hero-inner">
+  <div class="crest">C</div>
+  <h1>2026-2027 学年课表</h1>
+  <div class="en">Cogdel School Chengdu · Timetable</div>
+  <div class="slogan">紫 · #5A3580 &nbsp; 金 · #C9A84C</div>
+</div></header>
+
+<div class="wrap">
+
+  <div class="part" id="primary"><h2>小学部</h2><div class="en">Primary School</div></div>
+<section class="tt">
+  <div class="tt-head"><h3>一年级</h3><span class="en">P1 · Primary</span></div>
+  <table class="tt-table">
+    <thead><tr><th class="time">时间</th><th class="slot">时段</th><th>周一 Mon</th><th>周二 Tue</th><th>周三 Wed</th><th>周四 Thu</th><th>周五 Fri</th></tr></thead>
+    <tbody><tr class="break"><td class="time">08:15 - 08:35</td><td class="slot" colspan="6">晨读</td></tr>
+<tr><td class="time">08:40 - 09:20</td><td class="slot">Period1</td><td>English 英语<br><span class="t">Grace&amp;Elisha</span></td><td>Math数学<br><span class="t">Lindsay He</span></td><td>Chinese 语文<br><span class="t">Felicia Fan</span></td><td>Math数学<br><span class="t">Lindsay He</span></td><td>Chinese 语文<br><span class="t">Felicia Fan</span></td></tr>
+<tr><td class="time">09:20 - 10:00</td><td class="slot">Period2</td><td>Chinese 语文<br><span class="t">Felicia Fan</span></td><td>UOI 探究课<br><span class="t">Felicia Fan</span></td><td>新加坡数学<br><span class="t">Singapore Math · Lindsay He</span></td><td>English 英语<br><span class="t">Grace&amp;Elisha</span></td><td>Math数学<br><span class="t">Lindsay He</span></td></tr>
+<tr class="break"><td class="time">10:00 - 10:50</td><td class="slot" colspan="6">Break</td></tr>
+<tr><td class="time">10:50 - 11:30</td><td class="slot">Period3</td><td>Math数学<br><span class="t">Lindsay He</span></td><td>UOI 探究课<br><span class="t">Felicia Fan</span></td><td>English 英语<br><span class="t">Grace&amp;Elisha</span></td><td>UOI 探究课<br><span class="t">Felicia Fan</span></td><td>Chinese 语文<br><span class="t">Felicia Fan</span></td></tr>
+<tr><td class="time">11:30 - 12:10</td><td class="slot">Period4</td><td>Music 音乐<br><span class="t">Kristin Zhang</span></td><td>BPE 双语体育<br><span class="t">Vuk&amp;Howard</span></td><td>English 英语<br><span class="t">Grace&amp;Elisha&amp; · Simiao&amp;Rita</span></td><td>UOI 探究课<br><span class="t">Felicia Fan</span></td><td>English 英语<br><span class="t">Simiao&amp;Rita</span></td></tr>
+<tr class="break"><td class="time">12:10 - 13:20</td><td class="slot" colspan="6">Lunch&amp;Break</td></tr>
+<tr><td class="time">13:20 - 14:00</td><td class="slot">Period5</td><td>PE 体育<br><span class="t">Howard Ming</span></td><td>Chinese 语文<br><span class="t">Felicia Fan</span></td><td>Chinese 语文<br><span class="t">Felicia Fan</span></td><td>Math数学<br><span class="t">Lindsay He</span></td><td>Science 科学<br><span class="t">Stone Shi</span></td></tr>
+<tr><td class="time">14:00 - 14:40</td><td class="slot">Period6</td><td>English 英语<br><span class="t">Rita &amp; Simiao</span></td><td>English 英语<br><span class="t">Grace&amp;Elisha&amp; · Simiao&amp;Rita</span></td><td>Math数学<br><span class="t">Lindsay He</span></td><td>Music 音乐<br><span class="t">Kristin Zhang</span></td><td>CM 班会<br><span class="t">Felicia Fan</span></td></tr>
+<tr class="break"><td class="time">14:40 - 14:55</td><td class="slot" colspan="6">Break</td></tr>
+<tr><td class="time">14:55 - 15:35</td><td class="slot">Period7</td><td>UOI 探究课<br><span class="t">Felicia Fan</span></td><td>English 英语<br><span class="t">Rita &amp; Simiao</span></td><td>Art 美术<br><span class="t">Judith Wu&amp;Dimos</span></td><td>Chinese 语文<br><span class="t">Felicia Fan</span></td><td>&nbsp;</td></tr>
+<tr><td class="time">15:35 - 16:15</td><td class="slot">Period8</td><td>&nbsp;</td><td>CCA<br><span class="t">CCA</span></td><td>Art 美术<br><span class="t">Judith Wu&amp;Dimos</span></td><td>CCA<br><span class="t">CCA</span></td><td>&nbsp;</td></tr>
+<tr class="break"><td class="time">16:20 - 17:15</td><td class="slot" colspan="6">ECA 9</td></tr>
+<tr class="break"><td class="time">17:15 - 18:15</td><td class="slot" colspan="6">晚餐Dinner</td></tr>
+<tr class="break"><td class="time">18:15 - 19:30</td><td class="slot" colspan="6">PREP</td></tr></tbody>
+  </table>
+</section>
+<section class="tt">
+  <div class="tt-head"><h3>二年级</h3><span class="en">P2 · Primary</span></div>
+  <table class="tt-table">
+    <thead><tr><th class="time">时间</th><th class="slot">时段</th><th>周一 Mon</th><th>周二 Tue</th><th>周三 Wed</th><th>周四 Thu</th><th>周五 Fri</th></tr></thead>
+    <tbody><tr class="break"><td class="time">08:15 - 08:35</td><td class="slot" colspan="6">晨读</td></tr>
+<tr><td class="time">08:40 - 09:20</td><td class="slot">Period1</td><td>English 英语<br><span class="t">Rita&amp;Simiao&amp;Lydia</span></td><td>Chinese 语文<br><span class="t">Annie Hou</span></td><td>Chinese 语文<br><span class="t">Annie Hou</span></td><td>English 英语<br><span class="t">Rita&amp;Simiao&amp;Lydia&amp; · Grace&amp;Elisha</span></td><td>Chinese 语文<br><span class="t">Annie Hou</span></td></tr>
+<tr><td class="time">09:20 - 10:00</td><td class="slot">Period2</td><td>新加坡数学<br><span class="t">Singapore Math · Drace</span></td><td>English 英语<br><span class="t">Rita&amp;Simiao&amp;Lydia&amp; · Grace&amp;Elisha</span></td><td>Math数学<br><span class="t">Krystal Wang</span></td><td>Chinese 语文<br><span class="t">Annie Hou</span></td><td>Math数学<br><span class="t">Krystal Wang</span></td></tr>
+<tr class="break"><td class="time">10:00 - 10:50</td><td class="slot" colspan="6">Break</td></tr>
+<tr><td class="time">10:50 - 11:30</td><td class="slot">Period3</td><td>Chinese 语文<br><span class="t">Annie Hou</span></td><td>UOI 探究课<br><span class="t">Lydia</span></td><td>UOI 探究课<br><span class="t">Lydia</span></td><td>UOI 探究课<br><span class="t">Lydia</span></td><td>Music 音乐<br><span class="t">Kristin Zhang</span></td></tr>
+<tr><td class="time">11:30 - 12:10</td><td class="slot">Period4</td><td>English 英语<br><span class="t">Grace&amp;Elisha</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>Chinese 语文<br><span class="t">Annie Hou</span></td></tr>
+<tr class="break"><td class="time">12:10 - 13:20</td><td class="slot" colspan="6">Lunch&amp;Break</td></tr>
+<tr><td class="time">13:20 - 14:00</td><td class="slot">Period5</td><td>Math数学<br><span class="t">Krystal Wang</span></td><td>Science 科学<br><span class="t">Stone Shi</span></td><td>Math数学<br><span class="t">Krystal Wang</span></td><td>Math数学<br><span class="t">Lindsay He</span></td><td>English 英语<br><span class="t">Rita&amp;Simiao&amp;Lydia</span></td></tr>
+<tr><td class="time">14:00 - 14:40</td><td class="slot">Period6</td><td>English 英语<br><span class="t">Grace&amp;Elisha</span></td><td>Math数学<br><span class="t">Krystal Wang</span></td><td>PE 体育<br><span class="t">Howard</span></td><td>Art 美术<br><span class="t">Judith Wu&amp;Dimos</span></td><td>CM 班会<br><span class="t">Lydia Li</span></td></tr>
+<tr class="break"><td class="time">14:40 - 14:55</td><td class="slot" colspan="6">Break</td></tr>
+<tr><td class="time">14:55 - 15:35</td><td class="slot">Period7</td><td>Chinese 语文<br><span class="t">Annie Hou</span></td><td>English 英语<br><span class="t">Grace&amp;Elisha</span></td><td>Music 音乐<br><span class="t">Kristin Zhang</span></td><td>Art 美术<br><span class="t">Judith Wu&amp;Dimos</span></td><td>&nbsp;</td></tr>
+<tr><td class="time">15:35 - 16:15</td><td class="slot">Period8</td><td>BPE 双语体育<br><span class="t">Vuk&amp;Howard</span></td><td>CCA<br><span class="t">CCA</span></td><td>English 英语<br><span class="t">Rita&amp;Simiao&amp;Lydia</span></td><td>CCA<br><span class="t">CCA</span></td><td>&nbsp;</td></tr>
+<tr class="break"><td class="time">16:20 - 17:15</td><td class="slot" colspan="6">ECA 9</td></tr>
+<tr class="break"><td class="time">17:15 - 18:15</td><td class="slot" colspan="6">晚餐Dinner</td></tr>
+<tr class="break"><td class="time">18:15 - 19:30</td><td class="slot" colspan="6">PREP</td></tr></tbody>
+  </table>
+</section>
+<section class="tt">
+  <div class="tt-head"><h3>三年级</h3><span class="en">P3 · Primary</span></div>
+  <table class="tt-table">
+    <thead><tr><th class="time">时间</th><th class="slot">时段</th><th>周一 Mon</th><th>周二 Tue</th><th>周三 Wed</th><th>周四 Thu</th><th>周五 Fri</th></tr></thead>
+    <tbody><tr class="break"><td class="time">08:15 - 08:35</td><td class="slot" colspan="6">晨读</td></tr>
+<tr><td class="time">08:40 - 09:20</td><td class="slot">Period1</td><td>English 英语<br><span class="t">Rita&amp;Simiao&amp;Lydia</span></td><td>Chinese语文<br><span class="t">Roxanne Zhang</span></td><td>UOI探究课<br><span class="t">Roxanne Zhang</span></td><td>English 英语<br><span class="t">Rita&amp;Simiao&amp;Lydia&amp; · Grace&amp;Elisha</span></td><td>Chinese语文<br><span class="t">Roxanne Zhang</span></td></tr>
+<tr><td class="time">09:30 - 10:10</td><td class="slot">Period2</td><td>Chinese语文<br><span class="t">Roxanne Zhang</span></td><td>English 英语<br><span class="t">Rita&amp;Simiao&amp;Lydia&amp; · Grace&amp;Elisha</span></td><td>UOI探究课<br><span class="t">Roxanne Zhang</span></td><td>Chinese语文<br><span class="t">Roxanne Zhang</span></td><td>PE 体育<br><span class="t">Howard Ming</span></td></tr>
+<tr class="break"><td class="time">10:10 - 10:40</td><td class="slot" colspan="6">Break</td></tr>
+<tr><td class="time">10:40 - 11:20</td><td class="slot">Period3</td><td>BPE 双语体育<br><span class="t">Vuk&amp;Howard</span></td><td>Math数学<br><span class="t">Krystal Wang</span></td><td>Math数学<br><span class="t">Krystal Wang</span></td><td>Math数学<br><span class="t">Krystal Wang</span></td><td>Math数学<br><span class="t">Krystal Wang</span></td></tr>
+<tr><td class="time">11:30 - 12:10</td><td class="slot">Period4</td><td>English<br><span class="t">English · Grace&amp;Elisha</span></td><td>Math数学<br><span class="t">Krystal Wang</span></td><td>Music 音乐<br><span class="t">Kristin Zhang</span></td><td>新加坡数学<br><span class="t">Singapore Math · Drace</span></td><td>Music 音乐<br><span class="t">Kristin Zhang</span></td></tr>
+<tr class="break"><td class="time">12:10 - 13:05</td><td class="slot" colspan="6">Lunch</td></tr>
+<tr><td class="time">13:10 - 13:45</td><td class="slot">Period5</td><td>Science 科学<br><span class="t">Stone Shi</span></td><td>Art 美术<br><span class="t">Judith Wu&amp;Dimos</span></td><td>Writing 写作<br><span class="t">Roxanne Zhang</span></td><td>UOI探究课<br><span class="t">Roxanne Zhang</span></td><td>English 英语<br><span class="t">Rita&amp;Simiao&amp;Lydia</span></td></tr>
+<tr><td class="time">13:55 - 14:30</td><td class="slot">Period6</td><td>English<br><span class="t">English · Grace&amp;Elisha</span></td><td>Art 美术<br><span class="t">Judith Wu&amp;Dimos</span></td><td>Writing 写作<br><span class="t">Roxanne Zhang</span></td><td>UOI探究课<br><span class="t">Roxanne Zhang</span></td><td>CM 班会<br><span class="t">Roxanne Zhang</span></td></tr>
+<tr class="break"><td class="time">14:40 - 15:15</td><td class="slot" colspan="6">Break</td></tr>
+<tr><td class="time">15:15 - 15:30</td><td class="slot">Period7</td><td>UOI探究课<br><span class="t">Roxanne Zhang</span></td><td>English<br><span class="t">English · Grace&amp;Elisha</span></td><td>Math数学<br><span class="t">Krystal Wang</span></td><td>Chinese语文<br><span class="t">Roxanne Zhang</span></td><td>&nbsp;</td></tr>
+<tr><td class="time">15:30 - 16:10</td><td class="slot">Period8</td><td>UOI探究课<br><span class="t">Roxanne Zhang</span></td><td>CCA<br><span class="t">CCA</span></td><td>English 英语<br><span class="t">Rita&amp;Simiao&amp;Lydia</span></td><td>CCA<br><span class="t">CCA</span></td><td>&nbsp;</td></tr>
+<tr class="break"><td class="time">16:20 - 17:15</td><td class="slot" colspan="6">ECA 9</td></tr>
+<tr class="break"><td class="time">17:15 - 18:10</td><td class="slot" colspan="6">晚餐Dinner</td></tr>
+<tr class="break"><td class="time">18:15 - 19:30</td><td class="slot" colspan="6">PREP</td></tr></tbody>
+  </table>
+</section>
+<section class="tt">
+  <div class="tt-head"><h3>四年级</h3><span class="en">P4 · Primary</span></div>
+  <table class="tt-table">
+    <thead><tr><th class="time">时间</th><th class="slot">时段</th><th>周一 Mon</th><th>周二 Tue</th><th>周三 Wed</th><th>周四 Thu</th><th>周五 Fri</th></tr></thead>
+    <tbody><tr class="break"><td class="time">08:15 - 08:35</td><td class="slot" colspan="6">晨读</td></tr>
+<tr><td class="time">08:40 - 09:20</td><td class="slot">Period1</td><td>UOI探究课<br><span class="t">Cathy&amp;Yovonne</span></td><td>English<br><span class="t">English · Rita&amp;Yvonne</span></td><td>English<br><span class="t">English · Elisha&amp;Dimos</span></td><td>Chinese语文<br><span class="t">Cathy</span></td><td>Math数学<br><span class="t">Melody&amp;Lindsay</span></td></tr>
+<tr><td class="time">09:30 - 10:10</td><td class="slot">Period2</td><td>UOI探究课<br><span class="t">Cathy&amp;Yovonne</span></td><td>Math数学<br><span class="t">Melody&amp;Lindsay</span></td><td>English<br><span class="t">English · Elisha&amp;Dimos&amp;Rita&amp;Yvonne</span></td><td>English<br><span class="t">English · Rita&amp;Yvonne</span></td><td>Chinese语文<br><span class="t">Cathy</span></td></tr>
+<tr class="break"><td class="time">10:10 - 10:40</td><td class="slot" colspan="6">Break</td></tr>
+<tr><td class="time">10:40 - 11:20</td><td class="slot">Period3</td><td>English<br><span class="t">English · Elisha&amp;Dimos</span></td><td>Chinese语文<br><span class="t">Cathy</span></td><td>Writing 写作<br><span class="t">Cathy</span></td><td>English<br><span class="t">English · Elisha&amp;Dimos&amp;Rita&amp;Yvonne</span></td><td>Art 美术<br><span class="t">Judith Wu&amp;Dimos</span></td></tr>
+<tr><td class="time">11:30 - 12:10</td><td class="slot">Period4</td><td>Chinese语文<br><span class="t">Cathy</span></td><td>Music 音乐<br><span class="t">Kristin Zhang</span></td><td>Writing 写作<br><span class="t">Cathy</span></td><td>BPE 双语体育<br><span class="t">Vuk&amp;Howard</span></td><td>Art 美术<br><span class="t">Judith Wu&amp;Dimos</span></td></tr>
+<tr class="break"><td class="time">12:10 - 13:05</td><td class="slot" colspan="6">Lunch</td></tr>
+<tr><td class="time">13:10 - 13:45</td><td class="slot">Period5</td><td>English<br><span class="t">English · Rita&amp;Yvonne</span></td><td>UOI探究课<br><span class="t">Cathy</span></td><td>Math数学<br><span class="t">Melody&amp;Lindsay</span></td><td>UOI探究课<br><span class="t">Cathy</span></td><td>English<br><span class="t">English · Elisha&amp;Dimos</span></td></tr>
+<tr><td class="time">13:55 - 14:30</td><td class="slot">Period6</td><td>Science 科学<br><span class="t">Stone Shi</span></td><td>UOI探究课<br><span class="t">Cathy&amp;Yovonne</span></td><td>Music 音乐<br><span class="t">Kristin Zhang</span></td><td>UOI探究课<br><span class="t">Cathy</span></td><td>CM 班会<br><span class="t">Cathy Yin</span></td></tr>
+<tr class="break"><td class="time">14:40 - 15:15</td><td class="slot" colspan="6">Break</td></tr>
+<tr><td class="time">15:15 - 15:30</td><td class="slot">Period7</td><td>Chinese语文<br><span class="t">Cathy</span></td><td>Math数学<br><span class="t">Melody&amp;Lindsay</span></td><td>新加坡数学<br><span class="t">Singapore Math · Lindsay He</span></td><td>Math数学<br><span class="t">Melody&amp;Lindsay</span></td><td>&nbsp;</td></tr>
+<tr><td class="time">15:30 - 16:10</td><td class="slot">Period8</td><td>Math数学<br><span class="t">Melody&amp;Lindsay</span></td><td>CCA<br><span class="t">CCA</span></td><td>PE 体育<br><span class="t">Howard Ming</span></td><td>CCA<br><span class="t">CCA</span></td><td>&nbsp;</td></tr>
+<tr class="break"><td class="time">16:20 - 17:15</td><td class="slot" colspan="6">ECA 9</td></tr>
+<tr class="break"><td class="time">17:15 - 18:10</td><td class="slot" colspan="6">晚餐Dinner</td></tr>
+<tr class="break"><td class="time">18:15 - 19:30</td><td class="slot" colspan="6">PREP</td></tr></tbody>
+  </table>
+</section>
+<section class="tt">
+  <div class="tt-head"><h3>五年级</h3><span class="en">P5 · Primary</span></div>
+  <table class="tt-table">
+    <thead><tr><th class="time">时间</th><th class="slot">时段</th><th>周一 Mon</th><th>周二 Tue</th><th>周三 Wed</th><th>周四 Thu</th><th>周五 Fri</th></tr></thead>
+    <tbody><tr class="break"><td class="time">08:15 - 08:35</td><td class="slot" colspan="6">晨读</td></tr>
+<tr><td class="time">08:40 - 09:20</td><td class="slot">Period1</td><td>UOI探究课<br><span class="t">Jenny Lan</span></td><td>English<br><span class="t">English · Sophia&amp;Lydia</span></td><td>English<br><span class="t">English · Sophia&amp;Lydia</span></td><td>Math数学<br><span class="t">Jenny Lan</span></td><td>Math数学<br><span class="t">Jenny Lan</span></td></tr>
+<tr><td class="time">09:30 - 10:10</td><td class="slot">Period2</td><td>UOI探究课<br><span class="t">Jenny Lan</span></td><td>Math数学<br><span class="t">Jenny Lan</span></td><td>Math数学<br><span class="t">Jenny Lan</span></td><td>Music 音乐<br><span class="t">Kristin Zhang</span></td><td>Chinese语文<br><span class="t">Hananh Rao</span></td></tr>
+<tr class="break"><td class="time">10:10 - 10:40</td><td class="slot" colspan="6">Break</td></tr>
+<tr><td class="time">10:40 - 11:20</td><td class="slot">Period3</td><td>Chinese语文<br><span class="t">Hananh Rao</span></td><td>English<br><span class="t">English · Grace&amp;Bishoy</span></td><td>BPE 双语体育<br><span class="t">Vuk&amp;Howard</span></td><td>UOI探究课<br><span class="t">Jenny Lan</span></td><td>English<br><span class="t">English · Grace&amp;Bishoy · Sophia&amp;Lydia</span></td></tr>
+<tr><td class="time">11:30 - 12:10</td><td class="slot">Period4</td><td>Science 科学<br><span class="t">Stone Shi</span></td><td>Math数学<br><span class="t">Jenny Lan</span></td><td>Chinese语文<br><span class="t">Hananh Rao</span></td><td>UOI探究课<br><span class="t">Jenny Lan</span></td><td>Chinese语文<br><span class="t">Hananh Rao</span></td></tr>
+<tr class="break"><td class="time">12:10 - 13:05</td><td class="slot" colspan="6">Lunch</td></tr>
+<tr><td class="time">13:10 - 13:45</td><td class="slot">Period5</td><td>English<br><span class="t">English · Sophia&amp;Lydia</span></td><td>Chinese语文<br><span class="t">Hananh Rao</span></td><td>UOI探究课<br><span class="t">Jenny Lan</span></td><td>English<br><span class="t">English · Grace&amp;Bishoy · Sophia&amp;Lydia</span></td><td>English<br><span class="t">English · Grace&amp;Bishoy</span></td></tr>
+<tr><td class="time">13:55 - 14:30</td><td class="slot">Period6</td><td>Math数学<br><span class="t">Jenny Lan</span></td><td>PE 体育<br><span class="t">Howard Ming</span></td><td>UOI探究课<br><span class="t">Jenny Lan</span></td><td>Writing 写作<br><span class="t">Hananh Rao</span></td><td>CM 班会<br><span class="t">Jenny Lan</span></td></tr>
+<tr class="break"><td class="time">14:40 - 15:15</td><td class="slot" colspan="6">Break</td></tr>
+<tr><td class="time">15:15 - 15:30</td><td class="slot">Period7</td><td>Art 美术<br><span class="t">Judith Wu&amp;Dimos</span></td><td>Music 音乐<br><span class="t">Kristin Zhang</span></td><td>English<br><span class="t">English · Grace&amp;Bishoy</span></td><td>Writing 写作<br><span class="t">Hananh Rao</span></td><td>&nbsp;</td></tr>
+<tr><td class="time">15:30 - 16:10</td><td class="slot">Period8</td><td>Art 美术<br><span class="t">Judith Wu&amp;Dimos</span></td><td>CCA<br><span class="t">CCA</span></td><td>新加坡数学<br><span class="t">Singapore Math · Jenny</span></td><td>CCA<br><span class="t">CCA</span></td><td>&nbsp;</td></tr>
+<tr class="break"><td class="time">16:20 - 17:15</td><td class="slot" colspan="6">ECA 9</td></tr>
+<tr class="break"><td class="time">17:15 - 18:10</td><td class="slot" colspan="6">晚餐Dinner</td></tr>
+<tr class="break"><td class="time">18:15 - 19:30</td><td class="slot" colspan="6">PREP</td></tr></tbody>
+  </table>
+</section>
+<section class="tt">
+  <div class="tt-head"><h3>六年级</h3><span class="en">P6 · Primary</span></div>
+  <table class="tt-table">
+    <thead><tr><th class="time">时间</th><th class="slot">时段</th><th>周一 Mon</th><th>周二 Tue</th><th>周三 Wed</th><th>周四 Thu</th><th>周五 Fri</th></tr></thead>
+    <tbody><tr class="break"><td class="time">08:15 - 08:35</td><td class="slot" colspan="6">晨读</td></tr>
+<tr><td class="time">08:40 - 09:20</td><td class="slot">Period1</td><td>Math数学<br><span class="t">Melody</span></td><td>Math数学<br><span class="t">Melody</span></td><td>Math数学<br><span class="t">Melody</span></td><td>English<br><span class="t">English · Yvonne&amp;Sophia</span></td><td>English<br><span class="t">English · Elisha&amp;Bishoy&amp; · Sophia&amp;Yvonne</span></td></tr>
+<tr><td class="time">09:30 - 10:10</td><td class="slot">Period2</td><td>English<br><span class="t">English · Elisha&amp;Bishoy</span></td><td>Financial财商<br><span class="t">Raza</span></td><td>Chinese语文<br><span class="t">Annie Hou</span></td><td>Math数学<br><span class="t">Melody</span></td><td>Chinese语文<br><span class="t">Annie Hou</span></td></tr>
+<tr class="break"><td class="time">10:10 - 10:40</td><td class="slot" colspan="6">Break</td></tr>
+<tr><td class="time">10:40 - 11:20</td><td class="slot">Period3</td><td>UOI探究课<br><span class="t">Sophia &amp;Bishoy</span></td><td>English<br><span class="t">English · Elisha&amp;Bishoy</span></td><td>UOI探究课<br><span class="t">Sophia &amp;Bishoy</span></td><td>Writing 写作<br><span class="t">Annie Hou</span></td><td>Math数学<br><span class="t">Melody</span></td></tr>
+<tr><td class="time">11:30 - 12:10</td><td class="slot">Period4</td><td>UOI探究课<br><span class="t">Sophia &amp;Bishoy</span></td><td>Science 科学<br><span class="t">Stone Shi</span></td><td>UOI探究课<br><span class="t">Sophia Shi</span></td><td>Writing 写作<br><span class="t">Annie Hou</span></td><td>English<br><span class="t">English · Elisha&amp;Bishoy</span></td></tr>
+<tr class="break"><td class="time">12:10 - 13:05</td><td class="slot" colspan="6">Lunch</td></tr>
+<tr><td class="time">13:10 - 13:45</td><td class="slot">Period5</td><td>Chinese语文<br><span class="t">Annie Hou</span></td><td>UOI探究课<br><span class="t">Sophia Shi</span></td><td>Art 美术<br><span class="t">Judith Wu&amp;Dimos</span></td><td>BPE 双语体育<br><span class="t">Vuk&amp;Howard</span></td><td>Music 音乐<br><span class="t">Kristin Zhang</span></td></tr>
+<tr><td class="time">13:55 - 14:30</td><td class="slot">Period6</td><td>新加坡数学<br><span class="t">Singapore Math · Bishoy</span></td><td>UOI探究课<br><span class="t">Sophia Shi</span></td><td>Art 美术<br><span class="t">Judith Wu&amp;Dimos</span></td><td>English<br><span class="t">English · Elisha&amp;Bishoy</span></td><td>CM 班会<br><span class="t">Sophia Shi</span></td></tr>
+<tr class="break"><td class="time">14:40 - 15:15</td><td class="slot" colspan="6">Break</td></tr>
+<tr><td class="time">15:15 - 15:30</td><td class="slot">Period7</td><td>PE 体育<br><span class="t">Howard Ming</span></td><td>Chinese语文<br><span class="t">Annie Hou</span></td><td>Math数学<br><span class="t">Melody</span></td><td>Music 音乐<br><span class="t">Kristin Zhang</span></td><td>&nbsp;</td></tr>
+<tr><td class="time">15:30 - 16:10</td><td class="slot">Period8</td><td>English<br><span class="t">English · Sophia&amp;Yvonne</span></td><td>CCA<br><span class="t">CCA</span></td><td>English<br><span class="t">English · Elisha&amp;Bishoy&amp; · Sophia&amp;Yvonne</span></td><td>CCA<br><span class="t">CCA</span></td><td>&nbsp;</td></tr>
+<tr class="break"><td class="time">16:20 - 17:15</td><td class="slot" colspan="6">ECA 9</td></tr>
+<tr class="break"><td class="time">17:15 - 18:10</td><td class="slot" colspan="6">晚餐Dinner</td></tr>
+<tr class="break"><td class="time">18:15 - 19:30</td><td class="slot" colspan="6">PREP</td></tr></tbody>
+  </table>
+</section>
+
+  <div class="part" id="secondary"><h2>中学部</h2><div class="en">Secondary School</div></div>
+<section class="tt">
+  <div class="tt-head"><h3>七年级</h3><span class="en">P7 · Secondary</span></div>
+  <table class="tt-table">
+    <thead><tr><th class="time">时间</th><th class="slot">时段</th><th>周一 Mon</th><th>周二 Tue</th><th>周三 Wed</th><th>周四 Thu</th><th>周五 Fri</th></tr></thead>
+    <tbody><tr><td class="time">8:15-9:00</td><td class="slot">第1节</td><td>集会</td><td>社会科学</td><td>艺术</td><td>英语</td><td>语文</td></tr>
+<tr><td class="time">9:10-9:55</td><td class="slot">第2节</td><td>英语</td><td>英语</td><td>艺术</td><td>语文</td><td>语文</td></tr>
+<tr><td class="time">10:10-10:55</td><td class="slot">第3节</td><td>语文</td><td>英语</td><td>英语</td><td>体育</td><td>英语</td></tr>
+<tr><td class="time">11:05-11:50</td><td class="slot">第4节</td><td>信息</td><td>语文</td><td>英语</td><td>&nbsp;</td><td>研究课</td></tr>
+<tr><td class="time">12:50-13:35</td><td class="slot">第5节</td><td>音乐</td><td>数学</td><td>语文</td><td>生物</td><td>数学</td></tr>
+<tr><td class="time">13:45-14:30</td><td class="slot">第6节</td><td>音乐</td><td>数学</td><td>数学</td><td>生物</td><td>地理</td></tr>
+<tr><td class="time">14:40-15:25</td><td class="slot">第7节</td><td>化学</td><td>物理</td><td>体育</td><td>数学</td><td>&nbsp;</td></tr>
+<tr><td class="time">15:35-16:20</td><td class="slot">第8节</td><td>化学</td><td>&nbsp;</td><td>&nbsp;</td><td>数学</td><td>&nbsp;</td></tr>
+<tr><td class="time">16:30-17:15</td><td class="slot">社团活动</td><td>社团活动</td><td>社团活动</td><td>社团活动</td><td>学院活动</td><td>&nbsp;</td></tr>
+<tr><td class="time"></td><td class="slot">晚自习</td><td>晚自习</td><td>晚自习</td><td>晚自习</td><td>晚自习</td><td>&nbsp;</td></tr></tbody>
+  </table>
+</section>
+<section class="tt">
+  <div class="tt-head"><h3>八年级</h3><span class="en">P8 · Secondary</span></div>
+  <table class="tt-table">
+    <thead><tr><th class="time">时间</th><th class="slot">时段</th><th>周一 Mon</th><th>周二 Tue</th><th>周三 Wed</th><th>周四 Thu</th><th>周五 Fri</th></tr></thead>
+    <tbody><tr><td class="time">8:15-9:00</td><td class="slot">第1节</td><td>集会</td><td>数学</td><td>化学</td><td>英语</td><td>数学</td></tr>
+<tr><td class="time">9:10-9:55</td><td class="slot">第2节</td><td>英语</td><td>英语</td><td>化学</td><td>语文</td><td>数学</td></tr>
+<tr><td class="time">10:10-10:55</td><td class="slot">第3节</td><td>音乐</td><td>英语</td><td>英语</td><td>语文</td><td>英语</td></tr>
+<tr><td class="time">11:05-11:50</td><td class="slot">第4节</td><td>音乐</td><td>信息</td><td>英语</td><td>语文</td><td>研究课</td></tr>
+<tr><td class="time">12:50-13:35</td><td class="slot">第5节</td><td>数学</td><td>语文</td><td>物理</td><td>数学</td><td>生物</td></tr>
+<tr><td class="time">13:45-14:30</td><td class="slot">第6节</td><td>数学</td><td>语文</td><td>物理</td><td>地理</td><td>生物</td></tr>
+<tr><td class="time">14:40-15:25</td><td class="slot">第7节</td><td>语文</td><td>体育</td><td>艺术</td><td>体育</td><td>&nbsp;</td></tr>
+<tr><td class="time">15:35-16:20</td><td class="slot">第8节</td><td>社会科学</td><td>&nbsp;</td><td>艺术</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td class="time">16:30-17:15</td><td class="slot">社团活动</td><td>社团活动</td><td>社团活动</td><td>社团活动</td><td>学院活动</td><td>&nbsp;</td></tr>
+<tr><td class="time"></td><td class="slot">晚自习</td><td>晚自习</td><td>晚自习</td><td>晚自习</td><td>晚自习</td><td>&nbsp;</td></tr></tbody>
+  </table>
+</section>
+<section class="tt">
+  <div class="tt-head"><h3>九年级</h3><span class="en">P9 · Secondary</span></div>
+  <table class="tt-table">
+    <thead><tr><th class="time">时间</th><th class="slot">时段</th><th>周一 Mon</th><th>周二 Tue</th><th>周三 Wed</th><th>周四 Thu</th><th>周五 Fri</th></tr></thead>
+    <tbody><tr><td class="time">8:15-9:00</td><td class="slot">第1节</td><td>集会</td><td>生物</td><td>生物</td><td>经济</td><td>数学</td></tr>
+<tr><td class="time">9:10-9:55</td><td class="slot">第2节</td><td>生物</td><td>化学/物理</td><td>生物</td><td>生物</td><td>数学</td></tr>
+<tr><td class="time">10:10-10:55</td><td class="slot">第3节</td><td>化学/物理</td><td>数学</td><td>化学/物理</td><td>英语</td><td>语文</td></tr>
+<tr><td class="time">11:05-11:50</td><td class="slot">第4节</td><td>英语</td><td>经济</td><td>化学/物理</td><td>人文/语文</td><td>英语</td></tr>
+<tr><td class="time">12:50-13:35</td><td class="slot">第5节</td><td>社会科学</td><td>艺术/数媒/信息</td><td>经济</td><td>语文</td><td>经济</td></tr>
+<tr><td class="time">13:45-14:30</td><td class="slot">第6节</td><td>语文</td><td>艺术/数媒/信息</td><td>数学</td><td>化学/物理</td><td>信息</td></tr>
+<tr><td class="time">14:40-15:25</td><td class="slot">第7节</td><td>艺术/数媒/信息</td><td>英语</td><td>体育</td><td>艺术/数媒/信息</td><td>&nbsp;</td></tr>
+<tr><td class="time">15:35-16:20</td><td class="slot">第8节</td><td>艺术/数媒/数学</td><td>人文/语文</td><td>&nbsp;</td><td>数学</td><td>&nbsp;</td></tr>
+<tr><td class="time">16:30-17:15</td><td class="slot">社团活动</td><td>社团活动</td><td>社团活动</td><td>社团活动</td><td>学院活动</td><td>&nbsp;</td></tr>
+<tr><td class="time"></td><td class="slot">晚自习</td><td>晚自习</td><td>晚自习</td><td>晚自习</td><td>晚自习</td><td>&nbsp;</td></tr></tbody>
+  </table>
+</section>
+<section class="tt">
+  <div class="tt-head"><h3>IGCSE</h3><span class="en">IGCSE · Secondary</span></div>
+  <table class="tt-table">
+    <thead><tr><th class="time">时间</th><th class="slot">时段</th><th>周一 Mon</th><th>周二 Tue</th><th>周三 Wed</th><th>周四 Thu</th><th>周五 Fri</th></tr></thead>
+    <tbody><tr><td class="time">8:15-9:00</td><td class="slot">第1节</td><td>集会</td><td>英语</td><td>经济/商务</td><td>英语</td><td>生物/心理</td></tr>
+<tr><td class="time">9:10-9:55</td><td class="slot">第2节</td><td>数学</td><td>语文</td><td>升学指导</td><td>化学/艺术</td><td>生物/人文</td></tr>
+<tr><td class="time">10:10-10:55</td><td class="slot">第3节</td><td>经济/商务</td><td>物理</td><td>英语</td><td>语文</td><td>化学/艺术</td></tr>
+<tr><td class="time">11:05-11:50</td><td class="slot">第4节</td><td>人文/信息</td><td>数学</td><td>生物/心理</td><td>物理</td><td>化学/艺术</td></tr>
+<tr><td class="time">12:50-13:35</td><td class="slot">第5节</td><td>化学/艺术</td><td>生物/心理</td><td>数学</td><td>物理</td><td>拓展研究/雅思</td></tr>
+<tr><td class="time">13:45-14:30</td><td class="slot">第6节</td><td>化学/艺术</td><td>生物/心理</td><td>数学</td><td>数学</td><td>生物/语文</td></tr>
+<tr><td class="time">14:40-15:25</td><td class="slot">第7节</td><td>英语</td><td>体育</td><td>物理</td><td>经济/商务</td><td>&nbsp;</td></tr>
+<tr><td class="time">15:35-16:20</td><td class="slot">第8节</td><td>人文</td><td>&nbsp;</td><td>物理</td><td>人文/信息</td><td>&nbsp;</td></tr>
+<tr><td class="time">16:30-17:15</td><td class="slot">社团活动</td><td>社团活动</td><td>社团活动</td><td>社团活动</td><td>学院活动</td><td>&nbsp;</td></tr>
+<tr><td class="time"></td><td class="slot">晚自习</td><td>晚自习</td><td>晚自习</td><td>晚自习</td><td>晚自习</td><td>&nbsp;</td></tr></tbody>
+  </table>
+</section>
+<section class="tt">
+  <div class="tt-head"><h3>AS</h3><span class="en">AS · Secondary</span></div>
+  <table class="tt-table">
+    <thead><tr><th class="time">时间</th><th class="slot">时段</th><th>周一 Mon</th><th>周二 Tue</th><th>周三 Wed</th><th>周四 Thu</th><th>周五 Fri</th></tr></thead>
+    <tbody><tr><td class="time">8:15-9:00</td><td class="slot">第1节</td><td>集会</td><td>艺术/化学/商务</td><td>进阶数学/数学</td><td>进阶数学/数学</td><td>艺术/化学/商务</td></tr>
+<tr><td class="time">9:10-9:55</td><td class="slot">第2节</td><td>化学/商务</td><td>艺术/化学/信息</td><td>数学</td><td>数学</td><td>艺术/化学/信息</td></tr>
+<tr><td class="time">10:10-10:55</td><td class="slot">第3节</td><td>进阶数学/数学</td><td>进阶数学/数学</td><td>艺术/化学/商务</td><td>物理/生物/信息/经济</td><td>进阶数学/数学</td></tr>
+<tr><td class="time">11:05-11:50</td><td class="slot">第4节</td><td>数学</td><td>语文/拓展研究</td><td>化学/信息</td><td>物理/生物/信息/人文</td><td>数学</td></tr>
+<tr><td class="time">12:50-13:35</td><td class="slot">第5节</td><td>物理/生物/信息/经济</td><td>雅思</td><td>雅思</td><td>艺术/化学/商务</td><td>物理/信息/经济</td></tr>
+<tr><td class="time">13:45-14:30</td><td class="slot">第6节</td><td>物理/生物/信息/人文</td><td>语文</td><td>雅思</td><td>艺术/化学/信息</td><td>升学指导</td></tr>
+<tr><td class="time">14:40-15:25</td><td class="slot">第7节</td><td>语文/拓展研究</td><td>物理/生物/信息/经济</td><td>物理/生物/信息/经济</td><td>体育</td><td>&nbsp;</td></tr>
+<tr><td class="time">15:35-16:20</td><td class="slot">第8节</td><td>语文/生物</td><td>物理/生物/信息/人文</td><td>物理/生物/信息/人文</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td class="time">16:30-17:15</td><td class="slot">社团活动</td><td>社团活动</td><td>社团活动</td><td>社团活动</td><td>学院活动</td><td>&nbsp;</td></tr>
+<tr><td class="time"></td><td class="slot">晚自习</td><td>晚自习</td><td>晚自习</td><td>晚自习</td><td>晚自习</td><td>&nbsp;</td></tr></tbody>
+  </table>
+</section>
+<section class="tt">
+  <div class="tt-head"><h3>A2</h3><span class="en">A2 · Secondary</span></div>
+  <table class="tt-table">
+    <thead><tr><th class="time">时间</th><th class="slot">时段</th><th>周一 Mon</th><th>周二 Tue</th><th>周三 Wed</th><th>周四 Thu</th><th>周五 Fri</th></tr></thead>
+    <tbody><tr><td class="time">8:15-9:00</td><td class="slot">第1节</td><td>集会</td><td>数媒/物理/生物/艺术</td><td>语文</td><td>经济/化学</td><td>数媒/物理/艺术</td></tr>
+<tr><td class="time">9:10-9:55</td><td class="slot">第2节</td><td>数媒/物理/生物</td><td>数媒/物理/生物/艺术</td><td>语文</td><td>人文/化学</td><td>数媒/物理/艺术</td></tr>
+<tr><td class="time">10:10-10:55</td><td class="slot">第3节</td><td>数媒/物理/生物</td><td>经济/化学</td><td>数媒/物理/生物/艺术</td><td>进阶数学/数学</td><td>经济/化学</td></tr>
+<tr><td class="time">11:05-11:50</td><td class="slot">第4节</td><td>语文</td><td>人文/化学</td><td>进阶数学/数学</td><td>数学</td><td>人文/化学</td></tr>
+<tr><td class="time">12:50-13:35</td><td class="slot">第5节</td><td>进阶数学/数学</td><td>进阶数学/数学</td><td>经济/化学</td><td>数媒/物理/生物/艺术</td><td>进阶数学/数学</td></tr>
+<tr><td class="time">13:45-14:30</td><td class="slot">第6节</td><td>数学</td><td>数学</td><td>升学指导</td><td>数媒/物理/生物/艺术</td><td>数学</td></tr>
+<tr><td class="time">14:40-15:25</td><td class="slot">第7节</td><td>经济/化学</td><td>雅思</td><td>雅思/升学指导</td><td>体育</td><td>&nbsp;</td></tr>
+<tr><td class="time">15:35-16:20</td><td class="slot">第8节</td><td>人文/化学</td><td>语文</td><td>语文/人文</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td class="time">16:30-17:15</td><td class="slot">社团活动</td><td>社团活动</td><td>社团活动</td><td>社团活动</td><td>学院活动</td><td>&nbsp;</td></tr>
+<tr><td class="time"></td><td class="slot">晚自习</td><td>晚自习</td><td>晚自习</td><td>晚自习</td><td>晚自习</td><td>&nbsp;</td></tr></tbody>
+  </table>
+</section>
+
+</div>
+<footer><div class="t">成都康礼学校</div><div class="en">Cogdel School Chengdu</div></footer>
+</body>
+</html>
