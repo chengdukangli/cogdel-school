@@ -76,16 +76,22 @@ function wrapText(text,maxChars){
   if(cur.trim())lines.push(cur.trim());return lines.length?lines:['']; }
 function tspans(lines,x,y0,lh){return lines.map((ln,i)=>'<tspan x="'+x+'" y="'+(y0+i*lh)+'">'+esc(ln)+'</tspan>').join('');}
 
-/* ---- 根据分类 + 课程名选一个几何布局 ---- */
-const GEO=['blueprint','bauhaus','ink','sport','deco','emblem'];
-function geoOf(c){
-  const seed=hseed(c.nameZh+c.nameEn);
-  const h1=hseed(c.nameZh+'a')%GEO.length;   // 主导布局
-  return GEO[h1];
-}
-
-/* ---- 关键：色调统一，几何布局决定图案 ---- */
-function pal(c){const m=CAT_COLOR[c.cat]||CAT_COLOR['科学与技术'];return m;}
+/* ---- 根据课程名选一个几何布局 ---- */
+const GEO=['blueprint','ink','bauhaus','sport','deco','emblem','music','cinema'];
+function geoOf(c){return GEO[hseed(c.nameZh+'a')%GEO.length];}
+/* 每个几何风格一套专属配色：dark/base 渐变底 + light 线条 + accent 点缀 + deep 深色 */
+const STYLE={
+  blueprint:{dark:'#0a1a2f',base:'#143a5c',light:'#67e8f9',accent:'#a5f3fc',deep:'#0b2545'},
+  ink:{dark:'#2b2620',base:'#8a4a12',light:'#f6efe2',accent:'#ece0c8',deep:'#b02a1e'},
+  bauhaus:{dark:'#1c1c1c',base:'#d8402c',light:'#f3e8d0',accent:'#e9d8b6',deep:'#2f6fb3'},
+  sport:{dark:'#d9261f',base:'#f97316',light:'#ffffff',accent:'#ffe08a',deep:'#9b1c14'},
+  deco:{dark:'#052e22',base:'#0a4533',light:'#d4af37',accent:'#f0e3b8',deep:'#0b5c40'},
+  emblem:{dark:'#12263f',base:'#1e3a5f',light:'#d4af37',accent:'#f5ecd7',deep:'#0d1c30'},
+  music:{dark:'#7c3aed',base:'#ec4899',light:'#f97316',accent:'#f7e7d0',deep:'#5b21b6'},
+  cinema:{dark:'#12131a',base:'#241d20',light:'#e8b339',accent:'#f5e7c8',deep:'#0c0c11'},
+};
+function pal(c){return STYLE[geoOf(c)]||STYLE.blueprint;}
+function gradOf(c){const s=STYLE[geoOf(c)]||STYLE.blueprint;return [s.dark,s.base];}
 
 function dayBadge(c){
   return '<g><rect x="320" y="20" width="62" height="62" rx="14" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.35)"/>'+
@@ -238,7 +244,9 @@ function geoMusic(c){
   return shell(c,defs,inner);
 }
 
-const BUILDERS={blueprint:geoBlueprint,bauhaus:geoBauhaus,ink:geoInk,sport:geoSport,deco:geoDeco,emblem:geoEmblem,music:geoMusic};
+function geoCinema(c){const p=pal(c),gid='g'+hseed(c.id||c.nameZh);const zh=tspans(wrapText(c.nameZh,10).slice(0,2),200,492,28);let holes='';for(let i=0;i<8;i++){holes+='<rect x="'+(26+i*48)+'" y="28" width="26" height="20" rx="3" fill="rgba(0,0,0,0.55)"/><rect x="'+(26+i*48)+'" y="512" width="26" height="20" rx="3" fill="rgba(0,0,0,0.55)"/>';}const defs='<defs><linearGradient id="'+gid+'b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+p.dark+'"/><stop offset="1" stop-color="'+p.base+'"/></linearGradient><linearGradient id="'+gid+'m" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(255,220,150,0.5)"/><stop offset="1" stop-color="rgba(255,220,150,0)"/></linearGradient></defs>';const inner='<rect width="400" height="560" fill="url(#'+gid+'b)"/><path d="M200 90 L90 300 L310 300 Z" fill="url(#'+gid+'m)"/><rect x="14" y="20" width="372" height="8" fill="'+p.deep+'"/><rect x="14" y="532" width="372" height="8" fill="'+p.deep+'"/>'+holes+'<rect x="150" y="128" width="100" height="34" rx="6" fill="'+p.light+'"/><text x="200" y="152" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="15" font-weight="900" fill="'+p.deep+'">NOW SHOWING</text>'+dayBadge(c)+'<text x="200" y="400" text-anchor="middle" font-family="Georgia,\'PingFang SC\',serif" font-size="24" font-weight="700" fill="'+p.accent+'" letter-spacing="1">'+esc(c.nameEn)+'</text><text x="200" y="492" text-anchor="middle" font-family="\'PingFang SC\',serif" font-size="20" font-weight="700" fill="'+p.light+'">'+zh+'</text><text x="200" y="524" text-anchor="middle" font-family="\'PingFang SC\',serif" font-size="13" fill="rgba(245,231,200,0.85)">'+esc(c.teacherZh)+'</text>';return shell(c,defs,inner);}
+
+const BUILDERS={blueprint:geoBlueprint,bauhaus:geoBauhaus,ink:geoInk,sport:geoSport,deco:geoDeco,emblem:geoEmblem,music:geoMusic,cinema:geoCinema};
 
 function posterSVG(c){const g=geoOf(c);return (BUILDERS[g]||geoBauhaus)(c);}
 
@@ -259,7 +267,7 @@ function render(){
 }
 function openModal(name){
   const c=COURSES.find(x=>x.nameZh===name);if(!c)return;
-  const g=c.grad&&c.grad.length?c.grad:[CAT_COLOR[c.cat].dark,CAT_COLOR[c.cat].base];
+  const g=gradOf(c);
   const hl=(c.highlightsZh||[]).map(h=>'<span>'+esc(h)+'</span>').join('');
   document.getElementById('modal').innerHTML=
     '<button class="modal-close" onclick="document.getElementById(\'modalBg\').classList.remove(\'show\')">✕</button>'+
