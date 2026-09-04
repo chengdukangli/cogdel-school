@@ -8,7 +8,7 @@
   :root{--purple:#5A3580;--purple-dark:#43265f;--purple-deep:#2e1a44;--gold:#c9a84c;--gold-light:#e6cf8f;--gold-deep:#a8892f;--bg:#f7f4ef;--card:#fff;--ink:#2b2333;--inc-soft:#6b6475;--line:rgba(90,53,128,.14);}
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
-  .wrap{max-width:1240px;margin:0 auto;padding:0 26px 90px;}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 26px 90px;}
   header.hero{background:linear-gradient(135deg,var(--purple-deep),var(--purple) 52%,var(--purple-dark));color:#fff;padding:56px 26px 48px;text-align:center;position:relative;overflow:hidden;margin-bottom:44px;}
   header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 84% 16%,rgba(201,168,76,.45),transparent 42%),radial-gradient(circle at 10% 88%,rgba(230,207,143,.25),transparent 42%);}
   .hero-inner{position:relative;z-index:2;max-width:860px;margin:0 auto;}
@@ -16,32 +16,32 @@
   .hero h1{font-size:clamp(28px,4.2vw,42px);font-weight:800;letter-spacing:1.5px;}
   .hero .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-light);font-size:16px;margin-top:12px;}
   .hero .slogan{display:inline-block;margin-top:20px;padding:8px 24px;border:1px solid rgba(230,207,143,.6);border-radius:60px;font-size:13.5px;color:#f7efd8;}
-  /* 分校导航 */
   nav.camp{display:flex;justify-content:center;gap:12px;margin:-24px auto 44px;position:relative;z-index:5;}
-  nav.camp a{padding:9px 22px;border-radius:40px;font-size:14px;font-weight:700;text-decoration:none;transition:.15s;}
+  nav.camp a{padding:9px 22px;border-radius:40px;font-size:14px;font-weight:700;text-decoration:none;}
   nav.camp a.primary{background:var(--purple);color:#fff;}
-  nav.camp a.middle{background:var(--purple-deep);color:var(--gold-light);}
-  nav.camp a:not(.active){background:#fff;color:var(--purple);border:1px solid var(--line);}
-  /* 支柱分区 */
-  .pillar{margin:0 0 40px;scroll-margin-top:70px;}
+  nav.camp a.middle{background:#fff;color:var(--purple);border:1px solid var(--line);}
+  .pillar{margin:0 0 42px;scroll-margin-top:70px;}
   .pillar-head{display:flex;align-items:center;gap:14px;margin-bottom:22px;border-bottom:2px solid var(--purple);padding-bottom:12px;}
   .pillar-head .dot{width:14px;height:14px;border-radius:4px;flex:none;}
   .pillar-head h2{font-size:24px;color:var(--purple);font-weight:800;letter-spacing:.5px;}
   .pillar-head .en{font-family:Georgia,serif;font-style:italic;color:var(--inc-soft);font-size:14px;margin-left:auto;}
-  /* 课程卡片 */
-  .courses{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px;}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 8px 26px rgba(90,53,128,.06);display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s;}
-  .card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(90,53,128,.14);}
-  .card .cover{position:relative;height:104px;display:flex;align-items:center;justify-content:center;color:#fff;}
-  .card .cover .ico{font-size:42px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.25));}
-  .card .cover .badge{position:absolute;top:12px;left:14px;font-size:11px;padding:3px 12px;border-radius:14px;background:rgba(255,255,255,.22);letter-spacing:1px;}
-  .card .cover .day{position:absolute;top:12px;right:14px;font-size:11px;padding:3px 10px;border-radius:14px;background:rgba(0,0,0,.18);}
-  .card .body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1;}
-  .card h3{font-size:18px;color:var(--purple);font-weight:800;line-height:1.35;}
-  .card .cat{font-size:12px;color:var(--gold-deep);margin-top:4px;letter-spacing:.5px;}
-  .card .desc{font-size:13.5px;color:var(--inc-soft);margin-top:10px;flex:1;line-height:1.7;}
-  .card .meta{display:flex;gap:14px;margin-top:14px;font-size:12px;color:var(--inc-soft);border-top:1px solid var(--line);padding-top:12px;flex-wrap:wrap;}
-  .card .meta span b{color:var(--purple);font-weight:700;}
+  .courses{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 8px 26px rgba(90,53,128,.07);display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s;}
+  .card:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(90,53,128,.16);}
+  /* 海报区：每门课专属渐变 */
+  .poster{position:relative;color:#fff;padding:22px 20px 26px;min-height:150px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;}
+  .poster .deco{position:absolute;inset:0;opacity:.3;background:radial-gradient(circle at 85% 18%,rgba(255,255,255,.5),transparent 42%),radial-gradient(circle at 12% 88%,rgba(0,0,0,.2),transparent 40%);}
+  .poster .icon{position:absolute;right:16px;top:16px;font-size:52px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.25));opacity:.95;}
+  .poster .day{position:relative;font-size:12px;padding:3px 12px;border-radius:14px;background:rgba(255,255,255,.22);display:inline-block;width:max-content;letter-spacing:1px;}
+  .poster h3{position:relative;font-size:20px;font-weight:800;line-height:1.3;margin-top:10px;text-shadow:0 2px 8px rgba(0,0,0,.25);}
+  .poster .en{position:relative;font-family:Georgia,serif;font-style:italic;font-size:12px;opacity:.85;margin-top:4px;}
+  .poster .cat{position:relative;font-size:12px;margin-top:8px;background:rgba(0,0,0,.16);padding:3px 12px;border-radius:14px;display:inline-block;width:max-content;}
+  .body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1;}
+  .body .desc{font-size:13.5px;color:var(--inc-soft);line-height:1.7;flex:1;}
+  .body .hl{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;}
+  .body .hl span{font-size:11.5px;color:var(--purple);background:rgba(90,53,128,.08);border:1px solid rgba(90,53,128,.14);padding:4px 11px;border-radius:14px;}
+  .body .meta{display:flex;gap:12px;margin-top:14px;font-size:12px;color:var(--inc-soft);border-top:1px solid var(--line);padding-top:12px;flex-wrap:wrap;}
+  .body .meta span b{color:var(--purple);font-weight:700;}
   footer{background:var(--purple-deep);color:#dfd7e8;text-align:center;padding:36px 26px;}
   footer .t{font-weight:700;color:#fff;font-size:15px;}
   footer .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-light);font-size:12.5px;margin-top:5px;}
@@ -56,533 +56,626 @@
 </div></header>
 <div class="wrap">
 <section class="pillar" id="academic">
-  <div class="pillar-head"><span class="dot" style="background:linear-gradient(135deg,#5A3580,#2e1a44)"></span><h2>学术 A · 学术与创新</h2><span class="en">Academic & Innovation</span></div>
+  <div class="pillar-head"><span class="dot" style="background:linear-gradient(135deg,#2563eb,#06b6d4)"></span><h2>学术与创新</h2><span class="en">15 门课程</span></div>
   <div class="courses">
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#5A3580,#2e1a44)">
-    <span class="ico">💡</span>
-    <span class="badge">计算机科学</span>
+  <div class="poster" style="background:linear-gradient(135deg,#2563eb,#06b6d4)">
+    <div class="deco"></div>
+    <span class="icon">💻</span>
     <span class="day">周一</span>
-  </div>
-  <div class="body">
     <h3>A-Level 计算机科学辅导</h3>
-    <div class="cat">计算机科学</div>
+    <div class="en">A-Level Computer Science Support</div>
+    <span class="cat">计算机科学</span>
+  </div>
+  <div class="body">
     <div class="desc">针对 AS / A-Level 计算机科学的专项辅导，夯实基础技能、综合运用与应试技巧，通过面对面小班答疑，助你自信面对大考。</div>
-    <div class="meta"><span><b>对象</b> AS 学生</span><span><b>人数</b> 1–4 人</span><span><b>语言</b> 英语</span></div>
+    <div class="hl"><span>夯实基础 Core Skills</span><span>综合技能 Comprehensive</span><span>面对面辅导 Face to Face</span></div>
+    <div class="meta"><span><b>对象</b> AS 学生</span><span><b>人数</b> 1–4 人</span><span><b>语言</b> 英语 English</span><span><b>教师</b> Mr. Jeffy</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#5A3580,#2e1a44)">
-    <span class="ico">💡</span>
-    <span class="badge">语言强化</span>
+  <div class="poster" style="background:linear-gradient(135deg,#0d9488,#14b8a6)">
+    <div class="deco"></div>
+    <span class="icon">📖</span>
     <span class="day">周一</span>
-  </div>
-  <div class="body">
     <h3>英语补习</h3>
-    <div class="cat">语言强化</div>
+    <div class="en">English Tutorial</div>
+    <span class="cat">语言强化</span>
+  </div>
+  <div class="body">
     <div class="desc">英文基础补习与课堂内容查漏补缺，小班化语言强化，让英语不再成为学习的障碍。</div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 5 人</span><span><b>语言</b> 中英双语</span></div>
+    <div class="hl"><span>基础补习 Foundation</span><span>查漏补缺 Gap-filling</span><span>小班强化 Small Group</span></div>
+    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 5 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Sue &amp; Ms. Echo</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#5A3580,#2e1a44)">
-    <span class="ico">💡</span>
-    <span class="badge">化学</span>
+  <div class="poster" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6)">
+    <div class="deco"></div>
+    <span class="icon">➗</span>
     <span class="day">周二</span>
+    <h3>A-Level 数学辅导</h3>
+    <div class="en">A-Level Maths Support</div>
+    <span class="cat">数学</span>
   </div>
   <div class="body">
+    <div class="desc">A-Level 数学专项辅导：破解高难考题、提升解题自信，往届 70% 学员取得 A*–A 的优异成绩。</div>
+    <div class="hl"><span>成绩提升 Grade Impact</span><span>自信培养 Confidence</span><span>未来优势 Future Benefits</span></div>
+    <div class="meta"><span><b>对象</b> IGCSE–A2</span><span><b>人数</b> 1–5 人</span><span><b>语言</b> 英语 English</span><span><b>教师</b> Dr. Chris</span></div>
+  </div>
+</div>
+<div class="card">
+  <div class="poster" style="background:linear-gradient(135deg,#0f766e,#0d9488)">
+    <div class="deco"></div>
+    <span class="icon">⚗️</span>
+    <span class="day">周二</span>
     <h3>化学补习</h3>
-    <div class="cat">化学</div>
+    <div class="en">Chemistry Tutorial</div>
+    <span class="cat">化学</span>
+  </div>
+  <div class="body">
     <div class="desc">化学补习：从模拟到真题演练，为你的外部大考保驾护航。</div>
-    <div class="meta"><span><b>对象</b> IG / AS</span><span><b>人数</b> 2–6 人</span><span><b>语言</b> 中英双语</span></div>
+    <div class="hl"><span>模拟考试 Mock</span><span>真题演练 Exam Practice</span><span>大考准备 Exam Ready</span></div>
+    <div class="meta"><span><b>对象</b> IG / AS</span><span><b>人数</b> 2–6 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Nancy</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#5A3580,#2e1a44)">
-    <span class="ico">💡</span>
-    <span class="badge">自然科学</span>
+  <div class="poster" style="background:linear-gradient(135deg,#1e3a8a,#3730a3)">
+    <div class="deco"></div>
+    <span class="icon">🔭</span>
     <span class="day">周二</span>
-  </div>
-  <div class="body">
     <h3>天文社团</h3>
-    <div class="cat">自然科学</div>
+    <div class="en">Basic Astronomy</div>
+    <span class="cat">自然科学</span>
+  </div>
+  <div class="body">
     <div class="desc">从裸眼观星到天体物理，系统学习宇宙大尺度结构与系外行星，并备战天文竞赛。</div>
-    <div class="meta"><span><b>对象</b> P8–AS</span><span><b>人数</b> 1–10 人</span><span><b>语言</b> 双语</span></div>
+    <div class="hl"><span>系统知识 Systematic</span><span>观星活动 Stargazing</span><span>竞赛准备 Competition</span></div>
+    <div class="meta"><span><b>对象</b> P8–AS</span><span><b>人数</b> 1–10 人</span><span><b>语言</b> 双语 Bilingual</span><span><b>教师</b> Mr. Stone</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#5A3580,#2e1a44)">
-    <span class="ico">💡</span>
-    <span class="badge">人文社科</span>
+  <div class="poster" style="background:linear-gradient(135deg,#b45309,#f59e0b)">
+    <div class="deco"></div>
+    <span class="icon">🎬</span>
     <span class="day">周二</span>
-  </div>
-  <div class="body">
     <h3>EconX 经济学实战</h3>
-    <div class="cat">人文社科</div>
+    <div class="en">EconX · Real-World Economics</div>
+    <span class="cat">人文社科</span>
+  </div>
+  <div class="body">
     <div class="desc">通过电影、商业模拟和嘉宾讲座，探索课堂之外的真实经济学。</div>
-    <div class="meta"><span><b>对象</b> IG–A2</span><span><b>人数</b> 2–15 人</span><span><b>语言</b> 英语</span></div>
+    <div class="hl"><span>电影经济学 Cinema</span><span>模拟交易 Simulation</span><span>嘉宾讲坛 Guest Speakers</span></div>
+    <div class="meta"><span><b>对象</b> IG–A2</span><span><b>人数</b> 2–15 人</span><span><b>语言</b> 英语 English</span><span><b>教师</b> Dr. Raza</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#5A3580,#2e1a44)">
-    <span class="ico">💡</span>
-    <span class="badge">创新创业</span>
+  <div class="poster" style="background:linear-gradient(135deg,#4338ca,#6366f1)">
+    <div class="deco"></div>
+    <span class="icon">🖨️</span>
     <span class="day">周二</span>
-  </div>
-  <div class="body">
     <h3>3D 打印与设计思维</h3>
-    <div class="cat">创新创业</div>
+    <div class="en">Intro to 3D Printing &amp; Design Thinking</div>
+    <span class="cat">创新创业</span>
+  </div>
+  <div class="body">
     <div class="desc">学习设计思维与 3D 打印基础，历经理解问题、头脑风暴到原型测试，做出真实的创造。</div>
-    <div class="meta"><span><b>对象</b> P7–IG</span><span><b>人数</b> 3–6 人</span><span><b>语言</b> 中英双语</span></div>
+    <div class="hl"><span>项目式学习 Project-Based</span><span>团队协作 Teamwork</span><span>期末展演 Showcase</span></div>
+    <div class="meta"><span><b>对象</b> P7–IG</span><span><b>人数</b> 3–6 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Mr. Jeff &amp; Dr. Allen</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#5A3580,#2e1a44)">
-    <span class="ico">💡</span>
-    <span class="badge">金融</span>
+  <div class="poster" style="background:linear-gradient(135deg,#b45309,#d97706)">
+    <div class="deco"></div>
+    <span class="icon">💰</span>
     <span class="day">周二</span>
-  </div>
-  <div class="body">
     <h3>投资基础</h3>
-    <div class="cat">金融</div>
+    <div class="en">Investment Foundation</div>
+    <span class="cat">金融</span>
+  </div>
+  <div class="body">
     <div class="desc">基于《The Little Book of Valuation》与《Venture Capital Strategy》的案例教学，掌握公司估值与风险投资判断。</div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 12–20 人</span><span><b>语言</b> 中英双语</span></div>
+    <div class="hl"><span>项目式学习 Project-Based</span><span>团队协作 Teamwork</span><span>期末展演 Showcase</span></div>
+    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 12–20 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Amy（校长）</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#5A3580,#2e1a44)">
-    <span class="ico">💡</span>
-    <span class="badge">化学 · 竞赛</span>
+  <div class="poster" style="background:linear-gradient(135deg,#15803d,#16a34a)">
+    <div class="deco"></div>
+    <span class="icon">🧪</span>
     <span class="day">周二</span>
+    <h3>化学竞赛社</h3>
+    <div class="en">Chemistry Competition Club</div>
+    <span class="cat">化学 · 竞赛</span>
   </div>
   <div class="body">
-    <h3>化学竞赛社</h3>
-    <div class="cat">化学 · 竞赛</div>
     <div class="desc">为 C3L6 化学竞赛备赛：从系统学习、实战体验到正式竞赛。</div>
-    <div class="meta"><span><b>对象</b> IG</span><span><b>人数</b> 2–4 人</span><span><b>语言</b> 双语</span></div>
+    <div class="hl"><span>知识学习 Study</span><span>团队协作 Teamwork</span><span>期末比赛 Competition</span></div>
+    <div class="meta"><span><b>对象</b> IG</span><span><b>人数</b> 2–4 人</span><span><b>语言</b> 双语 Bilingual</span><span><b>教师</b> Ms. Sherry</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#5A3580,#2e1a44)">
-    <span class="ico">💡</span>
-    <span class="badge">生物</span>
+  <div class="poster" style="background:linear-gradient(135deg,#312e81,#4f46e5)">
+    <div class="deco"></div>
+    <span class="icon">💡</span>
     <span class="day">周三</span>
+    <h3>雪城大学设计思维课</h3>
+    <div class="en">Syracuse University · Design Thinking</div>
+    <span class="cat">创新创业</span>
   </div>
   <div class="body">
+    <div class="desc">雪城大学官方设计思维课程，从共情到原型，一年可获 3 个大学学分。</div>
+    <div class="hl"><span>项目式学习 Project-Based</span><span>团队协作 Teamwork</span><span>大学学分 College Credit</span></div>
+    <div class="meta"><span><b>对象</b> AS–A2（仅 IAL）</span><span><b>人数</b> 1–6 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Dr. Allen</span></div>
+  </div>
+</div>
+<div class="card">
+  <div class="poster" style="background:linear-gradient(135deg,#166534,#15803d)">
+    <div class="deco"></div>
+    <span class="icon">🧬</span>
+    <span class="day">周三</span>
     <h3>生物补习</h3>
-    <div class="cat">生物</div>
+    <div class="en">Biology Support</div>
+    <span class="cat">生物</span>
+  </div>
+  <div class="body">
     <div class="desc">生物补习，课堂内容查漏补缺，夯实 P7–IG 生物基础。</div>
-    <div class="meta"><span><b>对象</b> P7–IG</span><span><b>人数</b> 5 人</span><span><b>语言</b> 中英双语</span></div>
+    <div class="hl"><span>查漏补缺 Gap-filling</span><span>基础夯实 Foundation</span></div>
+    <div class="meta"><span><b>对象</b> P7–IG</span><span><b>人数</b> 5 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Beth</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#5A3580,#2e1a44)">
-    <span class="ico">💡</span>
-    <span class="badge">经济 · 竞赛</span>
+  <div class="poster" style="background:linear-gradient(135deg,#b45309,#f59e0b)">
+    <div class="deco"></div>
+    <span class="icon">📈</span>
     <span class="day">周三</span>
-  </div>
-  <div class="body">
     <h3>NEC 全美经济学竞赛备赛</h3>
-    <div class="cat">经济 · 竞赛</div>
+    <div class="en">NEC Competition Tutorial</div>
+    <span class="cat">经济 · 竞赛</span>
+  </div>
+  <div class="body">
     <div class="desc">全美经济学竞赛备赛：知识学习、实战体验到正式竞赛。</div>
-    <div class="meta"><span><b>对象</b> IG / AS</span><span><b>人数</b> 4–12 人</span><span><b>语言</b> 中英双语</span></div>
+    <div class="hl"><span>知识学习 Study</span><span>团队协作 Teamwork</span><span>期末比赛 Competition</span></div>
+    <div class="meta"><span><b>对象</b> IG / AS</span><span><b>人数</b> 4–12 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Chanel</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#5A3580,#2e1a44)">
-    <span class="ico">💡</span>
-    <span class="badge">化学 · 竞赛</span>
+  <div class="poster" style="background:linear-gradient(135deg,#15803d,#16a34a)">
+    <div class="deco"></div>
+    <span class="icon">🧪</span>
     <span class="day">周三</span>
-  </div>
-  <div class="body">
     <h3>化学竞赛社</h3>
-    <div class="cat">化学 · 竞赛</div>
+    <div class="en">Chemistry Competition Club</div>
+    <span class="cat">化学 · 竞赛</span>
+  </div>
+  <div class="body">
     <div class="desc">为 C3L6 化学竞赛备赛：从系统学习、实战体验到正式竞赛。</div>
-    <div class="meta"><span><b>对象</b> IG</span><span><b>人数</b> 2–4 人</span><span><b>语言</b> 双语</span></div>
+    <div class="hl"><span>知识学习 Study</span><span>团队协作 Teamwork</span><span>期末比赛 Competition</span></div>
+    <div class="meta"><span><b>对象</b> IG</span><span><b>人数</b> 2–4 人</span><span><b>语言</b> 双语 Bilingual</span><span><b>教师</b> Ms. Sherry</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#5A3580,#2e1a44)">
-    <span class="ico">💡</span>
-    <span class="badge">人工智能 · 创新</span>
+  <div class="poster" style="background:linear-gradient(135deg,#0ea5e9,#6366f1)">
+    <div class="deco"></div>
+    <span class="icon">🤖</span>
     <span class="day">周三</span>
-  </div>
-  <div class="body">
     <h3>AI 共创实验室</h3>
-    <div class="cat">人工智能 · 创新</div>
+    <div class="en">AI Co-creator Lab</div>
+    <span class="cat">人工智能 · 创新</span>
+  </div>
+  <div class="body">
     <div class="desc">与 AI 一起共创：学习提示工程与生成式 AI 工具，把灵感变成可展示的作品。</div>
-    <div class="meta"><span><b>对象</b> P9–A2</span><span><b>人数</b> 12–20 人</span><span><b>语言</b> 中英双语</span></div>
+    <div class="hl"><span>提示工程 Prompt Engineering</span><span>生成式工具 GenAI Tools</span><span>作品产出 Showcase</span></div>
+    <div class="meta"><span><b>对象</b> P9–A2</span><span><b>人数</b> 12–20 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Amy（校长）</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#5A3580,#2e1a44)">
-    <span class="ico">💡</span>
-    <span class="badge">数学 · 竞赛</span>
+  <div class="poster" style="background:linear-gradient(135deg,#1d4ed8,#4f46e5)">
+    <div class="deco"></div>
+    <span class="icon">🧮</span>
     <span class="day">周三</span>
+    <h3>AMC 10/12 数学竞赛备赛</h3>
+    <div class="en">AMC 10/12 &amp; Maths Tutorial</div>
+    <span class="cat">数学 · 竞赛</span>
   </div>
   <div class="body">
-    <h3>AMC 10/12 数学竞赛备赛</h3>
-    <div class="cat">数学 · 竞赛</div>
     <div class="desc">AMC 10/12 数学竞赛备赛：知识学习、实战体验到正式竞赛。</div>
-    <div class="meta"><span><b>对象</b> IG / AS</span><span><b>人数</b> 4–12 人</span><span><b>语言</b> 中英双语</span></div>
+    <div class="hl"><span>知识学习 Study</span><span>团队协作 Teamwork</span><span>期末比赛 Competition</span></div>
+    <div class="meta"><span><b>对象</b> IG / AS</span><span><b>人数</b> 4–12 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Dr. He</span></div>
   </div>
 </div>
 </div>
 </section>
 <section class="pillar" id="creative">
-  <div class="pillar-head"><span class="dot" style="background:linear-gradient(135deg,#c9a84c,#a8892f)"></span><h2>创意 C · 创意与文化</h2><span class="en">Creative & Cultural</span></div>
+  <div class="pillar-head"><span class="dot" style="background:linear-gradient(135deg,#ec4899,#f43f5e)"></span><h2>创意与文化</h2><span class="en">17 门课程</span></div>
   <div class="courses">
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#c9a84c,#a8892f)">
-    <span class="ico">🎨</span>
-    <span class="badge">艺术与设计</span>
+  <div class="poster" style="background:linear-gradient(135deg,#ec4899,#f43f5e)">
+    <div class="deco"></div>
+    <span class="icon">🎨</span>
     <span class="day">周一</span>
-  </div>
-  <div class="body">
     <h3>艺术·作品集</h3>
-    <div class="cat">艺术与设计</div>
+    <div class="en">Art Portfolio</div>
+    <span class="cat">艺术与设计</span>
+  </div>
+  <div class="body">
     <div class="desc">为外部大考量身打造作品集，提供一对一的额外指导，让每位同学都能交出一份真正代表自己的艺术答卷。</div>
-    <div class="meta"><span><b>对象</b> IG–A2</span><span><b>人数</b> 2–15 人</span><span><b>语言</b> 英语 / 中文</span></div>
+    <div class="hl"><span>作品集指导 Portfolio</span><span>个性化支持 Tailored</span><span>大考准备 Exam Ready</span></div>
+    <div class="meta"><span><b>对象</b> IG–A2</span><span><b>人数</b> 2–15 人</span><span><b>语言</b> 英语 / 中文</span><span><b>教师</b> Ms. Wendy</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#c9a84c,#a8892f)">
-    <span class="ico">🎨</span>
-    <span class="badge">创意建构</span>
+  <div class="poster" style="background:linear-gradient(135deg,#f97316,#fbbf24)">
+    <div class="deco"></div>
+    <span class="icon">🧱</span>
     <span class="day">周一</span>
-  </div>
-  <div class="body">
     <h3>乐高创想社</h3>
-    <div class="cat">创意建构</div>
+    <div class="en">Lego Creation Club</div>
+    <span class="cat">创意建构</span>
+  </div>
+  <div class="body">
     <div class="desc">用乐高搭建你的想象，从基础结构到主题挑战，在合作与期末展演中释放创造力。</div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 5–8 人</span><span><b>语言</b> 中英双语</span></div>
+    <div class="hl"><span>项目式学习 Project-Based</span><span>团队协作 Teamwork</span><span>期末展演 Showcase</span></div>
+    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 5–8 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Beth</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#c9a84c,#a8892f)">
-    <span class="ico">🎨</span>
-    <span class="badge">音乐</span>
+  <div class="poster" style="background:linear-gradient(135deg,#7c3aed,#a855f7)">
+    <div class="deco"></div>
+    <span class="icon">🎸</span>
     <span class="day">周一</span>
-  </div>
-  <div class="body">
     <h3>学校乐队</h3>
-    <div class="cat">音乐</div>
+    <div class="en">School Band</div>
+    <span class="cat">音乐</span>
+  </div>
+  <div class="body">
     <div class="desc">学校乐队：学习并排练翻唱曲目，提升演奏技巧，为校园活动登台演出。</div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 不限</span><span><b>语言</b> 英语</span></div>
+    <div class="hl"><span>团队协作 Teamwork</span><span>舞台演出 Performance</span><span>技能提升 Skills</span></div>
+    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 不限</span><span><b>语言</b> 英语 English</span><span><b>教师</b> Mr. Marko</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#c9a84c,#a8892f)">
-    <span class="ico">🎨</span>
-    <span class="badge">人文 · 汉字</span>
+  <div class="poster" style="background:linear-gradient(135deg,#b45309,#d97706)">
+    <div class="deco"></div>
+    <span class="icon">🐢</span>
     <span class="day">周一</span>
-  </div>
-  <div class="body">
     <h3>甲骨文拓片识读</h3>
-    <div class="cat">人文 · 汉字</div>
+    <div class="en">Oracle Bone Inscription Reading</div>
+    <span class="cat">人文 · 汉字</span>
+  </div>
+  <div class="body">
     <div class="desc">每节课一块甲骨拓片，弄清每个符号是什么字，探寻造字本义，再亲手刻一刻甲骨文。</div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 不限</span><span><b>语言</b> 中文</span></div>
+    <div class="hl"><span>拓片识读 Rubbing Reading</span><span>造字探源 Origins</span><span>亲手刻字 Hands-on Carving</span></div>
+    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 不限</span><span><b>语言</b> 中文 Chinese</span><span><b>教师</b> Mr. Aphelios</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#c9a84c,#a8892f)">
-    <span class="ico">🎨</span>
-    <span class="badge">人文 · 文学</span>
+  <div class="poster" style="background:linear-gradient(135deg,#334155,#64748b)">
+    <div class="deco"></div>
+    <span class="icon">🕵️</span>
     <span class="day">周一</span>
-  </div>
-  <div class="body">
     <h3>侦探文学探索之旅</h3>
-    <div class="cat">人文 · 文学</div>
+    <div class="en">Exploration Journey of Detective Literature</div>
+    <span class="cat">人文 · 文学</span>
+  </div>
+  <div class="body">
     <div class="desc">在悬疑与解谜中提升中文阅读力，细读经典侦探文学、训练逻辑推理，让阅读成为一场智力冒险。</div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 4–8 人</span><span><b>语言</b> 中英双语</span></div>
+    <div class="hl"><span>文本细读 Close Reading</span><span>逻辑推理 Reasoning</span><span>期末展演 Showcase</span></div>
+    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 4–8 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Wei</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#c9a84c,#a8892f)">
-    <span class="ico">🎨</span>
-    <span class="badge">创意艺术</span>
+  <div class="poster" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)">
+    <div class="deco"></div>
+    <span class="icon">📸</span>
     <span class="day">周一</span>
-  </div>
-  <div class="body">
     <h3>数字媒体（摄影与电影）</h3>
-    <div class="cat">创意艺术</div>
+    <div class="en">Digital Media (Film &amp; Photography)</div>
+    <span class="cat">创意艺术</span>
+  </div>
+  <div class="body">
     <div class="desc">零基础入门摄影与电影制作，用专业设备拍出你的作品，期末举办学生作品展，发现你的影像天赋。</div>
-    <div class="meta"><span><b>对象</b> P9–A2</span><span><b>人数</b> 4–10 人</span><span><b>语言</b> 英语</span></div>
+    <div class="hl"><span>零基础入门 Zero to Hero</span><span>实战出作品 Hands-On</span><span>专业设备 Pro Gear</span></div>
+    <div class="meta"><span><b>对象</b> P9–A2</span><span><b>人数</b> 4–10 人</span><span><b>语言</b> 英语 English</span><span><b>教师</b> Mr. Sergei</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#c9a84c,#a8892f)">
-    <span class="ico">🎨</span>
-    <span class="badge">英语文学</span>
+  <div class="poster" style="background:linear-gradient(135deg,#0369a1,#0ea5e9)">
+    <div class="deco"></div>
+    <span class="icon">📚</span>
     <span class="day">周二</span>
-  </div>
-  <div class="body">
     <h3>英语阅读俱乐部</h3>
-    <div class="cat">英语文学</div>
+    <div class="en">Reading Club</div>
+    <span class="cat">英语文学</span>
+  </div>
+  <div class="body">
     <div class="desc">共读适合我们的英文原版故事（如《相约星期二》），做嘉宾分享与播客制作，把好故事讲给所有人。</div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 5–10 人</span><span><b>语言</b> 中英双语</span></div>
+    <div class="hl"><span>原文阅读 English Reading</span><span>嘉宾分享 Guest Speaker</span><span>播客制作 Podcast</span></div>
+    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 5–10 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Mr. Harry（胡老师）</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#c9a84c,#a8892f)">
-    <span class="ico">🎨</span>
-    <span class="badge">艺术与设计</span>
+  <div class="poster" style="background:linear-gradient(135deg,#be185d,#ec4899)">
+    <div class="deco"></div>
+    <span class="icon">🖼️</span>
     <span class="day">周二</span>
-  </div>
-  <div class="body">
     <h3>艺术史</h3>
-    <div class="cat">艺术与设计</div>
+    <div class="en">Art History</div>
+    <span class="cat">艺术与设计</span>
+  </div>
+  <div class="body">
     <div class="desc">通过《艺术的故事》与纪录片梳理艺术发展脉络，并做个人分享。</div>
-    <div class="meta"><span><b>对象</b> IG–A2</span><span><b>人数</b> 2–15 人</span><span><b>语言</b> 英语 / 中文</span></div>
+    <div class="hl"><span>《艺术的故事》Story of Art</span><span>纪录片 Documentary</span><span>个人分享 Presentation</span></div>
+    <div class="meta"><span><b>对象</b> IG–A2</span><span><b>人数</b> 2–15 人</span><span><b>语言</b> 英语 / 中文</span><span><b>教师</b> Ms. Wendy</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#c9a84c,#a8892f)">
-    <span class="ico">🎨</span>
-    <span class="badge">语言文化</span>
+  <div class="poster" style="background:linear-gradient(135deg,#0ea5e9,#6366f1)">
+    <div class="deco"></div>
+    <span class="icon">🇰🇷</span>
     <span class="day">周二</span>
-  </div>
-  <div class="body">
     <h3>韩语及韩国大众文化</h3>
-    <div class="cat">语言文化</div>
+    <div class="en">Korean Language &amp; K-Culture</div>
+    <span class="cat">语言文化</span>
+  </div>
+  <div class="body">
     <div class="desc">学习韩文字母与拼读，了解真实的韩国社会，培养理性看待一个国家的思维方式。</div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 不限</span><span><b>语言</b> 中文</span></div>
+    <div class="hl"><span>字母拼读 Hangul</span><span>社会了解 Society</span><span>思维方式 Thinking</span></div>
+    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 不限</span><span><b>语言</b> 中文 Chinese</span><span><b>教师</b> Mr. Aphelios</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#c9a84c,#a8892f)">
-    <span class="ico">🎨</span>
-    <span class="badge">音乐</span>
+  <div class="poster" style="background:linear-gradient(135deg,#7c3aed,#8b5cf6)">
+    <div class="deco"></div>
+    <span class="icon">🎧</span>
     <span class="day">周二</span>
-  </div>
-  <div class="body">
     <h3>歌单制作</h3>
-    <div class="cat">音乐</div>
+    <div class="en">Playlist Making</div>
+    <span class="cat">音乐</span>
+  </div>
+  <div class="body">
     <div class="desc">探索不同曲风与心境，为校园活动制作背景音乐，找到属于你的歌单。</div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 不限</span><span><b>语言</b> 英语</span></div>
+    <div class="hl"><span>创意 Creative</span><span>自信 Confident</span><span>校园 BGM School BGM</span></div>
+    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 不限</span><span><b>语言</b> 英语 English</span><span><b>教师</b> Mr. Marko</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#c9a84c,#a8892f)">
-    <span class="ico">🎨</span>
-    <span class="badge">音乐</span>
+  <div class="poster" style="background:linear-gradient(135deg,#a21caf,#d946ef)">
+    <div class="deco"></div>
+    <span class="icon">🎤</span>
     <span class="day">周二</span>
-  </div>
-  <div class="body">
     <h3>流行演唱</h3>
-    <div class="cat">音乐</div>
+    <div class="en">Pop Vocal</div>
+    <span class="cat">音乐</span>
+  </div>
+  <div class="body">
     <div class="desc">科学发声、舞台魅力与风格探索，从练声到录音与公开演出。</div>
-    <div class="meta"><span><b>对象</b> P7–A2</span><span><b>人数</b> 1–4 人</span><span><b>语言</b> 中英双语</span></div>
+    <div class="hl"><span>风格探索 Style</span><span>公开演出 Showcase</span><span>录音体验 Recording</span></div>
+    <div class="meta"><span><b>对象</b> P7–A2</span><span><b>人数</b> 1–4 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Kirsten</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#c9a84c,#a8892f)">
-    <span class="ico">🎨</span>
-    <span class="badge">英语文学</span>
+  <div class="poster" style="background:linear-gradient(135deg,#0369a1,#0ea5e9)">
+    <div class="deco"></div>
+    <span class="icon">📚</span>
     <span class="day">周三</span>
-  </div>
-  <div class="body">
     <h3>英语阅读俱乐部</h3>
-    <div class="cat">英语文学</div>
+    <div class="en">Reading Club</div>
+    <span class="cat">英语文学</span>
+  </div>
+  <div class="body">
     <div class="desc">共读适合我们的英文原版故事（如《相约星期二》），做嘉宾分享与播客制作，把好故事讲给所有人。</div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 5–10 人</span><span><b>语言</b> 中英双语</span></div>
+    <div class="hl"><span>原文阅读 English Reading</span><span>嘉宾分享 Guest Speaker</span><span>播客制作 Podcast</span></div>
+    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 5–10 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Mr. Harry（胡老师）</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#c9a84c,#a8892f)">
-    <span class="ico">🎨</span>
-    <span class="badge">电影艺术</span>
+  <div class="poster" style="background:linear-gradient(135deg,#dc2626,#f59e0b)">
+    <div class="deco"></div>
+    <span class="icon">🍿</span>
     <span class="day">周三</span>
-  </div>
-  <div class="body">
     <h3>世界电影欣赏</h3>
-    <div class="cat">电影艺术</div>
+    <div class="en">World Cinema Club</div>
+    <span class="cat">电影艺术</span>
+  </div>
+  <div class="body">
     <div class="desc">看世界电影、聊故事、玩配音与竞猜，无考试、基本无作业，轻松加入。</div>
-    <div class="meta"><span><b>对象</b> P7–AS</span><span><b>人数</b> 5–20 人</span><span><b>语言</b> 中英双语</span></div>
+    <div class="hl"><span>完整观影 Watch Together</span><span>轻松互动 Join In</span><span>世界文化 Discover</span></div>
+    <div class="meta"><span><b>对象</b> P7–AS</span><span><b>人数</b> 5–20 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Aria（戚老师）</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#c9a84c,#a8892f)">
-    <span class="ico">🎨</span>
-    <span class="badge">人文 · 文学</span>
+  <div class="poster" style="background:linear-gradient(135deg,#be185d,#f472b6)">
+    <div class="deco"></div>
+    <span class="icon">🌸</span>
     <span class="day">周三</span>
-  </div>
-  <div class="body">
     <h3>诗歌鉴赏</h3>
-    <div class="cat">人文 · 文学</div>
+    <div class="en">Poetry Appreciation</div>
+    <span class="cat">人文 · 文学</span>
+  </div>
+  <div class="body">
     <div class="desc">跨越时空与经典对话，品读四大诗体、朗诵吟唱，在韵律中感受中文之美。</div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 4–10 人</span><span><b>语言</b> 中英双语</span></div>
+    <div class="hl"><span>经典品读 Classics</span><span>朗诵吟唱 Recitation</span><span>期末展演 Showcase</span></div>
+    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 4–10 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Wei</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#c9a84c,#a8892f)">
-    <span class="ico">🎨</span>
-    <span class="badge">阅读与戏剧</span>
+  <div class="poster" style="background:linear-gradient(135deg,#7c2d12,#ea580c)">
+    <div class="deco"></div>
+    <span class="icon">🎭</span>
     <span class="day">周三</span>
-  </div>
-  <div class="body">
     <h3>从小说到舞台</h3>
-    <div class="cat">阅读与戏剧</div>
+    <div class="en">From Novel to Stage</div>
+    <span class="cat">阅读与戏剧</span>
+  </div>
+  <div class="body">
     <div class="desc">侦探剧本研读：从小说到舞台，团队共创并期末展演。</div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 10–15 人</span><span><b>语言</b> 中英双语</span></div>
+    <div class="hl"><span>项目式学习 Project-Based</span><span>团队协作 Teamwork</span><span>期末展演 Showcase</span></div>
+    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 10–15 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Sue &amp; Ms. Echo</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#c9a84c,#a8892f)">
-    <span class="ico">🎨</span>
-    <span class="badge">人文 · 历史</span>
+  <div class="poster" style="background:linear-gradient(135deg,#78350f,#b45309)">
+    <div class="deco"></div>
+    <span class="icon">🏛️</span>
     <span class="day">周三</span>
-  </div>
-  <div class="body">
     <h3>中国近现代历史俱乐部</h3>
-    <div class="cat">人文 · 历史</div>
+    <div class="en">Chinese History Club</div>
+    <span class="cat">人文 · 历史</span>
+  </div>
+  <div class="body">
     <div class="desc">中国近现代历史俱乐部：通史解读、人物点评与事件解析，走进 130 年的风云变迁。</div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 6–8 人</span><span><b>语言</b> 中英双语</span></div>
+    <div class="hl"><span>通史解读 Survey</span><span>人物点评 Biography</span><span>事件解析 Analysis</span></div>
+    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 6–8 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Mr. Xu（许老师）</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#c9a84c,#a8892f)">
-    <span class="ico">🎨</span>
-    <span class="badge">音乐</span>
+  <div class="poster" style="background:linear-gradient(135deg,#9333ea,#c026d3)">
+    <div class="deco"></div>
+    <span class="icon">🎼</span>
     <span class="day">周三</span>
-  </div>
-  <div class="body">
     <h3>歌曲写作与制作</h3>
-    <div class="cat">音乐</div>
+    <div class="en">Songwriting &amp; Music Production</div>
+    <span class="cat">音乐</span>
+  </div>
+  <div class="body">
     <div class="desc">从曲风识别、旋律编写到编曲混音，产出你的原创作品并公开演出。</div>
-    <div class="meta"><span><b>对象</b> P7–A2</span><span><b>人数</b> 1–4 人</span><span><b>语言</b> 中英双语</span></div>
-  </div>
-</div>
-</div>
-</section>
-<section class="pillar" id="athletics">
-  <div class="pillar-head"><span class="dot" style="background:linear-gradient(135deg,#2f7d5c,#1f5c42)"></span><h2>运动 B · 运动与健康</h2><span class="en">Athletics & Wellness</span></div>
-  <div class="courses">
-<div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#2f7d5c,#1f5c42)">
-    <span class="ico">🏅</span>
-    <span class="badge">体育</span>
-    <span class="day">周一</span>
-  </div>
-  <div class="body">
-    <h3>CISA 校队训练</h3>
-    <div class="cat">体育</div>
-    <div class="desc">CISA 校队训练：排球、篮球、足球等多项运动，强化团队协作、个人进步与竞技精神。</div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 不限</span><span><b>语言</b> 英语</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#2f7d5c,#1f5c42)">
-    <span class="ico">🏅</span>
-    <span class="badge">体育</span>
-    <span class="day">周一</span>
-  </div>
-  <div class="body">
-    <h3>多元运动（板球与羽毛球）</h3>
-    <div class="cat">体育</div>
-    <div class="desc">板球与羽毛球双项体验，在技能发展、团队精神与健康生活中快乐成长。</div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 4–14 人</span><span><b>语言</b> 中英双语</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#2f7d5c,#1f5c42)">
-    <span class="ico">🏅</span>
-    <span class="badge">体育</span>
-    <span class="day">周二</span>
-  </div>
-  <div class="body">
-    <h3>CISA 校队训练</h3>
-    <div class="cat">体育</div>
-    <div class="desc">CISA 校队训练：排球、篮球、足球等多项运动，强化团队协作、个人进步与竞技精神。</div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 不限</span><span><b>语言</b> 英语</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#2f7d5c,#1f5c42)">
-    <span class="ico">🏅</span>
-    <span class="badge">体育</span>
-    <span class="day">周二</span>
-  </div>
-  <div class="body">
-    <h3>游泳</h3>
-    <div class="cat">体育</div>
-    <div class="desc">泳姿学习与训练，解锁 71% 的水下世界，期末友谊赛见！</div>
-    <div class="meta"><span><b>对象</b> P7–IGCSE</span><span><b>人数</b> 2–6 人</span><span><b>语言</b> 中英双语</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#2f7d5c,#1f5c42)">
-    <span class="ico">🏅</span>
-    <span class="badge">体育</span>
-    <span class="day">周三</span>
-  </div>
-  <div class="body">
-    <h3>羽毛球</h3>
-    <div class="cat">体育</div>
-    <div class="desc">基础握拍与步法、对抗实战到学期友谊赛，练就身心与体育精神。</div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 4–8 人</span><span><b>语言</b> 中英双语</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#2f7d5c,#1f5c42)">
-    <span class="ico">🏅</span>
-    <span class="badge">体育</span>
-    <span class="day">周三</span>
-  </div>
-  <div class="body">
-    <h3>跑步俱乐部</h3>
-    <div class="cat">体育</div>
-    <div class="desc">更快、更强、更好：科学配速与间歇训练，最终与过去的自己赛跑。</div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 不限</span><span><b>语言</b> 英语</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#2f7d5c,#1f5c42)">
-    <span class="ico">🏅</span>
-    <span class="badge">体育</span>
-    <span class="day">周三</span>
-  </div>
-  <div class="body">
-    <h3>躲避球与三分球</h3>
-    <div class="cat">体育</div>
-    <div class="desc">躲避球与三分球大战，在欢笑中锻炼反应与准星。</div>
-    <div class="meta"><span><b>对象</b> P7–A2</span><span><b>人数</b> 6–10 人</span><span><b>语言</b> 英语</span></div>
+    <div class="hl"><span>原创产出 Original</span><span>公开演出 Showcase</span><span>录音体验 Recording</span></div>
+    <div class="meta"><span><b>对象</b> P7–A2</span><span><b>人数</b> 1–4 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Kirsten</span></div>
   </div>
 </div>
 </div>
 </section>
 <section class="pillar" id="leadership">
-  <div class="pillar-head"><span class="dot" style="background:linear-gradient(135deg,#b03a5b,#7d2640)"></span><h2>领导 D · 领导力与服务</h2><span class="en">Leadership & Service</span></div>
+  <div class="pillar-head"><span class="dot" style="background:linear-gradient(135deg,#f59e0b,#f97316)"></span><h2>领导力与服务</h2><span class="en">1 门课程</span></div>
   <div class="courses">
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#b03a5b,#7d2640)">
-    <span class="ico">🤝</span>
-    <span class="badge">商业</span>
+  <div class="poster" style="background:linear-gradient(135deg,#f59e0b,#f97316)">
+    <div class="deco"></div>
+    <span class="icon">📊</span>
     <span class="day">周一</span>
+    <h3>模拟数字经营沙盘</h3>
+    <div class="en">ABS Digital Business Simulation</div>
+    <span class="cat">商业</span>
   </div>
   <div class="body">
-    <h3>模拟数字经营沙盘</h3>
-    <div class="cat">商业</div>
     <div class="desc">由耶鲁创业者协会官方支持的模拟经营沙盘，覆盖供需、成本、现金流与竞争策略，受 Cognia 认证，并为阿思丹商赛蓄力。</div>
-    <div class="meta"><span><b>对象</b> P9–A2</span><span><b>人数</b> 12–20 人</span><span><b>语言</b> 中英双语</span></div>
+    <div class="hl"><span>项目式学习 Project-Based</span><span>团队协作 Teamwork</span><span>期末展演 Showcase</span></div>
+    <div class="meta"><span><b>对象</b> P9–A2</span><span><b>人数</b> 12–20 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Amy（校长）</span></div>
+  </div>
+</div>
+</div>
+</section>
+<section class="pillar" id="athletics">
+  <div class="pillar-head"><span class="dot" style="background:linear-gradient(135deg,#16a34a,#22c55e)"></span><h2>运动与健康</h2><span class="en">7 门课程</span></div>
+  <div class="courses">
+<div class="card">
+  <div class="poster" style="background:linear-gradient(135deg,#16a34a,#22c55e)">
+    <div class="deco"></div>
+    <span class="icon">🏐</span>
+    <span class="day">周一</span>
+    <h3>CISA 校队训练</h3>
+    <div class="en">CISA Sports Team Training</div>
+    <span class="cat">体育</span>
+  </div>
+  <div class="body">
+    <div class="desc">CISA 校队训练：排球、篮球、足球等多项运动，强化团队协作、个人进步与竞技精神。</div>
+    <div class="hl"><span>团队建设 Team Building</span><span>个人进步 Progress</span><span>竞技精神 Sportsmanship</span></div>
+    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 不限</span><span><b>语言</b> 英语 English</span><span><b>教师</b> Mr. Vuk, Mr. Joe &amp; Mr. Michael</span></div>
   </div>
 </div>
 <div class="card">
-  <div class="cover" style="background:linear-gradient(135deg,#b03a5b,#7d2640)">
-    <span class="ico">🤝</span>
-    <span class="badge">领导力 · 服务</span>
-    <span class="day">周三</span>
+  <div class="poster" style="background:linear-gradient(135deg,#059669,#10b981)">
+    <div class="deco"></div>
+    <span class="icon">🏏</span>
+    <span class="day">周一</span>
+    <h3>多元运动（板球与羽毛球）</h3>
+    <div class="en">Sport Fusion (Cricket &amp; Badminton)</div>
+    <span class="cat">体育</span>
   </div>
   <div class="body">
-    <h3>爱丁堡公爵奖</h3>
-    <div class="cat">领导力 · 服务</div>
-    <div class="desc">爱丁堡公爵奖：技能与体能、社区服务与远足探险。新成员冲刺铜奖，老成员冲击银奖。</div>
-    <div class="meta"><span><b>对象</b> P9 及以上</span><span><b>人数</b> 不限</span><span><b>语言</b> 英语</span></div>
+    <div class="desc">板球与羽毛球双项体验，在技能发展、团队精神与健康生活中快乐成长。</div>
+    <div class="hl"><span>技能发展 Skills</span><span>团队精神 Team Spirit</span><span>健康生活 Healthy Living</span></div>
+    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 4–14 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Dr. Raza &amp; Mr. Warren</span></div>
+  </div>
+</div>
+<div class="card">
+  <div class="poster" style="background:linear-gradient(135deg,#16a34a,#22c55e)">
+    <div class="deco"></div>
+    <span class="icon">🏀</span>
+    <span class="day">周二</span>
+    <h3>CISA 校队训练</h3>
+    <div class="en">CISA Sports Team Training</div>
+    <span class="cat">体育</span>
+  </div>
+  <div class="body">
+    <div class="desc">CISA 校队训练：排球、篮球、足球等多项运动，强化团队协作、个人进步与竞技精神。</div>
+    <div class="hl"><span>团队建设 Team Building</span><span>个人进步 Progress</span><span>竞技精神 Sportsmanship</span></div>
+    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 不限</span><span><b>语言</b> 英语 English</span><span><b>教师</b> Mr. Vuk, Mr. Joe &amp; Mr. Michael</span></div>
+  </div>
+</div>
+<div class="card">
+  <div class="poster" style="background:linear-gradient(135deg,#0284c7,#0ea5e9)">
+    <div class="deco"></div>
+    <span class="icon">🏊</span>
+    <span class="day">周二</span>
+    <h3>游泳</h3>
+    <div class="en">Swimming</div>
+    <span class="cat">体育</span>
+  </div>
+  <div class="body">
+    <div class="desc">泳姿学习与训练，解锁 71% 的水下世界，期末友谊赛见！</div>
+    <div class="hl"><span>泳姿学习 Strokes</span><span>团队协作 Teamwork</span><span>期末比赛 Competition</span></div>
+    <div class="meta"><span><b>对象</b> P7–IGCSE</span><span><b>人数</b> 2–6 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Chanel</span></div>
+  </div>
+</div>
+<div class="card">
+  <div class="poster" style="background:linear-gradient(135deg,#059669,#84cc16)">
+    <div class="deco"></div>
+    <span class="icon">🏸</span>
+    <span class="day">周三</span>
+    <h3>羽毛球</h3>
+    <div class="en">Badminton</div>
+    <span class="cat">体育</span>
+  </div>
+  <div class="body">
+    <div class="desc">基础握拍与步法、对抗实战到学期友谊赛，练就身心与体育精神。</div>
+    <div class="hl"><span>体育锻炼 Fitness</span><span>体育精神 Sportsmanship</span><span>对抗竞技 Competitive</span></div>
+    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 4–8 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Mr. Mark &amp; Ms. Nancy</span></div>
+  </div>
+</div>
+<div class="card">
+  <div class="poster" style="background:linear-gradient(135deg,#16a34a,#65a30d)">
+    <div class="deco"></div>
+    <span class="icon">🏃</span>
+    <span class="day">周三</span>
+    <h3>跑步俱乐部</h3>
+    <div class="en">Running ECA</div>
+    <span class="cat">体育</span>
+  </div>
+  <div class="body">
+    <div class="desc">更快、更强、更好：科学配速与间歇训练，最终与过去的自己赛跑。</div>
+    <div class="hl"><span>技巧训练 Technique</span><span>归属感 Belong</span><span>超越自我 Beat Your Past</span></div>
+    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 不限</span><span><b>语言</b> 英语 English</span><span><b>教师</b> Mr. Marko</span></div>
+  </div>
+</div>
+<div class="card">
+  <div class="poster" style="background:linear-gradient(135deg,#dc2626,#ea580c)">
+    <div class="deco"></div>
+    <span class="icon">🤾</span>
+    <span class="day">周三</span>
+    <h3>躲避球与三分球</h3>
+    <div class="en">Dodgeball &amp; 3-Point Shootout</div>
+    <span class="cat">体育</span>
+  </div>
+  <div class="body">
+    <div class="desc">躲避球与三分球大战，在欢笑中锻炼反应与准星。</div>
+    <div class="hl"><span>团队协作 Teamwork</span><span>反应 Reflexes</span><span>准星 Aim</span></div>
+    <div class="meta"><span><b>对象</b> P7–A2</span><span><b>人数</b> 6–10 人</span><span><b>语言</b> 英语 English</span><span><b>教师</b> Dr. Chris</span></div>
   </div>
 </div>
 </div>
 </section>
 </div>
-<footer><div class="t">成都康礼学校</div><div class="en">Cogdel School Chengdu · ECA</div></footer>
+<footer><div class="t">成都康礼学校</div><div class="en">Cogdel School Chengdu · ECA Catalogue</div></footer>
 </body>
 </html>
