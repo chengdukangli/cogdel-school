@@ -1,681 +1,2311 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>COGDEL ECA · 中学部课外课程 | Cogdel ECA Catalogue</title>
-<style>
-  :root{--purple:#5A3580;--purple-dark:#43265f;--purple-deep:#2e1a44;--gold:#c9a84c;--gold-light:#e6cf8f;--gold-deep:#a8892f;--bg:#f7f4ef;--card:#fff;--ink:#2b2333;--inc-soft:#6b6475;--line:rgba(90,53,128,.14);}
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
-  .wrap{max-width:1280px;margin:0 auto;padding:0 26px 90px;}
-  header.hero{background:linear-gradient(135deg,var(--purple-deep),var(--purple) 52%,var(--purple-dark));color:#fff;padding:56px 26px 48px;text-align:center;position:relative;overflow:hidden;margin-bottom:44px;}
-  header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 84% 16%,rgba(201,168,76,.45),transparent 42%),radial-gradient(circle at 10% 88%,rgba(230,207,143,.25),transparent 42%);}
-  .hero-inner{position:relative;z-index:2;max-width:860px;margin:0 auto;}
-  .hero .crest{width:56px;height:56px;margin:0 auto 16px;border-radius:14px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--purple-deep);font-weight:800;font-size:26px;line-height:56px;box-shadow:0 6px 18px rgba(0,0,0,.25);}
-  .hero h1{font-size:clamp(28px,4.2vw,42px);font-weight:800;letter-spacing:1.5px;}
-  .hero .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-light);font-size:16px;margin-top:12px;}
-  .hero .slogan{display:inline-block;margin-top:20px;padding:8px 24px;border:1px solid rgba(230,207,143,.6);border-radius:60px;font-size:13.5px;color:#f7efd8;}
-  nav.camp{display:flex;justify-content:center;gap:12px;margin:-24px auto 44px;position:relative;z-index:5;}
-  nav.camp a{padding:9px 22px;border-radius:40px;font-size:14px;font-weight:700;text-decoration:none;}
-  nav.camp a.primary{background:var(--purple);color:#fff;}
-  nav.camp a.middle{background:#fff;color:var(--purple);border:1px solid var(--line);}
-  .pillar{margin:0 0 42px;scroll-margin-top:70px;}
-  .pillar-head{display:flex;align-items:center;gap:14px;margin-bottom:22px;border-bottom:2px solid var(--purple);padding-bottom:12px;}
-  .pillar-head .dot{width:14px;height:14px;border-radius:4px;flex:none;}
-  .pillar-head h2{font-size:24px;color:var(--purple);font-weight:800;letter-spacing:.5px;}
-  .pillar-head .en{font-family:Georgia,serif;font-style:italic;color:var(--inc-soft);font-size:14px;margin-left:auto;}
-  .courses{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 8px 26px rgba(90,53,128,.07);display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s;}
-  .card:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(90,53,128,.16);}
-  /* 海报区：每门课专属渐变 */
-  .poster{position:relative;color:#fff;padding:22px 20px 26px;min-height:150px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;}
-  .poster .deco{position:absolute;inset:0;opacity:.3;background:radial-gradient(circle at 85% 18%,rgba(255,255,255,.5),transparent 42%),radial-gradient(circle at 12% 88%,rgba(0,0,0,.2),transparent 40%);}
-  .poster .icon{position:absolute;right:16px;top:16px;font-size:52px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.25));opacity:.95;}
-  .poster .day{position:relative;font-size:12px;padding:3px 12px;border-radius:14px;background:rgba(255,255,255,.22);display:inline-block;width:max-content;letter-spacing:1px;}
-  .poster h3{position:relative;font-size:20px;font-weight:800;line-height:1.3;margin-top:10px;text-shadow:0 2px 8px rgba(0,0,0,.25);}
-  .poster .en{position:relative;font-family:Georgia,serif;font-style:italic;font-size:12px;opacity:.85;margin-top:4px;}
-  .poster .cat{position:relative;font-size:12px;margin-top:8px;background:rgba(0,0,0,.16);padding:3px 12px;border-radius:14px;display:inline-block;width:max-content;}
-  .body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1;}
-  .body .desc{font-size:13.5px;color:var(--inc-soft);line-height:1.7;flex:1;}
-  .body .hl{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;}
-  .body .hl span{font-size:11.5px;color:var(--purple);background:rgba(90,53,128,.08);border:1px solid rgba(90,53,128,.14);padding:4px 11px;border-radius:14px;}
-  .body .meta{display:flex;gap:12px;margin-top:14px;font-size:12px;color:var(--inc-soft);border-top:1px solid var(--line);padding-top:12px;flex-wrap:wrap;}
-  .body .meta span b{color:var(--purple);font-weight:700;}
-  footer{background:var(--purple-deep);color:#dfd7e8;text-align:center;padding:36px 26px;}
-  footer .t{font-weight:700;color:#fff;font-size:15px;}
-  footer .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-light);font-size:12.5px;margin-top:5px;}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Cogdel Chengdu · ECA Fair 2026 选课平台</title>
+  <meta name="description" content="成都康礼学校中学部 ECA 课外课程选课平台：周一/周二/周三各选一门，家长可浏览全部课程。Cogdel School Chengdu ECA Fair 2026." />
+
+  <!-- WeChat / social share card -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Cogdel Chengdu ECA Fair 2026" />
+  <meta property="og:title" content="成都康礼学校 · ECA 选课平台 2026" />
+  <meta property="og:description" content="你的选择，至关重要。周一 / 周二 / 周三各选一门心仪的课外课程。Your Choice Matters." />
+  <meta property="og:image" content="http://118.24.139.114/poster.png" />
+  <meta property="og:url" content="http://118.24.139.114/" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  <style>
+/* ============================================================
+   Cogdel Chengdu · ECA Fair 2026 — Styles
+   Theme: warm bookstore / library shelf
+   ============================================================ */
+
+:root {
+  --bg: #f6efe4;
+  --bg-2: #efe4d0;
+  --ink: #3b2f24;
+  --ink-soft: #6b5a47;
+  --paper: #fffdf8;
+  --wood: #a9743f;
+  --wood-dark: #8a5a2e;
+  --wood-light: #c6905a;
+  --gold: #c9972f;
+  --gold-light: #e7c66a;
+  --shadow: 0 10px 30px rgba(70, 45, 20, .18);
+  --shadow-sm: 0 4px 14px rgba(70, 45, 20, .14);
+  --radius: 16px;
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC",
+          "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font);
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 500px at 50% -100px, rgba(231,198,106,.25), transparent 60%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app { max-width: 1280px; margin: 0 auto; padding: 0 18px 140px; }
+
+/* ---------- Top bar ---------- */
+.topbar {
+  position: sticky; top: 0; z-index: 40;
+  background: rgba(246,239,228,.82);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(120,85,40,.14);
+}
+.topbar-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 1280px; margin: 0 auto; padding: 12px 18px;
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-mark {
+  font-size: 30px; line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.15));
+}
+.brand-title { font-weight: 800; font-size: 17px; letter-spacing: .2px; }
+.brand-sub { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
+.lang-btn {
+  border: 1px solid var(--wood); color: var(--wood-dark);
+  background: var(--paper); padding: 8px 14px; border-radius: 999px;
+  font-weight: 700; font-size: 13px; cursor: pointer;
+  transition: all .2s;
+}
+.lang-btn:hover { background: var(--wood); color: #fff; }
+
+/* mode toggle (student / parent) */
+.topbar-actions { display: flex; align-items: center; gap: 10px; }
+.mode-toggle {
+  display: flex; background: #f0e6d4; border-radius: 999px; padding: 3px;
+  border: 1px solid rgba(120,85,40,.18);
+}
+.mode-btn {
+  border: none; background: transparent; padding: 7px 14px; border-radius: 999px;
+  font-weight: 800; font-size: 13px; cursor: pointer; color: var(--ink-soft);
+  font-family: var(--font); transition: all .2s; white-space: nowrap;
+}
+.mode-btn.active { background: var(--wood); color: #fff; box-shadow: var(--shadow-sm); }
+
+/* parent browse banner */
+.parent-banner {
+  display: flex; align-items: center; gap: 10px; justify-content: center;
+  margin: 18px auto 0; max-width: 720px;
+  background: #fff3d6; border: 1px solid var(--gold-light); border-radius: 14px;
+  padding: 12px 18px; font-size: 14px; font-weight: 700; color: #7a5a1e;
+}
+.parent-banner-icon { font-size: 20px; }
+.parent-hint { font-size: 13.5px; color: #7a5a1e; line-height: 1.6; }
+
+body.parent-mode .app { padding-bottom: 60px; }
+body.parent-mode .hero-sub { max-width: 620px; }
+
+/* ---------- Hero ---------- */
+.hero { padding: 34px 0 10px; text-align: center; }
+.hero-title {
+  margin: 0; font-size: clamp(30px, 5.4vw, 52px); font-weight: 900;
+  line-height: 1.05; letter-spacing: .5px;
+  background: linear-gradient(120deg, #8a5a2e 0%, #c9972f 45%, #b45309 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero-title-zh { display: block; }
+.hero-title-en {
+  display: block; font-size: .55em; letter-spacing: 3px; margin-top: 6px;
+  text-transform: uppercase;
+  background: linear-gradient(120deg, #6b5a47, #9a7b52);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero-sub { margin: 16px auto 0; max-width: 560px; font-size: 15px; color: var(--ink-soft); }
+.hero-sub .hl { color: #b45309; font-weight: 800; }
+
+/* ---------- Pillars ---------- */
+.pillars {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+  margin-top: 22px;
+}
+.pillar {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 16px; border-radius: 999px;
+  background: var(--paper); border: 1px solid rgba(120,85,40,.18);
+  box-shadow: var(--shadow-sm); font-weight: 700; font-size: 13.5px;
+}
+.pillar .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+/* ---------- Identity ---------- */
+.identity {
+  margin: 22px 0 4px; display: flex; justify-content: center;
+}
+.identity-inner {
+  width: min(760px, 100%);
+  background: var(--paper); border: 1px solid rgba(120,85,40,.18);
+  border-radius: 18px; padding: 16px 18px; box-shadow: var(--shadow-sm);
+}
+.identity-head { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 15px; margin-bottom: 12px; }
+.identity-icon { font-size: 20px; }
+.identity-fields { display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: 10px; }
+.identity-fields input, .identity-fields select {
+  border: 1.5px solid rgba(120,85,40,.22); border-radius: 12px;
+  padding: 11px 14px; font-size: 15px; font-family: var(--font);
+  background: #fffdf8; color: var(--ink); outline: none; width: 100%;
+  transition: border-color .15s, box-shadow .15s;
+}
+.identity-fields input:focus, .identity-fields select:focus {
+  border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,151,47,.18);
+}
+.identity-fields input::placeholder { color: #b8a78d; }
+.identity-fields select { appearance: auto; cursor: pointer; }
+.identity-fields select:invalid { color: #b8a78d; }
+.identity-hint { display: block; font-size: 12px; color: var(--ink-soft); margin-top: 10px; }
+
+/* ---------- Shelves ---------- */
+.shelves { margin-top: 30px; }
+
+.shelf { position: relative; margin-bottom: 46px; }
+
+.shelf-header {
+  display: flex; align-items: center; gap: 14px; margin: 0 6px 16px;
+}
+.shelf-badge {
+  width: 54px; height: 54px; border-radius: 14px; display: grid; place-items: center;
+  color: #fff; font-weight: 900; font-size: 18px; box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+.shelf-badge small { display: block; font-size: 9px; font-weight: 700; letter-spacing: 1px; opacity: .9; }
+.shelf-title { margin: 0; font-size: 26px; font-weight: 900; letter-spacing: .3px; }
+.shelf-title-en {
+  display: block; font-size: 12px; font-weight: 700; color: var(--ink-soft);
+  letter-spacing: 3px; text-transform: uppercase; margin-top: 2px;
+}
+.shelf-count { margin-left: auto; font-size: 13px; color: var(--ink-soft); font-weight: 700; }
+
+/* The wooden shelf itself */
+.shelf-books {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(158px, 1fr));
+  gap: 22px 18px;
+  padding: 34px 18px 24px;
+  border-radius: 18px;
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(120,70,30,.10), rgba(120,70,30,.04) 70%),
+    var(--paper);
+  border: 1px solid rgba(120,85,40,.14);
+  box-shadow: var(--shadow-sm);
+}
+.shelf-books::after { /* shelf board */
+  content: "";
+  position: absolute; left: -6px; right: -6px; bottom: -16px; height: 18px;
+  background: linear-gradient(180deg, var(--wood) 0%, var(--wood-dark) 100%);
+  border-radius: 8px;
+  box-shadow: 0 6px 14px rgba(70,40,12,.4);
+}
+.shelf-books::before { /* subtle inner glow */
+  content: "";
+  position: absolute; inset: 0; border-radius: 18px; pointer-events: none;
+  background: radial-gradient(120% 60% at 50% 0%, rgba(255,255,255,.5), transparent 60%);
+}
+
+/* ---------- Book / poster card ---------- */
+.book {
+  position: relative; cursor: pointer; border: none; background: none; padding: 0;
+  text-align: left; font: inherit; color: inherit;
+  -webkit-appearance: none; appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform .25s cubic-bezier(.2,.8,.3,1.2);
+  transform-origin: bottom center;
+}
+.book:hover { transform: translateY(-14px) rotate(-1deg) scale(1.03); z-index: 5; }
+.book:active { transform: translateY(-4px) scale(.99); }
+
+.book-cover {
+  width: 100%; aspect-ratio: 5 / 7; border-radius: 10px 12px 12px 10px;
+  box-shadow: 0 10px 22px rgba(40,22,6,.28), inset 0 0 0 1px rgba(255,255,255,.14);
+  overflow: hidden; position: relative; display: block;
+  transition: box-shadow .25s;
+}
+.book:hover .book-cover { box-shadow: 0 20px 40px rgba(40,22,6,.38), inset 0 0 0 1px rgba(255,255,255,.16); }
+
+/* book spine (left edge) */
+.book-cover::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 7px;
+  background: linear-gradient(90deg, rgba(0,0,0,.35), rgba(0,0,0,.06));
+  border-radius: 6px 0 0 6px; z-index: 3;
+}
+
+.book-name {
+  margin-top: 10px; font-weight: 800; font-size: 14px; line-height: 1.25;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.book-teacher { margin-top: 3px; font-size: 12px; color: var(--ink-soft); }
+
+/* ---------- Cart (selection bar) ---------- */
+.cart {
+  position: fixed; left: 50%; transform: translateX(-50%);
+  bottom: 14px; z-index: 50;
+  width: min(880px, calc(100vw - 24px));
+  background: rgba(255,253,248,.96); backdrop-filter: blur(10px);
+  border: 1px solid rgba(120,85,40,.22); border-radius: 20px;
+  box-shadow: 0 14px 44px rgba(60,35,12,.32);
+  padding: 14px 16px 16px;
+}
+.cart-head {
+  display: flex; align-items: center; gap: 8px; font-weight: 900; font-size: 15px;
+}
+.cart-icon { font-size: 20px; }
+.cart-count { margin-left: auto; font-weight: 800; color: var(--wood-dark); font-size: 13px; }
+.cart-slots { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+.cart-slot {
+  flex: 1 1 120px; min-width: 120px; border-radius: 12px; padding: 9px 10px;
+  border: 2px dashed rgba(120,85,40,.28); background: #faf4e9;
+  display: flex; flex-direction: column; gap: 3px;
+}
+.cart-slot .slot-day { font-size: 11px; font-weight: 800; color: var(--wood-dark); }
+.cart-slot.filled { border-style: solid; border-color: var(--gold); background: #fff7e3; }
+.cart-slot .slot-name { font-size: 13px; font-weight: 800; line-height: 1.2; }
+.cart-slot .slot-remove { align-self: flex-start; font-size: 11px; color: #b45309; cursor: pointer; margin-top: 2px; }
+.cart-slot .slot-empty { font-size: 12px; color: #b8a78d; }
+.cart-submit {
+  width: 100%; margin-top: 12px; padding: 13px; border: none; cursor: pointer;
+  border-radius: 13px; font-size: 16px; font-weight: 900; letter-spacing: 1px;
+  color: #fff; background: linear-gradient(120deg, var(--gold), #b45309);
+  box-shadow: var(--shadow-sm); transition: all .2s;
+}
+.cart-submit:disabled { background: #d8cbb6; color: #9a8a72; cursor: not-allowed; box-shadow: none; }
+.cart-submit:not(:disabled):hover { filter: brightness(1.06); transform: translateY(-1px); }
+.cart-msg { margin-top: 8px; font-size: 12.5px; text-align: center; min-height: 16px; color: var(--ink-soft); }
+
+/* ---------- Modal ---------- */
+.modal-backdrop {
+  position: fixed; inset: 0; z-index: 90;
+  background: rgba(40,24,8,.55); backdrop-filter: blur(4px);
+  display: grid; place-items: center; padding: 18px;
+  animation: fade .2s ease;
+}
+.modal-backdrop[hidden] { display: none; }
+.modal {
+  position: relative; width: min(880px, 100%); max-height: 92vh; overflow: auto;
+  background: var(--paper); border-radius: 22px; box-shadow: 0 30px 80px rgba(30,16,4,.5);
+  animation: pop .25s cubic-bezier(.2,.9,.3,1.2);
+}
+.modal-close {
+  position: absolute; top: 14px; right: 14px; z-index: 5;
+  width: 38px; height: 38px; border-radius: 50%; border: none; cursor: pointer;
+  background: rgba(0,0,0,.55); color: #fff; font-size: 16px;
+}
+.modal-close:hover { background: rgba(0,0,0,.75); }
+
+.modal-body { display: grid; grid-template-columns: 300px 1fr; }
+@media (max-width: 640px) { .modal-body { grid-template-columns: 1fr; } }
+
+.modal-poster {
+  background: linear-gradient(160deg, #3b2f24, #5b4632);
+  display: flex; align-items: center; justify-content: center; padding: 34px 26px;
+  border-radius: 22px 0 0 22px;
+}
+.modal-poster .poster { width: 220px; }
+@media (max-width: 640px) {
+  .modal-poster { border-radius: 22px 22px 0 0; padding: 22px; }
+  .modal-poster .poster { width: 170px; }
+}
+
+.modal-info { padding: 30px 30px 26px; }
+.modal-cat {
+  display: inline-flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;
+}
+.tag {
+  font-size: 12px; font-weight: 800; padding: 4px 11px; border-radius: 999px;
+  background: #f3e9d6; color: var(--wood-dark);
+}
+.tag.pillar { color: #fff; }
+.modal-title { margin: 0 0 4px; font-size: 26px; font-weight: 900; line-height: 1.2; }
+.modal-title-en { margin: 0 0 14px; font-size: 15px; color: var(--ink-soft); font-weight: 700; letter-spacing: .5px; }
+.modal-teacher { font-size: 15px; font-weight: 700; margin-bottom: 14px; }
+.modal-teacher .t-label { color: var(--ink-soft); font-weight: 600; margin-right: 6px; }
+
+.modal-desc { font-size: 15px; line-height: 1.75; color: #4b3c2b; margin: 0 0 18px; }
+
+.modal-meta {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; margin-bottom: 18px;
+  font-size: 13.5px;
+}
+.meta-item { display: flex; gap: 8px; }
+.meta-item b { color: var(--wood-dark); white-space: nowrap; }
+.meta-item span { color: #4b3c2b; }
+
+.modal-hl-title { font-size: 13px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; color: var(--wood-dark); margin: 0 0 8px; }
+.modal-hl { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.modal-hl .chip {
+  background: #f3e9d6; border-radius: 999px; padding: 6px 13px; font-size: 13px; font-weight: 700;
+}
+.modal-note {
+  background: #fff3d6; border-left: 4px solid var(--gold); padding: 10px 14px;
+  border-radius: 8px; font-size: 13px; color: #7a5a1e; margin-bottom: 20px;
+}
+
+.modal-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  border: none; cursor: pointer; border-radius: 12px; padding: 13px 22px;
+  font-size: 15px; font-weight: 900; letter-spacing: .5px; font-family: var(--font);
+  transition: all .2s;
+}
+.btn-primary { background: linear-gradient(120deg, var(--gold), #b45309); color: #fff; box-shadow: var(--shadow-sm); }
+.btn-primary:hover { filter: brightness(1.06); transform: translateY(-1px); }
+.btn-primary.selected { background: #16a34a; }
+.btn-ghost { background: #f3e9d6; color: var(--ink); }
+.btn-ghost:hover { background: #eadfca; }
+
+/* ---------- Poster (SVG-generated) ---------- */
+.poster svg { display: block; width: 100%; height: auto; border-radius: 10px 12px 12px 10px; }
+
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 120;
+  background: #3b2f24; color: #fff; padding: 12px 22px; border-radius: 999px;
+  font-weight: 800; font-size: 14px; box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  animation: pop .25s cubic-bezier(.2,.9,.3,1.4);
+}
+.toast[hidden] { display: none; }
+
+/* ---------- Confetti ---------- */
+.confetti { position: fixed; inset: 0; pointer-events: none; z-index: 200; }
+
+/* ---------- Animations ---------- */
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pop { from { opacity: 0; transform: translateY(18px) scale(.97); } to { opacity: 1; transform: none; } }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .app { padding: 0 12px 150px; }
+  .shelf-books { grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); gap: 18px 12px; padding: 28px 12px 20px; }
+  .brand-sub { display: none; }
+  .identity-inner { border-radius: 18px; width: 100%; }
+  .identity-fields { grid-template-columns: 1fr; }
+  .topbar-inner { flex-wrap: wrap; gap: 8px; }
+  .topbar-actions { width: 100%; justify-content: flex-end; }
+  .mode-btn { padding: 6px 11px; font-size: 12px; }
+}
+
 </style>
 </head>
 <body>
-<header class="hero"><div class="hero-inner">
-  <div class="crest">C</div>
-  <h1>COGDEL · ECA 课外课程</h1>
-  <div class="en">Cogdel School Chengdu · Enrichment &amp; Co-Curricular</div>
-  <div class="slogan">中学部 · 紫 #5A3580 · 金 #C9A84C</div>
-</div></header>
-<div class="wrap">
-<section class="pillar" id="academic">
-  <div class="pillar-head"><span class="dot" style="background:linear-gradient(135deg,#2563eb,#06b6d4)"></span><h2>学术与创新</h2><span class="en">15 门课程</span></div>
-  <div class="courses">
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#2563eb,#06b6d4)">
-    <div class="deco"></div>
-    <span class="icon">💻</span>
-    <span class="day">周一</span>
-    <h3>A-Level 计算机科学辅导</h3>
-    <div class="en">A-Level Computer Science Support</div>
-    <span class="cat">计算机科学</span>
-  </div>
-  <div class="body">
-    <div class="desc">针对 AS / A-Level 计算机科学的专项辅导，夯实基础技能、综合运用与应试技巧，通过面对面小班答疑，助你自信面对大考。</div>
-    <div class="hl"><span>夯实基础 Core Skills</span><span>综合技能 Comprehensive</span><span>面对面辅导 Face to Face</span></div>
-    <div class="meta"><span><b>对象</b> AS 学生</span><span><b>人数</b> 1–4 人</span><span><b>语言</b> 英语 English</span><span><b>教师</b> Mr. Jeffy</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#0d9488,#14b8a6)">
-    <div class="deco"></div>
-    <span class="icon">📖</span>
-    <span class="day">周一</span>
-    <h3>英语补习</h3>
-    <div class="en">English Tutorial</div>
-    <span class="cat">语言强化</span>
-  </div>
-  <div class="body">
-    <div class="desc">英文基础补习与课堂内容查漏补缺，小班化语言强化，让英语不再成为学习的障碍。</div>
-    <div class="hl"><span>基础补习 Foundation</span><span>查漏补缺 Gap-filling</span><span>小班强化 Small Group</span></div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 5 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Sue &amp; Ms. Echo</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6)">
-    <div class="deco"></div>
-    <span class="icon">➗</span>
-    <span class="day">周二</span>
-    <h3>A-Level 数学辅导</h3>
-    <div class="en">A-Level Maths Support</div>
-    <span class="cat">数学</span>
-  </div>
-  <div class="body">
-    <div class="desc">A-Level 数学专项辅导：破解高难考题、提升解题自信，往届 70% 学员取得 A*–A 的优异成绩。</div>
-    <div class="hl"><span>成绩提升 Grade Impact</span><span>自信培养 Confidence</span><span>未来优势 Future Benefits</span></div>
-    <div class="meta"><span><b>对象</b> IGCSE–A2</span><span><b>人数</b> 1–5 人</span><span><b>语言</b> 英语 English</span><span><b>教师</b> Dr. Chris</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#0f766e,#0d9488)">
-    <div class="deco"></div>
-    <span class="icon">⚗️</span>
-    <span class="day">周二</span>
-    <h3>化学补习</h3>
-    <div class="en">Chemistry Tutorial</div>
-    <span class="cat">化学</span>
-  </div>
-  <div class="body">
-    <div class="desc">化学补习：从模拟到真题演练，为你的外部大考保驾护航。</div>
-    <div class="hl"><span>模拟考试 Mock</span><span>真题演练 Exam Practice</span><span>大考准备 Exam Ready</span></div>
-    <div class="meta"><span><b>对象</b> IG / AS</span><span><b>人数</b> 2–6 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Nancy</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#1e3a8a,#3730a3)">
-    <div class="deco"></div>
-    <span class="icon">🔭</span>
-    <span class="day">周二</span>
-    <h3>天文社团</h3>
-    <div class="en">Basic Astronomy</div>
-    <span class="cat">自然科学</span>
-  </div>
-  <div class="body">
-    <div class="desc">从裸眼观星到天体物理，系统学习宇宙大尺度结构与系外行星，并备战天文竞赛。</div>
-    <div class="hl"><span>系统知识 Systematic</span><span>观星活动 Stargazing</span><span>竞赛准备 Competition</span></div>
-    <div class="meta"><span><b>对象</b> P8–AS</span><span><b>人数</b> 1–10 人</span><span><b>语言</b> 双语 Bilingual</span><span><b>教师</b> Mr. Stone</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#b45309,#f59e0b)">
-    <div class="deco"></div>
-    <span class="icon">🎬</span>
-    <span class="day">周二</span>
-    <h3>EconX 经济学实战</h3>
-    <div class="en">EconX · Real-World Economics</div>
-    <span class="cat">人文社科</span>
-  </div>
-  <div class="body">
-    <div class="desc">通过电影、商业模拟和嘉宾讲座，探索课堂之外的真实经济学。</div>
-    <div class="hl"><span>电影经济学 Cinema</span><span>模拟交易 Simulation</span><span>嘉宾讲坛 Guest Speakers</span></div>
-    <div class="meta"><span><b>对象</b> IG–A2</span><span><b>人数</b> 2–15 人</span><span><b>语言</b> 英语 English</span><span><b>教师</b> Dr. Raza</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#4338ca,#6366f1)">
-    <div class="deco"></div>
-    <span class="icon">🖨️</span>
-    <span class="day">周二</span>
-    <h3>3D 打印与设计思维</h3>
-    <div class="en">Intro to 3D Printing &amp; Design Thinking</div>
-    <span class="cat">创新创业</span>
-  </div>
-  <div class="body">
-    <div class="desc">学习设计思维与 3D 打印基础，历经理解问题、头脑风暴到原型测试，做出真实的创造。</div>
-    <div class="hl"><span>项目式学习 Project-Based</span><span>团队协作 Teamwork</span><span>期末展演 Showcase</span></div>
-    <div class="meta"><span><b>对象</b> P7–IG</span><span><b>人数</b> 3–6 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Mr. Jeff &amp; Dr. Allen</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#b45309,#d97706)">
-    <div class="deco"></div>
-    <span class="icon">💰</span>
-    <span class="day">周二</span>
-    <h3>投资基础</h3>
-    <div class="en">Investment Foundation</div>
-    <span class="cat">金融</span>
-  </div>
-  <div class="body">
-    <div class="desc">基于《The Little Book of Valuation》与《Venture Capital Strategy》的案例教学，掌握公司估值与风险投资判断。</div>
-    <div class="hl"><span>项目式学习 Project-Based</span><span>团队协作 Teamwork</span><span>期末展演 Showcase</span></div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 12–20 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Amy（校长）</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#15803d,#16a34a)">
-    <div class="deco"></div>
-    <span class="icon">🧪</span>
-    <span class="day">周二</span>
-    <h3>化学竞赛社</h3>
-    <div class="en">Chemistry Competition Club</div>
-    <span class="cat">化学 · 竞赛</span>
-  </div>
-  <div class="body">
-    <div class="desc">为 C3L6 化学竞赛备赛：从系统学习、实战体验到正式竞赛。</div>
-    <div class="hl"><span>知识学习 Study</span><span>团队协作 Teamwork</span><span>期末比赛 Competition</span></div>
-    <div class="meta"><span><b>对象</b> IG</span><span><b>人数</b> 2–4 人</span><span><b>语言</b> 双语 Bilingual</span><span><b>教师</b> Ms. Sherry</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#312e81,#4f46e5)">
-    <div class="deco"></div>
-    <span class="icon">💡</span>
-    <span class="day">周三</span>
-    <h3>雪城大学设计思维课</h3>
-    <div class="en">Syracuse University · Design Thinking</div>
-    <span class="cat">创新创业</span>
-  </div>
-  <div class="body">
-    <div class="desc">雪城大学官方设计思维课程，从共情到原型，一年可获 3 个大学学分。</div>
-    <div class="hl"><span>项目式学习 Project-Based</span><span>团队协作 Teamwork</span><span>大学学分 College Credit</span></div>
-    <div class="meta"><span><b>对象</b> AS–A2（仅 IAL）</span><span><b>人数</b> 1–6 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Dr. Allen</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#166534,#15803d)">
-    <div class="deco"></div>
-    <span class="icon">🧬</span>
-    <span class="day">周三</span>
-    <h3>生物补习</h3>
-    <div class="en">Biology Support</div>
-    <span class="cat">生物</span>
-  </div>
-  <div class="body">
-    <div class="desc">生物补习，课堂内容查漏补缺，夯实 P7–IG 生物基础。</div>
-    <div class="hl"><span>查漏补缺 Gap-filling</span><span>基础夯实 Foundation</span></div>
-    <div class="meta"><span><b>对象</b> P7–IG</span><span><b>人数</b> 5 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Beth</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#b45309,#f59e0b)">
-    <div class="deco"></div>
-    <span class="icon">📈</span>
-    <span class="day">周三</span>
-    <h3>NEC 全美经济学竞赛备赛</h3>
-    <div class="en">NEC Competition Tutorial</div>
-    <span class="cat">经济 · 竞赛</span>
-  </div>
-  <div class="body">
-    <div class="desc">全美经济学竞赛备赛：知识学习、实战体验到正式竞赛。</div>
-    <div class="hl"><span>知识学习 Study</span><span>团队协作 Teamwork</span><span>期末比赛 Competition</span></div>
-    <div class="meta"><span><b>对象</b> IG / AS</span><span><b>人数</b> 4–12 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Chanel</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#15803d,#16a34a)">
-    <div class="deco"></div>
-    <span class="icon">🧪</span>
-    <span class="day">周三</span>
-    <h3>化学竞赛社</h3>
-    <div class="en">Chemistry Competition Club</div>
-    <span class="cat">化学 · 竞赛</span>
-  </div>
-  <div class="body">
-    <div class="desc">为 C3L6 化学竞赛备赛：从系统学习、实战体验到正式竞赛。</div>
-    <div class="hl"><span>知识学习 Study</span><span>团队协作 Teamwork</span><span>期末比赛 Competition</span></div>
-    <div class="meta"><span><b>对象</b> IG</span><span><b>人数</b> 2–4 人</span><span><b>语言</b> 双语 Bilingual</span><span><b>教师</b> Ms. Sherry</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#0ea5e9,#6366f1)">
-    <div class="deco"></div>
-    <span class="icon">🤖</span>
-    <span class="day">周三</span>
-    <h3>AI 共创实验室</h3>
-    <div class="en">AI Co-creator Lab</div>
-    <span class="cat">人工智能 · 创新</span>
-  </div>
-  <div class="body">
-    <div class="desc">与 AI 一起共创：学习提示工程与生成式 AI 工具，把灵感变成可展示的作品。</div>
-    <div class="hl"><span>提示工程 Prompt Engineering</span><span>生成式工具 GenAI Tools</span><span>作品产出 Showcase</span></div>
-    <div class="meta"><span><b>对象</b> P9–A2</span><span><b>人数</b> 12–20 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Amy（校长）</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#1d4ed8,#4f46e5)">
-    <div class="deco"></div>
-    <span class="icon">🧮</span>
-    <span class="day">周三</span>
-    <h3>AMC 10/12 数学竞赛备赛</h3>
-    <div class="en">AMC 10/12 &amp; Maths Tutorial</div>
-    <span class="cat">数学 · 竞赛</span>
-  </div>
-  <div class="body">
-    <div class="desc">AMC 10/12 数学竞赛备赛：知识学习、实战体验到正式竞赛。</div>
-    <div class="hl"><span>知识学习 Study</span><span>团队协作 Teamwork</span><span>期末比赛 Competition</span></div>
-    <div class="meta"><span><b>对象</b> IG / AS</span><span><b>人数</b> 4–12 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Dr. He</span></div>
-  </div>
-</div>
-</div>
-</section>
-<section class="pillar" id="creative">
-  <div class="pillar-head"><span class="dot" style="background:linear-gradient(135deg,#ec4899,#f43f5e)"></span><h2>创意与文化</h2><span class="en">17 门课程</span></div>
-  <div class="courses">
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#ec4899,#f43f5e)">
-    <div class="deco"></div>
-    <span class="icon">🎨</span>
-    <span class="day">周一</span>
-    <h3>艺术·作品集</h3>
-    <div class="en">Art Portfolio</div>
-    <span class="cat">艺术与设计</span>
-  </div>
-  <div class="body">
-    <div class="desc">为外部大考量身打造作品集，提供一对一的额外指导，让每位同学都能交出一份真正代表自己的艺术答卷。</div>
-    <div class="hl"><span>作品集指导 Portfolio</span><span>个性化支持 Tailored</span><span>大考准备 Exam Ready</span></div>
-    <div class="meta"><span><b>对象</b> IG–A2</span><span><b>人数</b> 2–15 人</span><span><b>语言</b> 英语 / 中文</span><span><b>教师</b> Ms. Wendy</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#f97316,#fbbf24)">
-    <div class="deco"></div>
-    <span class="icon">🧱</span>
-    <span class="day">周一</span>
-    <h3>乐高创想社</h3>
-    <div class="en">Lego Creation Club</div>
-    <span class="cat">创意建构</span>
-  </div>
-  <div class="body">
-    <div class="desc">用乐高搭建你的想象，从基础结构到主题挑战，在合作与期末展演中释放创造力。</div>
-    <div class="hl"><span>项目式学习 Project-Based</span><span>团队协作 Teamwork</span><span>期末展演 Showcase</span></div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 5–8 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Beth</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#7c3aed,#a855f7)">
-    <div class="deco"></div>
-    <span class="icon">🎸</span>
-    <span class="day">周一</span>
-    <h3>学校乐队</h3>
-    <div class="en">School Band</div>
-    <span class="cat">音乐</span>
-  </div>
-  <div class="body">
-    <div class="desc">学校乐队：学习并排练翻唱曲目，提升演奏技巧，为校园活动登台演出。</div>
-    <div class="hl"><span>团队协作 Teamwork</span><span>舞台演出 Performance</span><span>技能提升 Skills</span></div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 不限</span><span><b>语言</b> 英语 English</span><span><b>教师</b> Mr. Marko</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#b45309,#d97706)">
-    <div class="deco"></div>
-    <span class="icon">🐢</span>
-    <span class="day">周一</span>
-    <h3>甲骨文拓片识读</h3>
-    <div class="en">Oracle Bone Inscription Reading</div>
-    <span class="cat">人文 · 汉字</span>
-  </div>
-  <div class="body">
-    <div class="desc">每节课一块甲骨拓片，弄清每个符号是什么字，探寻造字本义，再亲手刻一刻甲骨文。</div>
-    <div class="hl"><span>拓片识读 Rubbing Reading</span><span>造字探源 Origins</span><span>亲手刻字 Hands-on Carving</span></div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 不限</span><span><b>语言</b> 中文 Chinese</span><span><b>教师</b> Mr. Aphelios</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#334155,#64748b)">
-    <div class="deco"></div>
-    <span class="icon">🕵️</span>
-    <span class="day">周一</span>
-    <h3>侦探文学探索之旅</h3>
-    <div class="en">Exploration Journey of Detective Literature</div>
-    <span class="cat">人文 · 文学</span>
-  </div>
-  <div class="body">
-    <div class="desc">在悬疑与解谜中提升中文阅读力，细读经典侦探文学、训练逻辑推理，让阅读成为一场智力冒险。</div>
-    <div class="hl"><span>文本细读 Close Reading</span><span>逻辑推理 Reasoning</span><span>期末展演 Showcase</span></div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 4–8 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Wei</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)">
-    <div class="deco"></div>
-    <span class="icon">📸</span>
-    <span class="day">周一</span>
-    <h3>数字媒体（摄影与电影）</h3>
-    <div class="en">Digital Media (Film &amp; Photography)</div>
-    <span class="cat">创意艺术</span>
-  </div>
-  <div class="body">
-    <div class="desc">零基础入门摄影与电影制作，用专业设备拍出你的作品，期末举办学生作品展，发现你的影像天赋。</div>
-    <div class="hl"><span>零基础入门 Zero to Hero</span><span>实战出作品 Hands-On</span><span>专业设备 Pro Gear</span></div>
-    <div class="meta"><span><b>对象</b> P9–A2</span><span><b>人数</b> 4–10 人</span><span><b>语言</b> 英语 English</span><span><b>教师</b> Mr. Sergei</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#0369a1,#0ea5e9)">
-    <div class="deco"></div>
-    <span class="icon">📚</span>
-    <span class="day">周二</span>
-    <h3>英语阅读俱乐部</h3>
-    <div class="en">Reading Club</div>
-    <span class="cat">英语文学</span>
-  </div>
-  <div class="body">
-    <div class="desc">共读适合我们的英文原版故事（如《相约星期二》），做嘉宾分享与播客制作，把好故事讲给所有人。</div>
-    <div class="hl"><span>原文阅读 English Reading</span><span>嘉宾分享 Guest Speaker</span><span>播客制作 Podcast</span></div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 5–10 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Mr. Harry（胡老师）</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#be185d,#ec4899)">
-    <div class="deco"></div>
-    <span class="icon">🖼️</span>
-    <span class="day">周二</span>
-    <h3>艺术史</h3>
-    <div class="en">Art History</div>
-    <span class="cat">艺术与设计</span>
-  </div>
-  <div class="body">
-    <div class="desc">通过《艺术的故事》与纪录片梳理艺术发展脉络，并做个人分享。</div>
-    <div class="hl"><span>《艺术的故事》Story of Art</span><span>纪录片 Documentary</span><span>个人分享 Presentation</span></div>
-    <div class="meta"><span><b>对象</b> IG–A2</span><span><b>人数</b> 2–15 人</span><span><b>语言</b> 英语 / 中文</span><span><b>教师</b> Ms. Wendy</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#0ea5e9,#6366f1)">
-    <div class="deco"></div>
-    <span class="icon">🇰🇷</span>
-    <span class="day">周二</span>
-    <h3>韩语及韩国大众文化</h3>
-    <div class="en">Korean Language &amp; K-Culture</div>
-    <span class="cat">语言文化</span>
-  </div>
-  <div class="body">
-    <div class="desc">学习韩文字母与拼读，了解真实的韩国社会，培养理性看待一个国家的思维方式。</div>
-    <div class="hl"><span>字母拼读 Hangul</span><span>社会了解 Society</span><span>思维方式 Thinking</span></div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 不限</span><span><b>语言</b> 中文 Chinese</span><span><b>教师</b> Mr. Aphelios</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#7c3aed,#8b5cf6)">
-    <div class="deco"></div>
-    <span class="icon">🎧</span>
-    <span class="day">周二</span>
-    <h3>歌单制作</h3>
-    <div class="en">Playlist Making</div>
-    <span class="cat">音乐</span>
-  </div>
-  <div class="body">
-    <div class="desc">探索不同曲风与心境，为校园活动制作背景音乐，找到属于你的歌单。</div>
-    <div class="hl"><span>创意 Creative</span><span>自信 Confident</span><span>校园 BGM School BGM</span></div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 不限</span><span><b>语言</b> 英语 English</span><span><b>教师</b> Mr. Marko</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#a21caf,#d946ef)">
-    <div class="deco"></div>
-    <span class="icon">🎤</span>
-    <span class="day">周二</span>
-    <h3>流行演唱</h3>
-    <div class="en">Pop Vocal</div>
-    <span class="cat">音乐</span>
-  </div>
-  <div class="body">
-    <div class="desc">科学发声、舞台魅力与风格探索，从练声到录音与公开演出。</div>
-    <div class="hl"><span>风格探索 Style</span><span>公开演出 Showcase</span><span>录音体验 Recording</span></div>
-    <div class="meta"><span><b>对象</b> P7–A2</span><span><b>人数</b> 1–4 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Kirsten</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#0369a1,#0ea5e9)">
-    <div class="deco"></div>
-    <span class="icon">📚</span>
-    <span class="day">周三</span>
-    <h3>英语阅读俱乐部</h3>
-    <div class="en">Reading Club</div>
-    <span class="cat">英语文学</span>
-  </div>
-  <div class="body">
-    <div class="desc">共读适合我们的英文原版故事（如《相约星期二》），做嘉宾分享与播客制作，把好故事讲给所有人。</div>
-    <div class="hl"><span>原文阅读 English Reading</span><span>嘉宾分享 Guest Speaker</span><span>播客制作 Podcast</span></div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 5–10 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Mr. Harry（胡老师）</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#dc2626,#f59e0b)">
-    <div class="deco"></div>
-    <span class="icon">🍿</span>
-    <span class="day">周三</span>
-    <h3>世界电影欣赏</h3>
-    <div class="en">World Cinema Club</div>
-    <span class="cat">电影艺术</span>
-  </div>
-  <div class="body">
-    <div class="desc">看世界电影、聊故事、玩配音与竞猜，无考试、基本无作业，轻松加入。</div>
-    <div class="hl"><span>完整观影 Watch Together</span><span>轻松互动 Join In</span><span>世界文化 Discover</span></div>
-    <div class="meta"><span><b>对象</b> P7–AS</span><span><b>人数</b> 5–20 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Aria（戚老师）</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#be185d,#f472b6)">
-    <div class="deco"></div>
-    <span class="icon">🌸</span>
-    <span class="day">周三</span>
-    <h3>诗歌鉴赏</h3>
-    <div class="en">Poetry Appreciation</div>
-    <span class="cat">人文 · 文学</span>
-  </div>
-  <div class="body">
-    <div class="desc">跨越时空与经典对话，品读四大诗体、朗诵吟唱，在韵律中感受中文之美。</div>
-    <div class="hl"><span>经典品读 Classics</span><span>朗诵吟唱 Recitation</span><span>期末展演 Showcase</span></div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 4–10 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Wei</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#7c2d12,#ea580c)">
-    <div class="deco"></div>
-    <span class="icon">🎭</span>
-    <span class="day">周三</span>
-    <h3>从小说到舞台</h3>
-    <div class="en">From Novel to Stage</div>
-    <span class="cat">阅读与戏剧</span>
-  </div>
-  <div class="body">
-    <div class="desc">侦探剧本研读：从小说到舞台，团队共创并期末展演。</div>
-    <div class="hl"><span>项目式学习 Project-Based</span><span>团队协作 Teamwork</span><span>期末展演 Showcase</span></div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 10–15 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Sue &amp; Ms. Echo</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#78350f,#b45309)">
-    <div class="deco"></div>
-    <span class="icon">🏛️</span>
-    <span class="day">周三</span>
-    <h3>中国近现代历史俱乐部</h3>
-    <div class="en">Chinese History Club</div>
-    <span class="cat">人文 · 历史</span>
-  </div>
-  <div class="body">
-    <div class="desc">中国近现代历史俱乐部：通史解读、人物点评与事件解析，走进 130 年的风云变迁。</div>
-    <div class="hl"><span>通史解读 Survey</span><span>人物点评 Biography</span><span>事件解析 Analysis</span></div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 6–8 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Mr. Xu（许老师）</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#9333ea,#c026d3)">
-    <div class="deco"></div>
-    <span class="icon">🎼</span>
-    <span class="day">周三</span>
-    <h3>歌曲写作与制作</h3>
-    <div class="en">Songwriting &amp; Music Production</div>
-    <span class="cat">音乐</span>
-  </div>
-  <div class="body">
-    <div class="desc">从曲风识别、旋律编写到编曲混音，产出你的原创作品并公开演出。</div>
-    <div class="hl"><span>原创产出 Original</span><span>公开演出 Showcase</span><span>录音体验 Recording</span></div>
-    <div class="meta"><span><b>对象</b> P7–A2</span><span><b>人数</b> 1–4 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Kirsten</span></div>
-  </div>
-</div>
-</div>
-</section>
-<section class="pillar" id="leadership">
-  <div class="pillar-head"><span class="dot" style="background:linear-gradient(135deg,#f59e0b,#f97316)"></span><h2>领导力与服务</h2><span class="en">1 门课程</span></div>
-  <div class="courses">
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#f59e0b,#f97316)">
-    <div class="deco"></div>
-    <span class="icon">📊</span>
-    <span class="day">周一</span>
-    <h3>模拟数字经营沙盘</h3>
-    <div class="en">ABS Digital Business Simulation</div>
-    <span class="cat">商业</span>
-  </div>
-  <div class="body">
-    <div class="desc">由耶鲁创业者协会官方支持的模拟经营沙盘，覆盖供需、成本、现金流与竞争策略，受 Cognia 认证，并为阿思丹商赛蓄力。</div>
-    <div class="hl"><span>项目式学习 Project-Based</span><span>团队协作 Teamwork</span><span>期末展演 Showcase</span></div>
-    <div class="meta"><span><b>对象</b> P9–A2</span><span><b>人数</b> 12–20 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Amy（校长）</span></div>
-  </div>
-</div>
-</div>
-</section>
-<section class="pillar" id="athletics">
-  <div class="pillar-head"><span class="dot" style="background:linear-gradient(135deg,#16a34a,#22c55e)"></span><h2>运动与健康</h2><span class="en">7 门课程</span></div>
-  <div class="courses">
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#16a34a,#22c55e)">
-    <div class="deco"></div>
-    <span class="icon">🏐</span>
-    <span class="day">周一</span>
-    <h3>CISA 校队训练</h3>
-    <div class="en">CISA Sports Team Training</div>
-    <span class="cat">体育</span>
-  </div>
-  <div class="body">
-    <div class="desc">CISA 校队训练：排球、篮球、足球等多项运动，强化团队协作、个人进步与竞技精神。</div>
-    <div class="hl"><span>团队建设 Team Building</span><span>个人进步 Progress</span><span>竞技精神 Sportsmanship</span></div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 不限</span><span><b>语言</b> 英语 English</span><span><b>教师</b> Mr. Vuk, Mr. Joe &amp; Mr. Michael</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#059669,#10b981)">
-    <div class="deco"></div>
-    <span class="icon">🏏</span>
-    <span class="day">周一</span>
-    <h3>多元运动（板球与羽毛球）</h3>
-    <div class="en">Sport Fusion (Cricket &amp; Badminton)</div>
-    <span class="cat">体育</span>
-  </div>
-  <div class="body">
-    <div class="desc">板球与羽毛球双项体验，在技能发展、团队精神与健康生活中快乐成长。</div>
-    <div class="hl"><span>技能发展 Skills</span><span>团队精神 Team Spirit</span><span>健康生活 Healthy Living</span></div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 4–14 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Dr. Raza &amp; Mr. Warren</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#16a34a,#22c55e)">
-    <div class="deco"></div>
-    <span class="icon">🏀</span>
-    <span class="day">周二</span>
-    <h3>CISA 校队训练</h3>
-    <div class="en">CISA Sports Team Training</div>
-    <span class="cat">体育</span>
-  </div>
-  <div class="body">
-    <div class="desc">CISA 校队训练：排球、篮球、足球等多项运动，强化团队协作、个人进步与竞技精神。</div>
-    <div class="hl"><span>团队建设 Team Building</span><span>个人进步 Progress</span><span>竞技精神 Sportsmanship</span></div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 不限</span><span><b>语言</b> 英语 English</span><span><b>教师</b> Mr. Vuk, Mr. Joe &amp; Mr. Michael</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#0284c7,#0ea5e9)">
-    <div class="deco"></div>
-    <span class="icon">🏊</span>
-    <span class="day">周二</span>
-    <h3>游泳</h3>
-    <div class="en">Swimming</div>
-    <span class="cat">体育</span>
-  </div>
-  <div class="body">
-    <div class="desc">泳姿学习与训练，解锁 71% 的水下世界，期末友谊赛见！</div>
-    <div class="hl"><span>泳姿学习 Strokes</span><span>团队协作 Teamwork</span><span>期末比赛 Competition</span></div>
-    <div class="meta"><span><b>对象</b> P7–IGCSE</span><span><b>人数</b> 2–6 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Ms. Chanel</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#059669,#84cc16)">
-    <div class="deco"></div>
-    <span class="icon">🏸</span>
-    <span class="day">周三</span>
-    <h3>羽毛球</h3>
-    <div class="en">Badminton</div>
-    <span class="cat">体育</span>
-  </div>
-  <div class="body">
-    <div class="desc">基础握拍与步法、对抗实战到学期友谊赛，练就身心与体育精神。</div>
-    <div class="hl"><span>体育锻炼 Fitness</span><span>体育精神 Sportsmanship</span><span>对抗竞技 Competitive</span></div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 4–8 人</span><span><b>语言</b> 中英双语</span><span><b>教师</b> Mr. Mark &amp; Ms. Nancy</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#16a34a,#65a30d)">
-    <div class="deco"></div>
-    <span class="icon">🏃</span>
-    <span class="day">周三</span>
-    <h3>跑步俱乐部</h3>
-    <div class="en">Running ECA</div>
-    <span class="cat">体育</span>
-  </div>
-  <div class="body">
-    <div class="desc">更快、更强、更好：科学配速与间歇训练，最终与过去的自己赛跑。</div>
-    <div class="hl"><span>技巧训练 Technique</span><span>归属感 Belong</span><span>超越自我 Beat Your Past</span></div>
-    <div class="meta"><span><b>对象</b> 中学部各年级</span><span><b>人数</b> 不限</span><span><b>语言</b> 英语 English</span><span><b>教师</b> Mr. Marko</span></div>
-  </div>
-</div>
-<div class="card">
-  <div class="poster" style="background:linear-gradient(135deg,#dc2626,#ea580c)">
-    <div class="deco"></div>
-    <span class="icon">🤾</span>
-    <span class="day">周三</span>
-    <h3>躲避球与三分球</h3>
-    <div class="en">Dodgeball &amp; 3-Point Shootout</div>
-    <span class="cat">体育</span>
-  </div>
-  <div class="body">
-    <div class="desc">躲避球与三分球大战，在欢笑中锻炼反应与准星。</div>
-    <div class="hl"><span>团队协作 Teamwork</span><span>反应 Reflexes</span><span>准星 Aim</span></div>
-    <div class="meta"><span><b>对象</b> P7–A2</span><span><b>人数</b> 6–10 人</span><span><b>语言</b> 英语 English</span><span><b>教师</b> Dr. Chris</span></div>
-  </div>
-</div>
-</div>
-</section>
-</div>
-<footer><div class="t">成都康礼学校</div><div class="en">Cogdel School Chengdu · ECA Catalogue</div></footer>
+  <div class="app" id="app">
+
+    <!-- ===== Header ===== -->
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">
+          <span class="brand-mark">🎓</span>
+          <div class="brand-text">
+            <div class="brand-title">Cogdel Chengdu · ECA Fair 2026</div>
+            <div class="brand-sub" data-i18n="brandSub">成都康礼学校 · 中学部课外课程选课平台</div>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <div class="mode-toggle" id="modeToggle" role="tablist" aria-label="浏览模式">
+            <button class="mode-btn" data-mode="student" role="tab" data-i18n="modeStudent">学生选课</button>
+            <button class="mode-btn" data-mode="parent" role="tab" data-i18n="modeParent">家长浏览</button>
+          </div>
+          <button class="lang-btn" id="langToggle" title="切换语言 / Switch language">中文 / EN</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="hero-inner">
+        <h1 class="hero-title">
+          <span class="hero-title-zh">你的选择，至关重要</span>
+          <span class="hero-title-en">Your Choice Matters</span>
+        </h1>
+        <p class="hero-sub" data-i18n="heroSub">
+          在<span class="hl">周一 / 周二 / 周三</span>各选一门你心仪的 ECA，开启这学期的精彩旅程。
+        </p>
+        <div class="pillars" id="pillars"></div>
+      </div>
+    </section>
+
+    <!-- ===== Parent browse banner ===== -->
+    <section class="parent-banner" id="parentBanner" hidden>
+      <span class="parent-banner-icon">👨‍👩‍👧</span>
+      <span data-i18n="parentBanner">家长浏览模式 · 您可查看全部课程简介；如需选课，请让孩子在「学生选课」入口操作。</span>
+    </section>
+
+    <!-- ===== Student identity ===== -->
+    <section class="identity" id="identity">
+      <div class="identity-inner">
+        <div class="identity-head">
+          <span class="identity-icon">🧑‍🎓</span>
+          <span data-i18n="whoAreYou">请填写你的选课信息</span>
+        </div>
+        <div class="identity-fields">
+          <input id="nameZh" type="text" maxlength="20" placeholder="中文名 Chinese name" autocomplete="name" />
+          <input id="nameEn" type="text" maxlength="40" placeholder="英文名 English name" autocomplete="given-name" />
+          <select id="grade" aria-label="年级 Grade">
+            <option value="" selected data-i18n="gradePlaceholder">年级 Grade</option>
+            <option value="P7">P7</option>
+            <option value="P8">P8</option>
+            <option value="P9">P9</option>
+            <option value="IG">IG (IGCSE)</option>
+            <option value="AS">AS</option>
+            <option value="A2">A2</option>
+          </select>
+        </div>
+        <span class="identity-hint" data-i18n="identityHint">选完课后，我们会以此信息登记</span>
+      </div>
+    </section>
+
+    <!-- ===== Shelves ===== -->
+    <main class="shelves" id="shelves"></main>
+
+    <!-- ===== Selection bar ===== -->
+    <aside class="cart" id="cart" aria-live="polite">
+      <div class="cart-head">
+        <span class="cart-icon">🛒</span>
+        <span data-i18n="mySelection">我的选课</span>
+        <span class="cart-count" id="cartCount">0 / 3</span>
+      </div>
+      <div class="cart-slots" id="cartSlots"></div>
+      <button class="cart-submit" id="cartSubmit" disabled data-i18n="submit">提交选课</button>
+      <div class="cart-msg" id="cartMsg"></div>
+    </aside>
+
+    <!-- ===== Detail modal ===== -->
+    <div class="modal-backdrop" id="modalBackdrop" hidden>
+      <div class="modal" id="modal" role="dialog" aria-modal="true">
+        <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+        <div class="modal-body" id="modalBody"></div>
+      </div>
+    </div>
+
+    <!-- ===== Toast ===== -->
+    <div class="toast" id="toast" hidden></div>
+
+    <!-- ===== Confetti canvas ===== -->
+    <canvas id="confetti" class="confetti"></canvas>
+  </div>
+
+  <script>
+/* ============================================================
+   Cogdel Chengdu ECA Fair · Fall 2026 — Course Data
+   Source: "ECA Scheduling Fall 2026-2027 Final.xlsx" + course PPT
+   ============================================================ */
+
+window.ECA = window.ECA || {};
+
+window.ECA.PILLARS = {
+  academic:   { zh: "学术与创新", en: "Academic & Innovation" },
+  creative:   { zh: "创意与文化", en: "Creative & Cultural Arts" },
+  athletics:  { zh: "运动与健康", en: "Athletics & Wellness" },
+  leadership: { zh: "领导力与服务", en: "Leadership & Service" }
+};
+
+window.ECA.DAYS = {
+  monday:    { zh: "周一", en: "Monday",    short: "Mon" },
+  tuesday:   { zh: "周二", en: "Tuesday",   short: "Tue" },
+  wednesday: { zh: "周三", en: "Wednesday", short: "Wed" }
+};
+
+window.ECA.COURSES = [
+  /* ------------------------------ MONDAY ------------------------------ */
+  {
+    id: "mon-cs-support",
+    day: "monday",
+    nameZh: "A-Level 计算机科学辅导",
+    nameEn: "A-Level Computer Science Support",
+    teacherZh: "Mr. Jeffy",
+    teacherEn: "Mr. Jeffy",
+    categoryZh: "计算机科学",
+    categoryEn: "Computer Science",
+    pillar: "academic",
+    audience: "AS 学生",
+    capacity: "1–4 人",
+    language: "英语 English",
+    time: "4:30 – 5:15 PM",
+    locationZh: "ICT 1 机房",
+    locationEn: "ICT 1",
+    icon: "💻",
+    grad: ["#2563eb", "#06b6d4"],
+    accent: "#0ea5e9",
+    descZh: "针对 AS / A-Level 计算机科学的专项辅导，夯实基础技能、综合运用与应试技巧，通过面对面小班答疑，助你自信面对大考。",
+    descEn: "Focused A-Level Computer Science support that builds core skills, comprehensive problem-solving and exam technique through face-to-face tutoring — helping you walk into exams with confidence.",
+    highlightsZh: ["夯实基础 Core Skills", "综合技能 Comprehensive", "面对面辅导 Face to Face"],
+    highlightsEn: ["Core Skills", "Comprehensive Skills", "Face to Face"]
+  },
+  {
+    id: "mon-art-portfolio",
+    day: "monday",
+    nameZh: "艺术·作品集",
+    nameEn: "Art Portfolio",
+    teacherZh: "Ms. Wendy",
+    teacherEn: "Ms. Wendy",
+    categoryZh: "艺术与设计",
+    categoryEn: "Art & Design",
+    pillar: "creative",
+    audience: "IG–A2",
+    capacity: "2–15 人",
+    language: "英语 / 中文",
+    time: "4:30 – 5:15 PM",
+    locationZh: "艺术教室",
+    locationEn: "Art Room",
+    icon: "🎨",
+    grad: ["#ec4899", "#f43f5e"],
+    accent: "#fb7185",
+    descZh: "为外部大考量身打造作品集，提供一对一的额外指导，让每位同学都能交出一份真正代表自己的艺术答卷。",
+    descEn: "Extra portfolio guidance tailored to each student, so you can submit an artwork collection that truly represents you for your external exam.",
+    highlightsZh: ["作品集指导 Portfolio", "个性化支持 Tailored", "大考准备 Exam Ready"],
+    highlightsEn: ["Portfolio Guidance", "Tailored Support", "Exam Ready"]
+  },
+  {
+    id: "mon-english-tutorial",
+    day: "monday",
+    nameZh: "英语补习",
+    nameEn: "English Tutorial",
+    teacherZh: "Ms. Sue & Ms. Echo",
+    teacherEn: "Ms. Sue & Ms. Echo",
+    categoryZh: "语言强化",
+    categoryEn: "Language Support",
+    pillar: "academic",
+    audience: "中学部各年级",
+    capacity: "5 人",
+    language: "中英双语",
+    time: "4:30 – 5:15 PM",
+    locationZh: "语言支持中心",
+    locationEn: "Language Support Center",
+    icon: "📖",
+    grad: ["#0d9488", "#14b8a6"],
+    accent: "#2dd4bf",
+    descZh: "英文基础补习与课堂内容查漏补缺，小班化语言强化，让英语不再成为学习的障碍。",
+    descEn: "Small-group English foundation and language support, filling the gaps from class and strengthening your core skills.",
+    highlightsZh: ["基础补习 Foundation", "查漏补缺 Gap-filling", "小班强化 Small Group"],
+    highlightsEn: ["Foundation", "Gap-filling", "Small Group"]
+  },
+  {
+    id: "mon-abs",
+    day: "monday",
+    nameZh: "模拟数字经营沙盘",
+    nameEn: "ABS Digital Business Simulation",
+    teacherZh: "Ms. Amy（校长）",
+    teacherEn: "Ms. Amy (Principal)",
+    categoryZh: "商业",
+    categoryEn: "Business",
+    pillar: "leadership",
+    audience: "P9–A2",
+    capacity: "12–20 人",
+    language: "中英双语",
+    time: "4:30 – 5:15 PM",
+    locationZh: "三创中心演讲厅",
+    locationEn: "3C Center Speech Hall",
+    icon: "📊",
+    grad: ["#f59e0b", "#f97316"],
+    accent: "#fbbf24",
+    descZh: "由耶鲁创业者协会官方支持的模拟经营沙盘，覆盖供需、成本、现金流与竞争策略，受 Cognia 认证，并为阿思丹商赛蓄力。",
+    descEn: "A Yale Entrepreneurial Society-supported business simulation covering supply & demand, costs, cash flow and strategy — Cognia-accredited and a launchpad for the ASDAN business competition.",
+    highlightsZh: ["项目式学习 Project-Based", "团队协作 Teamwork", "期末展演 Showcase"],
+    highlightsEn: ["Project-Based", "Teamwork", "Showcase"]
+  },
+  {
+    id: "mon-lego",
+    day: "monday",
+    nameZh: "乐高创想社",
+    nameEn: "Lego Creation Club",
+    teacherZh: "Ms. Beth",
+    teacherEn: "Ms. Beth",
+    categoryZh: "创意建构",
+    categoryEn: "Creative Building",
+    pillar: "creative",
+    audience: "中学部各年级",
+    capacity: "5–8 人",
+    language: "中英双语",
+    time: "4:30 – 5:15 PM",
+    locationZh: "BIO1",
+    locationEn: "BIO1",
+    icon: "🧱",
+    grad: ["#f97316", "#fbbf24"],
+    accent: "#fb923c",
+    descZh: "用乐高搭建你的想象，从基础结构到主题挑战，在合作与期末展演中释放创造力。",
+    descEn: "Build your imagination with LEGO — from basic structures to themed challenges, creating and showcasing together.",
+    highlightsZh: ["项目式学习 Project-Based", "团队协作 Teamwork", "期末展演 Showcase"],
+    highlightsEn: ["Project-Based", "Teamwork", "Showcase"]
+  },
+  {
+    id: "mon-band",
+    day: "monday",
+    nameZh: "学校乐队",
+    nameEn: "School Band",
+    teacherZh: "Mr. Marko",
+    teacherEn: "Mr. Marko",
+    categoryZh: "音乐",
+    categoryEn: "Music",
+    pillar: "creative",
+    audience: "中学部各年级",
+    capacity: "不限",
+    language: "英语 English",
+    time: "4:30 – 5:15 PM",
+    locationZh: "音乐教室",
+    locationEn: "Music Classroom",
+    icon: "🎸",
+    grad: ["#7c3aed", "#a855f7"],
+    accent: "#c084fc",
+    descZh: "学校乐队：学习并排练翻唱曲目，提升演奏技巧，为校园活动登台演出。",
+    descEn: "School Band — learn and practice cover songs, grow your musical skills, and perform at school events.",
+    highlightsZh: ["团队协作 Teamwork", "舞台演出 Performance", "技能提升 Skills"],
+    highlightsEn: ["Teamwork", "Performance", "Skill Building"]
+  },
+  {
+    id: "mon-oracle",
+    day: "monday",
+    nameZh: "甲骨文拓片识读",
+    nameEn: "Oracle Bone Inscription Reading",
+    teacherZh: "Mr. Aphelios",
+    teacherEn: "Mr. Aphelios",
+    categoryZh: "人文 · 汉字",
+    categoryEn: "Humanities · Characters",
+    pillar: "creative",
+    audience: "中学部各年级",
+    capacity: "不限",
+    language: "中文 Chinese",
+    time: "4:30 – 5:15 PM",
+    locationZh: "现场公布",
+    locationEn: "On site",
+    icon: "🐢",
+    grad: ["#b45309", "#d97706"],
+    accent: "#f59e0b",
+    descZh: "每节课一块甲骨拓片，弄清每个符号是什么字，探寻造字本义，再亲手刻一刻甲骨文。",
+    descEn: "Each session studies one oracle-bone rubbing: decode every symbol, trace how characters were born, and carve your own oracle script.",
+    highlightsZh: ["拓片识读 Rubbing Reading", "造字探源 Origins", "亲手刻字 Hands-on Carving"],
+    highlightsEn: ["Rubbing Reading", "Character Origins", "Hands-on Carving"]
+  },
+  {
+    id: "mon-detective",
+    day: "monday",
+    nameZh: "侦探文学探索之旅",
+    nameEn: "Exploration Journey of Detective Literature",
+    teacherZh: "Ms. Wei",
+    teacherEn: "Ms. Wei",
+    categoryZh: "人文 · 文学",
+    categoryEn: "Humanities · Literature",
+    pillar: "creative",
+    audience: "中学部各年级",
+    capacity: "4–8 人",
+    language: "中英双语",
+    time: "4:30 – 5:15 PM",
+    locationZh: "现场公布",
+    locationEn: "On site",
+    icon: "🕵️",
+    grad: ["#334155", "#64748b"],
+    accent: "#94a3b8",
+    descZh: "在悬疑与解谜中提升中文阅读力，细读经典侦探文学、训练逻辑推理，让阅读成为一场智力冒险。",
+    descEn: "Sharpen your Chinese reading through suspense and puzzle-solving — close reading of detective classics and logical reasoning that turn reading into an intellectual adventure.",
+    highlightsZh: ["文本细读 Close Reading", "逻辑推理 Reasoning", "期末展演 Showcase"],
+    highlightsEn: ["Close Reading", "Logical Reasoning", "Showcase"]
+  },
+  {
+    id: "mon-digital-media",
+    day: "monday",
+    nameZh: "数字媒体（摄影与电影）",
+    nameEn: "Digital Media (Film & Photography)",
+    teacherZh: "Mr. Sergei",
+    teacherEn: "Mr. Sergei",
+    categoryZh: "创意艺术",
+    categoryEn: "Creative Arts",
+    pillar: "creative",
+    audience: "P9–A2",
+    capacity: "4–10 人",
+    language: "英语 English",
+    time: "4:30 – 5:15 PM",
+    locationZh: "数字媒体教室",
+    locationEn: "Digital Media Classroom",
+    icon: "📸",
+    grad: ["#8b5cf6", "#ec4899"],
+    accent: "#d946ef",
+    descZh: "零基础入门摄影与电影制作，用专业设备拍出你的作品，期末举办学生作品展，发现你的影像天赋。",
+    descEn: "Zero-to-hero photography and filmmaking with professional gear, ending in a student exhibition — discover your visual talent.",
+    highlightsZh: ["零基础入门 Zero to Hero", "实战出作品 Hands-On", "专业设备 Pro Gear"],
+    highlightsEn: ["Zero to Hero", "Hands-On Projects", "Pro Gear"]
+  },
+  {
+    id: "mon-cisa-1",
+    day: "monday",
+    nameZh: "CISA 校队训练",
+    nameEn: "CISA Sports Team Training",
+    teacherZh: "Mr. Vuk, Mr. Joe & Mr. Michael",
+    teacherEn: "Mr. Vuk, Mr. Joe & Mr. Michael",
+    categoryZh: "体育",
+    categoryEn: "Sports",
+    pillar: "athletics",
+    audience: "中学部各年级",
+    capacity: "不限",
+    language: "英语 English",
+    time: "4:15 – 5:15 PM",
+    locationZh: "操场",
+    locationEn: "Sports Field",
+    icon: "🏐",
+    grad: ["#16a34a", "#22c55e"],
+    accent: "#4ade80",
+    descZh: "CISA 校队训练：排球、篮球、足球等多项运动，强化团队协作、个人进步与竞技精神。",
+    descEn: "CISA school-team training across volleyball, basketball, football and more — building teamwork, individual progress and competitive spirit.",
+    highlightsZh: ["团队建设 Team Building", "个人进步 Progress", "竞技精神 Sportsmanship"],
+    highlightsEn: ["Team Building", "Individual Progress", "Sportsmanship"]
+  },
+  {
+    id: "mon-sport-fusion",
+    day: "monday",
+    nameZh: "多元运动（板球与羽毛球）",
+    nameEn: "Sport Fusion (Cricket & Badminton)",
+    teacherZh: "Dr. Raza & Mr. Warren",
+    teacherEn: "Dr. Raza & Mr. Warren",
+    categoryZh: "体育",
+    categoryEn: "PE & Sports",
+    pillar: "athletics",
+    audience: "中学部各年级",
+    capacity: "4–14 人",
+    language: "中英双语",
+    time: "4:30 – 5:15 PM",
+    locationZh: "操场 & 体育馆",
+    locationEn: "Playground & Gym",
+    icon: "🏏",
+    grad: ["#059669", "#10b981"],
+    accent: "#34d399",
+    descZh: "板球与羽毛球双项体验，在技能发展、团队精神与健康生活中快乐成长。",
+    descEn: "A cricket & badminton double experience — grow through skill development, team spirit and healthy living.",
+    highlightsZh: ["技能发展 Skills", "团队精神 Team Spirit", "健康生活 Healthy Living"],
+    highlightsEn: ["Skill Development", "Team Spirit", "Healthy Living"]
+  },
+
+  /* ------------------------------ TUESDAY ------------------------------ */
+  {
+    id: "tue-maths-support",
+    day: "tuesday",
+    nameZh: "A-Level 数学辅导",
+    nameEn: "A-Level Maths Support",
+    teacherZh: "Dr. Chris",
+    teacherEn: "Dr. Chris",
+    categoryZh: "数学",
+    categoryEn: "Mathematics",
+    pillar: "academic",
+    audience: "IGCSE–A2",
+    capacity: "1–5 人",
+    language: "英语 English",
+    time: "4:30 – 5:15 PM",
+    locationZh: "M2 教室",
+    locationEn: "M2 Classroom",
+    icon: "➗",
+    grad: ["#1d4ed8", "#3b82f6"],
+    accent: "#60a5fa",
+    descZh: "A-Level 数学专项辅导：破解高难考题、提升解题自信，往届 70% 学员取得 A*–A 的优异成绩。",
+    descEn: "Targeted A-Level Maths support that untangles tough problems and builds fluency — with 70% of past students reaching A*–A.",
+    highlightsZh: ["成绩提升 Grade Impact", "自信培养 Confidence", "未来优势 Future Benefits"],
+    highlightsEn: ["Grade Impact", "Confidence Boost", "Future Benefits"]
+  },
+  {
+    id: "tue-reading",
+    day: "tuesday",
+    nameZh: "英语阅读俱乐部",
+    nameEn: "Reading Club",
+    teacherZh: "Mr. Harry（胡老师）",
+    teacherEn: "Mr. Harry",
+    categoryZh: "英语文学",
+    categoryEn: "English Literature",
+    pillar: "creative",
+    audience: "中学部各年级",
+    capacity: "5–10 人",
+    language: "中英双语",
+    time: "4:30 – 5:15 PM",
+    locationZh: "语言支持中心",
+    locationEn: "Language Support Center",
+    icon: "📚",
+    grad: ["#0369a1", "#0ea5e9"],
+    accent: "#38bdf8",
+    descZh: "共读适合我们的英文原版故事（如《相约星期二》），做嘉宾分享与播客制作，把好故事讲给所有人。",
+    descEn: "Read original English stories that suit us (like Tuesdays with Morrie), host guest talks and make podcasts — sharing great stories with everyone.",
+    highlightsZh: ["原文阅读 English Reading", "嘉宾分享 Guest Speaker", "播客制作 Podcast"],
+    highlightsEn: ["English Reading", "Guest Speaker", "Podcast Workshop"]
+  },
+  {
+    id: "tue-chem-tutorial",
+    day: "tuesday",
+    nameZh: "化学补习",
+    nameEn: "Chemistry Tutorial",
+    teacherZh: "Ms. Nancy",
+    teacherEn: "Ms. Nancy",
+    categoryZh: "化学",
+    categoryEn: "Chemistry",
+    pillar: "academic",
+    audience: "IG / AS",
+    capacity: "2–6 人",
+    language: "中英双语",
+    time: "4:30 – 5:15 PM",
+    locationZh: "CHEM2",
+    locationEn: "CHEM2",
+    icon: "⚗️",
+    grad: ["#0f766e", "#0d9488"],
+    accent: "#2dd4bf",
+    descZh: "化学补习：从模拟到真题演练，为你的外部大考保驾护航。",
+    descEn: "Chemistry tutorial — from mocks to real exam practice, preparing you for your external exams this year.",
+    highlightsZh: ["模拟考试 Mock", "真题演练 Exam Practice", "大考准备 Exam Ready"],
+    highlightsEn: ["Mock", "Exam Practice", "Exam Ready"]
+  },
+  {
+    id: "tue-astronomy",
+    day: "tuesday",
+    nameZh: "天文社团",
+    nameEn: "Basic Astronomy",
+    teacherZh: "Mr. Stone",
+    teacherEn: "Mr. Stone",
+    categoryZh: "自然科学",
+    categoryEn: "Natural Science",
+    pillar: "academic",
+    audience: "P8–AS",
+    capacity: "1–10 人",
+    language: "双语 Bilingual",
+    time: "4:30 – 5:15 PM",
+    locationZh: "物理实验室 PH2",
+    locationEn: "Physics Lab PH2",
+    icon: "🔭",
+    grad: ["#1e3a8a", "#3730a3"],
+    accent: "#818cf8",
+    descZh: "从裸眼观星到天体物理，系统学习宇宙大尺度结构与系外行星，并备战天文竞赛。",
+    descEn: "From naked-eye stargazing to astrophysics — explore the universe's large-scale structure and exoplanets, with competition prep.",
+    highlightsZh: ["系统知识 Systematic", "观星活动 Stargazing", "竞赛准备 Competition"],
+    highlightsEn: ["Systematic Knowledge", "Stargazing", "Competition Prep"]
+  },
+  {
+    id: "tue-econx",
+    day: "tuesday",
+    nameZh: "EconX 经济学实战",
+    nameEn: "EconX · Real-World Economics",
+    teacherZh: "Dr. Raza",
+    teacherEn: "Dr. Raza",
+    categoryZh: "人文社科",
+    categoryEn: "Humanities & Social Sciences",
+    pillar: "academic",
+    audience: "IG–A2",
+    capacity: "2–15 人",
+    language: "英语 English",
+    time: "4:30 – 5:15 PM",
+    locationZh: "经济学教室",
+    locationEn: "Economics Room",
+    icon: "🎬",
+    grad: ["#b45309", "#f59e0b"],
+    accent: "#fbbf24",
+    descZh: "通过电影、商业模拟和嘉宾讲座，探索课堂之外的真实经济学。",
+    descEn: "Explore real-world economics beyond the classroom through films, simulations and guest talks.",
+    highlightsZh: ["电影经济学 Cinema", "模拟交易 Simulation", "嘉宾讲坛 Guest Speakers"],
+    highlightsEn: ["Cinema Economics", "Simulation", "Guest Speakers"]
+  },
+  {
+    id: "tue-3d-printing",
+    day: "tuesday",
+    nameZh: "3D 打印与设计思维",
+    nameEn: "Intro to 3D Printing & Design Thinking",
+    teacherZh: "Mr. Jeff & Dr. Allen",
+    teacherEn: "Mr. Jeff & Dr. Allen",
+    categoryZh: "创新创业",
+    categoryEn: "Innovation & Entrepreneurship",
+    pillar: "academic",
+    audience: "P7–IG",
+    capacity: "3–6 人",
+    language: "中英双语",
+    time: "4:30 – 5:15 PM",
+    locationZh: "三创中心 3C 实验室",
+    locationEn: "3C Center Lab",
+    icon: "🖨️",
+    grad: ["#4338ca", "#6366f1"],
+    accent: "#818cf8",
+    descZh: "学习设计思维与 3D 打印基础，历经理解问题、头脑风暴到原型测试，做出真实的创造。",
+    descEn: "Learn design thinking and 3D printing basics — from understanding problems to prototyping and testing something real.",
+    highlightsZh: ["项目式学习 Project-Based", "团队协作 Teamwork", "期末展演 Showcase"],
+    highlightsEn: ["Project-Based", "Teamwork", "Showcase"]
+  },
+  {
+    id: "tue-investment",
+    day: "tuesday",
+    nameZh: "投资基础",
+    nameEn: "Investment Foundation",
+    teacherZh: "Ms. Amy（校长）",
+    teacherEn: "Ms. Amy (Principal)",
+    categoryZh: "金融",
+    categoryEn: "Business",
+    pillar: "academic",
+    audience: "中学部各年级",
+    capacity: "12–20 人",
+    language: "中英双语",
+    time: "4:30 – 5:15 PM",
+    locationZh: "三创中心演讲厅",
+    locationEn: "3C Center Speech Hall",
+    icon: "💰",
+    grad: ["#b45309", "#d97706"],
+    accent: "#f59e0b",
+    descZh: "基于《The Little Book of Valuation》与《Venture Capital Strategy》的案例教学，掌握公司估值与风险投资判断。",
+    descEn: "Case-based investing: master company valuation and venture-capital judgment using The Little Book of Valuation and Venture Capital Strategy.",
+    highlightsZh: ["项目式学习 Project-Based", "团队协作 Teamwork", "期末展演 Showcase"],
+    highlightsEn: ["Project-Based", "Teamwork", "Showcase"]
+  },
+  {
+    id: "tue-chem-competition",
+    day: "tuesday",
+    nameZh: "化学竞赛社",
+    nameEn: "Chemistry Competition Club",
+    teacherZh: "Ms. Sherry",
+    teacherEn: "Ms. Sherry",
+    categoryZh: "化学 · 竞赛",
+    categoryEn: "Chemistry · Competition",
+    pillar: "academic",
+    audience: "IG",
+    capacity: "2–4 人",
+    language: "双语 Bilingual",
+    time: "4:30 – 5:15 PM",
+    locationZh: "Chem 1",
+    locationEn: "Chem 1",
+    icon: "🧪",
+    grad: ["#15803d", "#16a34a"],
+    accent: "#4ade80",
+    descZh: "为 C3L6 化学竞赛备赛：从系统学习、实战体验到正式竞赛。",
+    descEn: "Prepare for your C3L6 chemistry competition this year — study, experience, compete.",
+    highlightsZh: ["知识学习 Study", "团队协作 Teamwork", "期末比赛 Competition"],
+    highlightsEn: ["Study", "Teamwork", "Competition"]
+  },
+  {
+    id: "tue-art-history",
+    day: "tuesday",
+    nameZh: "艺术史",
+    nameEn: "Art History",
+    teacherZh: "Ms. Wendy",
+    teacherEn: "Ms. Wendy",
+    categoryZh: "艺术与设计",
+    categoryEn: "Art & Design",
+    pillar: "creative",
+    audience: "IG–A2",
+    capacity: "2–15 人",
+    language: "英语 / 中文",
+    time: "4:30 – 5:15 PM",
+    locationZh: "艺术教室",
+    locationEn: "Art Room",
+    icon: "🖼️",
+    grad: ["#be185d", "#ec4899"],
+    accent: "#f472b6",
+    descZh: "通过《艺术的故事》与纪录片梳理艺术发展脉络，并做个人分享。",
+    descEn: "Trace the arc of art history through The Story of Art and documentaries, then share your own take.",
+    highlightsZh: ["《艺术的故事》Story of Art", "纪录片 Documentary", "个人分享 Presentation"],
+    highlightsEn: ["The Story of Art", "Documentary", "Presentation"]
+  },
+  {
+    id: "tue-korean",
+    day: "tuesday",
+    nameZh: "韩语及韩国大众文化",
+    nameEn: "Korean Language & K-Culture",
+    teacherZh: "Mr. Aphelios",
+    teacherEn: "Mr. Aphelios",
+    categoryZh: "语言文化",
+    categoryEn: "Language & Culture",
+    pillar: "creative",
+    audience: "中学部各年级",
+    capacity: "不限",
+    language: "中文 Chinese",
+    time: "4:30 – 5:15 PM",
+    locationZh: "现场公布",
+    locationEn: "On site",
+    icon: "🇰🇷",
+    grad: ["#0ea5e9", "#6366f1"],
+    accent: "#38bdf8",
+    descZh: "学习韩文字母与拼读，了解真实的韩国社会，培养理性看待一个国家的思维方式。",
+    descEn: "Learn Hangul and pronunciation, understand real Korean society, and build a balanced way of seeing another country.",
+    highlightsZh: ["字母拼读 Hangul", "社会了解 Society", "思维方式 Thinking"],
+    highlightsEn: ["Hangul", "Society", "Thinking"]
+  },
+  {
+    id: "tue-playlist",
+    day: "tuesday",
+    nameZh: "歌单制作",
+    nameEn: "Playlist Making",
+    teacherZh: "Mr. Marko",
+    teacherEn: "Mr. Marko",
+    categoryZh: "音乐",
+    categoryEn: "Music",
+    pillar: "creative",
+    audience: "中学部各年级",
+    capacity: "不限",
+    language: "英语 English",
+    time: "4:30 – 5:15 PM",
+    locationZh: "音乐教室",
+    locationEn: "Music Classroom",
+    icon: "🎧",
+    grad: ["#7c3aed", "#8b5cf6"],
+    accent: "#a78bfa",
+    descZh: "探索不同曲风与心境，为校园活动制作背景音乐，找到属于你的歌单。",
+    descEn: "Explore genres and moods, curate BGM for school events, and find yourself through playlists.",
+    highlightsZh: ["创意 Creative", "自信 Confident", "校园 BGM School BGM"],
+    highlightsEn: ["Creative", "Confident", "School BGM"]
+  },
+  {
+    id: "tue-pop-vocal",
+    day: "tuesday",
+    nameZh: "流行演唱",
+    nameEn: "Pop Vocal",
+    teacherZh: "Ms. Kirsten",
+    teacherEn: "Ms. Kirsten",
+    categoryZh: "音乐",
+    categoryEn: "Music",
+    pillar: "creative",
+    audience: "P7–A2",
+    capacity: "1–4 人",
+    language: "中英双语",
+    time: "4:30 – 5:15 PM",
+    locationZh: "音乐教室",
+    locationEn: "Music Room",
+    icon: "🎤",
+    grad: ["#a21caf", "#d946ef"],
+    accent: "#e879f9",
+    descZh: "科学发声、舞台魅力与风格探索，从练声到录音与公开演出。",
+    descEn: "Vocal technique, stage presence and style exploration — from training to recording and live showcase.",
+    highlightsZh: ["风格探索 Style", "公开演出 Showcase", "录音体验 Recording"],
+    highlightsEn: ["Style Exploration", "Showcase", "Recording"]
+  },
+  {
+    id: "tue-cisa-2",
+    day: "tuesday",
+    nameZh: "CISA 校队训练",
+    nameEn: "CISA Sports Team Training",
+    teacherZh: "Mr. Vuk, Mr. Joe & Mr. Michael",
+    teacherEn: "Mr. Vuk, Mr. Joe & Mr. Michael",
+    categoryZh: "体育",
+    categoryEn: "Sports",
+    pillar: "athletics",
+    audience: "中学部各年级",
+    capacity: "不限",
+    language: "英语 English",
+    time: "4:15 – 5:15 PM",
+    locationZh: "操场",
+    locationEn: "Sports Field",
+    icon: "🏀",
+    grad: ["#16a34a", "#22c55e"],
+    accent: "#4ade80",
+    descZh: "CISA 校队训练：排球、篮球、足球等多项运动，强化团队协作、个人进步与竞技精神。",
+    descEn: "CISA school-team training across volleyball, basketball, football and more — building teamwork, individual progress and competitive spirit.",
+    highlightsZh: ["团队建设 Team Building", "个人进步 Progress", "竞技精神 Sportsmanship"],
+    highlightsEn: ["Team Building", "Individual Progress", "Sportsmanship"]
+  },
+  {
+    id: "tue-swimming",
+    day: "tuesday",
+    nameZh: "游泳",
+    nameEn: "Swimming",
+    teacherZh: "Ms. Chanel",
+    teacherEn: "Ms. Chanel",
+    categoryZh: "体育",
+    categoryEn: "Sports",
+    pillar: "athletics",
+    audience: "P7–IGCSE",
+    capacity: "2–6 人",
+    language: "中英双语",
+    time: "4:15 – 5:15 PM",
+    locationZh: "游泳池",
+    locationEn: "Swimming Pool",
+    icon: "🏊",
+    grad: ["#0284c7", "#0ea5e9"],
+    accent: "#38bdf8",
+    descZh: "泳姿学习与训练，解锁 71% 的水下世界，期末友谊赛见！",
+    descEn: "Learn strokes, train and unlock 71% of the underwater world — see you at the friendly meet!",
+    highlightsZh: ["泳姿学习 Strokes", "团队协作 Teamwork", "期末比赛 Competition"],
+    highlightsEn: ["Strokes", "Teamwork", "Competition"],
+    noteZh: "身高 1.3M 及以上 · 女生优先",
+    noteEn: "Height 1.3m+ · Girls first"
+  },
+
+  /* ------------------------------ WEDNESDAY ------------------------------ */
+  {
+    id: "wed-syracuse",
+    day: "wednesday",
+    nameZh: "雪城大学设计思维课",
+    nameEn: "Syracuse University · Design Thinking",
+    teacherZh: "Dr. Allen",
+    teacherEn: "Dr. Allen",
+    categoryZh: "创新创业",
+    categoryEn: "Innovation & Entrepreneurship",
+    pillar: "academic",
+    audience: "AS–A2（仅 IAL）",
+    capacity: "1–6 人",
+    language: "中英双语",
+    time: "4:30 – 5:15 PM",
+    locationZh: "三创中心 3C 实验室",
+    locationEn: "3C Center Lab",
+    icon: "💡",
+    grad: ["#312e81", "#4f46e5"],
+    accent: "#818cf8",
+    descZh: "雪城大学官方设计思维课程，从共情到原型，一年可获 3 个大学学分。",
+    descEn: "Syracuse University's design thinking course — from empathy to prototype, earning 3 college credits over the year.",
+    highlightsZh: ["项目式学习 Project-Based", "团队协作 Teamwork", "大学学分 College Credit"],
+    highlightsEn: ["Project-Based", "Teamwork", "College Credit"],
+    noteZh: "需在接下来几周内完成大学注册与学费支付",
+    noteEn: "Separate university registration & fee payment in the coming weeks"
+  },
+  {
+    id: "wed-biology",
+    day: "wednesday",
+    nameZh: "生物补习",
+    nameEn: "Biology Support",
+    teacherZh: "Ms. Beth",
+    teacherEn: "Ms. Beth",
+    categoryZh: "生物",
+    categoryEn: "Biology",
+    pillar: "academic",
+    audience: "P7–IG",
+    capacity: "5 人",
+    language: "中英双语",
+    time: "4:30 – 5:15 PM",
+    locationZh: "BIO1",
+    locationEn: "BIO1",
+    icon: "🧬",
+    grad: ["#166534", "#15803d"],
+    accent: "#4ade80",
+    descZh: "生物补习，课堂内容查漏补缺，夯实 P7–IG 生物基础。",
+    descEn: "Biology tutorial — fill the gaps from class and strengthen your P7–IG biology foundation.",
+    highlightsZh: ["查漏补缺 Gap-filling", "基础夯实 Foundation"],
+    highlightsEn: ["Gap-filling", "Foundation"]
+  },
+  {
+    id: "wed-nec",
+    day: "wednesday",
+    nameZh: "NEC 全美经济学竞赛备赛",
+    nameEn: "NEC Competition Tutorial",
+    teacherZh: "Ms. Chanel",
+    teacherEn: "Ms. Chanel",
+    categoryZh: "经济 · 竞赛",
+    categoryEn: "Economics · Competition",
+    pillar: "academic",
+    audience: "IG / AS",
+    capacity: "4–12 人",
+    language: "中英双语",
+    time: "4:30 – 5:15 PM",
+    locationZh: "现场公布",
+    locationEn: "On site",
+    icon: "📈",
+    grad: ["#b45309", "#f59e0b"],
+    accent: "#fbbf24",
+    descZh: "全美经济学竞赛备赛：知识学习、实战体验到正式竞赛。",
+    descEn: "Prepare for NEC (National Economics Challenge) — study, experience, compete.",
+    highlightsZh: ["知识学习 Study", "团队协作 Teamwork", "期末比赛 Competition"],
+    highlightsEn: ["Study", "Teamwork", "Competition"],
+    noteZh: "需 1 年及以上经济学基础",
+    noteEn: "Requires 1+ year of economics"
+  },
+  {
+    id: "wed-reading",
+    day: "wednesday",
+    nameZh: "英语阅读俱乐部",
+    nameEn: "Reading Club",
+    teacherZh: "Mr. Harry（胡老师）",
+    teacherEn: "Mr. Harry",
+    categoryZh: "英语文学",
+    categoryEn: "English Literature",
+    pillar: "creative",
+    audience: "中学部各年级",
+    capacity: "5–10 人",
+    language: "中英双语",
+    time: "4:30 – 5:15 PM",
+    locationZh: "语言支持中心",
+    locationEn: "Language Support Center",
+    icon: "📚",
+    grad: ["#0369a1", "#0ea5e9"],
+    accent: "#38bdf8",
+    descZh: "共读适合我们的英文原版故事（如《相约星期二》），做嘉宾分享与播客制作，把好故事讲给所有人。",
+    descEn: "Read original English stories that suit us (like Tuesdays with Morrie), host guest talks and make podcasts — sharing great stories with everyone.",
+    highlightsZh: ["原文阅读 English Reading", "嘉宾分享 Guest Speaker", "播客制作 Podcast"],
+    highlightsEn: ["English Reading", "Guest Speaker", "Podcast Workshop"]
+  },
+  {
+    id: "wed-chem-competition",
+    day: "wednesday",
+    nameZh: "化学竞赛社",
+    nameEn: "Chemistry Competition Club",
+    teacherZh: "Ms. Sherry",
+    teacherEn: "Ms. Sherry",
+    categoryZh: "化学 · 竞赛",
+    categoryEn: "Chemistry · Competition",
+    pillar: "academic",
+    audience: "IG",
+    capacity: "2–4 人",
+    language: "双语 Bilingual",
+    time: "4:30 – 5:15 PM",
+    locationZh: "Chem 1",
+    locationEn: "Chem 1",
+    icon: "🧪",
+    grad: ["#15803d", "#16a34a"],
+    accent: "#4ade80",
+    descZh: "为 C3L6 化学竞赛备赛：从系统学习、实战体验到正式竞赛。",
+    descEn: "Prepare for your C3L6 chemistry competition this year — study, experience, compete.",
+    highlightsZh: ["知识学习 Study", "团队协作 Teamwork", "期末比赛 Competition"],
+    highlightsEn: ["Study", "Teamwork", "Competition"]
+  },
+  {
+    id: "wed-ai-lab",
+    day: "wednesday",
+    nameZh: "AI 共创实验室",
+    nameEn: "AI Co-creator Lab",
+    teacherZh: "Ms. Amy（校长）",
+    teacherEn: "Ms. Amy (Principal)",
+    categoryZh: "人工智能 · 创新",
+    categoryEn: "AI · Innovation",
+    pillar: "academic",
+    audience: "P9–A2",
+    capacity: "12–20 人",
+    language: "中英双语",
+    time: "4:30 – 5:15 PM",
+    locationZh: "三创中心",
+    locationEn: "3C Center",
+    icon: "🤖",
+    grad: ["#0ea5e9", "#6366f1"],
+    accent: "#38bdf8",
+    descZh: "与 AI 一起共创：学习提示工程与生成式 AI 工具，把灵感变成可展示的作品。",
+    descEn: "Co-create with AI — learn prompt engineering and generative AI tools, turning ideas into showcase-ready work.",
+    highlightsZh: ["提示工程 Prompt Engineering", "生成式工具 GenAI Tools", "作品产出 Showcase"],
+    highlightsEn: ["Prompt Engineering", "GenAI Tools", "Showcase"]
+  },
+  {
+    id: "wed-amc",
+    day: "wednesday",
+    nameZh: "AMC 10/12 数学竞赛备赛",
+    nameEn: "AMC 10/12 & Maths Tutorial",
+    teacherZh: "Dr. He",
+    teacherEn: "Dr. He",
+    categoryZh: "数学 · 竞赛",
+    categoryEn: "Mathematics · Competition",
+    pillar: "academic",
+    audience: "IG / AS",
+    capacity: "4–12 人",
+    language: "中英双语",
+    time: "4:30 – 5:15 PM",
+    locationZh: "M4",
+    locationEn: "M4",
+    icon: "🧮",
+    grad: ["#1d4ed8", "#4f46e5"],
+    accent: "#60a5fa",
+    descZh: "AMC 10/12 数学竞赛备赛：知识学习、实战体验到正式竞赛。",
+    descEn: "Prepare for AMC 10/12 — study, experience, compete.",
+    highlightsZh: ["知识学习 Study", "团队协作 Teamwork", "期末比赛 Competition"],
+    highlightsEn: ["Study", "Teamwork", "Competition"],
+    noteZh: "需 1 年及以上数学基础",
+    noteEn: "Requires 1+ year of maths"
+  },
+  {
+    id: "wed-cinema",
+    day: "wednesday",
+    nameZh: "世界电影欣赏",
+    nameEn: "World Cinema Club",
+    teacherZh: "Ms. Aria（戚老师）",
+    teacherEn: "Ms. Aria",
+    categoryZh: "电影艺术",
+    categoryEn: "Cinema",
+    pillar: "creative",
+    audience: "P7–AS",
+    capacity: "5–20 人",
+    language: "中英双语",
+    time: "4:30 – 5:15 PM",
+    locationZh: "以最终 ECA 安排为准",
+    locationEn: "Per final ECA schedule",
+    icon: "🍿",
+    grad: ["#dc2626", "#f59e0b"],
+    accent: "#f87171",
+    descZh: "看世界电影、聊故事、玩配音与竞猜，无考试、基本无作业，轻松加入。",
+    descEn: "Watch world cinema, chat about stories, play dubbing and quizzes — no exams, almost no homework, just join in.",
+    highlightsZh: ["完整观影 Watch Together", "轻松互动 Join In", "世界文化 Discover"],
+    highlightsEn: ["Watch Together", "Join In", "Discover"]
+  },
+  {
+    id: "wed-poetry",
+    day: "wednesday",
+    nameZh: "诗歌鉴赏",
+    nameEn: "Poetry Appreciation",
+    teacherZh: "Ms. Wei",
+    teacherEn: "Ms. Wei",
+    categoryZh: "人文 · 文学",
+    categoryEn: "Humanities · Literature",
+    pillar: "creative",
+    audience: "中学部各年级",
+    capacity: "4–10 人",
+    language: "中英双语",
+    time: "4:30 – 5:15 PM",
+    locationZh: "现场公布",
+    locationEn: "On site",
+    icon: "🌸",
+    grad: ["#be185d", "#f472b6"],
+    accent: "#f9a8d4",
+    descZh: "跨越时空与经典对话，品读四大诗体、朗诵吟唱，在韵律中感受中文之美。",
+    descEn: "Travel through time with the classics — appreciate four poetic forms through recitation and chanting.",
+    highlightsZh: ["经典品读 Classics", "朗诵吟唱 Recitation", "期末展演 Showcase"],
+    highlightsEn: ["Classic Appreciation", "Recitation & Chanting", "Showcase"]
+  },
+  {
+    id: "wed-novel-stage",
+    day: "wednesday",
+    nameZh: "从小说到舞台",
+    nameEn: "From Novel to Stage",
+    teacherZh: "Ms. Sue & Ms. Echo",
+    teacherEn: "Ms. Sue & Ms. Echo",
+    categoryZh: "阅读与戏剧",
+    categoryEn: "Reading & Drama",
+    pillar: "creative",
+    audience: "中学部各年级",
+    capacity: "10–15 人",
+    language: "中英双语",
+    time: "4:30 – 5:15 PM",
+    locationZh: "语言支持中心 LSC",
+    locationEn: "Language Support Center",
+    icon: "🎭",
+    grad: ["#7c2d12", "#ea580c"],
+    accent: "#fb923c",
+    descZh: "侦探剧本研读：从小说到舞台，团队共创并期末展演。",
+    descEn: "Detective-script reading — from novel to stage, co-create and perform at the final showcase.",
+    highlightsZh: ["项目式学习 Project-Based", "团队协作 Teamwork", "期末展演 Showcase"],
+    highlightsEn: ["Project-Based", "Teamwork", "Showcase"]
+  },
+  {
+    id: "wed-history",
+    day: "wednesday",
+    nameZh: "中国近现代历史俱乐部",
+    nameEn: "Chinese History Club",
+    teacherZh: "Mr. Xu（许老师）",
+    teacherEn: "Mr. Xu",
+    categoryZh: "人文 · 历史",
+    categoryEn: "Humanities · History",
+    pillar: "creative",
+    audience: "中学部各年级",
+    capacity: "6–8 人",
+    language: "中英双语",
+    time: "4:15 – 5:15 PM",
+    locationZh: "现场公布",
+    locationEn: "On site",
+    icon: "🏛️",
+    grad: ["#78350f", "#b45309"],
+    accent: "#d97706",
+    descZh: "中国近现代历史俱乐部：通史解读、人物点评与事件解析，走进 130 年的风云变迁。",
+    descEn: "Modern Chinese history club — survey, biography and event analysis across 130 years of change.",
+    highlightsZh: ["通史解读 Survey", "人物点评 Biography", "事件解析 Analysis"],
+    highlightsEn: ["Survey", "Biography", "Analysis"]
+  },
+  {
+    id: "wed-songwriting",
+    day: "wednesday",
+    nameZh: "歌曲写作与制作",
+    nameEn: "Songwriting & Music Production",
+    teacherZh: "Ms. Kirsten",
+    teacherEn: "Ms. Kirsten",
+    categoryZh: "音乐",
+    categoryEn: "Music",
+    pillar: "creative",
+    audience: "P7–A2",
+    capacity: "1–4 人",
+    language: "中英双语",
+    time: "4:30 – 5:15 PM",
+    locationZh: "音乐教室",
+    locationEn: "Music Room",
+    icon: "🎼",
+    grad: ["#9333ea", "#c026d3"],
+    accent: "#d8b4fe",
+    descZh: "从曲风识别、旋律编写到编曲混音，产出你的原创作品并公开演出。",
+    descEn: "From genre recognition and topline writing to arrangement and mixing — create and perform your own original piece.",
+    highlightsZh: ["原创产出 Original", "公开演出 Showcase", "录音体验 Recording"],
+    highlightsEn: ["Original Piece", "Showcase", "Recording"]
+  },
+  {
+    id: "wed-badminton",
+    day: "wednesday",
+    nameZh: "羽毛球",
+    nameEn: "Badminton",
+    teacherZh: "Mr. Mark & Ms. Nancy",
+    teacherEn: "Mr. Mark & Ms. Nancy",
+    categoryZh: "体育",
+    categoryEn: "Sports",
+    pillar: "athletics",
+    audience: "中学部各年级",
+    capacity: "4–8 人",
+    language: "中英双语",
+    time: "4:30 – 5:15 PM",
+    locationZh: "主会堂 Mainhall",
+    locationEn: "Mainhall",
+    icon: "🏸",
+    grad: ["#059669", "#84cc16"],
+    accent: "#4ade80",
+    descZh: "基础握拍与步法、对抗实战到学期友谊赛，练就身心与体育精神。",
+    descEn: "Grips and footwork, match play and a term friendly tournament — build fitness, sportsmanship and competitive spirit.",
+    highlightsZh: ["体育锻炼 Fitness", "体育精神 Sportsmanship", "对抗竞技 Competitive"],
+    highlightsEn: ["Physical Fitness", "Sportsmanship", "Competitive"]
+  },
+  {
+    id: "wed-running",
+    day: "wednesday",
+    nameZh: "跑步俱乐部",
+    nameEn: "Running ECA",
+    teacherZh: "Mr. Marko",
+    teacherEn: "Mr. Marko",
+    categoryZh: "体育",
+    categoryEn: "Sports",
+    pillar: "athletics",
+    audience: "中学部各年级",
+    capacity: "不限",
+    language: "英语 English",
+    time: "4:30 – 5:15 PM",
+    locationZh: "田径跑道",
+    locationEn: "Running Track",
+    icon: "🏃",
+    grad: ["#16a34a", "#65a30d"],
+    accent: "#4ade80",
+    descZh: "更快、更强、更好：科学配速与间歇训练，最终与过去的自己赛跑。",
+    descEn: "Faster, stronger, better — pacing and interval training, then race against your past self.",
+    highlightsZh: ["技巧训练 Technique", "归属感 Belong", "超越自我 Beat Your Past"],
+    highlightsEn: ["Technique", "Belong", "Beat Your Past"]
+  },
+  {
+    id: "wed-dodgeball",
+    day: "wednesday",
+    nameZh: "躲避球与三分球",
+    nameEn: "Dodgeball & 3-Point Shootout",
+    teacherZh: "Dr. Chris",
+    teacherEn: "Dr. Chris",
+    categoryZh: "体育",
+    categoryEn: "Sports",
+    pillar: "athletics",
+    audience: "P7–A2",
+    capacity: "6–10 人",
+    language: "英语 English",
+    time: "4:30 – 5:15 PM",
+    locationZh: "夏季·主会堂 / 春秋冬·操场",
+    locationEn: "Main Hall (summer) / Field",
+    icon: "🤾",
+    grad: ["#dc2626", "#ea580c"],
+    accent: "#f87171",
+    descZh: "躲避球与三分球大战，在欢笑中锻炼反应与准星。",
+    descEn: "Dodgeball and 3-point shootout — sharpen reflexes and aim while having a blast.",
+    highlightsZh: ["团队协作 Teamwork", "反应 Reflexes", "准星 Aim"],
+    highlightsEn: ["Teamwork", "Reflexes", "Aim"]
+  },
+  {
+    id: "wed-doe",
+    day: "wednesday",
+    nameZh: "爱丁堡公爵奖",
+    nameEn: "Duke of Edinburgh (DoE)",
+    teacherZh: "Mr. Vuk",
+    teacherEn: "Mr. Vuk",
+    categoryZh: "领导力 · 服务",
+    categoryEn: "Leadership & Service",
+    pillar: "leadership",
+    audience: "P9 及以上",
+    capacity: "不限",
+    language: "英语 English",
+    time: "4:30 – 5:15 PM",
+    locationZh: "学校咖啡厅",
+    locationEn: "School Café",
+    icon: "🏕️",
+    grad: ["#1e3a8a", "#0d9488"],
+    accent: "#2dd4bf",
+    descZh: "爱丁堡公爵奖：技能与体能、社区服务与远足探险。新成员冲刺铜奖，老成员冲击银奖。",
+    descEn: "Duke of Edinburgh Award — skills & physical activity, community service and adventurous journey. Bronze for new members, Silver for returning.",
+    highlightsZh: ["技能体能 Skills & Fitness", "社区服务 Service", "远足探险 Expedition"],
+    highlightsEn: ["Skills & Fitness", "Service", "Expedition"]
+  }
+];
+
+</script>
+  <script>
+/* ============================================================
+   Cogdel Chengdu · ECA Fair 2026 — App
+   ============================================================ */
+
+(function () {
+  "use strict";
+
+  const COURSES = window.ECA.COURSES;
+  const PILLARS = window.ECA.PILLARS;
+  const DAYS = window.ECA.DAYS;
+  const DAY_ORDER = ["monday", "tuesday", "wednesday"];
+
+  /* ---------------- i18n ---------------- */
+  const I18N = {
+    zh: {
+      brandSub: "成都康礼学校 · 中学部课外课程选课平台",
+      heroSub: "在 {days} 各选一门你心仪的 ECA，开启这学期的精彩旅程。",
+      days: "周一 / 周二 / 周三",
+      whoAreYou: "请填写你的选课信息",
+      identityHint: "选完课后，我们会以此信息登记",
+      mySelection: "我的选课",
+      submit: "提交选课",
+      emptyName: "请填写中文名、英文名和年级",
+      gradePlaceholder: "年级 Grade",
+      pickAll: "请在周一、周二、周三各选一门课",
+      selectThis: "选择这门课",
+      selected: "已选择 ✓",
+      cancel: "取消选择",
+      highlights: "课程亮点",
+      note: "注意事项",
+      time: "上课时间",
+      location: "地点",
+      capacity: "人数",
+      grades: "年级",
+      language: "语言",
+      teacher: "老师",
+      courses: "门课程",
+      submitted: "选课提交成功！我们已为你登记 🎉",
+      submittedServer: "选课已提交并保存到服务器 ✅",
+      changed: "选课已更新",
+      removed: "已从选课中移除",
+      poster: "海报",
+      shelfHint: "点击任意课程封面查看详情并选课",
+      serverOffline: "（离线模式：选课保存在本设备）",
+      pillarAcademic: "学术与创新",
+      pillarCreative: "创意与文化",
+      pillarAthletics: "运动与健康",
+      pillarLeadership: "领导力与服务",
+      modeStudent: "学生选课",
+      modeParent: "家长浏览",
+      parentBanner: "家长浏览模式 · 您可查看全部课程简介；如需选课，请让孩子在「学生选课」入口操作。"
+    },
+    en: {
+      brandSub: "Cogdel School Chengdu · Secondary School ECA Selection",
+      heroSub: "Pick one ECA you love for {days} and start an amazing semester.",
+      days: "Monday / Tuesday / Wednesday",
+      whoAreYou: "Fill in your sign-up info",
+      identityHint: "We'll register your choices under this info",
+      mySelection: "My Selection",
+      submit: "Submit",
+      emptyName: "Please fill in your Chinese name, English name and grade",
+      gradePlaceholder: "Grade",
+      pickAll: "Please pick one course for Monday, Tuesday and Wednesday",
+      selectThis: "Select this course",
+      selected: "Selected ✓",
+      cancel: "Remove",
+      highlights: "What makes it awesome",
+      note: "Note",
+      time: "Time",
+      location: "Location",
+      capacity: "Capacity",
+      grades: "Grades",
+      language: "Language",
+      teacher: "Teacher",
+      courses: "courses",
+      submitted: "Selection submitted! You're all signed up 🎉",
+      submittedServer: "Selection submitted & saved to the server ✅",
+      changed: "Selection updated",
+      removed: "Removed from your selection",
+      poster: "Poster",
+      shelfHint: "Tap any cover to view details and select",
+      serverOffline: "(offline mode: choices saved on this device)",
+      pillarAcademic: "Academic & Innovation",
+      pillarCreative: "Creative & Cultural Arts",
+      pillarAthletics: "Athletics & Wellness",
+      pillarLeadership: "Leadership & Service",
+      modeStudent: "Student Sign-up",
+      modeParent: "Parent Browse",
+      parentBanner: "Parent browse mode · view all course details; to sign up, your child uses the Student entry."
+    }
+  };
+
+  let lang = localStorage.getItem("eca-lang") || "zh";
+  let serverAvailable = false;
+
+  // mode: "student" (default) or "parent" (browse-only)
+  function detectMode() {
+    const q = new URLSearchParams(location.search).get("view");
+    return q === "parent" ? "parent" : "student";
+  }
+  let mode = detectMode();
+
+  const state = {
+    nameZh: localStorage.getItem("eca-nameZh") || "",
+    nameEn: localStorage.getItem("eca-nameEn") || "",
+    grade: localStorage.getItem("eca-grade") || "",
+    picks: { monday: null, tuesday: null, wednesday: null },
+    submitted: false
+  };
+  try {
+    const saved = JSON.parse(localStorage.getItem("eca-picks") || "{}");
+    if (saved && saved.picks) state.picks = Object.assign(state.picks, saved.picks);
+  } catch (e) { /* ignore */ }
+
+  function t(key) {
+    return (I18N[lang] && I18N[lang][key]) || key;
+  }
+  function lzh(enVal, zhVal) { return lang === "zh" ? zhVal : enVal; }
+  function courseName(c) { return lzh(c.nameEn, c.nameZh); }
+  function courseTeacher(c) { return lzh(c.teacherEn, c.teacherZh); }
+  function courseDesc(c) { return lzh(c.descEn, c.descZh); }
+  function courseHighlights(c) { return lzh(c.highlightsEn, c.highlightsZh); }
+  function courseLocation(c) { return lzh(c.locationEn, c.locationZh); }
+  function courseNote(c) { return c.noteZh ? lzh(c.noteEn, c.noteZh) : ""; }
+
+  const $ = (sel) => document.querySelector(sel);
+
+  /* ---------------- helpers ---------------- */
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, (m) => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+    }[m]));
+  }
+
+  function courseById(id) { return COURSES.find((c) => c.id === id); }
+
+  function dayColor(day) {
+    return { monday: "#3b82f6", tuesday: "#10b981", wednesday: "#f59e0b" }[day] || "#888";
+  }
+
+  /* ---------------- SVG poster generation ---------------- */
+  function wrapText(text, maxChars) {
+    const words = text.split(" ");
+    const lines = [];
+    let cur = "";
+    for (let w of words) {
+      // split very long tokens (Chinese without spaces)
+      while (w.length > maxChars) {
+        if (cur) { lines.push(cur.trim()); cur = ""; }
+        lines.push(w.slice(0, maxChars)); w = w.slice(maxChars);
+      }
+      const candidate = (cur ? cur + " " + w : w);
+      if (candidate.length > maxChars) {
+        if (cur.trim()) lines.push(cur.trim());
+        cur = w;
+      } else {
+        cur = candidate;
+      }
+    }
+    if (cur.trim()) lines.push(cur.trim());
+    return lines.length ? lines : [""];
+  }
+
+  /* ---------------- SVG poster generation ---------------- */
+  const CATEGORY_STYLE = {
+    "Computer Science": "blueprint", "Mathematics": "blueprint", "Mathematics · Competition": "blueprint",
+    "AI · Innovation": "blueprint", "Innovation & Entrepreneurship": "blueprint",
+    "Chemistry": "blueprint", "Natural Science": "blueprint", "Biology": "blueprint",
+    "Chemistry · Competition": "blueprint",
+    "Business": "deco", "Economics · Competition": "deco", "Humanities & Social Sciences": "deco",
+    "Art & Design": "bauhaus", "Creative Arts": "bauhaus", "Creative Building": "bauhaus",
+    "Cinema": "cinema", "Music": "music",
+    "Sports": "sport", "PE & Sports": "sport",
+    "Humanities · Characters": "ink", "Humanities · Literature": "ink", "English Literature": "ink",
+    "Language & Culture": "ink", "Humanities · History": "ink", "Reading & Drama": "ink",
+    "Language Support": "ink", "Leadership & Service": "emblem"
+  };
+
+  function styleOf(c) { return CATEGORY_STYLE[c.categoryEn] || "bauhaus"; }
+  function mono(c) { return (c.nameEn.trim()[0] || "E").toUpperCase(); }
+
+  function tspans(lines, x, y0, lh) {
+    return lines.map((ln, i) => `<tspan x="${x}" y="${y0 + i * lh}">${esc(ln)}</tspan>`).join("");
+  }
+
+  function dayBadge(c) {
+    const day = DAYS[c.day];
+    return `<g>
+      <rect x="320" y="20" width="62" height="62" rx="14" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.35)"/>
+      <text x="351" y="48" text-anchor="middle" font-family="'PingFang SC',sans-serif" font-size="21" font-weight="900" fill="#fff">${day.short}</text>
+      <text x="351" y="66" text-anchor="middle" font-size="9" font-weight="700" letter-spacing="1" fill="rgba(255,255,255,0.85)">ECA</text>
+    </g>`;
+  }
+
+  function svgShell(c, defs, inner) {
+    return `<svg viewBox="0 0 400 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${esc(c.nameEn)}">${defs}${inner}</svg>`;
+  }
+
+  /* --- Style: Blueprint (science / tech / maths) --- */
+  function styleBlueprint(c) {
+    const gid = "bp" + c.id;
+    const en = tspans(wrapText(c.nameEn.toUpperCase(), 19).slice(0, 3), 200, 400, 30);
+    const zh = tspans(wrapText(c.nameZh, 11).slice(0, 2), 200, 492, 26);
+    const defs = `<defs>
+      <linearGradient id="${gid}b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a1a2f"/><stop offset="1" stop-color="#143a5c"/></linearGradient>
+      <pattern id="${gid}g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(103,232,249,0.13)" stroke-width="1"/></pattern>
+      <radialGradient id="${gid}glow" cx="0.5" cy="0.42" r="0.5"><stop offset="0" stop-color="rgba(103,232,249,0.18)"/><stop offset="1" stop-color="rgba(103,232,249,0)"/></radialGradient>
+    </defs>`;
+    const inner = `
+      <rect width="400" height="560" fill="url(#${gid}b)"/>
+      <rect width="400" height="560" fill="url(#${gid}g)"/>
+      <rect width="400" height="560" fill="url(#${gid}glow)"/>
+      <g stroke="rgba(103,232,249,0.65)" fill="none">
+        <circle cx="200" cy="225" r="120"/>
+        <circle cx="200" cy="225" r="148" stroke-dasharray="3 7" stroke-opacity="0.4"/>
+        <ellipse cx="200" cy="225" rx="148" ry="52" transform="rotate(-24 200 225)"/>
+        <ellipse cx="200" cy="225" rx="148" ry="52" transform="rotate(38 200 225)"/>
+        <path d="M18 225H382"/>
+        <path d="M200 36V414"/>
+        <path d="M80 96V152M320 96V152M80 298V352M320 298V352" stroke-opacity="0.5"/>
+      </g>
+      <circle cx="200" cy="225" r="52" fill="none" stroke="rgba(103,232,249,0.5)"/>
+      <circle cx="200" cy="225" r="30" fill="#0a1a2f" stroke="#67e8f9" stroke-width="2"/>
+      <text x="200" y="234" text-anchor="middle" font-family="'Courier New',monospace" font-size="26" font-weight="700" fill="#67e8f9">${esc(mono(c))}</text>
+      <text x="52" y="58" font-family="'Courier New',monospace" font-size="12" fill="#67e8f9" opacity="0.8">ECA · ${esc(c.categoryEn.toUpperCase())}</text>
+      ${dayBadge(c)}
+      <text x="200" y="400" text-anchor="middle" font-family="'PingFang SC','Arial',sans-serif" font-size="24" font-weight="900" fill="#fff" letter-spacing="0.5">${en}</text>
+      <text x="200" y="492" text-anchor="middle" font-family="'PingFang SC',sans-serif" font-size="19" font-weight="700" fill="rgba(103,232,249,0.95)">${zh}</text>
+      <text x="200" y="524" text-anchor="middle" font-family="'PingFang SC',sans-serif" font-size="13" fill="rgba(255,255,255,0.8)">${esc(c.teacherEn)}</text>
+      <text x="200" y="545" text-anchor="middle" font-size="9" letter-spacing="2" fill="rgba(255,255,255,0.5)">COGDEL · ECA FAIR 2026</text>`;
+    return svgShell(c, defs, inner);
+  }
+
+  /* --- Style: Art Deco (business / finance / economics) --- */
+  function styleDeco(c) {
+    const gid = "dc" + c.id;
+    const en = tspans(wrapText(c.nameEn.toUpperCase(), 17).slice(0, 3), 200, 400, 32);
+    const zh = tspans(wrapText(c.nameZh, 10).slice(0, 2), 200, 496, 28);
+    let rays = "";
+    for (let i = 0; i < 16; i++) {
+      const a = (i / 16) * Math.PI;
+      rays += `<path d="M200 300 L${200 + Math.cos(a) * 320} ${300 + Math.sin(a) * 320}" stroke="rgba(212,175,55,0.14)" stroke-width="2"/>`;
+    }
+    const defs = `<defs>
+      <linearGradient id="${gid}b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#052e22"/><stop offset="1" stop-color="#0a4533"/></linearGradient>
+    </defs>`;
+    const inner = `
+      <rect width="400" height="560" fill="url(#${gid}b)"/>
+      <rect x="0" y="0" width="400" height="560" fill="none" stroke="rgba(212,175,55,0.6)" stroke-width="2"/>
+      <rect x="12" y="12" width="376" height="536" fill="none" stroke="rgba(212,175,55,0.35)" stroke-width="1"/>
+      ${rays}
+      <circle cx="200" cy="300" r="120" fill="none" stroke="rgba(212,175,55,0.4)"/>
+      <circle cx="200" cy="300" r="96" fill="none" stroke="rgba(212,175,55,0.55)"/>
+      <circle cx="200" cy="300" r="74" fill="rgba(212,175,55,0.12)" stroke="#d4af37" stroke-width="2"/>
+      <text x="200" y="312" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="40" font-weight="700" fill="#e7d9a8">${esc(mono(c))}</text>
+      <text x="200" y="240" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="12" letter-spacing="4" fill="#d4af37">${esc(c.categoryEn.toUpperCase())}</text>
+      <path d="M150 300H250" stroke="#d4af37" stroke-width="1"/>
+      ${dayBadge(c)}
+      <text x="200" y="400" text-anchor="middle" font-family="Georgia,'Times New Roman','PingFang SC',serif" font-size="23" font-weight="700" fill="#f5ecd7" letter-spacing="1">${en}</text>
+      <text x="200" y="496" text-anchor="middle" font-family="'PingFang SC','Songti SC',serif" font-size="19" font-weight="700" fill="#d4af37">${zh}</text>
+      <text x="200" y="528" text-anchor="middle" font-family="'PingFang SC',serif" font-size="13" fill="rgba(245,236,215,0.8)">${esc(c.teacherEn)}</text>
+      <text x="200" y="547" text-anchor="middle" font-size="9" letter-spacing="3" fill="rgba(212,175,55,0.7)">COGDEL · ECA FAIR 2026</text>`;
+    return svgShell(c, defs, inner);
+  }
+
+  /* --- Style: Bauhaus (art / design / creative) --- */
+  function styleBauhaus(c) {
+    const gid = "bh" + c.id;
+    const en = tspans(wrapText(c.nameEn.toUpperCase(), 16).slice(0, 3), 200, 420, 34);
+    const zh = tspans(wrapText(c.nameZh, 10).slice(0, 2), 200, 516, 28);
+    const defs = `<defs><linearGradient id="${gid}b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3e8d0"/><stop offset="1" stop-color="#e9d8b6"/></linearGradient></defs>`;
+    const inner = `
+      <rect width="400" height="560" fill="url(#${gid}b)"/>
+      <circle cx="120" cy="150" r="95" fill="#d8402c"/>
+      <path d="M300 40 A 90 90 0 0 1 300 220 L 210 220 Z" fill="#2f6fb3"/>
+      <rect x="230" y="150" width="150" height="90" fill="#e3a51e"/>
+      <rect x="30" y="280" width="200" height="70" fill="#1c1c1c"/>
+      <rect x="260" y="280" width="120" height="120" rx="60" fill="#2f6fb3"/>
+      <circle cx="340" cy="430" r="34" fill="#d8402c"/>
+      <path d="M0 545 L400 545" stroke="#1c1c1c" stroke-width="8"/>
+      <text x="120" y="162" text-anchor="middle" font-family="'Arial Black','PingFang SC',sans-serif" font-size="44" font-weight="900" fill="#fff">${esc(mono(c))}</text>
+      <text x="40" y="330" font-family="'Arial Black',sans-serif" font-size="15" font-weight="900" fill="#fff">${esc(c.categoryEn.toUpperCase())}</text>
+      ${dayBadge(c)}
+      <text x="200" y="420" text-anchor="middle" font-family="'Arial Black','PingFang SC',sans-serif" font-size="24" font-weight="900" fill="#1c1c1c" letter-spacing="0.5">${en}</text>
+      <text x="200" y="516" text-anchor="middle" font-family="'PingFang SC',sans-serif" font-size="20" font-weight="800" fill="#d8402c">${zh}</text>
+      <text x="200" y="538" text-anchor="middle" font-family="'PingFang SC',sans-serif" font-size="13" font-weight="700" fill="#3a3327">${esc(c.teacherEn)}</text>`;
+    return svgShell(c, defs, inner);
+  }
+
+  /* --- Style: Ink (humanities / literature / language) --- */
+  function styleInk(c) {
+    const gid = "ik" + c.id;
+    const seal = (c.nameZh.trim()[0] || "文");
+    const en = tspans(wrapText(c.nameEn.toUpperCase(), 19).slice(0, 3), 200, 400, 30);
+    const zh = tspans(wrapText(c.nameZh, 11).slice(0, 2), 200, 492, 28);
+    const defs = `<defs>
+      <linearGradient id="${gid}b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6efe2"/><stop offset="1" stop-color="#ece0c8"/></linearGradient>
+      <filter id="${gid}blur" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="18"/></filter>
+    </defs>`;
+    const inner = `
+      <rect width="400" height="560" fill="url(#${gid}b)"/>
+      <ellipse cx="300" cy="110" rx="150" ry="90" fill="#2b2620" opacity="0.12" filter="url(#${gid}blur)"/>
+      <ellipse cx="90" cy="330" rx="120" ry="80" fill="#2b2620" opacity="0.08" filter="url(#${gid}blur)"/>
+      <path d="M40 190 Q 200 120 360 200" stroke="#2b2620" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.75"/>
+      <path d="M60 250 Q 200 210 330 235" stroke="#2b2620" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.5"/>
+      <rect x="312" y="40" width="54" height="54" fill="#b02a1e"/>
+      <text x="339" y="76" text-anchor="middle" font-family="'Songti SC','PingFang SC',serif" font-size="30" font-weight="700" fill="#f7ead2">${esc(seal)}</text>
+      <text x="52" y="58" font-family="'Songti SC','PingFang SC',serif" font-size="13" letter-spacing="3" fill="#5c5142">${esc(c.categoryZh)}</text>
+      ${dayBadge(c)}
+      <text x="200" y="400" text-anchor="middle" font-family="Georgia,'Songti SC','PingFang SC',serif" font-size="23" font-weight="700" fill="#2b2620">${en}</text>
+      <text x="200" y="492" text-anchor="middle" font-family="'Songti SC','PingFang SC',serif" font-size="22" font-weight="700" fill="#8a4a12">${zh}</text>
+      <text x="200" y="526" text-anchor="middle" font-family="'PingFang SC',serif" font-size="13" fill="#5c5142">${esc(c.teacherEn)}</text>
+      <text x="200" y="545" text-anchor="middle" font-size="9" letter-spacing="3" fill="#a99a7c">COGDEL · ECA FAIR 2026</text>`;
+    return svgShell(c, defs, inner);
+  }
+
+  /* --- Style: Retro Music --- */
+  function styleMusic(c) {
+    const gid = "mu" + c.id;
+    const en = tspans(wrapText(c.nameEn.toUpperCase(), 17).slice(0, 3), 200, 400, 34);
+    const zh = tspans(wrapText(c.nameZh, 10).slice(0, 2), 200, 500, 28);
+    let rings = "";
+    for (let r = 130; r >= 30; r -= 14) rings += `<circle cx="120" cy="150" r="${r}" fill="none" stroke="rgba(20,16,26,0.5)" stroke-width="${r % 28 === 0 ? 4 : 1.5}"/>`;
+    const defs = `<defs>
+      <linearGradient id="${gid}b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7c3aed"/><stop offset="0.5" stop-color="#ec4899"/><stop offset="1" stop-color="#f97316"/></linearGradient>
+    </defs>`;
+    const inner = `
+      <rect width="400" height="560" fill="url(#${gid}b)"/>
+      ${rings}
+      <circle cx="120" cy="150" r="34" fill="#f97316"/>
+      <circle cx="120" cy="150" r="7" fill="#f7e7d0"/>
+      <g stroke="rgba(255,255,255,0.6)" fill="none" stroke-linecap="round">
+        <path d="M220 120 q30 -40 70 -30" stroke-width="7"/>
+        <path d="M220 150 q40 -40 90 -24" stroke-width="7"/>
+        <path d="M220 180 q36 -32 78 -16" stroke-width="7"/>
+      </g>
+      <text x="330" y="180" font-family="'Arial Black',sans-serif" font-size="16" font-weight="900" fill="#fff" opacity="0.9" transform="rotate(8 330 180)">♪</text>
+      ${dayBadge(c)}
+      <text x="200" y="400" text-anchor="middle" font-family="'Arial Rounded MT Bold','Arial Black','PingFang SC',sans-serif" font-size="24" font-weight="900" fill="#fff">${en}</text>
+      <text x="200" y="500" text-anchor="middle" font-family="'PingFang SC',sans-serif" font-size="20" font-weight="800" fill="rgba(255,255,255,0.95)">${zh}</text>
+      <text x="200" y="528" text-anchor="middle" font-family="'PingFang SC',sans-serif" font-size="13" font-weight="700" fill="rgba(255,255,255,0.9)">${esc(c.teacherEn)}</text>
+      <text x="200" y="547" text-anchor="middle" font-size="9" letter-spacing="3" fill="rgba(255,255,255,0.7)">COGDEL · ECA FAIR 2026</text>`;
+    return svgShell(c, defs, inner);
+  }
+
+  /* --- Style: Sport (dynamic) --- */
+  function styleSport(c) {
+    const gid = "sp" + c.id;
+    const en = tspans(wrapText(c.nameEn.toUpperCase(), 16).slice(0, 3), 200, 404, 34);
+    const zh = tspans(wrapText(c.nameZh, 10).slice(0, 2), 200, 502, 28);
+    let stripes = "";
+    for (let i = 0; i < 7; i++) stripes += `<path d="M${-40 + i * 70} 560 L${140 + i * 70} 0" stroke="rgba(255,255,255,0.10)" stroke-width="${26 + i * 6}"/>`;
+    const defs = `<defs><linearGradient id="${gid}b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d9261f"/><stop offset="1" stop-color="#f97316"/></linearGradient></defs>`;
+    const inner = `
+      <rect width="400" height="560" fill="url(#${gid}b)"/>
+      ${stripes}
+      <circle cx="200" cy="210" r="86" fill="none" stroke="#fff" stroke-width="14" stroke-dasharray="180 360" stroke-linecap="round"/>
+      <circle cx="200" cy="210" r="34" fill="#fff"/>
+      <path d="M70 300 q 260 -60 300 30" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.7"/>
+      <text x="52" y="60" font-family="'Arial Black',sans-serif" font-size="13" font-weight="900" fill="#fff" opacity="0.9">${esc(c.categoryEn.toUpperCase())}</text>
+      ${dayBadge(c)}
+      <text x="200" y="404" text-anchor="middle" font-family="'Arial Black','PingFang SC',sans-serif" font-size="24" font-weight="900" fill="#fff" font-style="italic" letter-spacing="0.5">${en}</text>
+      <text x="200" y="502" text-anchor="middle" font-family="'PingFang SC',sans-serif" font-size="20" font-weight="900" fill="#fff">${zh}</text>
+      <text x="200" y="530" text-anchor="middle" font-family="'PingFang SC',sans-serif" font-size="13" font-weight="700" fill="rgba(255,255,255,0.95)">${esc(c.teacherEn)}</text>
+      <text x="200" y="549" text-anchor="middle" font-size="9" letter-spacing="3" fill="rgba(255,255,255,0.75)">COGDEL · ECA FAIR 2026</text>`;
+    return svgShell(c, defs, inner);
+  }
+
+  /* --- Style: Cinema --- */
+  function styleCinema(c) {
+    const gid = "ci" + c.id;
+    const en = tspans(wrapText(c.nameEn.toUpperCase(), 18).slice(0, 3), 200, 400, 32);
+    const zh = tspans(wrapText(c.nameZh, 10).slice(0, 2), 200, 496, 28);
+    let holes = "";
+    for (let i = 0; i < 8; i++) holes += `<rect x="${26 + i * 48}" y="28" width="26" height="20" rx="3" fill="rgba(0,0,0,0.55)"/><rect x="${26 + i * 48}" y="512" width="26" height="20" rx="3" fill="rgba(0,0,0,0.55)"/>`;
+    const defs = `<defs>
+      <linearGradient id="${gid}b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12131a"/><stop offset="1" stop-color="#241d20"/></linearGradient>
+      <linearGradient id="${gid}beam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(255,220,150,0.5)"/><stop offset="1" stop-color="rgba(255,220,150,0)"/></linearGradient>
+    </defs>`;
+    const inner = `
+      <rect width="400" height="560" fill="url(#${gid}b)"/>
+      <path d="M200 90 L90 300 L310 300 Z" fill="url(#${gid}beam)"/>
+      <rect x="14" y="20" width="372" height="8" fill="#1b1b22"/>
+      <rect x="14" y="532" width="372" height="8" fill="#1b1b22"/>
+      ${holes}
+      <rect x="150" y="128" width="100" height="34" rx="6" fill="#e8b339"/>
+      <text x="200" y="152" text-anchor="middle" font-family="'Arial Black',sans-serif" font-size="15" font-weight="900" fill="#1b1b22">NOW SHOWING</text>
+      <text x="200" y="300" text-anchor="middle" font-size="44" fill="#fff">🎬</text>
+      ${dayBadge(c)}
+      <text x="200" y="400" text-anchor="middle" font-family="Georgia,'Times New Roman','PingFang SC',serif" font-size="23" font-weight="700" fill="#f5e7c8" letter-spacing="1">${en}</text>
+      <text x="200" y="496" text-anchor="middle" font-family="'PingFang SC',serif" font-size="20" font-weight="700" fill="#e8b339">${zh}</text>
+      <text x="200" y="524" text-anchor="middle" font-family="'PingFang SC',serif" font-size="13" fill="rgba(245,231,200,0.85)">${esc(c.teacherEn)}</text>
+      <text x="200" y="547" text-anchor="middle" font-size="9" letter-spacing="3" fill="rgba(232,179,57,0.7)">COGDEL · ECA FAIR 2026</text>`;
+    return svgShell(c, defs, inner);
+  }
+
+  /* --- Style: Emblem (leadership / service) --- */
+  function styleEmblem(c) {
+    const gid = "em" + c.id;
+    const en = tspans(wrapText(c.nameEn.toUpperCase(), 17).slice(0, 3), 200, 412, 32);
+    const zh = tspans(wrapText(c.nameZh, 10).slice(0, 2), 200, 506, 28);
+    const defs = `<defs><linearGradient id="${gid}b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12263f"/><stop offset="1" stop-color="#1e3a5f"/></linearGradient></defs>`;
+    const inner = `
+      <rect width="400" height="560" fill="url(#${gid}b)"/>
+      <circle cx="200" cy="200" r="118" fill="none" stroke="rgba(212,175,55,0.35)" stroke-width="2"/>
+      <circle cx="200" cy="200" r="104" fill="none" stroke="#d4af37" stroke-width="2"/>
+      <path d="M200 96 l-14 22 h28 Z" fill="#d4af37"/>
+      <path d="M96 200 c 0 -60 48 -108 108 -108 c 60 0 108 48 108 108" fill="none" stroke="#d4af37" stroke-width="2"/>
+      <path d="M96 200 c 0 60 48 108 108 108 c 60 0 108 -48 108 -108" fill="none" stroke="#d4af37" stroke-width="2"/>
+      <circle cx="200" cy="200" r="40" fill="none" stroke="#d4af37" stroke-width="2"/>
+      <text x="200" y="214" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="36" font-weight="700" fill="#e7d9a8">${esc(mono(c))}</text>
+      <text x="200" y="366" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="13" letter-spacing="4" fill="#d4af37">${esc(c.categoryEn.toUpperCase())}</text>
+      ${dayBadge(c)}
+      <text x="200" y="412" text-anchor="middle" font-family="Georgia,'Times New Roman','PingFang SC',serif" font-size="23" font-weight="700" fill="#f5ecd7" letter-spacing="1">${en}</text>
+      <text x="200" y="506" text-anchor="middle" font-family="'PingFang SC',serif" font-size="20" font-weight="700" fill="#d4af37">${zh}</text>
+      <text x="200" y="534" text-anchor="middle" font-family="'PingFang SC',serif" font-size="13" fill="rgba(245,236,215,0.85)">${esc(c.teacherEn)}</text>
+      <text x="200" y="549" text-anchor="middle" font-size="9" letter-spacing="3" fill="rgba(212,175,55,0.7)">COGDEL · ECA FAIR 2026</text>`;
+    return svgShell(c, defs, inner);
+  }
+
+  function posterSVG(c) {
+    const builders = {
+      blueprint: styleBlueprint, deco: styleDeco, bauhaus: styleBauhaus, ink: styleInk,
+      music: styleMusic, sport: styleSport, cinema: styleCinema, emblem: styleEmblem
+    };
+    return (builders[styleOf(c)] || styleBauhaus)(c);
+  }
+
+  /* ---------------- render pillars ---------------- */
+  function renderPillars() {
+    const el = $("#pillars");
+    const defs = [
+      { key: "academic", color: "#2563eb", label: t("pillarAcademic") },
+      { key: "creative", color: "#d946ef", label: t("pillarCreative") },
+      { key: "athletics", color: "#16a34a", label: t("pillarAthletics") },
+      { key: "leadership", color: "#f59e0b", label: t("pillarLeadership") }
+    ];
+    el.innerHTML = defs.map((d) =>
+      `<span class="pillar"><span class="dot" style="background:${d.color}"></span>${esc(d.label)}</span>`
+    ).join("");
+  }
+
+  /* ---------------- render shelves ---------------- */
+  function renderShelves() {
+    const root = $("#shelves");
+    root.innerHTML = "";
+    DAY_ORDER.forEach((day) => {
+      const list = COURSES.filter((c) => c.day === day);
+      const shelf = document.createElement("section");
+      shelf.className = "shelf";
+      const dayInfo = DAYS[day];
+      const dayC = dayColor(day);
+      const title = lzh(dayInfo.en, dayInfo.zh);
+
+      const books = document.createElement("div");
+      books.className = "shelf-books";
+      list.forEach((c) => books.appendChild(bookCard(c)));
+
+      shelf.innerHTML = `
+        <div class="shelf-header">
+          <div class="shelf-badge" style="background:${dayC}">${dayInfo.zh}<small>${dayInfo.en.toUpperCase()}</small></div>
+          <div>
+            <h2 class="shelf-title">${title}<span class="shelf-title-en">${dayInfo.en}</span></h2>
+          </div>
+          <span class="shelf-count">${list.length} ${t("courses")}</span>
+        </div>
+      `;
+      shelf.appendChild(books);
+      root.appendChild(shelf);
+    });
+  }
+
+  function bookCard(c) {
+    const btn = document.createElement("button");
+    btn.className = "book";
+    btn.type = "button";
+    btn.setAttribute("data-id", c.id);
+    const sel = mode === "student" && state.picks[c.day] === c.id;
+    btn.innerHTML = `
+      <span class="book-cover">${posterSVG(c)}</span>
+      <span class="book-name">${esc(courseName(c))}${sel ? " ✓" : ""}</span>
+      <span class="book-teacher">${esc(courseTeacher(c))}</span>
+    `;
+    btn.addEventListener("click", () => openModal(c));
+    return btn;
+  }
+
+  /* ---------------- modal ---------------- */
+  let openCourseId = null;
+  function openModal(c) {
+    openCourseId = c.id;
+    const body = $("#modalBody");
+    const selected = state.picks[c.day] === c.id;
+    const p = PILLARS[c.pillar];
+    const pillarLabel = lzh(p.en, p.zh);
+    const highlights = courseHighlights(c);
+    const note = courseNote(c);
+
+    body.innerHTML = `
+      <div class="modal-poster"><span class="poster">${posterSVG(c)}</span></div>
+      <div class="modal-info">
+        <div class="modal-cat">
+          <span class="tag">${lzh(c.categoryEn, c.categoryZh)}</span>
+          <span class="tag pillar" style="background:${c.accent}">${esc(pillarLabel)}</span>
+          <span class="tag" style="background:${dayColor(c.day)};color:#fff">${lzh(DAYS[c.day].en, DAYS[c.day].zh)}</span>
+        </div>
+        <h2 class="modal-title">${esc(courseName(c))}</h2>
+        <p class="modal-title-en">${esc(c.nameEn)}</p>
+        <div class="modal-teacher"><span class="t-label">${t("teacher")}</span>${esc(courseTeacher(c))}</div>
+
+        <p class="modal-desc">${esc(courseDesc(c))}</p>
+
+        <div class="modal-meta">
+          <div class="meta-item"><b>⏰ ${t("time")}</b><span>${esc(c.time)}</span></div>
+          <div class="meta-item"><b>📍 ${t("location")}</b><span>${esc(courseLocation(c))}</span></div>
+          <div class="meta-item"><b>👥 ${t("capacity")}</b><span>${esc(c.capacity)}</span></div>
+          <div class="meta-item"><b>🎓 ${t("grades")}</b><span>${esc(c.audience)}</span></div>
+          <div class="meta-item" style="grid-column:1/-1"><b>🗣 ${t("language")}</b><span>${esc(c.language)}</span></div>
+        </div>
+
+        <p class="modal-hl-title">${t("highlights")}</p>
+        <div class="modal-hl">${highlights.map((h) => `<span class="chip">${esc(h)}</span>`).join("")}</div>
+
+        ${note ? `<div class="modal-note"><b>${t("note")}：</b>${esc(note)}</div>` : ""}
+
+        ${mode === "student" ? `
+        <div class="modal-actions">
+          <button class="btn btn-primary ${selected ? "selected" : ""}" id="modalSelect">${selected ? t("selected") : t("selectThis")}</button>
+          ${selected ? `<button class="btn btn-ghost" id="modalRemove">${t("cancel")}</button>` : ""}
+        </div>` : `
+        <div class="modal-actions"><span class="parent-hint">👨‍👩‍👧 ${t("parentBanner")}</span></div>`}
+      </div>
+    `;
+
+    const selectBtn = $("#modalSelect");
+    if (selectBtn) {
+      selectBtn.addEventListener("click", () => {
+        if (selected) { removePick(c.day); }
+        else { selectPick(c); }
+        openModal(c); // re-render modal state
+      });
+    }
+    const removeBtn = $("#modalRemove");
+    if (removeBtn) removeBtn.addEventListener("click", () => { removePick(c.day); openModal(c); });
+
+    $("#modalBackdrop").hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal() {
+    openCourseId = null;
+    $("#modalBackdrop").hidden = true;
+    document.body.style.overflow = "";
+  }
+
+  /* ---------------- selection logic ---------------- */
+  function selectPick(c) {
+    // if this day already has a different course, replace it
+    state.picks[c.day] = c.id;
+    savePicks();
+    renderAll();
+    toast(t("changed"));
+  }
+  function removePick(day) {
+    state.picks[day] = null;
+    savePicks();
+    renderAll();
+    toast(t("removed"));
+  }
+  function savePicks() {
+    localStorage.setItem("eca-picks", JSON.stringify(state.picks));
+    localStorage.setItem("eca-nameZh", state.nameZh);
+    localStorage.setItem("eca-nameEn", state.nameEn);
+    localStorage.setItem("eca-grade", state.grade);
+  }
+
+  function renderCart() {
+    $("#cartSlots").innerHTML = DAY_ORDER.map((day) => {
+      const dayInfo = DAYS[day];
+      const c = state.picks[day] ? courseById(state.picks[day]) : null;
+      const dayC = dayColor(day);
+      if (c) {
+        return `<div class="cart-slot filled" style="border-color:${dayC}">
+          <span class="slot-day" style="color:${dayC}">${dayInfo.zh} · ${dayInfo.en}</span>
+          <span class="slot-name">${esc(courseName(c))}</span>
+          <span class="slot-remove" data-day="${day}">✕ ${t("cancel")}</span>
+        </div>`;
+      }
+      return `<div class="cart-slot">
+        <span class="slot-day" style="color:${dayC}">${dayInfo.zh} · ${dayInfo.en}</span>
+        <span class="slot-empty">${lang === "zh" ? "尚未选择" : "Not selected"}</span>
+      </div>`;
+    }).join("");
+
+    const count = DAY_ORDER.filter((d) => state.picks[d]).length;
+    $("#cartCount").textContent = `${count} / 3`;
+    const infoComplete = state.nameZh.trim() && state.nameEn.trim() && state.grade;
+    $("#cartSubmit").disabled = !(count === 3 && infoComplete);
+
+    document.querySelectorAll(".slot-remove").forEach((el) => {
+      el.addEventListener("click", () => { removePick(el.getAttribute("data-day")); });
+    });
+
+    const msg = serverAvailable ? "" : t("serverOffline");
+    $("#cartMsg").textContent = msg;
+  }
+
+  /* ---------------- submit ---------------- */
+  async function submit() {
+    if (!state.nameZh.trim() || !state.nameEn.trim() || !state.grade) {
+      toast(t("emptyName"));
+      if (!state.nameZh.trim()) $("#nameZh").focus();
+      else if (!state.nameEn.trim()) $("#nameEn").focus();
+      else $("#grade").focus();
+      return;
+    }
+    const count = DAY_ORDER.filter((d) => state.picks[d]).length;
+    if (count < 3) { toast(t("pickAll")); return; }
+
+    const payload = {
+      nameZh: state.nameZh.trim(),
+      nameEn: state.nameEn.trim(),
+      grade: state.grade,
+      monday: state.picks.monday,
+      tuesday: state.picks.tuesday,
+      wednesday: state.picks.wednesday,
+      timestamp: new Date().toISOString()
+    };
+
+    let ok = false;
+    if (serverAvailable) {
+      try {
+        const res = await fetch("/api/selection", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        ok = res.ok;
+      } catch (e) { ok = false; }
+    }
+    state.submitted = true;
+    localStorage.setItem("eca-submitted", "1");
+    toast(ok ? t("submittedServer") : t("submitted"));
+    confettiBurst();
+  }
+
+  /* ---------------- toast & confetti ---------------- */
+  let toastTimer = null;
+  function toast(msg) {
+    const el = $("#toast");
+    el.textContent = msg;
+    el.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { el.hidden = true; }, 2600);
+  }
+
+  function confettiBurst() {
+    const canvas = $("#confetti");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const colors = ["#f59e0b", "#ec4899", "#10b981", "#3b82f6", "#8b5cf6", "#ef4444", "#22c55e"];
+    const parts = [];
+    for (let i = 0; i < 160; i++) {
+      parts.push({
+        x: Math.random() * canvas.width,
+        y: -20 - Math.random() * canvas.height * 0.4,
+        w: 6 + Math.random() * 8,
+        h: 8 + Math.random() * 10,
+        c: colors[(Math.random() * colors.length) | 0],
+        vy: 2.2 + Math.random() * 3.2,
+        vx: (Math.random() - 0.5) * 1.6,
+        rot: Math.random() * 360,
+        vr: (Math.random() - 0.5) * 8
+      });
+    }
+    let frames = 0;
+    function step() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      let alive = false;
+      parts.forEach((p) => {
+        p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.vy += 0.02;
+        if (p.y < canvas.height + 40) alive = true;
+        ctx.save();
+        ctx.translate(p.x, p.y); ctx.rotate((p.rot * Math.PI) / 180);
+        ctx.fillStyle = p.c; ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+      });
+      if (alive && frames < 240) { frames++; requestAnimationFrame(step); }
+      else { ctx.clearRect(0, 0, canvas.width, canvas.height); }
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* ---------------- render all ---------------- */
+  function applyMode() {
+    const isParent = mode === "parent";
+    document.body.classList.toggle("parent-mode", isParent);
+    $("#identity").hidden = isParent;
+    $("#cart").hidden = isParent;
+    $("#parentBanner").hidden = !isParent;
+    document.querySelectorAll(".mode-btn").forEach((b) => {
+      b.classList.toggle("active", b.getAttribute("data-mode") === mode);
+    });
+  }
+
+  function renderAll() {
+    renderPillars();
+    renderShelves();
+    renderCart();
+    applyMode();
+  }
+
+  /* ---------------- server probe ---------------- */
+  async function probeServer() {
+    try {
+      const res = await fetch("/api/health", { method: "GET" });
+      serverAvailable = res.ok;
+    } catch (e) { serverAvailable = false; }
+    renderCart();
+  }
+
+  /* ---------------- events ---------------- */
+  function bindEvents() {
+    document.querySelectorAll(".mode-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        mode = btn.getAttribute("data-mode") === "parent" ? "parent" : "student";
+        const url = new URL(location.href);
+        if (mode === "parent") url.searchParams.set("view", "parent");
+        else url.searchParams.delete("view");
+        history.replaceState(null, "", url);
+        closeModal();
+        renderAll();
+      });
+    });
+
+    $("#langToggle").addEventListener("click", () => {
+      lang = lang === "zh" ? "en" : "zh";
+      localStorage.setItem("eca-lang", lang);
+      applyLang();
+      renderAll();
+      if (openCourseId) {
+        const c = courseById(openCourseId);
+        if (c) openModal(c);
+      }
+    });
+
+    $("#nameZh").addEventListener("input", (e) => { state.nameZh = e.target.value; savePicks(); renderCart(); });
+    $("#nameEn").addEventListener("input", (e) => { state.nameEn = e.target.value; savePicks(); renderCart(); });
+    $("#grade").addEventListener("change", (e) => { state.grade = e.target.value; savePicks(); renderCart(); });
+
+    $("#cartSubmit").addEventListener("click", submit);
+    $("#modalClose").addEventListener("click", closeModal);
+    $("#modalBackdrop").addEventListener("click", (e) => {
+      if (e.target === $("#modalBackdrop")) closeModal();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+  }
+
+  function applyLang() {
+    document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.getAttribute("data-i18n");
+      if (key === "heroSub") {
+        el.innerHTML = t(key).replace("{days}", `<span class="hl">${esc(t("days"))}</span>`);
+      } else {
+        el.textContent = t(key);
+      }
+    });
+    $("#nameZh").placeholder = lang === "zh" ? "中文名 Chinese name" : "Chinese name 中文名";
+    $("#nameEn").placeholder = lang === "zh" ? "英文名 English name" : "English name 英文名";
+    $("#langToggle").textContent = lang === "zh" ? "中文 / EN" : "EN / 中文";
+  }
+
+  /* ---------------- init ---------------- */
+  function init() {
+    $("#nameZh").value = state.nameZh;
+    $("#nameEn").value = state.nameEn;
+    $("#grade").value = state.grade;
+    applyLang();
+    bindEvents();
+    renderAll();
+    probeServer();
+  }
+
+  document.addEventListener("DOMContentLoaded", init);
+})();
+
+</script>
 </body>
 </html>
