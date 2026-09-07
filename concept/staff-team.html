@@ -24,19 +24,27 @@
   .sec-head .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-deep);font-size:15px;}
   .sec-head .cnt{margin-left:auto;color:#9b8fb0;font-size:14px;white-space:nowrap;}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px;}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 6px 20px rgba(90,53,128,.06);break-inside:avoid;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 6px 20px rgba(90,53,128,.06);break-inside:avoid;cursor:zoom-in;transition:transform .15s,box-shadow .15s;}
+  .card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(90,53,128,.14);}
   .card img{display:block;width:100%;height:auto;}
+  /* 放大查看 lightbox */
+  .lightbox{position:fixed;inset:0;background:rgba(30,18,44,.86);display:none;align-items:center;justify-content:center;z-index:999;padding:28px;cursor:zoom-out;}
+  .lightbox.show{display:flex;}
+  .lightbox .box{position:relative;max-width:92vw;max-height:94vh;display:flex;align-items:center;justify-content:center;}
+  .lightbox img{max-width:92vw;max-height:94vh;border-radius:12px;box-shadow:0 18px 60px rgba(0,0,0,.5);object-fit:contain;}
+  .lightbox .close{position:absolute;top:-32px;right:-6px;width:38px;height:38px;border-radius:50%;background:var(--gold);color:var(--purple-deep);font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;}
   @media print{
     @page{size:A4 portrait;margin:0;}
     body{background:#fff;}
     header.hero{display:none!important;}
     .toc{display:none!important;}
+    .lightbox{display:none!important;}
     .wrap{max-width:none;padding:0;}
     .sec{margin:0;page-break-before:always;page-break-after:avoid;}
     .sec-head h2{font-size:20px;}
     .sec-head .en{font-size:12px;}
     .grid{grid-template-columns:1fr 1fr;gap:0;}
-    .card{border:none;border-radius:0;box-shadow:none;break-inside:avoid;page-break-inside:avoid;}
+    .card{border:none;border-radius:0;box-shadow:none;break-inside:avoid;page-break-inside:avoid;cursor:default;}
     .card img{width:100%;height:auto;}
   }
 </style>
@@ -46,6 +54,7 @@
   <div class="crest">C</div>
   <h1>成都康礼学校 · 师资团队</h1>
   <div class="en">Cogdel School Chengdu · Faculty &amp; Staff</div>
+  <div class="hero-tip" style="margin-top:12px;font-size:12.5px;color:rgba(255,255,255,.8)">如需查看教师详细资料，点击任一张卡片放大</div>
 </div></header>
 <div class="wrap">
 <div class="toc">
@@ -54,87 +63,102 @@
 <section class="sec" id="sec00">
 <div class="sec-head"><h2>小学部</h2><span class="en">Primary School</span><span class="cnt">25 位教师</span></div>
 <div class="grid">
-<figure class="card"><img src="staff-team-images/sec00_01.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec00_02.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec00_03.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec00_04.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec00_05.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec00_06.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec00_07.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec00_08.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec00_09.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec00_10.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec00_11.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec00_12.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec00_13.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec00_14.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec00_15.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec00_16.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec00_17.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec00_18.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec00_19.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec00_20.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec00_21.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec00_22.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec00_23.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec00_24.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec00_25.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_01.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_02.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_03.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_04.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_05.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_06.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_07.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_08.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_09.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_10.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_11.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_12.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_13.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_14.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_15.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_16.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_17.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_18.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_19.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_20.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_21.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_22.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_23.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_24.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec00_25.jpg" alt="" loading="lazy"></figure>
 </div></section>
 <section class="sec" id="sec01">
 <div class="sec-head"><h2>和鸣学院</h2><span class="en">Harmony Academy</span><span class="cnt">10 位教师</span></div>
 <div class="grid">
-<figure class="card"><img src="staff-team-images/sec01_01.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec01_02.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec01_03.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec01_04.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec01_05.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec01_06.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec01_07.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec01_08.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec01_09.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec01_10.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec01_01.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec01_02.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec01_03.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec01_04.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec01_05.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec01_06.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec01_07.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec01_08.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec01_09.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec01_10.jpg" alt="" loading="lazy"></figure>
 </div></section>
 <section class="sec" id="sec02">
 <div class="sec-head"><h2>砺行学院</h2><span class="en">Lixing Academy</span><span class="cnt">6 位教师</span></div>
 <div class="grid">
-<figure class="card"><img src="staff-team-images/sec02_01.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec02_02.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec02_03.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec02_04.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec02_05.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec02_06.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec02_01.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec02_02.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec02_03.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec02_04.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec02_05.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec02_06.jpg" alt="" loading="lazy"></figure>
 </div></section>
 <section class="sec" id="sec03">
 <div class="sec-head"><h2>灵犀学院</h2><span class="en">Lingxi Academy</span><span class="cnt">3 位教师</span></div>
 <div class="grid">
-<figure class="card"><img src="staff-team-images/sec03_01.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec03_02.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec03_03.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec03_01.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec03_02.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec03_03.jpg" alt="" loading="lazy"></figure>
 </div></section>
 <section class="sec" id="sec04">
 <div class="sec-head"><h2>问源学院</h2><span class="en">Wenyuan Academy</span><span class="cnt">6 位教师</span></div>
 <div class="grid">
-<figure class="card"><img src="staff-team-images/sec04_01.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec04_02.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec04_03.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec04_04.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec04_05.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec04_06.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec04_01.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec04_02.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec04_03.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec04_04.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec04_05.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec04_06.jpg" alt="" loading="lazy"></figure>
 </div></section>
 <section class="sec" id="sec05">
 <div class="sec-head"><h2>学生发展中心</h2><span class="en">Student Development Center</span><span class="cnt">3 位教师</span></div>
 <div class="grid">
-<figure class="card"><img src="staff-team-images/sec05_01.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec05_02.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec05_03.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec05_01.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec05_02.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec05_03.jpg" alt="" loading="lazy"></figure>
 </div></section>
 <section class="sec" id="sec06">
 <div class="sec-head"><h2>升学指导部</h2><span class="en">College Counseling</span><span class="cnt">3 位教师</span></div>
 <div class="grid">
-<figure class="card"><img src="staff-team-images/sec06_01.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec06_02.jpg" alt="" loading="lazy"></figure>
-<figure class="card"><img src="staff-team-images/sec06_03.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec06_01.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec06_02.jpg" alt="" loading="lazy"></figure>
+<figure class="card" data-i=""><img src="staff-team-images/sec06_03.jpg" alt="" loading="lazy"></figure>
 </div></section>
 </div>
+<div class="lightbox" id="lb"><div class="box"><img id="lbimg" src="" alt=""><button class="close" id="lbclose" aria-label="关闭">×</button></div></div>
+<script>
+  var lb=document.getElementById('lb'), lbimg=document.getElementById('lbimg');
+  document.querySelectorAll('.card img').forEach(function(im){
+    im.addEventListener('click',function(e){
+      e.stopPropagation();
+      lbimg.src=im.src;
+      lb.classList.add('show');
+    });
+  });
+  function closed(){ lb.classList.remove('show'); lbimg.src=''; }
+  lb.addEventListener('click',closed);
+  document.getElementById('lbclose').addEventListener('click',function(e){e.stopPropagation();closed();});
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closed(); });
+</script>
 </body>
 </html>
