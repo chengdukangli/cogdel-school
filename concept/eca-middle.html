@@ -4,281 +4,60 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>成都康礼学校 · ECA 课外课程 | Cogdel ECA Catalogue</title>
 <style>
-  :root{--purple:#5A3580;--purple-dark:#43265f;--purple-deep:#2e1a44;--gold:#c9a84c;--gold-light:#e6cf8f;--bg:#f7f4ef;--ink:#2b2333;--inc-soft:#6b6475;--line:rgba(90,53,128,.14);}
+  :root{--purple:#5A3580;--purple-dark:#43265f;--purple-deep:#2e1a44;--gold:#c9a84c;--gold-light:#e6cf8f;--bg:#f5f3ee;--ink:#2b2333;--inc-soft:#6b6475;--line:rgba(90,53,128,.12);}
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;}
-  header.hero{background:linear-gradient(135deg,var(--purple-deep),var(--purple) 52%,var(--purple-dark));color:#fff;padding:52px 26px 40px;text-align:center;position:relative;overflow:hidden;}
+  header.hero{background:linear-gradient(135deg,var(--purple-deep),var(--purple) 52%,var(--purple-dark));color:#fff;padding:50px 26px 38px;text-align:center;position:relative;overflow:hidden;}
   header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 84% 16%,rgba(201,168,76,.45),transparent 42%),radial-gradient(circle at 10% 88%,rgba(230,207,143,.25),transparent 42%);}
   .hero-inner{position:relative;z-index:2;max-width:900px;margin:0 auto;}
   .hero h1{font-size:clamp(26px,3.8vw,38px);font-weight:800;letter-spacing:1.5px;}
   .hero .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-light);font-size:15px;margin-top:10px;}
   .hero .sub{display:inline-block;margin-top:18px;padding:8px 24px;border:1px solid rgba(230,207,143,.6);border-radius:60px;font-size:13.5px;color:#f7efd8;}
-  .wrap{max-width:1300px;margin:0 auto;padding:0 26px 70px;}
+  .wrap{max-width:1260px;margin:0 auto;padding:0 26px 70px;}
   .shelf{margin:46px 0;scroll-margin-top:70px;}
   .shelf-head{display:flex;align-items:center;gap:14px;margin-bottom:22px;border-bottom:2px solid var(--purple);padding-bottom:12px;}
   .shelf-head .badge{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;color:#fff;font-size:22px;flex:none;}
   .shelf-head h2{font-size:24px;color:var(--purple);font-weight:800;}
   .shelf-head .count{margin-left:auto;font-size:13px;color:var(--inc-soft);font-weight:700;}
-  .books{display:grid;grid-template-columns:repeat(auto-fill,minmax(176px,1fr));gap:26px 22px;padding:22px 6px 34px;border-radius:16px;background:linear-gradient(180deg,#f2e7d8,#e8d8c2);position:relative;}
-  .books::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:14px;background:linear-gradient(180deg,#8a6244,#6f4d33);border-radius:8px;}
-  .book{background:none;border:none;padding:0;cursor:pointer;text-align:left;font:inherit;color:inherit;transition:transform .25s;transform-origin:bottom center;position:relative;}
-  .book:hover{transform:translateY(-14px) rotate(-1deg) scale(1.04);z-index:5;}
-  .book-cover{width:100%;aspect-ratio:5/7;border-radius:10px 13px 13px 10px;position:relative;overflow:hidden;display:block;box-shadow:0 10px 24px rgba(40,22,6,.3),inset 0 0 0 1px rgba(255,255,255,.14);transition:box-shadow .25s;}
-  .book-cover svg{width:100%;height:100%;display:block;}
-  .book:hover .book-cover{box-shadow:0 20px 42px rgba(40,22,6,.42);}
-  .book-cover::before{content:"";position:absolute;left:0;top:0;bottom:0;width:9px;background:linear-gradient(90deg,rgba(0,0,0,.35),rgba(0,0,0,.06));z-index:3;}
-  .book-teacher{margin-top:9px;font-size:12px;color:var(--inc-soft);text-align:center;}
-  .modalBg{position:fixed;inset:0;background:rgba(20,12,30,.66);backdrop-filter:blur(6px);z-index:100;display:none;align-items:center;justify-content:center;padding:20px;}
-  .modalBg.show{display:flex;}
-  .modal{background:#fff;border-radius:20px;max-width:720px;width:100%;max-height:88vh;overflow:auto;box-shadow:0 26px 80px rgba(0,0,0,.4);}
-  .modal-top{position:relative;color:#fff;padding:30px 28px 24px;overflow:hidden;}
-  .modal-top .inner{position:relative;z-index:2;}
-  .modal-top h2{font-size:26px;font-weight:900;text-shadow:0 2px 8px rgba(0,0,0,.3);}
-  .modal-top .en{font-family:Georgia,serif;font-style:italic;opacity:.9;margin-top:6px;}
-  .modal-top .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;}
-  .modal-top .meta span{font-size:12px;padding:4px 13px;border-radius:14px;background:rgba(0,0,0,.22);}
-  .modal-close{position:absolute;top:16px;right:16px;z-index:3;width:36px;height:36px;border:none;border-radius:50%;background:rgba(0,0,0,.3);color:#fff;font-size:18px;cursor:pointer;}
-  .modal-body{padding:22px 28px 28px;}
-  .modal-body .desc{font-size:15px;color:var(--ink);line-height:1.85;}
-  .modal-body .hl{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px;}
-  .modal-body .hl span{font-size:13px;color:var(--purple);background:rgba(90,53,128,.07);border:1px solid rgba(90,53,128,.15);padding:6px 14px;border-radius:16px;}
-  .modal-body .info{margin-top:18px;border-top:1px solid var(--line);padding-top:16px;font-size:13.5px;color:var(--inc-soft);line-height:1.9;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:22px;}
+  .card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 8px 26px rgba(90,53,128,.07);border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 16px 44px rgba(90,53,128,.14);}
+  .cover{position:relative;color:#fff;padding:22px 22px 20px;min-height:150px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;}
+  .cover .soft{position:absolute;inset:0;background:radial-gradient(circle at 84% 12%,rgba(255,255,255,.28),transparent 42%),radial-gradient(circle at 12% 88%,rgba(0,0,0,.18),transparent 46%);}
+  .cover .inner{position:relative;z-index:2;}
+  .cover .ico{position:absolute;top:20px;right:22px;font-size:38px;z-index:2;filter:drop-shadow(0 3px 6px rgba(0,0,0,.22));opacity:.95;}
+  .cover .day{position:absolute;top:20px;left:22px;z-index:2;font-size:12px;font-weight:700;padding:5px 13px;border-radius:20px;background:rgba(255,255,255,.2);backdrop-filter:blur(3px);}
+  .cover h3{font-size:clamp(22px,2.4vw,28px);font-weight:900;letter-spacing:.5px;line-height:1.2;text-shadow:0 2px 10px rgba(0,0,0,.25);padding-right:34px;}
+  .cover .en{font-family:Georgia,serif;font-style:italic;opacity:.92;font-size:13px;margin-top:5px;}
+  .cover .tag{display:inline-block;margin-top:10px;font-size:12px;font-weight:600;padding:4px 13px;border-radius:16px;background:rgba(0,0,0,.2);}
+  .body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1;}
+  .body .desc{font-size:14px;color:#4a4456;line-height:1.75;}
+  .body .hl{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px;}
+  .body .hl span{font-size:12.5px;color:var(--purple);background:rgba(90,53,128,.07);border:1px solid rgba(90,53,128,.14);padding:5px 12px;border-radius:16px;}
+  .body .meta{margin-top:auto;padding-top:13px;border-top:1px dashed var(--line);display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--inc-soft);}
+  .body .meta b{color:#3a3348;font-weight:700;margin-right:4px;}
   footer{background:var(--purple-deep);color:#dfd7e8;text-align:center;padding:34px 26px;}
   footer .t{font-weight:700;color:#fff;font-size:15px;}
   footer .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-light);font-size:12.5px;margin-top:5px;}
+  @media(max-width:400px){.grid{grid-template-columns:1fr;}.cover h3{font-size:24px;}}
 </style>
 </head>
 <body>
 <header class="hero"><div class="hero-inner">
   <h1>成都康礼学校 · ECA 课外课程</h1>
   <div class="en">Cogdel School Chengdu · Enrichment &amp; Co-Curricular Activities</div>
-  <div class="sub">点击任意课程封面，查看主题与亮点</div>
+  <div class="sub">按类别浏览 · 每一门课程的信息都在卡片上</div>
 </div></header>
 <div class="wrap" id="app"></div>
 <footer><div class="t">成都康礼学校</div><div class="en">Cogdel School Chengdu · ECA Catalogue</div></footer>
-<div class="modalBg" id="modalBg"><div class="modal" id="modal"></div></div>
 <script>
 const COURSES=[{"nameZh": "A-Level 计算机科学辅导", "nameEn": "A-Level Computer Science Support", "icon": "💻", "grad": ["#2563eb", "#06b6d4"], "descZh": "针对 AS / A-Level 计算机科学的专项辅导，夯实基础技能、综合运用与应试技巧，通过面对面小班答疑，助你自信面对大考。", "highlightsZh": ["夯实基础 Core Skills", "综合技能 Comprehensive", "面对面辅导 Face to Face"], "teacherZh": "Mr. Jeffy", "categoryZh": "计算机科学", "audience": "AS 学生", "capacity": "1–4 人", "language": "英语 English", "time": "4:30 – 5:15 PM", "day": "monday", "cat": "科学与技术"}, {"nameZh": "艺术·作品集", "nameEn": "Art Portfolio", "icon": "🎨", "grad": ["#ec4899", "#f43f5e"], "descZh": "为外部大考量身打造作品集，提供一对一的额外指导，让每位同学都能交出一份真正代表自己的艺术答卷。", "highlightsZh": ["作品集指导 Portfolio", "个性化支持 Tailored", "大考准备 Exam Ready"], "teacherZh": "Ms. Wendy", "categoryZh": "艺术与设计", "audience": "IG–A2", "capacity": "2–15 人", "language": "英语 / 中文", "time": "4:30 – 5:15 PM", "day": "monday", "cat": "艺术与设计"}, {"nameZh": "英语补习", "nameEn": "English Tutorial", "icon": "📖", "grad": ["#0d9488", "#14b8a6"], "descZh": "英文基础补习与课堂内容查漏补缺，小班化语言强化，让英语不再成为学习的障碍。", "highlightsZh": ["基础补习 Foundation", "查漏补缺 Gap-filling", "小班强化 Small Group"], "teacherZh": "Ms. Sue & Ms. Echo", "categoryZh": "语言强化", "audience": "中学部各年级", "capacity": "5 人", "language": "中英双语", "time": "4:30 – 5:15 PM", "day": "monday", "cat": "语言与文学"}, {"nameZh": "模拟数字经营沙盘", "nameEn": "ABS Digital Business Simulation", "icon": "📊", "grad": ["#f59e0b", "#f97316"], "descZh": "由耶鲁创业者协会官方支持的模拟经营沙盘，覆盖供需、成本、现金流与竞争策略，受 Cognia 认证，并为阿思丹商赛蓄力。", "highlightsZh": ["项目式学习 Project-Based", "团队协作 Teamwork", "期末展演 Showcase"], "teacherZh": "Ms. Amy（校长）", "categoryZh": "商业", "audience": "P9–A2", "capacity": "12–20 人", "language": "中英双语", "time": "4:30 – 5:15 PM", "day": "monday", "cat": "商业与领导"}, {"nameZh": "乐高创想社", "nameEn": "Lego Creation Club", "icon": "🧱", "grad": ["#f97316", "#fbbf24"], "descZh": "用乐高搭建你的想象，从基础结构到主题挑战，在合作与期末展演中释放创造力。", "highlightsZh": ["项目式学习 Project-Based", "团队协作 Teamwork", "期末展演 Showcase"], "teacherZh": "Ms. Beth", "categoryZh": "创意建构", "audience": "中学部各年级", "capacity": "5–8 人", "language": "中英双语", "time": "4:30 – 5:15 PM", "day": "monday", "cat": "艺术与设计"}, {"nameZh": "学校乐队", "nameEn": "School Band", "icon": "🎸", "grad": ["#7c3aed", "#a855f7"], "descZh": "学校乐队：学习并排练翻唱曲目，提升演奏技巧，为校园活动登台演出。", "highlightsZh": ["团队协作 Teamwork", "舞台演出 Performance", "技能提升 Skills"], "teacherZh": "Mr. Marko", "categoryZh": "音乐", "audience": "中学部各年级", "capacity": "不限", "language": "英语 English", "time": "4:30 – 5:15 PM", "day": "monday", "cat": "艺术与设计"}, {"nameZh": "甲骨文拓片识读", "nameEn": "Oracle Bone Inscription Reading", "icon": "🐢", "grad": ["#b45309", "#d97706"], "descZh": "每节课一块甲骨拓片，弄清每个符号是什么字，探寻造字本义，再亲手刻一刻甲骨文。", "highlightsZh": ["拓片识读 Rubbing Reading", "造字探源 Origins", "亲手刻字 Hands-on Carving"], "teacherZh": "Mr. Aphelios", "categoryZh": "人文 · 汉字", "audience": "中学部各年级", "capacity": "不限", "language": "中文 Chinese", "time": "4:30 – 5:15 PM", "day": "monday", "cat": "语言与文学"}, {"nameZh": "侦探文学探索之旅", "nameEn": "Exploration Journey of Detective Literature", "icon": "🕵️", "grad": ["#334155", "#64748b"], "descZh": "在悬疑与解谜中提升中文阅读力，细读经典侦探文学、训练逻辑推理，让阅读成为一场智力冒险。", "highlightsZh": ["文本细读 Close Reading", "逻辑推理 Reasoning", "期末展演 Showcase"], "teacherZh": "Ms. Wei", "categoryZh": "人文 · 文学", "audience": "中学部各年级", "capacity": "4–8 人", "language": "中英双语", "time": "4:30 – 5:15 PM", "day": "monday", "cat": "语言与文学"}, {"nameZh": "数字媒体（摄影与电影）", "nameEn": "Digital Media (Film & Photography)", "icon": "📸", "grad": ["#8b5cf6", "#ec4899"], "descZh": "零基础入门摄影与电影制作，用专业设备拍出你的作品，期末举办学生作品展，发现你的影像天赋。", "highlightsZh": ["零基础入门 Zero to Hero", "实战出作品 Hands-On", "专业设备 Pro Gear"], "teacherZh": "Mr. Sergei", "categoryZh": "创意艺术", "audience": "P9–A2", "capacity": "4–10 人", "language": "英语 English", "time": "4:30 – 5:15 PM", "day": "monday", "cat": "艺术与设计"}, {"nameZh": "CISA 校队训练", "nameEn": "CISA Sports Team Training", "icon": "🏐", "grad": ["#16a34a", "#22c55e"], "descZh": "CISA 校队训练：排球、篮球、足球等多项运动，强化团队协作、个人进步与竞技精神。", "highlightsZh": ["团队建设 Team Building", "个人进步 Progress", "竞技精神 Sportsmanship"], "teacherZh": "Mr. Vuk, Mr. Joe & Mr. Michael", "categoryZh": "体育", "audience": "中学部各年级", "capacity": "不限", "language": "英语 English", "time": "4:15 – 5:15 PM", "day": "monday", "cat": "体育与健康"}, {"nameZh": "多元运动（板球与羽毛球）", "nameEn": "Sport Fusion (Cricket & Badminton)", "icon": "🏏", "grad": ["#059669", "#10b981"], "descZh": "板球与羽毛球双项体验，在技能发展、团队精神与健康生活中快乐成长。", "highlightsZh": ["技能发展 Skills", "团队精神 Team Spirit", "健康生活 Healthy Living"], "teacherZh": "Dr. Raza & Mr. Warren", "categoryZh": "体育", "audience": "中学部各年级", "capacity": "4–14 人", "language": "中英双语", "time": "4:30 – 5:15 PM", "day": "monday", "cat": "体育与健康"}, {"nameZh": "A-Level 数学辅导", "nameEn": "A-Level Maths Support", "icon": "➗", "grad": ["#1d4ed8", "#3b82f6"], "descZh": "A-Level 数学专项辅导：破解高难考题、提升解题自信，往届 70% 学员取得 A*–A 的优异成绩。", "highlightsZh": ["成绩提升 Grade Impact", "自信培养 Confidence", "未来优势 Future Benefits"], "teacherZh": "Dr. Chris", "categoryZh": "数学", "audience": "IGCSE–A2", "capacity": "1–5 人", "language": "英语 English", "time": "4:30 – 5:15 PM", "day": "tuesday", "cat": "科学与技术"}, {"nameZh": "英语阅读俱乐部", "nameEn": "Reading Club", "icon": "📚", "grad": ["#0369a1", "#0ea5e9"], "descZh": "共读适合我们的英文原版故事（如《相约星期二》），做嘉宾分享与播客制作，把好故事讲给所有人。", "highlightsZh": ["原文阅读 English Reading", "嘉宾分享 Guest Speaker", "播客制作 Podcast"], "teacherZh": "Mr. Harry（胡老师）", "categoryZh": "英语文学", "audience": "中学部各年级", "capacity": "5–10 人", "language": "中英双语", "time": "4:30 – 5:15 PM", "day": "tuesday", "cat": "语言与文学"}, {"nameZh": "化学补习", "nameEn": "Chemistry Tutorial", "icon": "⚗️", "grad": ["#0f766e", "#0d9488"], "descZh": "化学补习：从模拟到真题演练，为你的外部大考保驾护航。", "highlightsZh": ["模拟考试 Mock", "真题演练 Exam Practice", "大考准备 Exam Ready"], "teacherZh": "Ms. Nancy", "categoryZh": "化学", "audience": "IG / AS", "capacity": "2–6 人", "language": "中英双语", "time": "4:30 – 5:15 PM", "day": "tuesday", "cat": "科学与技术"}, {"nameZh": "天文社团", "nameEn": "Basic Astronomy", "icon": "🔭", "grad": ["#1e3a8a", "#3730a3"], "descZh": "从裸眼观星到天体物理，系统学习宇宙大尺度结构与系外行星，并备战天文竞赛。", "highlightsZh": ["系统知识 Systematic", "观星活动 Stargazing", "竞赛准备 Competition"], "teacherZh": "Mr. Stone", "categoryZh": "自然科学", "audience": "P8–AS", "capacity": "1–10 人", "language": "双语 Bilingual", "time": "4:30 – 5:15 PM", "day": "tuesday", "cat": "科学与技术"}, {"nameZh": "EconX 经济学实战", "nameEn": "EconX · Real-World Economics", "icon": "🎬", "grad": ["#b45309", "#f59e0b"], "descZh": "通过电影、商业模拟和嘉宾讲座，探索课堂之外的真实经济学。", "highlightsZh": ["电影经济学 Cinema", "模拟交易 Simulation", "嘉宾讲坛 Guest Speakers"], "teacherZh": "Dr. Raza", "categoryZh": "人文社科", "audience": "IG–A2", "capacity": "2–15 人", "language": "英语 English", "time": "4:30 – 5:15 PM", "day": "tuesday", "cat": "商业与领导"}, {"nameZh": "3D 打印与设计思维", "nameEn": "Intro to 3D Printing & Design Thinking", "icon": "🖨️", "grad": ["#4338ca", "#6366f1"], "descZh": "学习设计思维与 3D 打印基础，历经理解问题、头脑风暴到原型测试，做出真实的创造。", "highlightsZh": ["项目式学习 Project-Based", "团队协作 Teamwork", "期末展演 Showcase"], "teacherZh": "Mr. Jeff & Dr. Allen", "categoryZh": "创新创业", "audience": "P7–IG", "capacity": "3–6 人", "language": "中英双语", "time": "4:30 – 5:15 PM", "day": "tuesday", "cat": "商业与领导"}, {"nameZh": "投资基础", "nameEn": "Investment Foundation", "icon": "💰", "grad": ["#b45309", "#d97706"], "descZh": "基于《The Little Book of Valuation》与《Venture Capital Strategy》的案例教学，掌握公司估值与风险投资判断。", "highlightsZh": ["项目式学习 Project-Based", "团队协作 Teamwork", "期末展演 Showcase"], "teacherZh": "Ms. Amy（校长）", "categoryZh": "金融", "audience": "中学部各年级", "capacity": "12–20 人", "language": "中英双语", "time": "4:30 – 5:15 PM", "day": "tuesday", "cat": "商业与领导"}, {"nameZh": "化学竞赛社", "nameEn": "Chemistry Competition Club", "icon": "🧪", "grad": ["#15803d", "#16a34a"], "descZh": "为 C3L6 化学竞赛备赛：从系统学习、实战体验到正式竞赛。", "highlightsZh": ["知识学习 Study", "团队协作 Teamwork", "期末比赛 Competition"], "teacherZh": "Ms. Sherry", "categoryZh": "化学 · 竞赛", "audience": "IG", "capacity": "2–4 人", "language": "双语 Bilingual", "time": "4:30 – 5:15 PM", "day": "tuesday", "cat": "科学与技术"}, {"nameZh": "艺术史", "nameEn": "Art History", "icon": "🖼️", "grad": ["#be185d", "#ec4899"], "descZh": "通过《艺术的故事》与纪录片梳理艺术发展脉络，并做个人分享。", "highlightsZh": ["《艺术的故事》Story of Art", "纪录片 Documentary", "个人分享 Presentation"], "teacherZh": "Ms. Wendy", "categoryZh": "艺术与设计", "audience": "IG–A2", "capacity": "2–15 人", "language": "英语 / 中文", "time": "4:30 – 5:15 PM", "day": "tuesday", "cat": "艺术与设计"}, {"nameZh": "韩语及韩国大众文化", "nameEn": "Korean Language & K-Culture", "icon": "🇰🇷", "grad": ["#0ea5e9", "#6366f1"], "descZh": "学习韩文字母与拼读，了解真实的韩国社会，培养理性看待一个国家的思维方式。", "highlightsZh": ["字母拼读 Hangul", "社会了解 Society", "思维方式 Thinking"], "teacherZh": "Mr. Aphelios", "categoryZh": "语言文化", "audience": "中学部各年级", "capacity": "不限", "language": "中文 Chinese", "time": "4:30 – 5:15 PM", "day": "tuesday", "cat": "语言与文学"}, {"nameZh": "歌单制作", "nameEn": "Playlist Making", "icon": "🎧", "grad": ["#7c3aed", "#8b5cf6"], "descZh": "探索不同曲风与心境，为校园活动制作背景音乐，找到属于你的歌单。", "highlightsZh": ["创意 Creative", "自信 Confident", "校园 BGM School BGM"], "teacherZh": "Mr. Marko", "categoryZh": "音乐", "audience": "中学部各年级", "capacity": "不限", "language": "英语 English", "time": "4:30 – 5:15 PM", "day": "tuesday", "cat": "艺术与设计"}, {"nameZh": "流行演唱", "nameEn": "Pop Vocal", "icon": "🎤", "grad": ["#a21caf", "#d946ef"], "descZh": "科学发声、舞台魅力与风格探索，从练声到录音与公开演出。", "highlightsZh": ["风格探索 Style", "公开演出 Showcase", "录音体验 Recording"], "teacherZh": "Ms. Kirsten", "categoryZh": "音乐", "audience": "P7–A2", "capacity": "1–4 人", "language": "中英双语", "time": "4:30 – 5:15 PM", "day": "tuesday", "cat": "艺术与设计"}, {"nameZh": "游泳", "nameEn": "Swimming", "icon": "🏊", "grad": ["#0284c7", "#0ea5e9"], "descZh": "泳姿学习与训练，解锁 71% 的水下世界，期末友谊赛见！", "highlightsZh": ["泳姿学习 Strokes", "团队协作 Teamwork", "期末比赛 Competition"], "teacherZh": "Ms. Chanel", "categoryZh": "体育", "audience": "P7–IGCSE", "capacity": "2–6 人", "language": "中英双语", "time": "4:15 – 5:15 PM", "day": "tuesday", "cat": "体育与健康"}, {"nameZh": "雪城大学设计思维课", "nameEn": "Syracuse University · Design Thinking", "icon": "💡", "grad": ["#312e81", "#4f46e5"], "descZh": "雪城大学官方设计思维课程，从共情到原型，一年可获 3 个大学学分。", "highlightsZh": ["项目式学习 Project-Based", "团队协作 Teamwork", "大学学分 College Credit"], "teacherZh": "Dr. Allen", "categoryZh": "创新创业", "audience": "AS–A2（仅 IAL）", "capacity": "1–6 人", "language": "中英双语", "time": "4:30 – 5:15 PM", "day": "wednesday", "cat": "商业与领导"}, {"nameZh": "生物补习", "nameEn": "Biology Support", "icon": "🧬", "grad": ["#166534", "#15803d"], "descZh": "生物补习，课堂内容查漏补缺，夯实 P7–IG 生物基础。", "highlightsZh": ["查漏补缺 Gap-filling", "基础夯实 Foundation"], "teacherZh": "Ms. Beth", "categoryZh": "生物", "audience": "P7–IG", "capacity": "5 人", "language": "中英双语", "time": "4:30 – 5:15 PM", "day": "wednesday", "cat": "科学与技术"}, {"nameZh": "NEC 全美经济学竞赛备赛", "nameEn": "NEC Competition Tutorial", "icon": "📈", "grad": ["#b45309", "#f59e0b"], "descZh": "全美经济学竞赛备赛：知识学习、实战体验到正式竞赛。", "highlightsZh": ["知识学习 Study", "团队协作 Teamwork", "期末比赛 Competition"], "teacherZh": "Ms. Chanel", "categoryZh": "经济 · 竞赛", "audience": "IG / AS", "capacity": "4–12 人", "language": "中英双语", "time": "4:30 – 5:15 PM", "day": "wednesday", "cat": "商业与领导"}, {"nameZh": "AI 共创实验室", "nameEn": "AI Co-creator Lab", "icon": "🤖", "grad": ["#0ea5e9", "#6366f1"], "descZh": "与 AI 一起共创：学习提示工程与生成式 AI 工具，把灵感变成可展示的作品。", "highlightsZh": ["提示工程 Prompt Engineering", "生成式工具 GenAI Tools", "作品产出 Showcase"], "teacherZh": "Ms. Amy（校长）", "categoryZh": "人工智能 · 创新", "audience": "P9–A2", "capacity": "12–20 人", "language": "中英双语", "time": "4:30 – 5:15 PM", "day": "wednesday", "cat": "科学与技术"}, {"nameZh": "AMC 10/12 数学竞赛备赛", "nameEn": "AMC 10/12 & Maths Tutorial", "icon": "🧮", "grad": ["#1d4ed8", "#4f46e5"], "descZh": "AMC 10/12 数学竞赛备赛：知识学习、实战体验到正式竞赛。", "highlightsZh": ["知识学习 Study", "团队协作 Teamwork", "期末比赛 Competition"], "teacherZh": "Dr. He", "categoryZh": "数学 · 竞赛", "audience": "IG / AS", "capacity": "4–12 人", "language": "中英双语", "time": "4:30 – 5:15 PM", "day": "wednesday", "cat": "科学与技术"}, {"nameZh": "世界电影欣赏", "nameEn": "World Cinema Club", "icon": "🍿", "grad": ["#dc2626", "#f59e0b"], "descZh": "看世界电影、聊故事、玩配音与竞猜，无考试、基本无作业，轻松加入。", "highlightsZh": ["完整观影 Watch Together", "轻松互动 Join In", "世界文化 Discover"], "teacherZh": "Ms. Aria（戚老师）", "categoryZh": "电影艺术", "audience": "P7–AS", "capacity": "5–20 人", "language": "中英双语", "time": "4:30 – 5:15 PM", "day": "wednesday", "cat": "艺术与设计"}, {"nameZh": "诗歌鉴赏", "nameEn": "Poetry Appreciation", "icon": "🌸", "grad": ["#be185d", "#f472b6"], "descZh": "跨越时空与经典对话，品读四大诗体、朗诵吟唱，在韵律中感受中文之美。", "highlightsZh": ["经典品读 Classics", "朗诵吟唱 Recitation", "期末展演 Showcase"], "teacherZh": "Ms. Wei", "categoryZh": "人文 · 文学", "audience": "中学部各年级", "capacity": "4–10 人", "language": "中英双语", "time": "4:30 – 5:15 PM", "day": "wednesday", "cat": "语言与文学"}, {"nameZh": "从小说到舞台", "nameEn": "From Novel to Stage", "icon": "🎭", "grad": ["#7c2d12", "#ea580c"], "descZh": "侦探剧本研读：从小说到舞台，团队共创并期末展演。", "highlightsZh": ["项目式学习 Project-Based", "团队协作 Teamwork", "期末展演 Showcase"], "teacherZh": "Ms. Sue & Ms. Echo", "categoryZh": "阅读与戏剧", "audience": "中学部各年级", "capacity": "10–15 人", "language": "中英双语", "time": "4:30 – 5:15 PM", "day": "wednesday", "cat": "艺术与设计"}, {"nameZh": "中国近现代历史俱乐部", "nameEn": "Chinese History Club", "icon": "🏛️", "grad": ["#78350f", "#b45309"], "descZh": "中国近现代历史俱乐部：通史解读、人物点评与事件解析，走进 130 年的风云变迁。", "highlightsZh": ["通史解读 Survey", "人物点评 Biography", "事件解析 Analysis"], "teacherZh": "Mr. Xu（许老师）", "categoryZh": "人文 · 历史", "audience": "中学部各年级", "capacity": "6–8 人", "language": "中英双语", "time": "4:15 – 5:15 PM", "day": "wednesday", "cat": "语言与文学"}, {"nameZh": "歌曲写作与制作", "nameEn": "Songwriting & Music Production", "icon": "🎼", "grad": ["#9333ea", "#c026d3"], "descZh": "从曲风识别、旋律编写到编曲混音，产出你的原创作品并公开演出。", "highlightsZh": ["原创产出 Original", "公开演出 Showcase", "录音体验 Recording"], "teacherZh": "Ms. Kirsten", "categoryZh": "音乐", "audience": "P7–A2", "capacity": "1–4 人", "language": "中英双语", "time": "4:30 – 5:15 PM", "day": "wednesday", "cat": "艺术与设计"}, {"nameZh": "羽毛球", "nameEn": "Badminton", "icon": "🏸", "grad": ["#059669", "#84cc16"], "descZh": "基础握拍与步法、对抗实战到学期友谊赛，练就身心与体育精神。", "highlightsZh": ["体育锻炼 Fitness", "体育精神 Sportsmanship", "对抗竞技 Competitive"], "teacherZh": "Mr. Mark & Ms. Nancy", "categoryZh": "体育", "audience": "中学部各年级", "capacity": "4–8 人", "language": "中英双语", "time": "4:30 – 5:15 PM", "day": "wednesday", "cat": "体育与健康"}, {"nameZh": "跑步俱乐部", "nameEn": "Running ECA", "icon": "🏃", "grad": ["#16a34a", "#65a30d"], "descZh": "更快、更强、更好：科学配速与间歇训练，最终与过去的自己赛跑。", "highlightsZh": ["技巧训练 Technique", "归属感 Belong", "超越自我 Beat Your Past"], "teacherZh": "Mr. Marko", "categoryZh": "体育", "audience": "中学部各年级", "capacity": "不限", "language": "英语 English", "time": "4:30 – 5:15 PM", "day": "wednesday", "cat": "体育与健康"}, {"nameZh": "躲避球与三分球", "nameEn": "Dodgeball & 3-Point Shootout", "icon": "🤾", "grad": ["#dc2626", "#ea580c"], "descZh": "躲避球与三分球大战，在欢笑中锻炼反应与准星。", "highlightsZh": ["团队协作 Teamwork", "反应 Reflexes", "准星 Aim"], "teacherZh": "Dr. Chris", "categoryZh": "体育", "audience": "P7–A2", "capacity": "6–10 人", "language": "英语 English", "time": "4:30 – 5:15 PM", "day": "wednesday", "cat": "体育与健康"}];
 const ORDER=["科学与技术", "艺术与设计", "语言与文学", "体育与健康", "商业与领导"];
 const CAT_ICON={"科学与技术": "🔬", "艺术与设计": "🎨", "语言与文学": "📖", "体育与健康": "🏅", "商业与领导": "💼"};
-const CAT_COLOR={"科学与技术": {"dark": "#0a2a52", "base": "#2563eb", "light": "#67e8f9", "accent": "#93c5fd", "deep": "#0e3a6b"}, "艺术与设计": {"dark": "#6d28d9", "base": "#d946ef", "light": "#f0abfc", "accent": "#ec4899", "deep": "#8f2d9e"}, "语言与文学": {"dark": "#7a4520", "base": "#d97706", "light": "#f7e7d0", "accent": "#f59e0b", "deep": "#9a5b12"}, "体育与健康": {"dark": "#0e3a2a", "base": "#16a34a", "light": "#86efac", "accent": "#22c55e", "deep": "#12663c"}, "商业与领导": {"dark": "#12263f", "base": "#2a4a6b", "light": "#d4af37", "accent": "#e7d9a8", "deep": "#1e3a5f"}};
+const CAT_COLOR={"科学与技术": "#2563eb", "艺术与设计": "#d946ef", "语言与文学": "#d97706", "体育与健康": "#16a34a", "商业与领导": "#2a4a6b"};
 const DAY_CN={"monday": "周一", "tuesday": "周二", "wednesday": "周三"};
+const DAY_COLOR={"monday": "#3b82f6", "tuesday": "#10b981", "wednesday": "#f59e0b"};
 function esc(s){return (s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-
-/* ---- 每门课稳定哈希，用于几何变化 ---- */
-function hseed(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return Math.abs(h);}
-
-/* ---- 几何文案换行 ---- */
-function wrapText(text,maxChars){
-  const words=text.split(' ');const lines=[];let cur='';
-  for(let w of words){while(w.length>maxChars){if(cur){lines.push(cur.trim());cur='';}lines.push(w.slice(0,maxChars));w=w.slice(maxChars);}
-    const cand=(cur?cur+' '+w:w);if(cand.length>maxChars){if(cur.trim())lines.push(cur.trim());cur=w;}else{cur=cand;}}
-  if(cur.trim())lines.push(cur.trim());return lines.length?lines:['']; }
-function tspans(lines,x,y0,lh){return lines.map((ln,i)=>'<tspan x="'+x+'" y="'+(y0+i*lh)+'">'+esc(ln)+'</tspan>').join('');}
-
-/* ---- 根据课程名选一个几何布局 ---- */
-const GEO=['blueprint','ink','bauhaus','sport','deco','emblem','music','cinema'];
-function geoOf(c){return GEO[hseed(c.nameZh+'a')%GEO.length];}
-/* 每个几何风格一套专属配色：dark/base 渐变底 + light 线条 + accent 点缀 + deep 深色 */
-const STYLE={
-  blueprint:{dark:'#0a1a2f',base:'#143a5c',light:'#67e8f9',accent:'#a5f3fc',deep:'#0b2545'},
-  ink:{dark:'#2b2620',base:'#8a4a12',light:'#f6efe2',accent:'#ece0c8',deep:'#b02a1e'},
-  bauhaus:{dark:'#1c1c1c',base:'#d8402c',light:'#f3e8d0',accent:'#e9d8b6',deep:'#2f6fb3'},
-  sport:{dark:'#d9261f',base:'#f97316',light:'#ffffff',accent:'#ffe08a',deep:'#9b1c14'},
-  deco:{dark:'#052e22',base:'#0a4533',light:'#d4af37',accent:'#f0e3b8',deep:'#0b5c40'},
-  emblem:{dark:'#12263f',base:'#1e3a5f',light:'#d4af37',accent:'#f5ecd7',deep:'#0d1c30'},
-  music:{dark:'#7c3aed',base:'#ec4899',light:'#f97316',accent:'#f7e7d0',deep:'#5b21b6'},
-  cinema:{dark:'#12131a',base:'#241d20',light:'#e8b339',accent:'#f5e7c8',deep:'#0c0c11'},
-};
-function pal(c){return STYLE[geoOf(c)]||STYLE.blueprint;}
-function gradOf(c){const s=STYLE[geoOf(c)]||STYLE.blueprint;return [s.dark,s.base];}
-
-function dayBadge(c){
-  return '<g><rect x="320" y="20" width="62" height="62" rx="14" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.35)"/>'+
-    '<text x="351" y="48" text-anchor="middle" font-size="21" font-weight="900" fill="#fff">'+(DAY_CN[c.day]||'')+'</text>'+
-    '<text x="351" y="66" text-anchor="middle" font-size="9" font-weight="700" letter-spacing="1" fill="rgba(255,255,255,0.85)">ECA</text></g>';
-}
-
-function shell(c,defs,inner){
-  return '<svg viewBox="0 0 400 560" xmlns="http://www.w3.org/2000/svg" role="img">'+defs+inner+'</svg>';
-}
-
-/* Blueprint 几何：网格+同心圆+轨线 */
-function geoBlueprint(c){
-  const p=pal(c),gid='g'+hseed(c.id||c.nameZh);
-  const en=tspans(wrapText(c.nameEn.toUpperCase(),19).slice(0,3),200,404,30);
-  const zh=tspans(wrapText(c.nameZh,11).slice(0,2),200,500,28);
-  const v=hseed(c.nameZh+'A');
-  const s=v%5;
-  const r1=96+s*10, r2=124+s*10, rotA=(-32+s*16), rotB=(26+s*24);
-  const mono=esc((c.nameEn||'E').trim().charAt(0).toUpperCase());
-  // 装饰开关：轨道点 / 对角星 / 尺寸规
-  const d1=v%7===0,d2=v%11===0,d3=v%13===0;
-  const deco=(d1?'<circle cx="'+(68+(s*40))+'" cy="'+(156+(s*20))+'" r="5" fill="'+p.light+'"/>':'')+
-             (d2?'<path d="M340 96 l7 7 l-7 7 l-7 -7 Z" fill="'+p.light+'" opacity=".7"/>':'')+
-             (d3?'<path d="M60 372 H150" stroke="'+p.light+'" stroke-width="3" stroke-dasharray="4 6" opacity=".6"/>':'');
-  const defs='<defs><linearGradient id="'+gid+'b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+p.dark+'"/><stop offset="1" stop-color="'+p.base+'"/></linearGradient>'+
-    '<pattern id="'+gid+'g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="'+p.accent+'" stroke-opacity="0.13" stroke-width="1"/></pattern></defs>';
-  const inner='<rect width="400" height="560" fill="url(#'+gid+'b)"/><rect width="400" height="560" fill="url(#'+gid+'g)"/>'+
-    '<g stroke="'+p.light+'" fill="none" stroke-opacity="0.65"><circle cx="200" cy="228" r="'+r1+'"/><circle cx="200" cy="228" r="'+r2+'" stroke-dasharray="3 7" stroke-opacity="0.4"/>'+
-    '<ellipse cx="200" cy="228" rx="'+r2+'" ry="52" transform="rotate('+rotA+' 200 228)"/><ellipse cx="200" cy="228" rx="'+r2+'" ry="52" transform="rotate('+rotB+' 200 228)"/>'+
-    '<path d="M18 228H382"/><path d="M200 40V416"/>'+(s===0?'<path d="M80 92V156M320 92V156M80 302V356M320 302V356" stroke-opacity="0.5"/>':'')+'</g>'+
-    '<circle cx="200" cy="228" r="52" fill="none" stroke="'+p.light+'" stroke-opacity="0.5"/><circle cx="200" cy="228" r="30" fill="'+p.dark+'" stroke="'+p.light+'" stroke-width="2"/>'+
-    '<text x="200" y="238" text-anchor="middle" font-family="Courier New,monospace" font-size="26" font-weight="700" fill="'+p.light+'">'+mono+'</text>'+deco+
-    '<text x="52" y="58" font-family="Courier New,monospace" font-size="12" fill="'+p.light+'" opacity="0.8">ECA · '+esc(c.categoryZh)+'</text>'+dayBadge(c)+
-    '<text x="200" y="404" text-anchor="middle" font-family="\'PingFang SC\',Arial,sans-serif" font-size="25" font-weight="900" fill="#fff" letter-spacing="0.5">'+en+'</text>'+
-    '<text x="200" y="500" text-anchor="middle" font-family="\'PingFang SC\',sans-serif" font-size="20" font-weight="700" fill="'+p.light+'">'+zh+'</text>'+
-    '<text x="200" y="526" text-anchor="middle" font-family="\'PingFang SC\',sans-serif" font-size="13" fill="rgba(255,255,255,0.85)">'+esc(c.teacherZh)+'</text>';
-  return shell(c,defs,inner);
-}
-
-/* Bauhaus 几何：色块拼贴（用分类色调 family） */
-function geoBauhaus(c){
-  const p=pal(c),gid='g'+hseed(c.id||c.nameZh);
-  const en=tspans(wrapText(c.nameEn.toUpperCase(),16).slice(0,3),200,420,34);
-  const zh=tspans(wrapText(c.nameZh,10).slice(0,2),200,518,28);
-  const v=hseed(c.nameZh+'B');
-  const s=v%5;
-  const bg=p.light;
-  let shapes='';
-  const c1=p.base,c2=p.dark,c3=p.accent;
-  if(s===0)shapes='<circle cx="120" cy="150" r="95" fill="'+c1+'"/><path d="M300 40 A 90 90 0 0 1 300 220 L 210 220 Z" fill="'+c2+'"/><rect x="230" y="150" width="150" height="90" fill="'+c3+'"/><rect x="260" y="280" width="120" height="120" rx="60" fill="'+c1+'"/><circle cx="340" cy="430" r="34" fill="'+c2+'"/>';
-  else if(s===1)shapes='<rect x="30" y="40" width="150" height="150" fill="'+c1+'"/><circle cx="300" cy="150" r="86" fill="'+c2+'"/><rect x="30" y="240" width="210" height="140" rx="20" fill="'+c3+'"/><circle cx="320" cy="340" r="70" fill="'+c1+'"/><path d="M60 470 L160 470 L110 540 Z" fill="'+c2+'"/>';
-  else if(s===2)shapes='<path d="M40 60 A 90 90 0 0 1 40 240 L 130 240 Z" fill="'+c2+'"/><rect x="150" y="60" width="150" height="180" rx="80" fill="'+c1+'"/><circle cx="340" cy="150" r="60" fill="'+c3+'"/><rect x="40" y="280" width="200" height="90" fill="'+c3+'"/><circle cx="320" cy="460" r="46" fill="'+c1+'"/>';
-  else if(s===3)shapes='<circle cx="90" cy="120" r="60" fill="'+c3+'"/><rect x="160" y="60" width="120" height="120" fill="'+c1+'"/><path d="M300 180 L390 40 L390 180 Z" fill="'+c2+'"/><rect x="30" y="250" width="120" height="130" rx="16" fill="'+c2+'"/><circle cx="320" cy="430" r="70" fill="'+c3+'"/>';
-  else shapes='<rect x="40" y="40" width="180" height="120" rx="60" fill="'+c1+'"/><path d="M150 240 Q 260 120 360 240 Z" fill="'+c2+'"/><circle cx="120" cy="300" r="50" fill="'+c3+'"/><rect x="220" y="280" width="150" height="90" fill="'+c1+'"/><path d="M40 460 L150 460 L95 540 Z" fill="'+c2+'"/>';
-  const titleFill='#1c1c1c',nearTitle='#1c1c1c';
-  const defs='<defs><linearGradient id="'+gid+'b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+bg+'"/><stop offset="1" stop-color="'+p.accent+'"/></linearGradient></defs>';
-  const inner='<rect width="400" height="560" fill="url(#'+gid+'b)"/>'+shapes+
-    '<text x="60" y="330" font-family="Arial Black,sans-serif" font-size="14" font-weight="900" fill="'+nearTitle+'">'+esc(c.categoryZh)+'</text>'+dayBadge(c)+
-    '<text x="200" y="420" text-anchor="middle" font-family="Arial Black,\'PingFang SC\',sans-serif" font-size="25" font-weight="900" fill="'+nearTitle+'" letter-spacing="0.5">'+en+'</text>'+
-    '<text x="200" y="518" text-anchor="middle" font-family="\'PingFang SC\',sans-serif" font-size="20" font-weight="800" fill="'+titleFill+'">'+zh+'</text>'+
-    '<text x="200" y="538" text-anchor="middle" font-family="\'PingFang SC\',sans-serif" font-size="13" font-weight="700" fill="'+nearTitle+'">'+esc(c.teacherZh)+'</text>';
-  return shell(c,defs,inner);
-}
-
-/* Ink 几何：水墨笔触+印章 */
-function geoInk(c){
-  const p=pal(c),gid='g'+hseed(c.id||c.nameZh);
-  const seal=(c.nameZh.trim().charAt(0)||'文');
-  const en=tspans(wrapText(c.nameEn.toUpperCase(),19).slice(0,3),200,402,30);
-  const zh=tspans(wrapText(c.nameZh,11).slice(0,2),200,498,28);
-  const v=hseed(c.nameZh+'I');
-  const s=v%5;
-  const defs='<defs><linearGradient id="'+gid+'b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+p.light+'"/><stop offset="1" stop-color="'+p.accent+'"/></linearGradient></defs>';
-  const ink=p.dark;
-  const strokes=
-    s===0?'<path d="M40 190 Q 200 120 360 200" stroke="'+ink+'" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.75"/><path d="M60 250 Q 200 210 330 235" stroke="'+ink+'" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.5"/>':
-    s===1?'<path d="M40 250 Q 200 300 360 210" stroke="'+ink+'" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.7"/><path d="M70 300 Q 200 345 330 280" stroke="'+ink+'" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.45"/>':
-    s===2?'<path d="M50 160 Q 200 60 350 160" stroke="'+ink+'" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.7"/><path d="M70 200 Q 200 120 340 200" stroke="'+ink+'" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.4"/>':
-    s===3?'<circle cx="120" cy="150" r="80" fill="none" stroke="'+ink+'" stroke-width="7" opacity="0.65"/><path d="M40 260 Q 200 320 360 220" stroke="'+ink+'" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.7"/>':
-    '<path d="M40 340 Q 200 260 360 330" stroke="'+ink+'" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.7"/><circle cx="300" cy="120" r="46" fill="none" stroke="'+ink+'" stroke-width="6" opacity="0.6"/>';
-  const inner='<rect width="400" height="560" fill="url(#'+gid+'b)"/>'+strokes+
-    '<rect x="312" y="40" width="54" height="54" fill="'+p.deep+'"/><text x="339" y="76" text-anchor="middle" font-family="\'Songti SC\',\'PingFang SC\',serif" font-size="30" font-weight="700" fill="'+p.light+'">'+esc(seal)+'</text>'+
-    '<text x="52" y="58" font-family="\'Songti SC\',\'PingFang SC\',serif" font-size="13" letter-spacing="3" fill="'+ink+'">'+esc(c.categoryZh)+'</text>'+dayBadge(c)+
-    '<text x="200" y="402" text-anchor="middle" font-family="Georgia,\'Songti SC\',\'PingFang SC\',serif" font-size="24" font-weight="700" fill="'+ink+'">'+en+'</text>'+
-    '<text x="200" y="498" text-anchor="middle" font-family="\'Songti SC\',\'PingFang SC\',serif" font-size="22" font-weight="700" fill="'+p.deep+'">'+zh+'</text>'+
-    '<text x="200" y="524" text-anchor="middle" font-family="\'PingFang SC\',serif" font-size="13" fill="'+ink+'">'+esc(c.teacherZh)+'</text>';
-  return shell(c,defs,inner);
-}
-
-/* Sport 几何：斜条+动感环 */
-function geoSport(c){
-  const p=pal(c),gid='g'+hseed(c.id||c.nameZh);
-  const en=tspans(wrapText(c.nameEn.toUpperCase(),16).slice(0,3),200,406,34);
-  const zh=tspans(wrapText(c.nameZh,10).slice(0,2),200,504,28);
-  const v=hseed(c.nameZh+'S');
-  const s=v%5;
-  let stripes='';
-  for(let i=0;i<7;i++){stripes+='<path d="M'+(-40+i*70)+' 560 L'+(140+i*70)+' 0" stroke="rgba(255,255,255,0.10)" stroke-width="'+(26+i*6)+'"/>';}
-  const defs='<defs><linearGradient id="'+gid+'b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+p.dark+'"/><stop offset="1" stop-color="'+p.base+'"/></linearGradient></defs>';
-  const mid=
-    s===0?'<circle cx="200" cy="212" r="86" fill="none" stroke="#fff" stroke-width="14" stroke-dasharray="180 360" stroke-linecap="round"/><circle cx="200" cy="212" r="34" fill="#fff"/>':
-    s===1?'<circle cx="200" cy="212" r="86" fill="none" stroke="#fff" stroke-width="14" stroke-dasharray="180 360" stroke-linecap="round"/><circle cx="200" cy="212" r="34" fill="#fff"/><path d="M70 300 q 260 -60 300 30" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.7"/>':
-    s===2?'<circle cx="200" cy="212" r="88" fill="none" stroke="#fff" stroke-width="12" stroke-dasharray="120 130" stroke-linecap="round"/><circle cx="200" cy="212" r="34" fill="#fff"/><circle cx="320" cy="150" r="26" fill="none" stroke="#fff" stroke-width="4" opacity="0.6"/>':
-    s===3?'<path d="M90 300 q 110 -90 220 0" stroke="#fff" stroke-width="10" fill="none" stroke-linecap="round"/><circle cx="200" cy="220" r="46" fill="none" stroke="#fff" stroke-width="8" opacity="0.8"/><circle cx="200" cy="220" r="20" fill="#fff"/>':
-    '<circle cx="200" cy="212" r="80" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="200 240" stroke-linecap="round"/><path d="M60 120 L340 300" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.5"/><circle cx="300" cy="140" r="16" fill="none" stroke="#fff" stroke-width="4" opacity="0.6"/>';
-  const inner='<rect width="400" height="560" fill="url(#'+gid+'b)"/>'+stripes+mid+
-    '<text x="52" y="60" font-family="Arial Black,sans-serif" font-size="13" font-weight="900" fill="#fff" opacity="0.9">'+esc(c.categoryZh)+'</text>'+dayBadge(c)+
-    '<text x="200" y="406" text-anchor="middle" font-family="Arial Black,\'PingFang SC\',sans-serif" font-size="25" font-weight="900" fill="#fff" font-style="italic" letter-spacing="0.5">'+en+'</text>'+
-    '<text x="200" y="504" text-anchor="middle" font-family="\'PingFang SC\',sans-serif" font-size="20" font-weight="900" fill="#fff">'+zh+'</text>'+
-    '<text x="200" y="530" text-anchor="middle" font-family="\'PingFang SC\',sans-serif" font-size="13" font-weight="700" fill="rgba(255,255,255,0.95)">'+esc(c.teacherZh)+'</text>';
-  return shell(c,defs,inner);
-}
-
-/* Deco 几何：放射线+同心圆环 */
-function geoDeco(c){
-  const p=pal(c),gid='g'+hseed(c.id||c.nameZh);
-  const en=tspans(wrapText(c.nameEn.toUpperCase(),17).slice(0,3),200,404,32);
-  const zh=tspans(wrapText(c.nameZh,10).slice(0,2),200,500,28);
-  const v=hseed(c.nameZh+'D');
-  const s=v%5;
-  const n=12+((v>>3)%3)*4; // 12/16/20 条放射线
-  let rays='';
-  for(let i=0;i<n;i++){const a=(i/n)*Math.PI;rays+='<path d="M200 300 L'+(200+Math.cos(a)*320)+' '+(300+Math.sin(a)*320)+'" stroke="'+p.light+'" stroke-opacity="0.14" stroke-width="2"/>';}
-  const defs='<defs><linearGradient id="'+gid+'b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+p.dark+'"/><stop offset="1" stop-color="'+p.base+'"/></linearGradient></defs>';
-  const inner='<rect width="400" height="560" fill="url(#'+gid+'b)"/>'+
-    '<rect x="0" y="0" width="400" height="560" fill="none" stroke="'+p.light+'" stroke-opacity="0.6" stroke-width="2"/><rect x="12" y="12" width="376" height="536" fill="none" stroke="'+p.light+'" stroke-opacity="0.35" stroke-width="1"/>'+rays+
-    '<circle cx="200" cy="300" r="120" fill="none" stroke="'+p.light+'" stroke-opacity="0.4"/><circle cx="200" cy="300" r="96" fill="none" stroke="'+p.light+'" stroke-opacity="0.55"/>'+
-    '<circle cx="200" cy="300" r="74" fill="'+p.light+'" fill-opacity="0.12" stroke="'+p.light+'" stroke-width="2"/>'+
-    (s===1?'<path d="M150 300H250" stroke="'+p.light+'" stroke-width="1"/>':'')+
-    (s===2?'<circle cx="200" cy="300" r="54" fill="none" stroke="'+p.light+'" stroke-width="1" stroke-dasharray="3 6"/>':'')+
-    '<text x="200" y="314" text-anchor="middle" font-family="Georgia,serif" font-size="40" font-weight="700" fill="'+p.light+'">'+esc((c.nameEn||'E').trim().charAt(0).toUpperCase())+'</text>'+
-    '<text x="200" y="242" text-anchor="middle" font-family="Georgia,serif" font-size="12" letter-spacing="4" fill="'+p.light+'">'+esc(c.categoryZh)+'</text>'+dayBadge(c)+
-    '<text x="200" y="404" text-anchor="middle" font-family="Georgia,\'Times New Roman\',\'PingFang SC\',serif" font-size="24" font-weight="700" fill="#fff" letter-spacing="1">'+en+'</text>'+
-    '<text x="200" y="500" text-anchor="middle" font-family="\'PingFang SC\',\'Songti SC\',serif" font-size="20" font-weight="700" fill="'+p.light+'">'+zh+'</text>'+
-    '<text x="200" y="528" text-anchor="middle" font-family="\'PingFang SC\',serif" font-size="13" fill="rgba(255,255,255,0.85)">'+esc(c.teacherZh)+'</text>';
-  return shell(c,defs,inner);
-}
-
-/* Emblem 几何：徽章圆环+顶冠 */
-function geoEmblem(c){
-  const p=pal(c),gid='g'+hseed(c.id||c.nameZh);
-  const en=tspans(wrapText(c.nameEn.toUpperCase(),17).slice(0,3),200,416,32);
-  const zh=tspans(wrapText(c.nameZh,10).slice(0,2),200,510,28);
-  const v=hseed(c.nameZh+'E');
-  const s=v%4;
-  const defs='<defs><linearGradient id="'+gid+'b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+p.dark+'"/><stop offset="1" stop-color="'+p.deep+'"/></linearGradient></defs>';
-  const ring=s===0?'<circle cx="200" cy="200" r="104" fill="none" stroke="'+p.light+'" stroke-width="2"/>':s===1?'<circle cx="200" cy="200" r="104" fill="none" stroke="'+p.light+'" stroke-width="2" stroke-dasharray="6 8"/>':s===2?'<circle cx="200" cy="200" r="104" fill="none" stroke="'+p.light+'" stroke-width="3"/>':'<circle cx="200" cy="200" r="104" fill="none" stroke="'+p.light+'" stroke-width="1" stroke-dasharray="2 4"/>';
-  const inner='<rect width="400" height="560" fill="url(#'+gid+'b)"/>'+
-    '<circle cx="200" cy="200" r="118" fill="none" stroke="'+p.light+'" stroke-opacity="0.35" stroke-width="2"/>'+ring+
-    '<path d="M200 96 l-14 22 h28 Z" fill="'+p.light+'"/><path d="M96 200 c 0 -60 48 -108 108 -108 c 60 0 108 48 108 108" fill="none" stroke="'+p.light+'" stroke-width="2"/>'+
-    '<path d="M96 200 c 0 60 48 108 108 108 c 60 0 108 -48 108 -108" fill="none" stroke="'+p.light+'" stroke-width="2"/><circle cx="200" cy="200" r="40" fill="none" stroke="'+p.light+'" stroke-width="2"/>'+
-    '<text x="200" y="216" text-anchor="middle" font-family="Georgia,serif" font-size="36" font-weight="700" fill="'+p.light+'">'+esc((c.nameEn||'E').trim().charAt(0).toUpperCase())+'</text>'+
-    '<text x="200" y="362" text-anchor="middle" font-family="Georgia,serif" font-size="13" letter-spacing="4" fill="'+p.light+'">'+esc(c.categoryZh)+'</text>'+dayBadge(c)+
-    '<text x="200" y="416" text-anchor="middle" font-family="Georgia,\'Times New Roman\',\'PingFang SC\',serif" font-size="24" font-weight="700" fill="#fff" letter-spacing="1">'+en+'</text>'+
-    '<text x="200" y="510" text-anchor="middle" font-family="\'PingFang SC\',serif" font-size="20" font-weight="700" fill="'+p.light+'">'+zh+'</text>'+
-    '<text x="200" y="536" text-anchor="middle" font-family="\'PingFang SC\',serif" font-size="13" fill="rgba(255,255,255,0.85)">'+esc(c.teacherZh)+'</text>';
-  return shell(c,defs,inner);
-}
-
-/* Music 几何：同心环+音符曲线 */
-function geoMusic(c){
-  const p=pal(c),gid='g'+hseed(c.id||c.nameZh);
-  const en=tspans(wrapText(c.nameEn.toUpperCase(),17).slice(0,3),200,404,34);
-  const zh=tspans(wrapText(c.nameZh,10).slice(0,2),200,504,28);
-  const v=hseed(c.nameZh+'M');
-  const s=v%4;
-  const cx=s===1?200:s===2?300:120;
-  let rings='';
-  for(let r=130;r>=30;r-=14){rings+='<circle cx="'+cx+'" cy="150" r="'+r+'" fill="none" stroke="'+p.dark+'" stroke-opacity="0.5" stroke-width="'+(r%28===0?4:1.5)+'"/>';}
-  const defs='<defs><linearGradient id="'+gid+'b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+p.dark+'"/><stop offset="1" stop-color="'+p.base+'"/></linearGradient></defs>';
-  const inner='<rect width="400" height="560" fill="url(#'+gid+'b)"/>'+rings+
-    '<circle cx="'+cx+'" cy="150" r="34" fill="'+p.light+'"/><circle cx="'+cx+'" cy="150" r="7" fill="#fff"/>'+
-    '<g stroke="rgba(255,255,255,0.6)" fill="none" stroke-linecap="round"><path d="M220 120 q30 -40 70 -30" stroke-width="7"/><path d="M220 150 q40 -40 90 -24" stroke-width="7"/><path d="M220 180 q36 -32 78 -16" stroke-width="7"/></g>'+
-    (s===3?'<g stroke="rgba(255,255,255,0.5)" fill="none"><circle cx="120" cy="150" r="8" fill="#fff" stroke="none"/><path d="M125 150 H360" stroke-width="2"/><circle cx="340" cy="150" r="6" fill="none" stroke-width="2"/></g>':'')+
-    '<text x="330" y="180" font-size="16" font-weight="900" fill="#fff" opacity="0.9" transform="rotate(8 330 180)">♪</text>'+dayBadge(c)+
-    '<text x="200" y="404" text-anchor="middle" font-family="Arial Black,\'PingFang SC\',sans-serif" font-size="25" font-weight="900" fill="#fff">'+en+'</text>'+
-    '<text x="200" y="504" text-anchor="middle" font-family="\'PingFang SC\',sans-serif" font-size="20" font-weight="800" fill="rgba(255,255,255,0.95)">'+zh+'</text>'+
-    '<text x="200" y="528" text-anchor="middle" font-family="\'PingFang SC\',sans-serif" font-size="13" font-weight="700" fill="rgba(255,255,255,0.9)">'+esc(c.teacherZh)+'</text>';
-  return shell(c,defs,inner);
-}
-
-function geoCinema(c){const p=pal(c),gid='g'+hseed(c.id||c.nameZh);const zh=tspans(wrapText(c.nameZh,10).slice(0,2),200,492,28);let holes='';for(let i=0;i<8;i++){holes+='<rect x="'+(26+i*48)+'" y="28" width="26" height="20" rx="3" fill="rgba(0,0,0,0.55)"/><rect x="'+(26+i*48)+'" y="512" width="26" height="20" rx="3" fill="rgba(0,0,0,0.55)"/>';}const defs='<defs><linearGradient id="'+gid+'b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+p.dark+'"/><stop offset="1" stop-color="'+p.base+'"/></linearGradient><linearGradient id="'+gid+'m" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(255,220,150,0.5)"/><stop offset="1" stop-color="rgba(255,220,150,0)"/></linearGradient></defs>';const inner='<rect width="400" height="560" fill="url(#'+gid+'b)"/><path d="M200 90 L90 300 L310 300 Z" fill="url(#'+gid+'m)"/><rect x="14" y="20" width="372" height="8" fill="'+p.deep+'"/><rect x="14" y="532" width="372" height="8" fill="'+p.deep+'"/>'+holes+'<rect x="150" y="128" width="100" height="34" rx="6" fill="'+p.light+'"/><text x="200" y="152" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="15" font-weight="900" fill="'+p.deep+'">NOW SHOWING</text>'+dayBadge(c)+'<text x="200" y="400" text-anchor="middle" font-family="Georgia,\'PingFang SC\',serif" font-size="24" font-weight="700" fill="'+p.accent+'" letter-spacing="1">'+esc(c.nameEn)+'</text><text x="200" y="492" text-anchor="middle" font-family="\'PingFang SC\',serif" font-size="20" font-weight="700" fill="'+p.light+'">'+zh+'</text><text x="200" y="524" text-anchor="middle" font-family="\'PingFang SC\',serif" font-size="13" fill="rgba(245,231,200,0.85)">'+esc(c.teacherZh)+'</text>';return shell(c,defs,inner);}
-
-const BUILDERS={blueprint:geoBlueprint,bauhaus:geoBauhaus,ink:geoInk,sport:geoSport,deco:geoDeco,emblem:geoEmblem,music:geoMusic,cinema:geoCinema};
-
-function posterSVG(c){const g=geoOf(c);return (BUILDERS[g]||geoBauhaus)(c);}
 
 function render(){
   const groups={};ORDER.forEach(k=>groups[k]=[]);
@@ -286,28 +65,35 @@ function render(){
   const app=document.getElementById('app');let html='';
   ORDER.forEach(k=>{
     if(!groups[k].length)return;
-    html+='<section class="shelf"><div class="shelf-head"><span class="badge" style="background:'+CAT_COLOR[k].base+'">'+CAT_ICON[k]+'</span><h2>'+k+'</h2><span class="count">'+groups[k].length+' 门课程</span></div><div class="books">';
+    html+='<section class="shelf"><div class="shelf-head"><span class="badge" style="background:'+CAT_COLOR[k]+'">'+CAT_ICON[k]+'</span><h2>'+k+'</h2><span class="count">'+groups[k].length+' 门课程</span></div><div class="grid">';
     groups[k].forEach(c=>{
-      html+='<button class="book" data-id="'+esc(c.nameZh)+'"><span class="book-cover">'+posterSVG(c)+'</span><span class="book-teacher">'+esc(c.teacherZh)+'</span></button>';
+      const g=(c.grad&&c.grad.length===2)?c.grad:[CAT_COLOR[c.cat],CAT_COLOR[c.cat]];
+      const dayc=DAY_COLOR[c.day]||'#888';
+      const hl=(c.highlightsZh||[]).map(h=>'<span>'+esc(h)+'</span>').join('');
+      const meta=[
+        c.audience?'<span><b>对象</b>'+esc(c.audience)+'</span>':'',
+        c.capacity?'<span><b>人数</b>'+esc(c.capacity)+'</span>':'',
+        c.language?'<span><b>语言</b>'+esc(c.language)+'</span>':'',
+        c.teacherZh?'<span><b>教师</b>'+esc(c.teacherZh)+'</span>':'',
+        c.time?'<span><b>时间</b>'+esc(c.time)+'</span>':''
+      ].join('');
+      html+='<article class="card">'+
+        '<div class="cover" style="background:linear-gradient(135deg,'+g[0]+','+g[1]+')">'+
+          '<span class="soft"></span>'+
+          '<span class="ico">'+esc(c.icon||CAT_ICON[c.cat])+'</span>'+
+          '<span class="day" style="background:'+dayc+'">'+(DAY_CN[c.day]||'')+'</span>'+
+          '<span class="inner"><h3>'+esc(c.nameZh)+'</h3><div class="en">'+esc(c.nameEn)+'</div><span class="tag">'+esc(c.categoryZh)+'</span></span>'+
+        '</div>'+
+        '<div class="body">'+
+          (c.descZh?'<div class="desc">'+esc(c.descZh)+'</div>':'')+
+          (hl?'<div class="hl">'+hl+'</div>':'')+
+          '<div class="meta">'+meta+'</div>'+
+        '</div></article>';
     });
     html+='</div></section>';
   });
   app.innerHTML=html;
-  document.querySelectorAll('.book').forEach(b=>b.onclick=()=>openModal(b.getAttribute('data-id')));
 }
-function openModal(name){
-  const c=COURSES.find(x=>x.nameZh===name);if(!c)return;
-  const g=gradOf(c);
-  const hl=(c.highlightsZh||[]).map(h=>'<span>'+esc(h)+'</span>').join('');
-  document.getElementById('modal').innerHTML=
-    '<button class="modal-close" onclick="document.getElementById(\'modalBg\').classList.remove(\'show\')">✕</button>'+
-    '<div class="modal-top" style="background:linear-gradient(135deg,'+g[0]+','+g[1]+')"><div class="inner">'+
-    '<span style="font-size:40px">'+esc(c.icon)+'</span><h2 style="margin-top:10px">'+esc(c.nameZh)+'</h2><div class="en">'+esc(c.nameEn)+'</div>'+
-    '<div class="meta"><span>'+esc(c.categoryZh)+'</span><span>'+esc(c.audience)+'</span><span>'+esc(c.capacity)+'</span><span>'+esc(c.language)+'</span><span>'+esc(c.time)+'</span></div></div></div>'+
-    '<div class="modal-body"><div class="desc">'+esc(c.descZh)+'</div><div class="hl">'+hl+'</div><div class="info"><b>授课教师</b>：'+esc(c.teacherZh)+'</div></div>';
-  document.getElementById('modalBg').classList.add('show');
-}
-document.getElementById('modalBg').onclick=e=>{if(e.target.id==='modalBg')document.getElementById('modalBg').classList.remove('show');};
 render();
 </script>
 </body>
