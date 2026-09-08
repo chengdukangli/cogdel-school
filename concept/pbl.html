@@ -8,7 +8,7 @@
   :root{--purple:#5A3580;--purple-dark:#43265f;--purple-deep:#2e1a44;--gold:#c9a84c;--gold-light:#e6cf8f;--gold-deep:#a8892f;--bg:#f7f4ef;--card:#fff;--ink:#2b2333;--inc-soft:#6b6475;--line:rgba(90,53,128,.14);}
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
-  .wrap{max-width:1200px;margin:0 auto;padding:0 28px 80px;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px 90px;}
   header.hero{background:linear-gradient(135deg,var(--purple-deep),var(--purple) 52%,var(--purple-dark));color:#fff;padding:50px 26px 42px;text-align:center;position:relative;overflow:hidden;margin-bottom:34px;}
   header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 84% 16%,rgba(201,168,76,.45),transparent 42%),radial-gradient(circle at 10% 88%,rgba(230,207,143,.25),transparent 42%);}
   .hero-inner{position:relative;z-index:2;max-width:920px;margin:0 auto;}
@@ -19,54 +19,51 @@
   .toc{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:32px;}
   .toc a{text-decoration:none;color:var(--purple);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:14px;font-weight:700;}
   .toc a:hover{background:var(--purple);color:#fff;}
-  .block{margin-bottom:40px;}
-  .blk-head{display:flex;align-items:baseline;gap:12px;padding:0 2px 14px;border-bottom:2px solid var(--gold);margin-bottom:22px;}
+  .block{margin-bottom:44px;}
+  .blk-head{display:flex;align-items:baseline;gap:12px;padding:0 2px 14px;border-bottom:2px solid var(--gold);margin-bottom:14px;}
   .blk-head h2{font-size:26px;color:var(--purple);font-weight:800;letter-spacing:1px;}
   .blk-head .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-deep);font-size:15px;}
   .blk-head .cnt{margin-left:auto;color:#9b8fb0;font-size:13px;white-space:nowrap;}
-  .lead{font-size:15.5px;color:var(--inc-soft);line-height:1.9;margin-bottom:18px;}
+  .lead{font-size:15px;color:var(--inc-soft);line-height:1.9;}
   .lead b{color:var(--purple);}
-  .pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-bottom:26px;}
-  .pillar{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;border-top:4px solid var(--purple);box-shadow:0 6px 20px rgba(90,53,128,.06);}
-  .pillar .k{font-size:12px;color:var(--gold-deep);font-weight:800;letter-spacing:1px;}
-  .pillar h4{font-size:17px;color:var(--purple);font-weight:800;margin:6px 0 6px;}
-  .pillar p{font-size:13.5px;color:var(--inc-soft);line-height:1.7;}
-  /* 学院 */
-  .sec{margin-bottom:36px;}
-  .sec-head{display:flex;align-items:baseline;gap:14px;padding:0 2px 14px;border-bottom:2px solid var(--gold);margin-bottom:20px;}
-  .sec-head h2{font-size:24px;color:var(--purple);font-weight:800;}
-  .sec-head .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-deep);font-size:14px;}
-  .sec-head .cnt{margin-left:auto;color:#9b8fb0;font-size:13px;}
-  .brief{font-size:13.5px;color:var(--inc-soft);margin-bottom:14px;}
-  .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;}
-  .proj{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:0 6px 18px rgba(90,53,128,.06);position:relative;}
-  .proj .num{position:absolute;top:-12px;left:16px;background:var(--purple);color:#fff;font-size:13px;font-weight:800;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
-  .proj h4{font-size:16px;color:var(--ink);font-weight:800;margin:8px 0 4px;line-height:1.35;}
-  .proj .en{font-size:12.5px;color:var(--gold-deep);font-weight:700;}
-  .proj p{font-size:12.5px;color:var(--inc-soft);margin-top:8px;line-height:1.6;}
-  .pending{background:linear-gradient(135deg,rgba(90,53,128,.05),rgba(201,168,76,.08));border:1px dashed var(--line);border-radius:14px;padding:20px;color:var(--inc-soft);font-size:14px;display:flex;align-items:center;gap:10px;justify-content:center;}
-  .pending .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(201,168,76,.18);}
-  /* 案例 */
-  .case{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(90,53,128,.07);}
-  .case-banner{background:linear-gradient(135deg,var(--purple-deep),var(--purple) 60%,var(--purple-dark));color:#fff;padding:26px 28px;}
+  .pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:20px 0;}
+  .pillar{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;border-top:4px solid var(--purple);box-shadow:0 6px 20px rgba(90,53,128,.06);}
+  .pillar .k{font-size:11.5px;color:var(--gold-deep);font-weight:800;letter-spacing:1px;}
+  .pillar h4{font-size:16.5px;color:var(--purple);font-weight:800;margin:6px 0 6px;}
+  .pillar p{font-size:13px;color:var(--inc-soft);line-height:1.7;}
+  /* 学院标题 */
+  .acad{display:flex;align-items:baseline;gap:12px;margin:30px 0 6px;}
+  .acad h3{font-size:22px;color:var(--purple);font-weight:800;}
+  .acad .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-deep);font-size:13px;}
+  .acad .brief{font-size:13px;color:var(--inc-soft);margin-left:auto;}
+  /* 时间轴 */
+  .timeline{position:relative;margin:14px 0 0;padding-left:26px;}
+  .timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--gold),rgba(201,168,76,.25));}
+  .tl{position:relative;margin-bottom:14px;}
+  .tl-marker{position:absolute;left:-26px;top:14px;width:20px;height:20px;border-radius:50%;background:var(--purple);display:flex;align-items:center;justify-content:center;}
+  .tl-marker::after{content:"";width:8px;height:8px;border-radius:50%;background:#fff;}
+  .tl-marker .wk{display:none;}
+  .tl-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;box-shadow:0 5px 16px rgba(90,53,128,.06);}
+  .tl-card .wk{display:inline-block;background:var(--gold);color:var(--purple-deep);font-size:12px;font-weight:800;padding:2px 10px;border-radius:12px;margin-bottom:8px;}
+  .tl-card h4{font-size:15.5px;color:var(--purple);font-weight:800;margin:0 0 8px;}
+  .tl-card ul{list-style:none;}
+  .tl-card li{font-size:13.5px;color:var(--inc-soft);line-height:1.8;padding-left:16px;position:relative;margin-bottom:4px;}
+  .tl-card li::before{content:"·";position:absolute;left:2px;color:var(--gold);font-weight:800;}
+  .tl-card .prod{margin-top:8px;font-size:13px;color:var(--purple);font-weight:700;background:rgba(90,53,128,.07);border-radius:8px;padding:6px 10px;}
+  /* 案例头 */
+  .case-banner{background:linear-gradient(135deg,var(--purple-deep),var(--purple) 60%,var(--purple-dark));color:#fff;border-radius:16px;padding:24px 26px;margin-bottom:20px;}
   .case-banner .tag{display:inline-block;background:var(--gold);color:var(--purple-deep);font-size:12px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:12px;}
-  .case-banner h3{font-size:24px;font-weight:800;letter-spacing:.5px;}
+  .case-banner h3{font-size:24px;font-weight:800;}
   .case-banner .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-light);font-size:14px;margin-top:4px;}
   .case-banner .q{display:inline-block;margin-top:14px;background:rgba(255,255,255,.12);border:1px solid rgba(230,207,143,.4);border-radius:12px;padding:8px 18px;font-size:14px;color:#f3ecd9;}
-  .case-body{padding:26px 28px;}
-  .cs{margin-bottom:20px;}
-  .cs h5{display:flex;align-items:center;gap:8px;font-size:17px;color:var(--purple);font-weight:800;margin-bottom:8px;}
-  .cs h5 .st{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--gold);color:var(--purple-deep);font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;}
-  .cs p{font-size:14px;color:var(--inc-soft);line-height:1.9;}
-  .cs ul{margin:8px 0 0 6px;list-style:none;}
-  .cs li{font-size:13.5px;color:var(--inc-soft);line-height:1.8;padding-left:18px;position:relative;margin-bottom:4px;}
-  .cs li::before{content:"·";position:absolute;left:2px;color:var(--gold);font-weight:800;}
-  .result{background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(90,53,128,.06));border-radius:14px;padding:18px 20px;}
-  .result h5{font-size:16px;color:var(--purple);font-weight:800;margin-bottom:8px;}
-  .result ul{list-style:none;}
-  .result li{font-size:13.5px;color:var(--inc-soft);line-height:1.8;padding-left:18px;position:relative;margin-bottom:4px;}
-  .result li::before{content:"★";position:absolute;left:0;color:var(--gold-deep);font-size:11px;top:5px;}
-  @media print{ @page{size:A4 landscape;margin:9mm;} body{background:#fff;} header.hero,.toc{display:none!important;} .wrap{max-width:none;padding:0;} .proj-grid{grid-template-columns:1fr 1fr;gap:8px;} .proj,.cs,.result{box-shadow:none;page-break-inside:avoid;} .pillars{grid-template-columns:1fr 1fr;} }
+  .case-outro{background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(90,53,128,.06));border-radius:12px;padding:16px 18px;margin-top:16px;}
+  .case-outro h5{font-size:15.5px;color:var(--purple);font-weight:800;margin-bottom:6px;}
+  .case-outro ul{list-style:none;}
+  .case-outro li{font-size:13.5px;color:var(--inc-soft);line-height:1.8;padding-left:18px;position:relative;margin-bottom:4px;}
+  .case-outro li::before{content:"★";position:absolute;left:0;color:var(--gold-deep);font-size:11px;top:5px;}
+  .pending{background:linear-gradient(135deg,rgba(90,53,128,.05),rgba(201,168,76,.08));border:1px dashed var(--line);border-radius:12px;padding:18px;color:var(--inc-soft);font-size:13.5px;display:flex;align-items:center;gap:10px;}
+  .pending .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(201,168,76,.18);}
+  @media print{ @page{size:A4 landscape;margin:9mm;} body{background:#fff;} header.hero,.toc{display:none!important;} .wrap{max-width:none;padding:0;} .tl-card,.case-outro{box-shadow:none;page-break-inside:avoid;} }
 </style>
 </head>
 <body>
@@ -79,89 +76,63 @@
 <div class="wrap">
 <div class="toc">
   <a href="#what">什么是 PBL</a>
-  <a href="#heming">和鸣学院</a>
   <a href="#lixing">砺行学院</a>
-  <a href="#lingxi">灵犀学院</a>
-  <a href="#wenyuan">问源学院</a>
+  <a href="#heming">和鸣学院</a>
   <a href="#case">案例：校园零浪费小店</a>
 </div>
 
 <!-- 什么是 PBL -->
 <div class="block" id="what">
   <div class="blk-head"><h2>什么是 PBL？</h2><span class="en">Project-Based Learning</span></div>
-  <div class="lead">PBL（Project-Based Learning）<b>项目式学习</b>，是一种让学生围绕一个<b>真实世界的问题</b>，用<b>几周甚至一个学期</b>去深入探究、动手解决，并最终产出一份<b>能被人看到、真实可用</b>的作品的学习方式。<b>它和传统课堂最大的区别，是"把学习从课本里搬进真实生活"。</b></div>
+  <div class="lead">PBL（Project-Based Learning）<b>项目式学习</b>，是让学生围绕一个真实世界的问题，<b>用几周甚至一个学期</b>去深入探究、动手解决，最终产出一份真实可用作品的学习方式。它和传统课堂最大的区别，是<b>把学习从课本里搬进真实生活</b>。</div>
   <div class="pillars">
-    <div class="pillar"><div class="k">真实问题</div><h4>不是编造的题目</h4><p>任务来自真实的社区、校园、古镇或生活场景，学生面对的是真问题，而不是纸上习题。</p></div>
-    <div class="pillar"><div class="k">跨学科</div><h4>知识被串起来用</h4><p>数学、科学、语文、经济、艺术在同一个项目里被真正调用，学生发现知识不是孤立的。</p></div>
-    <div class="pillar"><div class="k">学生主导</div><h4>老师是引导者</h4><p>学生自己调研、提问、分工、试错、调整；老师负责搭脚手架、给资源、关键处把关。</p></div>
-    <div class="pillar"><div class="k">真实成果</div><h4>作品能被看见</h4><p>最终产出一份海报、一间小店、一套方案、一场路演……成果会被展示、被使用、被评价。</p></div>
+    <div class="pillar"><div class="k">真实问题</div><h4>不是编的题</h4><p>任务来自真实校园、社区、古镇，孩子面对的是真问题。</p></div>
+    <div class="pillar"><div class="k">跨学科</div><h4>知识被串起来</h4><p>数学、科学、语文、经济、艺术在一个项目里被真正调用。</p></div>
+    <div class="pillar"><div class="k">学生主导</div><h4>老师是引导者</h4><p>孩子自己调研、提问、分工、试错、调整，老师搭脚手架。</p></div>
+    <div class="pillar"><div class="k">真实成果</div><h4>作品能看见</h4><p>最终产出一间店、一块地、一套方案、一场路演，被使用被评价。</p></div>
   </div>
-  <div class="lead" style="margin-top:6px">康礼的 PBL，让每个孩子<b>在解决问题的过程中，长出自信心、责任感和真正的能力</b>——这正是我们想给家长的答案：<b>我们不是在教"会做题的孩子"，而是在培养"能做事的孩子"。</b></div>
-</div>
-
-<!-- 和鸣学院 -->
-<div class="block sec" id="heming">
-  <div class="sec-head"><h2>和鸣学院</h2><span class="en">Humanities Academy</span><span class="cnt">4 个项目</span></div>
-  <div class="brief">和鸣学院关注<b>人文、社会与社区</b>。本学期四个项目都围绕安仁古镇这个"真实社区"展开——非遗、游客、商户、校园，孩子们用自己的行动让周边变得更好。</div>
-  <div class="proj-grid">
-    <div class="proj"><span class="num">1</span><h4>本地非遗年轻化传播</h4><div class="en">Heritage Rebranding</div><p>走进当地非遗，用年轻人的方式重新包装、传播，让传统文化被更多人看见、被下一代接住。</p></div>
-    <div class="proj"><span class="num">2</span><h4>安仁古镇游客体验微改造</h4><div class="en">Anren Visitor Experience</div><p>实地调研游客需求与痛点，做一个小而真的改造，让古镇的游览体验更友好、更有人情味。</p></div>
-    <div class="proj"><span class="num">3</span><h4>校园零浪费小店</h4><div class="en">Zero-Waste Corner</div><p>在校园里开一间"零浪费小店"，研究循环利用、减少浪费，经营一间真正被同学使用的绿色小店。</p></div>
-    <div class="proj"><span class="num">4</span><h4>古镇商户数字化工具箱</h4><div class="en">Digital Toolkit</div><p>为古镇商户设计一套简单好用的数字化工具，帮他们把生意做得更好、把游客服务得更周到。</p></div>
-  </div>
+  <div class="lead"><b>我们不是在教会做题的孩子，而是在培养能做事的孩子。</b></div>
 </div>
 
 <!-- 砺行学院 -->
-<div class="block sec" id="lixing">
-  <div class="sec-head"><h2>砺行学院</h2><span class="en">STEM Academy</span><span class="cnt">1 个项目</span></div>
-  <div class="brief">砺行学院关注<b>数学、科学与严谨的工程思维</b>。砺行的项目，讲究"用数字说话、用双手验证"。</div>
-  <div class="proj-grid">
-    <div class="proj"><span class="num">1</span><h4>Odyssey 铺砖工程</h4><div class="en">Odyssey Tiling</div><p>学生实地测量一块真实地面，验证"直角是不是真的90°"，算清每块瓷砖的切割尺寸，再亲手测量、标记、切割、铺贴——最后老师严格复核每一处尺寸。这块地，是孩子们用数学和耐心铺出来的。</p></div>
+<div class="block">
+  <div class="acad"><h3>砺行学院</h3><span class="en">STEM Academy</span><span class="brief">数学 · 科学 · 工程思维</span></div>
+  <div class="blk-head"><h2>Odyssey 铺砖工程</h2><span class="en">Odyssey Tiling</span><span class="cnt">6 周 · 真实地面铺砖</span></div>
+  <div class="lead">砺行的项目讲究<b>用数字说话、用双手验证</b>。这一次，孩子不是听老师讲"勾股定理"，而是<b>亲手测量、亲手验证、亲手把一块空地铺成地面</b>——每一步都有真实的数学、真实的误差、真实的成品。</div>
+  <div class="timeline"><div class="tl"><div class="tl-marker"><span class="wk">第1周</span></div><div class="tl-card"><h4>场地勘察 · 拿到真实的地面</h4><ul><li>领取并实地查看学校指定的一块待铺设地面；</li><li>两人一组，用卷尺、激光测距仪测量这块地的长、宽，记录不规则角落与障碍物；</li><li>把测得的数据标注在"场地草图"上，标注出需要避让的柱子、插座、门洞。</li></ul><div class="prod">→ 产出：一张带真实尺寸和障碍物的场地草图</div></div></div><div class="tl"><div class="tl-marker"><span class="wk">第2周</span></div><div class="tl-card"><h4>"真直角"验证 · 用数学戳穿"看上去的直角"</h4><ul><li>用 3-4-5 法（勾股定理）实地检验四个墙角是不是真的 90°；</li><li>记录每处偏差……结果很多不是 90°，孩子们亲手发现"目测会骗人"；</li><li>根据偏差决定铺贴的基准线与起铺点。</li></ul><div class="prod">→ 产出：偏差记录表 + 起铺基准线方案</div></div></div><div class="tl"><div class="tl-marker"><span class="wk">第3周</span></div><div class="tl-card"><h4>铺砖计算 · 一块都不浪费地算清</h4><ul><li>用"地面长 ÷ 瓷砖尺寸"算出整砖数量与最后余量；</li><li>关键步骤：把 3mm 缝宽从余量里扣掉，算出每块边砖的精确切割宽度；</li><li>统一用小数计算，先粗算再复核，看谁算得又准又快。</li></ul><div class="prod">→ 产出：整砖数 / 边砖切割尺寸计算单</div></div></div><div class="tl"><div class="tl-marker"><span class="wk">第4周</span></div><div class="tl-card"><h4>切割地图 + 干燥预排 · 动刀之前先"证明"</h4><ul><li>在网格纸上画"切割地图"：每块砖标上行列坐标，写清每块需切的精确尺寸；</li><li>把不切的全砖按地图在场地里摆好（不涂胶，只是预排）；</li><li>把要切的砖放到对应格子，用铅笔沿切割线描一遍——用眼睛再验一遍数学。</li></ul><div class="prod">→ 产出：切割地图 + 场地干燥预排实景</div></div></div><div class="tl"><div class="tl-marker"><span class="wk">第5周</span></div><div class="tl-card"><h4>精密切割 · "量两次，切一次"</h4><ul><li>安全第一：戴护目镜、手套，管好工具；</li><li>把地图上算好的尺寸用直角尺、细头记号笔转画到每块瓷砖上；</li><li>直线用推拉式瓷砖刀，L 型/柱子位用湿切；两人算的结果不同就一起重测再切。</li></ul><div class="prod">→ 产出：切割好的瓷砖（老师逐一复核尺寸后放行）</div></div></div><div class="tl"><div class="tl-marker"><span class="wk">第6周</span></div><div class="tl-card"><h4>铺贴与收尾 · 把一块空地变成地面</h4><ul><li>调和薄浆到"花生酱"稠度，每次只铺 1 ㎡；</li><li>先铺整砖，再嵌入精准切好的边砖；四角放找平卡，每铺 3 块用水平仪校验一次；</li><li>等待固化后填缝、擦净，最后老师对照地图验收每处尺寸。</li></ul><div class="prod">→ 产出：一块由学生亲手完成、经得起检查的真实铺砖作品</div></div></div></div>
+</div>
+
+<!-- 和鸣学院 -->
+<div class="block">
+  <div class="acad"><h3>和鸣学院</h3><span class="en">Humanities Academy</span><span class="brief">人文 · 社会 · 社区</span></div>
+  <div class="blk-head"><h2>本学期项目</h2><span class="en">Projects</span><span class="cnt">4 个项目</span></div>
+  <div class="lead">和鸣学院围绕安仁古镇这个真实社区展开，非遗、游客、商户、校园——孩子们用行动让周边更好。</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px">
+    <div class="tl-card"><h4>本地非遗年轻化传播</h4><div class="en" style="font-size:12px;color:var(--gold-deep);font-weight:700">Heritage Rebranding</div><p style="font-size:13px;color:var(--inc-soft);margin-top:6px">走进当地非遗，用年轻人的方式重新包装、传播，让传统文化被看见与接住。</p></div>
+    <div class="tl-card"><h4>安仁古镇游客体验微改造</h4><div class="en" style="font-size:12px;color:var(--gold-deep);font-weight:700">Anren Visitor Experience</div><p style="font-size:13px;color:var(--inc-soft);margin-top:6px">实地调研游客需求，做一个小而真的改造，让古镇更友好、更有人情味。</p></div>
+    <div class="tl-card"><h4>校园零浪费小店</h4><div class="en" style="font-size:12px;color:var(--gold-deep);font-weight:700">Zero-Waste Corner</div><p style="font-size:13px;color:var(--inc-soft);margin-top:6px">在校园开一间"零浪费小店"，研究循环利用，经营一间被同学真正使用的绿色小店。</p></div>
+    <div class="tl-card"><h4>古镇商户数字化工具箱</h4><div class="en" style="font-size:12px;color:var(--gold-deep);font-weight:700">Digital Toolkit</div><p style="font-size:13px;color:var(--inc-soft);margin-top:6px">为古镇商户设计简单好用的数字化工具，帮他们把生意做得更好。</p></div>
   </div>
-</div>
-
-<!-- 灵犀学院 -->
-<div class="block sec" id="lingxi">
-  <div class="sec-head"><h2>灵犀学院</h2><span class="en">Art Academy</span><span class="cnt">即将上线</span></div>
-  <div class="pending"><span class="dot"></span><span>灵犀学院艺术方向的 PBL 项目即将上线，敬请期待</span></div>
-</div>
-
-<!-- 问源学院 -->
-<div class="block sec" id="wenyuan">
-  <div class="sec-head"><h2>问源学院</h2><span class="en">Science Academy</span><span class="cnt">即将上线</span></div>
-  <div class="pending"><span class="dot"></span><span>问源学院科学方向的 PBL 项目即将上线，敬请期待</span></div>
 </div>
 
 <!-- 案例 -->
 <div class="block" id="case">
-  <div class="blk-head"><h2>PBL 案例</h2><span class="en">A Real Project · 校园零浪费小店</span></div>
-  <div class="case">
-    <div class="case-banner">
-      <span class="tag">和鸣学院 · 本学期真实项目</span>
-      <h3>校园零浪费小店</h3>
-      <div class="en">Campus Zero-Waste Corner</div>
-      <span class="q">驱动性问题：我们能不能在校园里开一间真正被大家使用的"零浪费小店"？</span>
-    </div>
-    <div class="case-body">
-      <div class="cs"><h5><span class="st">1</span>真实问题，从身边来</h5><p>孩子们在校园里发现：午餐后常有多余的食物、一次性包装、被随手扔掉还能用的东西。"这些东西真的只能扔掉吗？"——一个真实、每天发生在身边的浪费问题，成了项目的起点。</p></div>
-      <div class="cs"><h5><span class="st">2</span>带着问题去调研</h5><p>学生分组走进校园做调查：一天校园里会产生多少废弃物？哪些有机会被"二次利用"？别人是怎么做的？孩子们<b>用数据说话</b>，把看到的、问到的、测到的都记录下来。</p></div>
-      <div class="cs"><h5><span class="st">3</span>设计方案，动手去做</h5><ul>
-        <li>讨论：零浪费小店该卖什么？怎么定价？谁来管理？</li>
-        <li>确定"小店经营"的规则：回收再利用、分门别类、明码标价、账目透明。</li>
-        <li>亲手布置小店：货架、标签、价签、宣传海报，一个都不少。</li>
-      </ul></div>
-      <div class="cs"><h5><span class="st">4</span>真实运营，真实反馈</h5><p>小店真的开起来了。学生轮流当店长、收银、记账、复盘，<b>直面真实的运营数据</b>：什么受欢迎、什么滞销、怎么改进。遇到问题，孩子们自己想办法调整。</p></div>
-      <div class="cs"><h5><span class="st">5</span>把结果讲给更多人听</h5><p>项目结束，孩子们把经历做成一场<b>路演与成果展示</b>：讲清楚"我们发现了什么、做了什么、做到了什么、改变了什么"，并把这个零浪费理念带回班级、带回家庭。</p></div>
-      <div class="result">
-        <h5>这个项目，孩子收获了什么？</h5>
-        <ul>
-          <li>亲眼看见并亲手做了一件<b>对校园、对环境有真实价值</b>的事。</li>
-          <li>学会<b>调研、分析数据、做方案、解决真实问题</b>的能力。</li>
-          <li>懂了<b>循环利用、绿色生活</b>，也懂了"做生意要算账、要服务别人"。</li>
-          <li>更重要的是——<b>自信</b>：孩子们发现，我不仅能学知识，还能真的改变身边的世界。</li>
-        </ul>
-      </div>
-    </div>
+  <div class="blk-head"><h2>PBL 案例 · 本周做什么</h2><span class="en">A Real Project, Week by Week</span></div>
+  <div class="case-banner">
+    <span class="tag">和鸣学院 · 真实项目</span>
+    <h3>校园零浪费小店</h3>
+    <div class="en">Campus Zero-Waste Corner</div>
+    <span class="q">驱动性问题：我们能不能在校园里开一间真正被大家使用的"零浪费小店"？</span>
+  </div>
+  <div class="timeline"><div class="tl"><div class="tl-marker"><span class="wk">第1周</span></div><div class="tl-card"><h4>发现身边的问题：校园到底浪费了什么？</h4><ul><li>全班用一个中午 "蹲点"观察食堂与走廊：剩饭、一次性餐盒、还能用的废纸和旧物；</li><li>分工记录：一天产生了哪些废弃物、大约多少、哪些本可以用第二次；</li><li>提出最想解决的一个驱动问题："我们能不能在校园里开一间真正被大家用的零浪费小店？"</li></ul><div class="prod">→ 产出：校园浪费观察记录单 + 驱动性问题</div></div></div><div class="tl"><div class="tl-marker"><span class="wk">第2周</span></div><div class="tl-card"><h4>带着问题去调研 · 别急着做，先搞清楚</h4><ul><li>采访同学、后勤老师：大家愿意为"二手/回收"买单吗？最想要什么？</li><li>上网查"零浪费"做法，看别人怎么做二手循环、怎么定价管理；</li><li>用图表整理调研数据，得出"小店卖什么、怎么定价"的初步结论。</li></ul><div class="prod">→ 产出：调研问卷 + 数据整理图表 + 小店定位</div></div></div><div class="tl"><div class="tl-marker"><span class="wk">第3周</span></div><div class="tl-card"><h4>设计方案 · 把想法变成可执行的小店</h4><ul><li>分组讨论小店：卖什么（再利用好物）、怎么回收、怎么定价、谁负责哪块；</li><li>画出小店动线：货架怎么摆、标签怎么写；给每件回收好物贴"身世卡"；</li><li>和老师一起定下经营规则：明码标价、轮值店长、收支透明。</li></ul><div class="prod">→ 产出：小店运营方案 + 货架/标签设计图</div></div></div><div class="tl"><div class="tl-marker"><span class="wk">第4周</span></div><div class="tl-card"><h4>动手筹建 · 把小店真的搭起来</h4><ul><li>分组落地：回收组收集好物并清洗，设计组做店招/海报，财务组做账本；</li><li>布置小店：摆货架、贴标签、做价签、写宣传语；</li><li>做一次"内部试营业"演练流程，确认收支与分工顺畅。</li></ul><div class="prod">→ 产出：一间真实可营业的校园零浪费小店</div></div></div><div class="tl"><div class="tl-marker"><span class="wk">第5周</span></div><div class="tl-card"><h4>真实运营 · 用真数据说话</h4><ul><li>小店正式开张，学生轮流当店长、收银、记账、补货、接待同学；</li><li>记录每天的营收、人气、滞销品，找出"谁受欢迎、谁卖不动"并分析原因；</li><li>遇到问题当场开会调整：改定价、补热销、换陈列。</li></ul><div class="prod">→ 产出：一周真实营业日志 + 经营复盘</div></div></div><div class="tl"><div class="tl-marker"><span class="wk">第6周</span></div><div class="tl-card"><h4>复盘与路演 · 把成果讲清楚</h4><ul><li>把所有数据做成一份"经营报告"：赚了多少、减少多少浪费、做了什么调整；</li><li>面向同学/家长/老师做一场路演，讲清"发现—调研—开店—运营—改变"全过程；</li><li>把零浪费理念带回班级与家庭，发起下一个可持续行动。</li></ul><div class="prod">→ 产出：经营报告 + 路演展示 + 可持续行动计划</div></div></div></div>
+  <div class="case-outro">
+    <h5>从第 1 周到第 6 周，孩子收获了什么？</h5>
+    <ul>
+      <li>不是"听老师说"，而是<b>自己发现问题、自己调研、自己开店、自己复盘</b>。</li>
+      <li>用真实数据做判断，学会<b>经营、算账、服务他人</b>，也学会"失败了就调整"。</li>
+      <li>亲手做了一件<b>对校园、对环境有真实价值</b>的事。</li>
+      <li>最重要的是<b>自信</b>：我不仅能学知识，还能真的改变身边的世界。</li>
+    </ul>
   </div>
 </div>
 
