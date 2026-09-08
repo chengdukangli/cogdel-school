@@ -7,29 +7,25 @@
 <style>
   :root{--purple:#5A3580;--purple-dark:#43265f;--purple-deep:#2e1a44;--gold:#c9a84c;--gold-light:#e6cf8f;--gold-deep:#a8892f;--bg:#f7f4ef;--card:#fff;--ink:#2b2333;--line:rgba(90,53,128,.14);}
   *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;height:100vh;display:flex;flex-direction:column;}
-  header.hero{background:linear-gradient(135deg,var(--purple-deep),var(--purple) 52%,var(--purple-dark));color:#fff;padding:14px 26px;display:flex;align-items:center;justify-content:space-between;flex:0 0 auto;}
-  .hero h1{font-size:19px;font-weight:800;letter-spacing:1px;}
-  .hero .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-light);font-size:12px;margin-top:2px;}
-  .hero a.back{color:var(--gold-light);text-decoration:none;font-size:13px;border:1px solid rgba(230,207,143,.5);padding:6px 14px;border-radius:999px;}
-  .hero a.back:hover{background:var(--gold-light);color:var(--purple-deep);}
-  .frame{flex:1 1 auto;position:relative;background:#f5f6f8;}
-  .frame iframe{width:100%;height:100%;border:0;display:block;}
-  @media print{ body{height:auto;} header.hero{display:none!important;} .frame{height:auto;} .frame iframe{height:auto;min-height:900px;} }
+  body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;height:100vh;display:flex;align-items:center;justify-content:center;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:40px 44px;max-width:460px;text-align:center;box-shadow:0 12px 36px rgba(90,53,128,.08);}
+  .card h2{color:var(--purple);font-size:22px;font-weight:800;margin-bottom:10px;}
+  .card p{color:#6b6475;font-size:14px;line-height:1.7;margin-bottom:24px;}
+  .card a.btn{display:inline-block;background:var(--purple);color:#fff;text-decoration:none;padding:12px 28px;border-radius:999px;font-size:15px;font-weight:700;}
+  .card a.btn:hover{background:var(--purple-dark);}
+  .card a.alt{display:block;margin-top:14px;color:var(--gold-deep);font-size:13px;text-decoration:none;}
 </style>
 </head>
 <body>
-<header class="hero">
-  <div>
-    <h1>定制课程 · 学生课表</h1>
-    <div class="en">Cogdel School Chengdu · Custom Timetable</div>
-  </div>
-  <a class="back" href="https://en.cogdelschool.com/concept/index.html">← 返回资料库</a>
-</header>
-<div class="frame"><iframe id="f" src="http://118.24.139.114:3081/login.html" title="学生课表系统登录"></iframe></div>
+<div class="card">
+  <h2>学生定制课程 / 学生课表</h2>
+  <p>点击下方按钮，在新窗口打开选课系统。首次需用学校账号登录一次，之后本浏览器会记住登录状态。<br><span style="color:#9b8fb0;font-size:12.5px">若未自动跳转，请点下方按钮。</span></p>
+  <a class="btn" href="http://118.24.139.114:3081/" target="_blank" rel="noopener">打开学生课表系统 →</a>
+  <a class="alt" href="http://118.24.139.114:3081/login.html" target="_blank" rel="noopener">如果上次未登录，先到这里登录</a>
+</div>
 <script>
-  const SRC='http://118.24.139.114:3081';
-  document.getElementById('f').src=SRC+'/login.html';
+  // 直接在当前窗口打开选课系统（顶层导航允许从 HTTPS 跳到 HTTP）
+  window.location.href = 'http://118.24.139.114:3081/';
 </script>
 </body>
 </html>
