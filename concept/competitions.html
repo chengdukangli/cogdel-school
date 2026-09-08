@@ -1,124 +1,247 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>竞赛成果 · 成都康礼学校 | Competitions &amp; Awards</title>
+
 <style>
+
   :root{--purple:#5A3580;--purple-dark:#43265f;--purple-deep:#2e1a44;--gold:#c9a84c;--gold-light:#e6cf8f;--gold-deep:#a8892f;--bg:#f7f4ef;--card:#fff;--ink:#2b2333;--inc-soft:#6b6475;--line:rgba(90,53,128,.14);}
+
   *{box-sizing:border-box;margin:0;padding:0;}
+
   body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;}
+
   .wrap{max-width:1280px;margin:0 auto;padding:0 28px 80px;}
+
   header.hero{background:linear-gradient(135deg,var(--purple-deep),var(--purple) 52%,var(--purple-dark));color:#fff;padding:50px 26px 42px;text-align:center;position:relative;overflow:hidden;margin-bottom:34px;}
+
   header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 84% 16%,rgba(201,168,76,.45),transparent 42%),radial-gradient(circle at 10% 88%,rgba(230,207,143,.25),transparent 42%);}
+
   .hero-inner{position:relative;z-index:2;max-width:900px;margin:0 auto;}
+
   .crest{width:50px;height:50px;margin:0 auto 12px;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--purple-deep);font-weight:800;font-size:23px;line-height:50px;box-shadow:0 6px 18px rgba(0,0,0,.25);}
+
   .hero h1{font-size:clamp(25px,3.6vw,36px);font-weight:800;letter-spacing:1.5px;}
+
   .hero .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-light);font-size:15px;margin-top:8px;}
+
   .hero .tip{margin-top:14px;font-size:13px;color:rgba(255,255,255,.78);}
+
   .toc{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:30px;}
+
   .toc a{text-decoration:none;color:var(--purple);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:14px;font-weight:700;}
+
   .toc a:hover{background:var(--purple);color:#fff;}
+
   .sec{margin-bottom:36px;}
+
   .sec-head{display:flex;align-items:baseline;gap:14px;padding:0 2px 14px;border-bottom:2px solid var(--gold);margin-bottom:20px;}
+
   .sec-head h2{font-size:26px;color:var(--purple);font-weight:800;letter-spacing:1px;}
+
   .sec-head .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-deep);font-size:15px;}
+
   .sec-head .cnt{margin-left:auto;color:#9b8fb0;font-size:14px;white-space:nowrap;}
+
   .sec.awards{}
+
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;}
+
   .cc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:0 6px 20px rgba(90,53,128,.06);border-top:4px solid var(--c);display:flex;gap:12px;align-items:flex-start;}
+
   .cc .cb{flex:0 0 auto;background:var(--c);color:#fff;font-size:12px;font-weight:700;padding:3px 9px;border-radius:8px;white-space:nowrap;}
+
   .cc .cn h4{font-size:15px;color:var(--ink);font-weight:800;line-height:1.3;}
+
   .cc .cn .ce{font-size:12px;color:var(--c);font-weight:700;margin:2px 0 5px;}
+
   .cc .cn p{font-size:12.5px;color:var(--inc-soft);line-height:1.5;}
+
   .award-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;}
+
   .po{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(90,53,128,.06);}
+
   .po a{display:block;}
+
   .po img{width:100%;height:150px;object-fit:cover;object-position:top;display:block;}
+
   .po figcaption{padding:8px 10px;}
+
   .po figcaption b{display:block;font-size:12px;color:var(--ink);line-height:1.35;}
+
   .po figcaption span{display:block;font-size:11px;color:var(--gold-deep);margin-top:3px;line-height:1.4;}
+
   .lightbox{position:fixed;inset:0;background:rgba(30,18,44,.88);display:none;align-items:center;justify-content:center;z-index:999;padding:26px;cursor:zoom-out;}
+
   .lightbox.show{display:flex;}
+
   .lightbox img{max-width:92vw;max-height:94vh;border-radius:12px;box-shadow:0 18px 60px rgba(0,0,0,.5);object-fit:contain;}
+
   .lightbox .close{position:absolute;top:-30px;right:-4px;width:38px;height:38px;border-radius:50%;background:var(--gold);color:var(--purple-deep);font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;}
+
   .blk-head{display:flex;align-items:baseline;gap:12px;padding:0 2px 14px;border-bottom:2px solid var(--gold);margin:34px 0 20px;}
+
   .blk-head h2{font-size:26px;color:var(--purple);font-weight:800;}
+
   .blk-head .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-deep);font-size:15px;}
+
   .blk-head .cnt{margin-left:auto;color:#9b8fb0;font-size:13px;}
+
   @media print{ @page{size:A4 landscape;margin:8mm;} body{background:#fff;} header.hero,.toc,.lightbox{display:none!important;} .wrap{max-width:none;padding:0;} .grid{grid-template-columns:1fr 1fr;gap:8px;} .award-grid{grid-template-columns:1fr 1fr 1fr;gap:8px;} .cc,.po{box-shadow:none;page-break-inside:avoid;} .po img{height:auto;} }
+
 </style>
+
 </head>
+
 <body>
+
 <header class="hero"><div class="hero-inner">
+
   <div class="crest">C</div>
+
   <h1>成都康礼学校 · 竞赛成果</h1>
+
   <div class="en">Cogdel School Chengdu · Competitions &amp; Awards</div>
+
   <div class="tip">开展国际一流竞赛 · 全员参与 · 校内导师全程指导</div>
+
 </div></header>
+
 <div class="wrap">
+
 <div class="toc"><a href="#math">数学</a><a href="#science">科学</a><a href="#tech">信息学</a><a href="#biz">商科</a><a href="#speech">演讲·辩论</a><a href="#writing">写作</a><a href="#lang">语言</a><a href="#compre">综合</a></div>
+
 <section class="sec" id="math"><div class="sec-head"><h2>数学</h2><span class="en">#5A3580</span><span class="cnt">6 项</span></div><div class="grid"><div class="cc" style="--c:#5A3580"><span class="cb">数学</span><div class="cn"><h4>美国数学测评</h4><div class="ce">AMC 8/10/12</div><p>数学协会 MAA · 全球前2.5%晋级AIME</p></div></div>
+
 <div class="cc" style="--c:#5A3580"><span class="cb">数学</span><div class="cn"><h4>国际数学奥赛</h4><div class="ce">IMO</div><p>国际数学奥林匹克 · 最高荣誉</p></div></div>
+
 <div class="cc" style="--c:#5A3580"><span class="cb">数学</span><div class="cn"><h4>英国数学测评</h4><div class="ce">UKMT-SMC</div><p>英国数学信托 · 全球前10%金奖</p></div></div>
+
 <div class="cc" style="--c:#5A3580"><span class="cb">数学</span><div class="cn"><h4>袋鼠数学思维</h4><div class="ce">Math Kangaroo</div><p>全球趣味数学 · 亚洲营晋级</p></div></div>
+
 <div class="cc" style="--c:#5A3580"><span class="cb">数学</span><div class="cn"><h4>哈佛-麻省数学竞标赛</h4><div class="ce">HMMT</div><p>哈佛/麻省理工联办 · 顶尖数学对抗</p></div></div>
+
 <div class="cc" style="--c:#5A3580"><span class="cb">数学</span><div class="cn"><h4>欧几里得数学</h4><div class="ce">Euclid</div><p>滑铁卢大学 · 北美权威数学</p></div></div></div></section>
+
 <section class="sec" id="science"><div class="sec-head"><h2>科学</h2><span class="en">#2E7D8C</span><span class="cnt">6 项</span></div><div class="grid"><div class="cc" style="--c:#2E7D8C"><span class="cb">科学</span><div class="cn"><h4>英国物理奥赛</h4><div class="ce">BPhO</div><p>英国物理奥赛委员会 · 牛剑加分项</p></div></div>
+
 <div class="cc" style="--c:#2E7D8C"><span class="cb">科学</span><div class="cn"><h4>英国化学奥赛</h4><div class="ce">UKChO</div><p>英国皇家化学会 · 剑桥集训营</p></div></div>
+
 <div class="cc" style="--c:#2E7D8C"><span class="cb">科学</span><div class="cn"><h4>英国生物奥赛</h4><div class="ce">BBO</div><p>英国皇家生物学会 · 全球顶尖百分位</p></div></div>
+
 <div class="cc" style="--c:#2E7D8C"><span class="cb">科学</span><div class="cn"><h4>国际生物奥赛中级</h4><div class="ce">IBO</div><p>UK Biology Olympiad · 通国际赛</p></div></div>
+
 <div class="cc" style="--c:#2E7D8C"><span class="cb">科学</span><div class="cn"><h4>英国天文与天体物理</h4><div class="ce">BAAO</div><p>BPhO 委员会 · 天体物理思维</p></div></div>
+
 <div class="cc" style="--c:#2E7D8C"><span class="cb">科学</span><div class="cn"><h4>国际自然科学奥赛</h4><div class="ce">INO</div><p>跨学科自然科学 · 顶尖选手晋级</p></div></div></div></section>
+
 <section class="sec" id="tech"><div class="sec-head"><h2>信息学</h2><span class="en">#3B6FB5</span><span class="cnt">4 项</span></div><div class="grid"><div class="cc" style="--c:#3B6FB5"><span class="cb">信息学</span><div class="cn"><h4>国际信息学奥赛</h4><div class="ce">IOI</div><p>国际信息学奥林匹克 · 算法顶尖</p></div></div>
+
 <div class="cc" style="--c:#3B6FB5"><span class="cb">信息学</span><div class="cn"><h4>美国计算机奥赛</h4><div class="ce">USACO</div><p>美国计算机协会 · 全美中学顶级</p></div></div>
+
 <div class="cc" style="--c:#3B6FB5"><span class="cb">信息学</span><div class="cn"><h4>亚洲太平洋信息学奥赛</h4><div class="ce">APIO</div><p>亚太信息学 · 区域顶尖</p></div></div>
+
 <div class="cc" style="--c:#3B6FB5"><span class="cb">信息学</span><div class="cn"><h4>国际机器人挑战</h4><div class="ce">FRC/FTC</div><p>FIRST · 工程与团队创新</p></div></div></div></section>
+
 <section class="sec" id="biz"><div class="sec-head"><h2>商科</h2><span class="en">#B0892F</span><span class="cnt">4 项</span></div><div class="grid"><div class="cc" style="--c:#B0892F"><span class="cb">商科</span><div class="cn"><h4>全美经济学挑战</h4><div class="ce">NEC</div><p>美国经济教育学会 · 经济/金融/商业</p></div></div>
+
 <div class="cc" style="--c:#B0892F"><span class="cb">商科</span><div class="cn"><h4>模拟商战</h4><div class="ce">ABS/WYEF</div><p>亚洲商业模拟 · 全球总决赛</p></div></div>
+
 <div class="cc" style="--c:#B0892F"><span class="cb">商科</span><div class="cn"><h4>商业竞赛</h4><div class="ce">DECA</div><p>美国商业教育协会 · 实战经营</p></div></div>
+
 <div class="cc" style="--c:#B0892F"><span class="cb">商科</span><div class="cn"><h4>金融投资挑战</h4><div class="ce">SIC</div><p>证券投资 · 财经素养</p></div></div></div></section>
+
 <section class="sec" id="speech"><div class="sec-head"><h2>演讲·辩论</h2><span class="en">#B5485F</span><span class="cnt">3 项</span></div><div class="grid"><div class="cc" style="--c:#B5485F"><span class="cb">演讲·辩论</span><div class="cn"><h4>模拟联合国</h4><div class="ce">MUN</div><p>哈佛等名校联办 · 国际视野</p></div></div>
+
 <div class="cc" style="--c:#B5485F"><span class="cb">演讲·辩论</span><div class="cn"><h4>国际演讲比赛</h4><div class="ce">YPSC</div><p>公众演讲 · 逻辑表达</p></div></div>
+
 <div class="cc" style="--c:#B5485F"><span class="cb">演讲·辩论</span><div class="cn"><h4>辩论赛</h4><div class="ce">Debate</div><p>批判性思维 · 逻辑辩论</p></div></div></div></section>
+
 <section class="sec" id="writing"><div class="sec-head"><h2>写作</h2><span class="en">#7A4CB0</span><span class="cnt">2 项</span></div><div class="grid"><div class="cc" style="--c:#7A4CB0"><span class="cb">写作</span><div class="cn"><h4>约翰·洛克论文竞赛</h4><div class="ce">John Locke</div><p>牛津/普林斯顿 · 全球写作奖</p></div></div>
+
 <div class="cc" style="--c:#7A4CB0"><span class="cb">写作</span><div class="cn"><h4>国际青年经济学论文</h4><div class="ce">IEA</div><p>经济学 · 论文竞赛</p></div></div></div></section>
+
 <section class="sec" id="lang"><div class="sec-head"><h2>语言</h2><span class="en">#3E9B6E</span><span class="cnt">2 项</span></div><div class="grid"><div class="cc" style="--c:#3E9B6E"><span class="cb">语言</span><div class="cn"><h4>河马英语奥林匹克</h4><div class="ce">Hippo</div><p>Global Hippo · 国际英语测评</p></div></div>
+
 <div class="cc" style="--c:#3E9B6E"><span class="cb">语言</span><div class="cn"><h4>澳大利亚数学测评·英语</h4><div class="ce">AMC-AU</div><p>澳洲数学信托 · 语言与数学</p></div></div></div></section>
-<section class="sec" id="compre"><div class="sec-head"><h2>综合</h2><span class="en">#9A6A00</span><span class="cnt">3 项</span></div><div class="grid"><div class="cc" style="--c:#9A6A00"><span class="cb">综合</span><div class="cn"><h4>国际科学与工程大奖赛</h4><div class="ce">ISEF</div><p>全球青少年科研竞赛 · 最高殿堂</p></div></div>
+
+<section class="sec" id="compre"><div class="sec-head"><h2>综合</h2><span class="en">#9A6A00</span><span class="cnt">2 项</span></div><div class="grid"><div class="cc" style="--c:#9A6A00"><span class="cb">综合</span><div class="cn"><h4>国际科学与工程大奖赛</h4><div class="ce">ISEF</div><p>全球青少年科研竞赛 · 最高殿堂</p></div></div>
+
 <div class="cc" style="--c:#9A6A00"><span class="cb">综合</span><div class="cn"><h4>爱丁堡公爵奖</h4><div class="ce">Duke of Edinburgh</div><p>国际青年户外与领导力</p></div></div>
-<div class="cc" style="--c:#9A6A00"><span class="cb">综合</span><div class="cn"><h4>8维竞争力成长档案</h4><div class="ce">Cogdel 8D</div><p>康礼全人教育工程化实践</p></div></div></div></section>
+
+</div></section>
+
 <div class="blk-head"><h2>获奖喜报</h2><span class="en">Our Awards</span><span class="cnt">点击卡片放大查看</span></div>
+
 <div class="blk-head" style="border:none;margin:0 0 14px;padding:0"><h2 style="font-size:19px">中学部</h2></div>
+
 <div class="award-grid"><figure class="po"><a href="competition-images/cp_155501_569.jpg" target="_blank"><img src="competition-images/cp_155501_569.jpg" loading="lazy" alt="2025 澳大利亚数学测评 (AMC)"></a><figcaption><b>2025 澳大利亚数学测评 (AMC)</b><span>3 全国二等 · 5 全国三等 · 6 数学技能 · 1人晋级 AMC China Camp</span></figcaption></figure>
+
 <figure class="po"><a href="competition-images/cp_155557_800.jpg" target="_blank"><img src="competition-images/cp_155557_800.jpg" loading="lazy" alt="2025-26 ABS 模拟商战 · 区域战"></a><figcaption><b>2025-26 ABS 模拟商战 · 区域战</b><span>4 项奖：Silver / 商业卓越 / Top Trading / 数字商业</span></figcaption></figure>
+
 <figure class="po"><a href="competition-images/cp_155637_118.jpg" target="_blank"><img src="competition-images/cp_155637_118.jpg" loading="lazy" alt="2026 John Locke 论文竞赛"></a><figcaption><b>2026 John Locke 论文竞赛</b><span>经济学方向入围</span></figcaption></figure>
+
 <figure class="po"><a href="competition-images/cp_155741_156.jpg" target="_blank"><img src="competition-images/cp_155741_156.jpg" loading="lazy" alt="2026 UKChO 英国化学测评"></a><figcaption><b>2026 UKChO 英国化学测评</b><span>1 全球金 · 1 全球银 · 1 人晋级剑桥化学营</span></figcaption></figure>
+
 <figure class="po"><a href="competition-images/cp_155830_202.png" target="_blank"><img src="competition-images/cp_155830_202.png" loading="lazy" alt="Pearson 卓越学子奖"></a><figcaption><b>Pearson 卓越学子奖</b><span>IGCSE 综合科学 · 中国区最高分</span></figcaption></figure>
+
 <figure class="po"><a href="competition-images/cp_155836_164.png" target="_blank"><img src="competition-images/cp_155836_164.png" loading="lazy" alt="Pearson 卓越学子奖"></a><figcaption><b>Pearson 卓越学子奖</b><span>A-Level 化学 · 全球最高分</span></figcaption></figure>
+
 <figure class="po"><a href="competition-images/cp_155840_445.png" target="_blank"><img src="competition-images/cp_155840_445.png" loading="lazy" alt="Pearson 卓越学子奖"></a><figcaption><b>Pearson 卓越学子奖</b><span>IGCSE Further Pure Math · 中国区最高分</span></figcaption></figure>
+
 <figure class="po"><a href="competition-images/cp_155941_193.jpg" target="_blank"><img src="competition-images/cp_155941_193.jpg" loading="lazy" alt="2026 UKChO 英国化学测评(二)"></a><figcaption><b>2026 UKChO 英国化学测评(二)</b><span>1 全球金 · 1 全球银 · 1 人晋级剑桥化学营</span></figcaption></figure>
+
 <figure class="po"><a href="competition-images/cp_160044_965.jpg" target="_blank"><img src="competition-images/cp_160044_965.jpg" loading="lazy" alt="2026 AMC8 美国数学测评"></a><figcaption><b>2026 AMC8 美国数学测评</b><span>1 全球前10%</span></figcaption></figure>
+
 <figure class="po"><a href="competition-images/cp_160104_074.jpg" target="_blank"><img src="competition-images/cp_160104_074.jpg" loading="lazy" alt="2026 BBO 英国生物测评"></a><figcaption><b>2026 BBO 英国生物测评</b><span>1 全球银 · 1 铜 · 1 晋级 BBO 亚洲营</span></figcaption></figure>
+
 <figure class="po"><a href="competition-images/cp_160126_304.jpg" target="_blank"><img src="competition-images/cp_160126_304.jpg" loading="lazy" alt="2026 全球神经科学奥赛 INO"></a><figcaption><b>2026 全球神经科学奥赛 INO</b><span>1 全国三等奖</span></figcaption></figure>
+
 <figure class="po"><a href="competition-images/cp_160212_918.jpg" target="_blank"><img src="competition-images/cp_160212_918.jpg" loading="lazy" alt="2025 AMC10/12 美国数学测评"></a><figcaption><b>2025 AMC10/12 美国数学测评</b><span>1 全球前10% · 3 全球前25% · 1 晋级 AIME</span></figcaption></figure>
+
 <figure class="po"><a href="competition-images/cp_160257_280.jpg" target="_blank"><img src="competition-images/cp_160257_280.jpg" loading="lazy" alt="2025 BAAO 英国天文(初级)"></a><figcaption><b>2025 BAAO 英国天文(初级)</b><span>1 全球铜奖</span></figcaption></figure>
+
 <figure class="po"><a href="competition-images/cp_160317_418.png" target="_blank"><img src="competition-images/cp_160317_418.png" loading="lazy" alt="2025 IBO 英国生物(中级)"></a><figcaption><b>2025 IBO 英国生物(中级)</b><span>1 全球银 · 1 铜 · 1 优秀 · 2 晋级 China Camp</span></figcaption></figure>
+
 <figure class="po"><a href="competition-images/cp_160419_708.jpg" target="_blank"><img src="competition-images/cp_160419_708.jpg" loading="lazy" alt="2025 UKMT-SMC 英国数学"></a><figcaption><b>2025 UKMT-SMC 英国数学</b><span>William GUO · 全球金奖</span></figcaption></figure>
+
 <figure class="po"><a href="competition-images/cp_160426_961.jpg" target="_blank"><img src="competition-images/cp_160426_961.jpg" loading="lazy" alt="2025 UKMT-SMC 英国数学"></a><figcaption><b>2025 UKMT-SMC 英国数学</b><span>Simba Zhao · 全球金奖</span></figcaption></figure>
+
 <figure class="po"><a href="competition-images/cp_160433_404.jpg" target="_blank"><img src="competition-images/cp_160433_404.jpg" loading="lazy" alt="2025 UKMT-SMC 英国数学"></a><figcaption><b>2025 UKMT-SMC 英国数学</b><span>Adam Zhang · 全球铜奖</span></figcaption></figure></div>
+
 <div class="blk-head" style="border:none;margin:34px 0 14px;padding:0"><h2 style="font-size:19px">小学部</h2></div>
+
 <div class="award-grid"><figure class="po"><a href="competition-images/cp_155958_930.jpg" target="_blank"><img src="competition-images/cp_155958_930.jpg" loading="lazy" alt="2026 袋鼠数学思维 MK"></a><figcaption><b>2026 袋鼠数学思维 MK</b><span>3 全国金 · 2 银 · 2 铜 · 2 技能 · 4人晋级亚洲营</span></figcaption></figure>
+
 <figure class="po"><a href="competition-images/cp_160021_337.jpg" target="_blank"><img src="competition-images/cp_160021_337.jpg" loading="lazy" alt="2026 河马英语测评 Hippo"></a><figcaption><b>2026 河马英语测评 Hippo</b><span>1 一等 · 1 二等 · 4 三等 · 2 优秀</span></figcaption></figure></div>
+
 </div>
+
 <div class="lightbox" id="lb"><div class="box" style="position:relative"><img id="lbimg" src=""><button class="close" id="lbclose">×</button></div></div>
+
 <script>
+
   const lb=document.getElementById('lb'),bi=document.getElementById('lbimg');
+
   document.querySelectorAll('.po img').forEach(im=>im.addEventListener('click',e=>{e.stopPropagation();bi.src=im.src;lb.classList.add('show');}));
+
   function c(){lb.classList.remove('show');bi.src='';}
+
   lb.addEventListener('click',c);
+
   document.getElementById('lbclose').addEventListener('click',e=>{e.stopPropagation();c();});
+
   document.addEventListener('keydown',e=>{if(e.key==='Escape')c();});
+
 </script>
+
 </body>
+
 </html>
