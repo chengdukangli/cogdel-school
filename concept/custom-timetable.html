@@ -8,48 +8,28 @@
   :root{--purple:#5A3580;--purple-dark:#43265f;--purple-deep:#2e1a44;--gold:#c9a84c;--gold-light:#e6cf8f;--gold-deep:#a8892f;--bg:#f7f4ef;--card:#fff;--ink:#2b2333;--line:rgba(90,53,128,.14);}
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;height:100vh;display:flex;flex-direction:column;}
-  header.hero{background:linear-gradient(135deg,var(--purple-deep),var(--purple) 52%,var(--purple-dark));color:#fff;padding:16px 26px;display:flex;align-items:center;justify-content:space-between;flex:0 0 auto;gap:12px;flex-wrap:wrap;}
-  .hero-inner h1{font-size:20px;font-weight:800;letter-spacing:1px;}
-  .hero-inner .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-light);font-size:12px;margin-top:2px;}
-  .hero .right{display:flex;align-items:center;gap:10px;}
+  header.hero{background:linear-gradient(135deg,var(--purple-deep),var(--purple) 52%,var(--purple-dark));color:#fff;padding:14px 26px;display:flex;align-items:center;justify-content:space-between;flex:0 0 auto;}
+  .hero h1{font-size:19px;font-weight:800;letter-spacing:1px;}
+  .hero .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-light);font-size:12px;margin-top:2px;}
   .hero a.back{color:var(--gold-light);text-decoration:none;font-size:13px;border:1px solid rgba(230,207,143,.5);padding:6px 14px;border-radius:999px;}
   .hero a.back:hover{background:var(--gold-light);color:var(--purple-deep);}
-  .frame{flex:1 1 auto;position:relative;}
+  .frame{flex:1 1 auto;position:relative;background:#f5f6f8;}
   .frame iframe{width:100%;height:100%;border:0;display:block;}
-  .bar{position:absolute;top:10px;right:14px;display:flex;gap:8px;z-index:5;}
-  .bar button{background:var(--purple);color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:13px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.2);}
-  .bar button.ghost{background:rgba(255,255,255,.95);color:var(--purple);}
-  .bar button:hover{opacity:.9;}
-  .tip{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 30px;text-align:center;box-shadow:0 10px 30px rgba(90,53,128,.1);max-width:460px;z-index:4;}
-  .tip h3{color:var(--purple);font-size:16px;margin-bottom:8px;}
-  .tip p{color:#6b6475;font-size:13px;line-height:1.6;}
-  @media print{ body{height:auto;} header.hero, .bar, .tip{display:none!important;} .frame{height:auto;} .frame iframe{height:960px;} }
+  @media print{ body{height:auto;} header.hero{display:none!important;} .frame{height:auto;} .frame iframe{height:auto;min-height:900px;} }
 </style>
 </head>
 <body>
 <header class="hero">
-  <div class="hero-inner">
+  <div>
     <h1>定制课程 · 学生课表</h1>
     <div class="en">Cogdel School Chengdu · Custom Timetable</div>
   </div>
-  <div class="right">
-    <a class="back" href="https://en.cogdelschool.com/concept/index.html">← 返回资料库</a>
-  </div>
+  <a class="back" href="https://en.cogdelschool.com/concept/index.html">← 返回资料库</a>
 </header>
-<div class="frame">
-  <div class="tip" id="tip"><h3>正在打开学生课表系统…</h3><p>如果看到登录页：点右上角「登录」，用学校账号登录一次，之后本浏览器会记住登录状态，下次直接进入。内容加载失败可点「刷新」。</p></div>
-  <div class="bar" style="display:none" id="bar">
-    <button class="ghost" id="btn-refresh">刷新</button>
-    <button id="btn-login">登录</button>
-  </div>
-  <iframe id="f" src="http://118.24.139.114:3081/" title="学生课表系统"></iframe>
-</div>
+<div class="frame"><iframe id="f" src="http://118.24.139.114:3081/login.html" title="学生课表系统登录"></iframe></div>
 <script>
   const SRC='http://118.24.139.114:3081';
-  const iframe=document.getElementById('f'), tip=document.getElementById('tip'), bar=document.getElementById('bar');
-  iframe.addEventListener('load',()=>{ setTimeout(()=>{ tip.style.display='none'; bar.style.display='flex'; },700); });
-  document.getElementById('btn-refresh').onclick=()=>{ tip.style.display='block'; iframe.src=SRC+'/'; };
-  document.getElementById('btn-login').onclick=()=>{ iframe.src=SRC+'/login.html'; };
+  document.getElementById('f').src=SRC+'/login.html';
 </script>
 </body>
 </html>
