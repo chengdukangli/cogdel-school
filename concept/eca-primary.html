@@ -20,6 +20,12 @@
   .shelf-head h2{font-size:24px;color:var(--purple);font-weight:800;}
   .shelf-head .count{margin-left:auto;font-size:13px;color:var(--inc-soft);font-weight:700;}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:22px;}
+  .sub-head{display:flex;align-items:center;gap:10px;margin:26px 0 16px;}
+  .sub-head:first-of-type{margin-top:8px;}
+  .sub-head .bar{width:22px;height:4px;border-radius:3px;background:var(--purple);}
+  .sub-head .t{font-size:17px;font-weight:800;color:var(--purple);}
+  .sub-head .en{font-family:Georgia,serif;font-style:italic;font-size:12px;color:var(--inc-soft);}
+  .sub-head .n{margin-left:auto;font-size:12px;color:var(--inc-soft);}
   .card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 8px 26px rgba(90,53,128,.07);border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s;}
   .card:hover{transform:translateY(-4px);box-shadow:0 16px 44px rgba(90,53,128,.14);}
   .cover{position:relative;color:#fff;padding:54px 22px 20px;min-height:158px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;}
@@ -59,39 +65,81 @@ const DAY_CN={"monday": "周一", "tuesday": "周二", "wednesday": "周三", "t
 const DAY_COLOR={"monday": "#3b82f6", "tuesday": "#10b981", "wednesday": "#f59e0b", "thursday": "#8b5cf6", "friday": "#ef4444"};
 function esc(s){return (s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
+/* 子分组：把同类课程聚在一起。返回 [组名, 英文] 或 null（单组不显示标题） */
+function subgroup(cat, name, nameEn){
+  const kw=name+' '+(nameEn||'');
+  if(cat==='语言与文学'){
+    // 二外：明确含 日/韩/法 语言名
+    if(/日语|韩语|法语/.test(kw))return ['二外 · 日语韩语法语','Languages'];
+    // 英语：含 英语/KET/Phonics/Spelling/Reading/Story/英文音名 等英语课
+    if(/英语|KET|Phonics|Spelling|Reading|Story|Teller|声动|自然拼读|单词趣味/.test(kw))return ['英语','English'];
+    // 其余为中文语文课
+    return ['语文','Chinese'];
+  }
+  if(cat==='科学与技术'){
+    if(/数学|竞赛/.test(kw))return ['数学','Maths'];
+    if(/AI|软件|信息|编程|3D|创客|妙笔/.test(kw))return ['信息技术','Technology'];
+    return ['科学探索','Science'];
+  }
+  if(cat==='艺术与设计'){
+    if(/演唱|器乐|乐团|音乐|打击乐/.test(kw))return ['音乐','Music'];
+    if(/手工|手作|陶艺|木工|美食|书法|线描|绘画|数字艺术/.test(kw))return ['美术 · 手工','Art'];
+    return ['传统文化','Culture'];
+  }
+  if(cat==='体育与健康'){
+    if(/球|Frisbee|飞盘|篮球|足球/.test(kw))return ['球类','Ball Games'];
+    if(/正念/.test(kw))return ['心智','Mindfulness'];
+    return ['综合运动','Sports'];
+  }
+  return null;
+}
+
 function render(){
   const groups={};ORDER.forEach(k=>groups[k]=[]);
   COURSES.forEach(c=>groups[c.cat].push(c));
   const DAY_ORDER=['monday','tuesday','wednesday','thursday','friday'];
   const dayRank=d=>{const i=DAY_ORDER.indexOf(d);return i<0?99:i;};
-  ORDER.forEach(k=>{ if(groups[k].length)groups[k].sort((a,b)=>dayRank(a.day)-dayRank(b.day)); });
   const app=document.getElementById('app');let html='';
   ORDER.forEach(k=>{
     if(!groups[k].length)return;
-    html+='<section class="shelf"><div class="shelf-head"><span class="badge" style="background:'+CAT_COLOR[k]+'">'+CAT_ICON[k]+'</span><h2>'+k+'</h2><span class="count">'+groups[k].length+' 门课程</span></div><div class="grid">';
-    groups[k].forEach(c=>{
-      const g=(c.grad&&c.grad.length===2)?c.grad:[CAT_COLOR[c.cat],CAT_COLOR[c.cat]];
-      const dayc=DAY_COLOR[c.day]||'#888';
-      const hl=(c.highlightsZh||[]).map(h=>'<span>'+esc(h)+'</span>').join('');
-      const meta=[
-        c.audience?'<span><b>对象</b>'+esc(c.audience)+'</span>':'',
-        c.teacherZh?'<span><b>教师</b>'+esc(c.teacherZh)+'</span>':'',
-        c.time?'<span><b>时间</b>'+esc(c.time)+'</span>':''
-      ].join('');
-      html+='<article class="card">'+
-        '<div class="cover" style="background:linear-gradient(135deg,'+g[0]+','+g[1]+')">'+
-          '<span class="soft"></span>'+
-          '<span class="ico">'+esc(c.icon||CAT_ICON[c.cat])+'</span>'+
-          '<span class="day" style="background:'+dayc+'">'+(DAY_CN[c.day]||'')+'</span>'+
-          '<span class="inner"><h3>'+esc(c.nameZh)+'</h3>'+(c.nameEn?'<div class="en">'+esc(c.nameEn)+'</div>':'')+(c.teaser?'<span class="tag">'+esc(c.teaser)+'</span>':'<span class="tag">'+esc(c.categoryZh)+'</span>')+'</span>'+
-        '</div>'+
-        '<div class="body">'+
-          (c.descZh?'<div class="desc">'+esc(c.descZh)+'</div>':'')+
-          (hl?'<div class="hl">'+hl+'</div>':'')+
-          '<div class="meta">'+meta+'</div>'+
-        '</div></article>';
+    // 先按子分组分组
+    const subs={};
+    groups[k].forEach(c=>{const sg=subgroup(k,c.nameZh,c.nameEn)||['',''];const key=sg[0]||'__other';if(!subs[key])subs[key]={label:sg[0],en:sg[1],items:[]};subs[key].items.push(c);});
+    const keys=Object.keys(subs);
+    keys.sort((a,b)=>{if(a==='__other')return 1;if(b==='__other')return -1;return a.localeCompare(b,'zh');});
+    html+='<section class="shelf"><div class="shelf-head"><span class="badge" style="background:'+CAT_COLOR[k]+'">'+CAT_ICON[k]+'</span><h2>'+k+'</h2><span class="count">'+groups[k].length+' 门课程</span></div>';
+    keys.forEach(key=>{
+      const sg=subs[key];
+      sg.items.sort((a,b)=>dayRank(a.day)-dayRank(b.day));
+      if(key!=='__other'){
+        html+='<div class="sub-head"><span class="bar"></span><span class="t">'+esc(sg.label)+'</span>'+(sg.en?'<span class="en">'+esc(sg.en)+'</span>':'')+'<span class="n">'+sg.items.length+' 门</span></div>';
+      }
+      html+='<div class="grid">';
+      sg.items.forEach(c=>{
+        const g=(c.grad&&c.grad.length===2)?c.grad:[CAT_COLOR[c.cat],CAT_COLOR[c.cat]];
+        const dayc=DAY_COLOR[c.day]||'#888';
+        const hl=(c.highlightsZh||[]).map(h=>'<span>'+esc(h)+'</span>').join('');
+        const meta=[
+          c.audience?'<span><b>对象</b>'+esc(c.audience)+'</span>':'',
+          c.teacherZh?'<span><b>教师</b>'+esc(c.teacherZh)+'</span>':'',
+          c.time?'<span><b>时间</b>'+esc(c.time)+'</span>':''
+        ].join('');
+        html+='<article class="card">'+
+          '<div class="cover" style="background:linear-gradient(135deg,'+g[0]+','+g[1]+')">'+
+            '<span class="soft"></span>'+
+            '<span class="ico">'+esc(c.icon||CAT_ICON[c.cat])+'</span>'+
+            '<span class="day" style="background:'+dayc+'">'+(DAY_CN[c.day]||'')+'</span>'+
+            '<span class="inner"><h3>'+esc(c.nameZh)+'</h3>'+(c.nameEn?'<div class="en">'+esc(c.nameEn)+'</div>':'')+(c.teaser?'<span class="tag">'+esc(c.teaser)+'</span>':'<span class="tag">'+esc(c.categoryZh)+'</span>')+'</span>'+
+          '</div>'+
+          '<div class="body">'+
+            (c.descZh?'<div class="desc">'+esc(c.descZh)+'</div>':'')+
+            (hl?'<div class="hl">'+hl+'</div>':'')+
+            '<div class="meta">'+meta+'</div>'+
+          '</div></article>';
+      });
+      html+='</div>';
     });
-    html+='</div></section>';
+    html+='</section>';
   });
   app.innerHTML=html;
 }
