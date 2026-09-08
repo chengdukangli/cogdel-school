@@ -1,567 +1,271 @@
 <!DOCTYPE html>
-
 <html lang="zh-CN">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>成都康礼学校 · 资料库 | Cogdel School Chengdu Resource Hub</title>
-
 <style>
-
   :root{
-
     --purple:#5A3580;--purple-dark:#43265f;--purple-deep:#2e1a44;
-
     --gold:#c9a84c;--gold-light:#e6cf8f;--gold-deep:#a8892f;
-
     --bg:#f7f4ef;--card:#fff;--ink:#2b2333;--inc-soft:#6b6475;--line:rgba(90,53,128,.12);
-
   }
-
   *{box-sizing:border-box;margin:0;padding:0;}
-
   html{scroll-behavior:smooth;}
-
   body{
-
     font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,"Segoe UI",sans-serif;
-
     background:var(--bg);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;
-
   }
-
   .wrap{max-width:1200px;margin:0 auto;padding:0 28px 90px;}
 
-
-
   /* ===== 顶部导航 ===== */
-
   nav.top{
-
     position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);
-
     background:rgba(255,255,255,.75);border-bottom:1px solid var(--line);
-
   }
-
   nav.top .inner{
-
     max-width:1200px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
-
   }
-
   nav .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--purple);font-size:18px;}
-
   nav .brand .mark{width:12px;height:12px;border-radius:3px;background:linear-gradient(135deg,var(--purple),var(--gold));}
-
   nav .brand .en{font-family:Georgia,serif;font-style:italic;color:var(--inc-soft);font-weight:400;font-size:13px;}
-
   nav .links{display:flex;gap:8px;flex-wrap:wrap;}
-
   nav .links a{font-size:13.5px;color:var(--inc-soft);text-decoration:none;padding:6px 14px;border-radius:20px;transition:.15s;}
-
   nav .links a:hover{color:var(--purple);background:rgba(90,53,128,.08);}
 
-
-
   /* ===== Hero ===== */
-
   header.hero{
-
     /* 兜底纯色，防止个别浏览器渐变异常 */
-
     background:#43265f;
-
     background-image:linear-gradient(135deg,var(--purple-deep) 0%,var(--purple) 52%,var(--purple-dark) 100%);
-
     color:#fff;padding:64px 28px 60px;text-align:center;position:relative;overflow:hidden;
-
     margin-bottom:52px;
-
   }
-
   header.hero::before{
-
     content:"";position:absolute;inset:0;pointer-events:none;
-
     background:radial-gradient(circle at 84% 16%,rgba(201,168,76,.45),transparent 42%),
-
                radial-gradient(circle at 10% 88%,rgba(230,207,143,.25),transparent 42%);
-
   }
-
   .hero-inner{position:relative;z-index:2;max-width:860px;margin:0 auto;}
-
   /* CSS 校徽：替代 emoji，任何设备稳定显示 */
-
   .hero .crest{
-
     width:56px;height:56px;margin:0 auto 16px;border-radius:14px;
-
     background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 100%);
-
     color:var(--purple-deep);font-weight:800;font-size:26px;line-height:56px;text-align:center;
-
     box-shadow:0 6px 18px rgba(0,0,0,.25);
-
   }
-
   .hero h1{font-size:clamp(30px,4.6vw,46px);font-weight:800;letter-spacing:1.5px;line-height:1.15;}
-
   .hero .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-light);font-size:clamp(14px,2.2vw,19px);margin-top:12px;letter-spacing:.5px;}
-
   .hero .slogan{
-
     display:inline-block;margin-top:26px;padding:9px 26px;border:1px solid rgba(230,207,143,.6);
-
     border-radius:60px;font-size:14px;color:#f7efd8;letter-spacing:.5px;max-width:92%;
-
   }
-
-
 
   /* ===== 区块 ===== */
-
   section{scroll-margin-top:70px;margin-bottom:50px;}
-
   .sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;}
-
   .sec-head .left{display:flex;align-items:center;gap:14px;}
-
   .sec-head .idx{font-size:15px;font-weight:800;color:var(--gold-deep);letter-spacing:1px;}
-
   .sec-head h2{font-size:clamp(22px,2.8vw,27px);color:var(--purple);font-weight:800;}
-
   .sec-head .en{font-family:Georgia,serif;font-style:italic;color:var(--inc-soft);font-size:14px;margin-top:2px;}
-
   .sec-head .count{font-size:13px;color:var(--inc-soft);background:rgba(90,53,128,.07);padding:5px 14px;border-radius:20px;}
 
-
-
   /* ===== 资料卡片 ===== */
-
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:22px;}
-
   .card{
-
     background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;
-
     box-shadow:0 8px 26px rgba(90,53,128,.06);border-top:4px solid var(--purple);
-
     display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s;
-
   }
-
   .card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(90,53,128,.12);}
-
   .card.gold{border-top-color:var(--gold);}
-
   .card .type{font-size:11.5px;color:var(--gold-deep);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
-
   .card h3{font-size:17px;color:var(--purple);font-weight:800;margin:10px 0 4px;line-height:1.4;}
-
   .card .date{font-size:12.5px;color:var(--inc-soft);margin-bottom:10px;}
-
   .card .desc{font-size:13.5px;color:var(--inc-soft);flex:1;}
-
   .card .link{
-
     margin-top:16px;font-size:13.5px;font-weight:700;text-decoration:none;text-align:center;
-
     padding:8px 14px;border-radius:10px;display:inline-block;transition:.15s;
-
     color:var(--purple);border:1px solid var(--purple);background:transparent;
-
   }
-
   .card .link:hover{background:var(--purple);color:#fff;}
-
   .card .link.ext{color:var(--gold-deep);border-color:var(--gold-deep);}
-
   .card .link.ext:hover{background:var(--gold-deep);color:#fff;}
 
-
-
   /* ===== 更多上线 ===== */
-
   .more{
-
     grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:12px;
-
     background:linear-gradient(135deg,rgba(90,53,128,.05),rgba(201,168,76,.08));
-
     border:1px dashed var(--line);border-radius:16px;padding:22px;color:var(--inc-soft);font-size:14px;
-
   }
-
   .more .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(201,168,76,.18);}
 
-
-
   /* ===== 页脚 ===== */
-
   footer{background:var(--purple-deep);color:#dfd7e8;margin-top:40px;padding:40px 28px;text-align:center;}
-
   footer .t{font-weight:700;color:#fff;font-size:16px;}
-
   footer .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-light);font-size:13px;margin-top:6px;}
-
   footer .meta{margin-top:18px;font-size:12.5px;color:#b3a9c0;}
 
-
-
   @media(max-width:640px){
-
     .wrap{padding:0 18px 60px;}
-
     .hero{padding:54px 20px 52px;}
-
     .card{padding:20px;}
-
     nav .brand .en{display:none;}
-
   }
-
 </style>
-
 </head>
-
 <body>
 
-
-
 <nav class="top">
-
   <div class="inner">
-
     <div class="brand"><span class="mark"></span>
-
       <span>康礼资料库<span class="en">Resource Hub</span></span>
-
     </div>
-
     <div class="links">
-
       <a href="#course">课程</a>
-
       <a href="#faculty">师资</a>
-
       <a href="#eca">ECA</a>
-
       <a href="#uni">升学</a>
-
       <a href="#comp">竞赛</a>
-
       <a href="#camp">活动方案</a>
-
       <a href="#admis">招生物料</a>
-
     </div>
-
   </div>
-
 </nav>
 
-
-
 <header class="hero">
-
   <div class="hero-inner">
-
     <div class="crest">C</div>
-
     <h1>成都康礼学校 · 资料库</h1>
-
     <div class="en">Cogdel School Chengdu · Resource Hub</div>
-
     <div class="slogan">一所学校，四种性格 &nbsp;|&nbsp; One School, Four Characters</div>
-
   </div>
-
 </header>
-
-
 
 <div class="wrap">
 
-
-
 <section id="course">
-
     <div class="sec-head">
-
       <div class="left"><span class="idx">01</span><div><h2>课程</h2><div class="en">Curriculum</div></div></div>
-
       <span class="count">已上线 2 项</span>
-
     </div>
-
     <div class="grid">
-
       <div class="card">
-
         <div class="type">课表 · Timetable</div>
-
         <h3>2026-2027 学年课表</h3>
-
         <div class="date">P1–P6 ／ P7–A2</div>
-
         <div class="desc">全年级课表（含课程中英文、任课老师、完整时段），可网页查看 / A4 横向打印。</div>
-
         <a class="link ext" href="https://en.cogdelschool.com/concept/timetable.html">打开 →</a>
-
       </div>
-
       <div class="card gold">
-
         <div class="type">定制课程 · Custom Timetable</div>
-
         <h3>学生定制课程 / 学生课表</h3>
-
         <div class="date">每位学生定制课程 · 可按学生查看</div>
-
         <div class="desc">打开选课系统：查看每位学生的定制课程、选课课表、课时统计，可打印。首次需登录一次。</div>
-
         <a class="link ext" href="http://118.24.139.114:3081/" target="_blank" rel="noopener">打开学生课表系统 →</a>
-
       </div>
-
-
+      <div class="more"><span class="dot"></span><span>更多课程资料陆续上线</span></div>
     </div>
-
   </section>
-
-
 
 <section id="faculty">
-
     <div class="sec-head">
-
       <div class="left"><span class="idx">02</span><div><h2>师资</h2><div class="en">Faculty</div></div></div>
-
       <span class="count">56 位教师</span>
-
     </div>
-
     <div class="grid">
-
       <div class="card">
-
         <div class="type">师资 · Faculty</div>
-
         <h3>2026-2027 师资团队</h3>
-
         <div class="desc">小学部 · 四大学院 · 学生发展中心 · 升学指导部 共 56 位教师，一人一页形象卡，可网页查看 / A4 纸质打印。</div>
-
         <a class="link ext" href="https://en.cogdelschool.com/concept/staff-team.html">打开 →</a>
-
       </div>
-
     </div>
-
   </section>
-
-
 
 <section id="eca">
-
     <div class="sec-head">
-
       <div class="left"><span class="idx">03</span><div><h2>ECA</h2><div class="en">ECA</div></div></div>
-
-      <span class="count">已上线 2 项</span>
-
+      <span class="count">即将上线</span>
     </div>
-
-    <div class="grid">
-
-      <div class="card">
-
-        <div class="type">初中 · Middle</div>
-
-        <h3>初中 ECA 课外课程</h3>
-
-        <div class="date">P7–A2 中学部</div>
-
-        <div class="desc">每门课程独立几何海报，按科学与技术／艺术与设计／语言与文学／体育与健康／商业与领导分类，点击查看主题与亮点。</div>
-
-        <a class="link ext" href="https://en.cogdelschool.com/concept/eca-middle.html">打开 →</a>
-
-      </div>
-
-      <div class="card">
-
-        <div class="type">小学 · Primary</div>
-
-        <h3>小学 ECA 课外课程</h3>
-
-        <div class="date">P1–P6 小学部</div>
-
-        <div class="desc">每门课程独立几何海报，含授课教师、年级与时段，点击查看课程介绍与目标。</div>
-
-        <a class="link ext" href="https://en.cogdelschool.com/concept/eca-primary.html">打开 →</a>
-
-      </div>
-
-    </div>
-
+    <div class="grid"><div class="more"><span class="dot"></span><span>ECA 资料即将上线，敬请期待</span></div></div>
   </section>
-
-
 
 <section id="uni">
-
     <div class="sec-head">
-
       <div class="left"><span class="idx">04</span><div><h2>升学</h2><div class="en">University Guidance</div></div></div>
-
       <span class="count">已上线 1 项</span>
-
     </div>
-
     <div class="grid">
-
       <div class="card gold">
-
         <div class="type">个性化升学系统 · University Application Tracker</div>
-
         <h3>个性化升学系统</h3>
-
         <div class="date">每位学生的升学规划 · 申请进度追踪</div>
-
         <div class="desc">打开升学规划协作系统：查看每位学生的选校、申请进度、文书与升学趋势，可打印。首次需登录一次。</div>
-
         <a class="link ext" href="https://en.cogdelschool.com/concept/guidance.html">打开 →</a>
-
       </div>
-
-
+      <div class="more"><span class="dot"></span><span>更多升学资料陆续上线</span></div>
     </div>
-
   </section>
-
-
 
 <section id="comp">
-
     <div class="sec-head">
-
       <div class="left"><span class="idx">05</span><div><h2>竞赛</h2><div class="en">Competitions</div></div></div>
-
       <span class="count">已上线 1 项</span>
-
     </div>
-
     <div class="grid">
-
       <div class="card">
-
         <div class="type">竞赛成果 · Competitions</div>
-
-        <h3>竞赛成果（中学 · 小学）</h3>
-
-        <div class="date">中学 9 类国际竞赛 · 8 项获奖 ／ 小学竞赛启蒙</div>
-
-        <div class="desc">中学部参与 AMC／SMC／UKChO／BBO／IBO／BPhO／UK天文／INO／NEC 等国际竞赛及获奖；小学部竞赛启蒙培养。可网页查看 / A4 打印。</div>
-
+        <h3>竞赛成果（小学 · 中学）</h3>
+        <div class="date">小学 / 中学分栏 · 获奖喜报海报展示</div>
+        <div class="desc">小学与中学分开展示：参与的 AMC／UKChO／BBO／IBO／BAAO／SMC／袋鼠数学／河马英语／ABS商战／John Locke 等国际竞赛，及 19 张获奖喜报海报。可网页查看 / A4 打印。</div>
         <a class="link ext" href="https://en.cogdelschool.com/concept/competitions.html">打开 →</a>
-
       </div>
-
-
+      <div class="more"><span class="dot"></span><span>更多竞赛资料陆续上线</span></div>
     </div>
-
   </section>
-
-
 
 <section id="camp">
-
     <div class="sec-head">
-
       <div class="left"><span class="idx">06</span><div><h2>活动方案</h2><div class="en">Activity Plans</div></div></div>
-
       <span class="count">已上线 1 项</span>
-
     </div>
-
     <div class="grid">
-
       <div class="card">
-
         <div class="type">综合方案 · Integrated</div>
-
         <h3>2026-2027 春季学期开放日 &amp; 营地方案</h3>
-
         <div class="date">2026–2027 春季学期</div>
-
         <div class="desc">四学院开放日（一所学校，四种性格）＋ 迷你学期三天营地 ＋ Think in English 冬令营，含单场招生流程。</div>
-
         <a class="link ext" href="https://en.cogdelschool.com/concept/2026-2027-spring-open-day-camp.html">打开方案 →</a>
-
       </div>
-
-
+      <div class="more"><span class="dot"></span><span>更多活动方案陆续上线</span></div>
     </div>
-
   </section>
-
-
 
 <section id="admis">
-
     <div class="sec-head">
-
       <div class="left"><span class="idx">07</span><div><h2>招生物料</h2><div class="en">Admissions Materials</div></div></div>
-
       <span class="count">已上线 1 项</span>
-
     </div>
-
     <div class="grid">
-
       <div class="card">
-
         <div class="type">海报 · Poster</div>
-
         <h3>桂月衔兔 · 掐丝珐琅中秋非遗课海报</h3>
-
         <div class="date">中秋 · 公益手作</div>
-
         <div class="desc">走进社区的中秋非遗公益课宣传海报，紫金风 + 成品图，面向家长。</div>
-
         <a class="link ext" href="https://en.cogdelschool.com/concept/mid-autumn-craft.html">打开海报 →</a>
-
       </div>
-
-
+      <div class="more"><span class="dot"></span><span>更多招生物料陆续上线</span></div>
     </div>
-
   </section>
-
-
 
 </div>
 
-
-
 <footer>
-
   <div class="t">成都康礼学校</div>
-
   <div class="en">Cogdel School Chengdu</div>
-
   <div class="meta">资料库 · Resource Hub &nbsp;·&nbsp; 紫 #5A3580 · 金 #C9A84C</div>
-
 </footer>
 
-
-
 </body>
-
 </html>
-
