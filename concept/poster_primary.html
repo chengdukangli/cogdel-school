@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>康礼小学开放日 · 一场英语 + 跑酷的遇见</title>
+<style>
+  :root{--purple:#5A3580;--purple-dark:#43265f;--purple-deep:#2e1a44;--gold:#c9a84c;--gold-light:#e6cf8f;--gold-deep:#a8892f;--ink:#2b2333;--inc:#5f5a6b;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:#faf7f2;color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .poster{max-width:900px;margin:0 auto;background:#fff;box-shadow:0 12px 40px rgba(58,34,90,.16);}
+  .head{background:linear-gradient(135deg,var(--purple-deep),var(--purple) 55%,var(--purple-dark));color:#fff;text-align:center;padding:42px 24px 34px;position:relative;overflow:hidden;}
+  .head::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 15%,rgba(201,168,76,.5),transparent 45%),radial-gradient(circle at 12% 90%,rgba(230,207,143,.25),transparent 40%);pointer-events:none;}
+  .head .tt{position:relative;z-index:1;font-size:15px;letter-spacing:4px;color:var(--gold-light);}
+  .head h1{position:relative;z-index:1;font-size:clamp(28px,5vw,44px);font-weight:800;margin-top:8px;letter-spacing:2px;}
+  .head .en{position:relative;z-index:1;font-family:Georgia,serif;font-style:italic;color:var(--gold-light);font-size:17px;margin-top:8px;}
+  .head .sub{position:relative;z-index:1;display:inline-block;margin-top:18px;padding:8px 24px;border:1px solid rgba(230,207,143,.6);border-radius:40px;font-size:14px;color:#f4e9cf;}
+  .body{padding:30px 34px 40px;}
+  .sec-l{font-size:13px;letter-spacing:3px;color:var(--gold-deep);font-weight:800;margin-bottom:12px;}
+  /* 日期条 */
+  .dates{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:34px;}
+  .d{background:linear-gradient(135deg,var(--purple),var(--purple-dark));border-radius:16px;text-align:center;padding:18px 8px;color:#fff;}
+  .d .dd{font-size:26px;font-weight:800;letter-spacing:1px;}
+  .d .dw{font-size:13px;color:var(--gold-light);margin-top:2px;}
+  /* 内容 */
+  .feat{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:30px;}
+  .feat .f{background:#f6f1e9;border-radius:14px;padding:18px 20px;}
+  .feat .f b{color:var(--purple);font-size:16px;display:block;margin-bottom:6px;}
+  .feat .f p{font-size:13.5px;color:var(--inc);}
+  /* 教师头像墙 */
+  .teachers{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:16px;}
+  .t{text-align:center;}
+  .t img{width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid var(--gold);box-shadow:0 6px 16px rgba(90,53,128,.15);}
+  .t b{display:block;font-size:14px;color:var(--purple);margin-top:8px;}
+  .t span{font-size:12px;color:var(--inc);}
+  .foot{text-align:center;color:var(--inc);font-size:13px;margin-top:34px;padding-top:18px;border-top:1px solid rgba(90,53,128,.12);}
+  @media print{@page{size:A4 portrait;margin:8mm;} body{background:#fff;} .poster{box-shadow:none;max-width:none;} .teachers{grid-template-columns:repeat(5,1fr);}}
+  @media(max-width:560px){.dates{grid-template-columns:repeat(2,1fr);} .feat{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="head">
+    <div class="tt">COGDEL SCHOOL CHENGDU</div>
+    <h1>小学开放日</h1>
+    <div class="en">Primary Open Day · English &amp; Parkour</div>
+    <div class="sub">一场英语外教体验课 + 跑酷课，遇见一所学校</div>
+  </div>
+  <div class="body">
+    <div class="sec-l">开放日期 · Open Days</div>
+    <div class="dates"><div class="d"><div class="dd">9.19</div><div class="dw">周六</div></div>
+<div class="d"><div class="dd">10.25</div><div class="dw">周日</div></div>
+<div class="d"><div class="dd">11.29</div><div class="dw">周日</div></div>
+<div class="d"><div class="dd">12.12</div><div class="dw">周六</div></div>
+<div class="d"><div class="dd">1.23</div><div class="dw">周六</div></div></div>
+    <div class="sec-l">孩子来做什么 · What You'll Do</div>
+    <div class="feat">
+      <div class="f"><b>英语外教体验课</b><p>跟着外教用英语玩游戏、开口表达，一节课让孩子爱上英语。</p></div>
+      <div class="f"><b>跑酷课 · 运动初体验</b><p>在跑酷中学会勇敢、协作与自信，感受运动的快乐。</p></div>
+    </div>
+    <div class="sec-l">陪你上课的老师 · Our Teachers</div>
+    <div class="teachers"><div class="t"><img src="open-day-images/elisha.png" alt="Elisha"><b>Elisha</b><span>英语教师</span></div>
+<div class="t"><img src="open-day-images/bishoy.png" alt="Bishoy"><b>Bishoy</b><span>外教</span></div>
+<div class="t"><img src="open-day-images/grace.png" alt="Grace"><b>Grace</b><span>英语教师</span></div>
+<div class="t"><img src="open-day-images/dimos.png" alt="Dimos"><b>Dimos</b><span>艺体教师</span></div>
+<div class="t"><img src="open-day-images/rita.png" alt="Rita"><b>Rita</b><span>英语教师</span></div>
+<div class="t"><img src="open-day-images/yvonne.png" alt="Yvonne"><b>Yvonne</b><span>英语教师</span></div>
+<div class="t"><img src="open-day-images/sophia.png" alt="Sophia"><b>Sophia</b><span>英语教师</span></div>
+<div class="t"><img src="open-day-images/lydia.png" alt="Lydia"><b>Lydia</b><span>英语教师</span></div>
+<div class="t"><img src="open-day-images/michael.png" alt="Michael"><b>Michael</b><span>体育教师</span></div></div>
+  </div>
+  <div class="foot">成都康礼学校 · 一所学校，四种性格　|　One School, Four Characters</div>
+</div>
+</body>
+</html>
