@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>杨恩慈 Cici · 成长计划 | 康礼火花 · 成都康礼学校</title>
+<style>
+  :root{--purple:#5A3580;--purple-dark:#43265f;--purple-deep:#2e1a44;--gold:#c9a84c;--gold-light:#e6cf8f;--gold-deep:#a8892f;--bg:#f7f4ef;--card:#fff;--ink:#2b2333;--inc-soft:#6b6475;--line:rgba(90,53,128,.14);}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px 90px;}
+  header.hero{background:linear-gradient(135deg,var(--purple-deep),var(--purple) 52%,var(--purple-dark));color:#fff;padding:46px 26px 38px;text-align:center;position:relative;overflow:hidden;margin-bottom:32px;}
+  header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 84% 16%,rgba(201,168,76,.45),transparent 42%),radial-gradient(circle at 10% 88%,rgba(230,207,143,.25),transparent 42%);}
+  .hero-inner{position:relative;z-index:2;max-width:900px;margin:0 auto;}
+  .crest{width:48px;height:48px;margin:0 auto 10px;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--purple-deep);font-weight:800;font-size:22px;line-height:48px;box-shadow:0 6px 18px rgba(0,0,0,.25);}
+  .hero h1{font-size:clamp(24px,3.4vw,34px);font-weight:800;letter-spacing:1px;}
+  .hero .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-light);font-size:14px;margin-top:8px;}
+  .hero .tip{margin-top:12px;font-size:13px;color:rgba(255,255,255,.8);}
+  a.back{display:inline-block;margin-top:16px;color:var(--gold-light);text-decoration:none;font-size:13px;border:1px solid rgba(230,207,143,.5);padding:6px 16px;border-radius:999px;}
+  a.back:hover{background:var(--gold-light);color:var(--purple-deep);}
+  .block{margin-bottom:36px;}
+  .blk-head{display:flex;align-items:baseline;gap:12px;padding:0 2px 14px;border-bottom:2px solid var(--gold);margin-bottom:18px;}
+  .blk-head h2{font-size:24px;color:var(--purple);font-weight:800;letter-spacing:1px;}
+  .blk-head .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-deep);font-size:14px;}
+  .summary{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .sum-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;border-top:4px solid var(--purple);box-shadow:0 6px 18px rgba(90,53,128,.06);}
+  .sum-card h5{font-size:15px;color:var(--purple);font-weight:800;margin-bottom:6px;}
+  .sum-card p{font-size:13px;color:var(--inc-soft);line-height:1.8;}
+  .goals{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .goal{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:0 6px 18px rgba(90,53,128,.06);}
+  .goal .gnum{display:inline-block;background:var(--gold);color:var(--purple-deep);font-size:12px;font-weight:800;padding:2px 10px;border-radius:12px;margin-bottom:8px;}
+  .goal h5{font-size:15px;color:var(--ink);font-weight:800;margin-bottom:5px;}
+  .goal p{font-size:13px;color:var(--inc-soft);line-height:1.7;}
+  .photo-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:0 6px 18px rgba(90,53,128,.06);}
+  .photo-card h5{font-size:15.5px;color:var(--purple);font-weight:800;margin-bottom:12px;}
+  figure.g{max-width:640px;margin:0 auto;}
+  figure.g img{width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--line);box-shadow:0 8px 24px rgba(90,53,128,.1);cursor:zoom-in;}
+  figure.g figcaption{font-size:12.5px;color:var(--inc-soft);margin-top:8px;text-align:center;}
+  .cta{display:inline-block;margin-top:18px;background:var(--purple);color:#fff;text-decoration:none;padding:12px 26px;border-radius:999px;font-size:14px;font-weight:700;}
+  .cta:hover{background:var(--purple-dark);}
+  .cta-wrap{text-align:center;margin-top:16px;}
+  .lightbox{position:fixed;inset:0;background:rgba(30,18,44,.88);display:none;align-items:center;justify-content:center;z-index:999;padding:26px;cursor:zoom-out;}
+  .lightbox.show{display:flex;}
+  .lightbox img{max-width:94vw;max-height:94vh;border-radius:12px;object-fit:contain;}
+  .lightbox .close{position:absolute;top:-30px;right:-4px;width:38px;height:38px;border-radius:50%;background:var(--gold);color:var(--purple-deep);font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;}
+  @media print{ @page{size:A4 landscape;margin:9mm;} body{background:#fff;} header.hero{display:none!important;} .wrap{max-width:none;padding:0;} .summary,.goals{grid-template-columns:1fr 1fr;gap:8px;} .sum-card,.goal,.photo-card{box-shadow:none;page-break-inside:avoid;} }
+</style>
+</head>
+<body>
+<header class="hero"><div class="hero-inner">
+  <div class="crest">C</div>
+  <h1>杨恩慈 Cici · 一页成长计划</h1>
+  <div class="en">Cogdel Whole-Person Growth Plan · 康礼火花</div>
+  <div class="tip">Grade 6 ｜ 成长导师：陆琨</div>
+  <a class="back" href="https://en.cogdelschool.com/concept/index.html#huohua">← 返回资料库 · 康礼火花</a>
+</div></header>
+<div class="wrap">
+
+  <div class="block">
+    <div class="blk-head"><h2>我的优势与能量来源</h2><span class="en">My Strengths</span></div>
+    <div class="summary">
+      <div class="sum-card"><h5>优势与能量</h5><p>思维非常灵活、敢想。她把"想要赚钱"变成动力，希望学会好好存钱，说话做事也更有底气。</p></div>
+      <div class="sum-card"><h5>学期聚焦</h5><p>本学期聚焦两件事：一是管理好自己的钱不被欲望带走（15 天购物冷静期）；二是学会让钱为自己工作、慢慢变多（期末攒够 600 元、理解复利）。</p></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="blk-head"><h2>两个成长目标</h2><span class="en">Two Growth Goals</span></div>
+    <div class="goals">
+      <div class="goal"><span class="gnum">目标 1</span><h5>学会花钱、学会存钱</h5><p>本学期聚焦两件事：一是管理好自己的钱不被欲望带走（15 天购物冷静期）；二是学会让钱为自己工作、慢慢变多（期末攒够 600 元、理解复利）。</p></div>
+      <div class="goal"><span class="gnum">目标 2</span><h5>学会赚钱、建立财富思维</h5><p>本学期聚焦两件事：一是管理好自己的钱不被欲望带走（15 天购物冷静期）；二是学会让钱为自己工作、慢慢变多（期末攒够 600 元、理解复利）。</p></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="blk-head"><h2>成长计划 · 查看原图</h2><span class="en">The Plan</span></div>
+    <div class="photo-card">
+      <figure class="g"><img src="spark-images/spark-yangenci.png" alt="杨恩慈 Cici 一页成长计划" loading="lazy"><figcaption>点击图片放大查看 杨恩慈 Cici 的一页成长计划</figcaption></figure>
+      <div class="cta-wrap"><a class="cta" href="https://en.cogdelschool.com/concept/spark.html">进入康礼火花平台 →</a></div>
+    </div>
+  </div>
+
+</div>
+<div class="lightbox" id="lb"><div style="position:relative"><img id="lbimg" src=""><button class="close" id="lbclose">×</button></div></div>
+<script>
+  const lb=document.getElementById('lb'),bi=document.getElementById('lbimg');
+  document.querySelectorAll('figure.g img').forEach(im=>im.addEventListener('click',e=>{e.stopPropagation();bi.src=im.src;lb.classList.add('show');}));
+  function c(){lb.classList.remove('show');bi.src='';}
+  lb.addEventListener('click',c);
+  document.getElementById('lbclose').addEventListener('click',e=>{e.stopPropagation();c();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')c();});
+</script>
+</body>
+</html>
