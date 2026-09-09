@@ -2,55 +2,11 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>个性化升学系统 | Cogdel School Chengdu</title>
-<style>
-  :root{--purple:#5A3580;--purple-dark:#43265f;--purple-deep:#2e1a44;--gold:#c9a84c;--gold-light:#e6cf8f;--gold-deep:#a8892f;--bg:#f7f4ef;--card:#fff;--ink:#2b2333;--line:rgba(90,53,128,.14);}
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;height:100vh;display:flex;flex-direction:column;}
-  header.hero{background:linear-gradient(135deg,var(--purple-deep),var(--purple) 52%,var(--purple-dark));color:#fff;padding:16px 30px;display:flex;align-items:center;justify-content:space-between;flex:0 0 auto;}
-  .hero h1{font-size:20px;font-weight:800;letter-spacing:1px;}
-  .hero .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-light);font-size:12px;margin-top:2px;}
-  .hero a.back{color:var(--gold-light);text-decoration:none;font-size:13px;border:1px solid rgba(230,207,143,.5);padding:6px 14px;border-radius:999px;}
-  .hero a.back:hover{background:var(--gold-light);color:var(--purple-deep);}
-  /* 主区域留白，避免“顶格” */
-  .wrap{flex:1 1 auto;padding:24px 30px;max-width:1560px;margin:0 auto;width:100%;}
-  .frame{height:calc(100vh - 90px);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(90,53,128,.06);background:#fff;position:relative;}
-  .frame iframe{width:100%;height:100%;border:0;display:block;}
-  .bar{position:absolute;top:12px;right:14px;display:flex;gap:8px;z-index:6;}
-  .bar button{background:var(--purple);color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:13px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25);}
-  .bar button.ghost{background:rgba(255,255,255,.95);color:var(--purple);}
-  .bar button:hover{opacity:.9;}
-  .tip{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 30px;text-align:center;box-shadow:0 12px 36px rgba(90,53,128,.12);max-width:460px;z-index:5;}
-  .tip h3{color:var(--purple);font-size:16px;margin-bottom:8px;}
-  .tip p{color:#6b6475;font-size:13px;line-height:1.7;}
-  @media print{ body{height:auto;} header.hero,.bar,.tip{display:none!important;} .wrap{padding:0;max-width:none;} .frame{height:auto;border:none;box-shadow:none;border-radius:0;} .frame iframe{height:1000px;} }
-</style>
+<meta http-equiv="refresh" content="0; url=https://cscd-d8gcun5bre0bf79da-1475380445.tcloudbaseapp.com/">
+<title>个性化升学系统</title>
 </head>
 <body>
-<header class="hero">
-  <div>
-    <h1>个性化升学系统</h1>
-    <div class="en">Cogdel School Chengdu · University Application Tracker</div>
-  </div>
-  <a class="back" href="https://en.cogdelschool.com/concept/index.html">← 返回资料库</a>
-</header>
-<div class="wrap">
-  <div class="frame">
-    <div class="tip" id="tip"><h3>正在进入个性化升学系统…</h3><p>若提示登录：点右下「登录」，用招生账号登录一次，之后本浏览器会记住登录状态。</p></div>
-    <div class="bar" style="display:none" id="bar">
-      <button class="ghost" id="btn-refresh">刷新</button>
-      <button id="btn-login">登录</button>
-    </div>
-    <iframe id="f" src="https://cscd-d8gcun5bre0bf79da-1475380445.tcloudbaseapp.com/" title="个性化升学系统"></iframe>
-  </div>
-</div>
-<script>
-  const SRC='https://cscd-d8gcun5bre0bf79da-1475380445.tcloudbaseapp.com';
-  const iframe=document.getElementById('f'),tip=document.getElementById('tip'),bar=document.getElementById('bar');
-  iframe.addEventListener('load',()=>{ setTimeout(()=>{ tip.style.display='none'; bar.style.display='flex'; },800); });
-  document.getElementById('btn-refresh').onclick=()=>{ tip.style.display='block'; iframe.src=SRC+'/'; };
-  document.getElementById('btn-login').onclick=()=>{ iframe.src=SRC+'/'; setTimeout(()=>{},400); };
-</script>
+<p>正在打开个性化升学系统…</p>
+<script>location.href='https://cscd-d8gcun5bre0bf79da-1475380445.tcloudbaseapp.com/';</script>
 </body>
 </html>
