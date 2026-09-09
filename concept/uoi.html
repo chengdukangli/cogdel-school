@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UOI 探究单元 · 小学部 | 成都康礼学校</title>
+<style>
+  :root{--purple:#5A3580;--purple-dark:#43265f;--purple-deep:#2e1a44;--gold:#c9a84c;--gold-light:#e6cf8f;--gold-deep:#a8892f;--bg:#f7f4ef;--card:#fff;--ink:#2b2333;--inc-soft:#6b6475;--line:rgba(90,53,128,.14);}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px 90px;}
+  header.hero{background:linear-gradient(135deg,var(--purple-deep),var(--purple) 52%,var(--purple-dark));color:#fff;padding:50px 26px 42px;text-align:center;position:relative;overflow:hidden;margin-bottom:34px;}
+  header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 84% 16%,rgba(201,168,76,.45),transparent 42%),radial-gradient(circle at 10% 88%,rgba(230,207,143,.25),transparent 42%);}
+  .hero-inner{position:relative;z-index:2;max-width:920px;margin:0 auto;}
+  .crest{width:50px;height:50px;margin:0 auto 12px;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--purple-deep);font-weight:800;font-size:23px;line-height:50px;box-shadow:0 6px 18px rgba(0,0,0,.25);}
+  .hero h1{font-size:clamp(24px,3.4vw,34px);font-weight:800;letter-spacing:1.5px;}
+  .hero .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-light);font-size:15px;margin-top:8px;}
+  .hero .tip{margin-top:14px;font-size:13px;color:rgba(255,255,255,.82);}
+  .lead{font-size:15px;color:var(--inc-soft);line-height:1.9;}
+  .lead b{color:var(--purple);}
+  .blk-head{display:flex;align-items:baseline;gap:12px;padding:0 2px 14px;border-bottom:2px solid var(--gold);margin-bottom:12px;}
+  .blk-head h2{font-size:25px;color:var(--purple);font-weight:800;letter-spacing:1px;}
+  .blk-head .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-deep);font-size:14px;}
+  .blk-head .cnt{margin-left:auto;color:#9b8fb0;font-size:13px;white-space:nowrap;}
+  .block{margin-bottom:40px;}
+  /* 单元卡 */
+  .unit{background:linear-gradient(135deg,var(--purple-deep),var(--purple) 60%,var(--purple-dark));border-radius:16px;color:#fff;padding:20px 22px;margin-bottom:20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+  .unit .t{font-size:18px;font-weight:800;}
+  .unit .e{font-family:Georgia,serif;font-style:italic;color:var(--gold-light);font-size:12.5px;margin-top:3px;}
+  .unit .q{background:rgba(255,255,255,.12);border:1px solid rgba(230,207,143,.4);border-radius:10px;padding:8px 14px;font-size:13.5px;color:#f3ecd9;max-width:420px;}
+  /* 理解 */
+  .understand{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:0 6px 18px rgba(90,53,128,.06);}
+  .understand h5{font-size:15.5px;color:var(--purple);font-weight:800;margin-bottom:6px;}
+  .understand p{font-size:14px;color:var(--inc-soft);line-height:1.8;}
+  /* 时间轴六步 */
+  .timeline{position:relative;margin:14px 0 0;padding-left:26px;}
+  .timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--gold),rgba(201,168,76,.25));}
+  .step{position:relative;margin-bottom:16px;}
+  .s-marker{position:absolute;left:-26px;top:14px;width:20px;height:20px;border-radius:50%;background:var(--purple);display:flex;align-items:center;justify-content:center;}
+  .s-marker::after{content:"";width:8px;height:8px;border-radius:50%;background:#fff;}
+  .s-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;box-shadow:0 5px 16px rgba(90,53,128,.06);}
+  .s-head{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+  .s-head h4{font-size:16px;color:var(--ink);font-weight:800;}
+  .s-head .num{display:inline-block;background:var(--gold);color:var(--purple-deep);font-size:12px;font-weight:800;padding:2px 9px;border-radius:12px;}
+  .s-head .tag{font-size:13px;color:var(--gold-deep);font-weight:700;}
+  .s-card p{font-size:13.5px;color:var(--inc-soft);line-height:1.8;}
+  .s-foot{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+  .s-foot .sub{font-size:12px;color:var(--purple);background:rgba(90,53,128,.07);border-radius:7px;padding:3px 9px;font-weight:700;}
+  .s-foot .prod{font-size:12px;color:#7a6a3a;background:rgba(201,168,76,.12);border-radius:7px;padding:3px 9px;}
+  /* 学科衔接 */
+  .subj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;}
+  .sv{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;border-top:4px solid var(--purple);box-shadow:0 5px 16px rgba(90,53,128,.05);}
+  .sv-k{font-size:11.5px;color:var(--gold-deep);font-weight:800;letter-spacing:.5px;}
+  .sv-b h4{font-size:15px;color:var(--purple);font-weight:800;margin:6px 0 5px;}
+  .sv-b p{font-size:12.5px;color:var(--inc-soft);line-height:1.6;}
+  .note{background:rgba(201,168,76,.12);border-left:4px solid var(--gold);border-radius:8px;padding:14px 16px;font-size:13px;color:#7a6a3a;line-height:1.7;margin-top:16px;}
+  @media print{ @page{size:A4 landscape;margin:9mm;} body{background:#fff;} header.hero{display:none!important;} .wrap{max-width:none;padding:0;} .subj-grid{grid-template-columns:1fr 1fr;gap:8px;} .s-card,.sv{box-shadow:none;page-break-inside:avoid;} }
+</style>
+</head>
+<body>
+<header class="hero"><div class="hero-inner">
+  <div class="crest">C</div>
+  <h1>UOI 探究单元 · 小学部</h1>
+  <div class="en">Cogdel School Chengdu · Unit of Inquiry</div>
+  <div class="tip">一个真实问题，连接不同学科</div>
+</div></header>
+<div class="wrap">
+
+  <!-- 认识 UOI + 单元 -->
+  <div class="block">
+    <div class="blk-head"><h2>什么是 UOI？</h2><span class="en">Unit of Inquiry</span></div>
+    <div class="lead">UOI（Unit of Inquiry）即<b>探究单元</b>：围绕一个<b>真实、有吸引力的问题</b>，让孩子自己去提问、找资料、做作品，并把<b>地理、科学、语言、艺术</b>等学科真正串起来用。它不是听老师讲结论，而是<b>让孩子自己把理解做出来、讲出来</b>。</div>
+    <div class="unit" style="margin-top:18px">
+      <div><div class="t">本单元 · 一方水土，养一方人</div><div class="e">Where We Are in Place and Time</div></div>
+      <div class="q">驱动问题：地理位置如何影响当地的生活与风俗？</div>
+    </div>
+    <div class="understand">
+      <h5>孩子要理解什么？</h5>
+      <p>一个地方的位置与自然环境，会影响人们的生活方式；风俗也与历史、交流和人们的选择有关。从"这里有什么"，逐步走向"为什么会这样"，并尝试用作品、观察和资料支持自己的解释。</p>
+    </div>
+  </div>
+
+  <!-- 六步探究循环（时间轴） -->
+  <div class="block">
+    <div class="blk-head"><h2>探究怎么发生？</h2><span class="en">The Inquiry Cycle</span><span class="cnt">六步 · 每一步都落到了具体动作</span></div>
+    <div class="lead">这个单元用<b>六步探究循环</b>推进：孩子每一步都在做具体的事，也在用不同学科。发现证据不足时，会回去查找、比较、修正解释——反思贯穿每一步。</div>
+    <div class="timeline"><div class="step"><div class="s-marker"><span class="num">01</span></div><div class="s-card">
+      <div class="s-head"><h4>调动经验</h4><span class="tag">一张地图，打开孩子的问题世界</span></div>
+      <p>孩子观察地图找到中国与日本、辨认陆地与海洋，把日本的位置画下来；把对日本的印象分成"听说过的、亲眼见过的、想知道的"，并围绕"在哪里、有什么、怎样生活"提出自己的问题。</p>
+      <div class="s-foot"><span class="sub">学科：地理空间</span><span class="prod">→ 地图作品 · 已有认识记录 · 问题清单</span></div>
+    </div></div>
+<div class="step"><div class="s-marker"><span class="num">02</span></div><div class="s-card">
+      <div class="s-head"><h4>寻找资料</h4><span class="tag">走进博物馆，把问题带到现场</span></div>
+      <p>带着一个地形或地球结构的问题去成都自然博物馆：观察展品、画下结构、记录名称、把没弄懂的地方留下来；回班后与地图、资料比较，说清这条线索从哪里来。</p>
+      <div class="s-foot"><span class="sub">学科：科学观察</span><span class="prod">→ 观察图 · 关键词记录 · 新发现与待查问题</span></div>
+    </div></div>
+<div class="step"><div class="s-marker"><span class="num">03</span></div><div class="s-card">
+      <div class="s-head"><h4>整理发现</h4><span class="tag">画出来、做出来，把理解表达出来</span></div>
+      <p>把资料分成位置、地形、内部结构、生活线索几类；对照资料动手做火山剖面与立体模型，用颜色区分各部分、贴上中英文标签，并对着作品讲清楚每个标签指向哪里。</p>
+      <div class="s-foot"><span class="sub">学科：科学与艺术</span><span class="prod">→ 分类记录 · 结构图 · 带标签的模型 · 口头说明</span></div>
+    </div></div>
+<div class="step"><div class="s-marker"><span class="num">04</span></div><div class="s-card">
+      <div class="s-head"><h4>深入探究</h4><span class="tag">追问地形背后，人们怎样生活</span></div>
+      <p>从饮食、居住、出行或休闲中选一个切口（例如"火山研究帮助理解温泉"），把"环境有什么特点"和"人怎样利用或适应"放在一起比较，再考虑历史、技术与文化的影响，避免只凭地形下结论。</p>
+      <div class="s-foot"><span class="sub">学科：研究思考</span><span class="prod">→ 生活现象资料 · 环境与生活联系表 · 待验证解释</span></div>
+    </div></div>
+<div class="step"><div class="s-marker"><span class="num">05</span></div><div class="s-card">
+      <div class="s-head"><h4>形成结论</h4><span class="tag">从"我做了什么"讲到"我弄懂了什么"</span></div>
+      <p>翻回最初的问题清单，区分已找到答案的、仍不确定的、和新冒出的问题；从地图、观察记录与模型中挑选能支持观点的作品，按"发现—依据—解释—新问题"组织一段完整讲述。</p>
+      <div class="s-foot"><span class="sub">学科：语言表达</span><span class="prod">→ 结论草稿 · 证据选择 · 作品讲解提纲</span></div>
+    </div></div>
+<div class="step"><div class="s-marker"><span class="num">06</span></div><div class="s-card">
+      <div class="s-head"><h4>采取行动</h4><span class="tag">拥有真实听众，让学习继续发生</span></div>
+      <p>在"一方水土养一方人"结题展上向家长与同伴介绍作品、回应提问；接着做一个"家乡小研究员"：选一种家乡饮食、节庆或居住方式，先问家里为什么这样做，再找资料相互印证，做一张可分享的发现页。</p>
+      <div class="s-foot"><span class="sub">学科：文化理解</span><span class="prod">→ 展示讲述 · 听众问题记录 · 家乡小研究员发现页</span></div>
+    </div></div></div>
+  </div>
+
+  <!-- 学科衔接 -->
+  <div class="block">
+    <div class="blk-head"><h2>一个探究，串起了哪些学习</h2><span class="en">One Inquiry, Many Subjects</span></div>
+    <div class="subj-grid"><div class="sv"><div class="sv-k">地图与空间</div><div class="sv-b"><h4>手绘地图、辨认海域、描述位置</h4><p>让一个地名成为可以观察、比较的空间</p></div></div><div class="sv"><div class="sv-k">科学与观察</div><div class="sv-b"><h4>辨认结构、制作模型、记录发现</h4><p>尝试用图像与证据解释自然现象</p></div></div><div class="sv"><div class="sv-k">语言与表达</div><div class="sv-b"><h4>使用标签、组织讲述、回应问题</h4><p>把零散信息组织成别人听得懂的表达</p></div></div><div class="sv"><div class="sv-k">研究与思考</div><div class="sv-b"><h4>提出问题、选择资料、修正解释</h4><p>逐步形成查找、比较与追问的习惯</p></div></div><div class="sv"><div class="sv-k">文化理解</div><div class="sv-b"><h4>讨论生活方式、寻找多种原因</h4><p>认识差异，也愿意了解差异背后的故事</p></div></div></div>
+    <div class="note">在康礼，您可以在了解课程时关注：孩子有没有提出<b>自己的问题</b>、有没有<b>亲自寻找资料</b>、能不能说清作品背后的<b>想法</b>。我们用真实问题串联学科知识，用地图、模型与校外场景支持理解，让孩子用作品和讲述表达所学。</div>
+  </div>
+
+</div>
+</body>
+</html>
