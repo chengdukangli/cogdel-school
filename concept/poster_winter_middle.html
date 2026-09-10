@@ -2,29 +2,27 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>成都康礼中学 · 康礼冬日成长学院</title>
+<title>成都康礼中学 · 模拟联合国冬令营</title>
 <style>
-  :root{--pp:#5A3580;--ppd:#2E1A44;--gold:#C9A84C;--goldl:#EFE3C4;--ink:#241B31;--soft:#6B6079;--line:rgba(90,53,128,.18);}
+  :root{--pp:#5A3580;--ppd:#2E1A44;--gold:#C9A84C;--goldl:#EFE3C4;--goldd:#8A6F2C;--ink:#241B31;--soft:#6B6079;--line:rgba(90,53,128,.18);}
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:#EDE8F4;color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;}
   .poster{max-width:800px;margin:0 auto;background:#fff;box-shadow:0 22px 56px rgba(46,26,68,.28);overflow:hidden;}
-  /* 整幅大图 + 压字（冬令营专属骨架） */
-  .banner{position:relative;height:320px;overflow:hidden;}
+  .banner{position:relative;height:330px;overflow:hidden;}
   .banner img{width:100%;height:100%;object-fit:cover;display:block;}
-  .banner::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(46,26,68,.78) 0%,rgba(46,26,68,.32) 45%,rgba(255,255,255,.96) 100%);}
+  .banner::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(46,26,68,.82) 0%,rgba(46,26,68,.34) 45%,rgba(255,255,255,.96) 100%);}
   .bin{position:absolute;inset:0;z-index:2;padding:18px 30px;display:flex;flex-direction:column;color:#fff;}
   .brand{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:1.5px;color:#E0D3F2;}
   .brand .mk{width:21px;height:21px;border-radius:6px;background:var(--gold);color:var(--ppd);font-weight:900;font-size:11px;display:flex;align-items:center;justify-content:center;}
   .bh{margin-top:auto;}
   .bh .k{font-size:10.5px;letter-spacing:3px;color:var(--goldl);font-weight:800;}
   .bh h1{font-size:clamp(22px,4.7vw,31px);font-weight:900;line-height:1.2;margin-top:5px;text-shadow:0 2px 14px rgba(0,0,0,.5);}
-  .bh .th{display:inline-block;margin-top:9px;font-size:13px;font-weight:800;color:var(--ppd);background:var(--goldl);padding:4px 14px;border-radius:5px;}
+  .bh .th{display:inline-block;margin-top:9px;font-size:13.5px;font-weight:800;color:var(--ppd);background:var(--goldl);padding:4px 14px;border-radius:5px;}
   .body{padding:0 30px 2px;background:#fff;}
   .sl{display:flex;align-items:center;gap:9px;margin:13px 0 8px;}
   .sl h2{font-size:15px;color:var(--ppd);font-weight:900;}
   .sl .en{font-size:9.5px;color:#A79CB8;font-style:italic;}
   .sl .ln{flex:1;height:2px;background:linear-gradient(90deg,var(--gold),transparent);}
-  /* 营期 + 费用一条带 */
   .strip{display:grid;grid-template-columns:1.35fr 1fr;gap:10px;margin-top:12px;}
   .sd{border:1.5px solid var(--line);border-radius:11px;padding:11px 14px;}
   .sd .lb{font-size:9.5px;color:var(--goldd);font-weight:800;letter-spacing:1px;}
@@ -35,13 +33,11 @@
   .fee .new{font-size:33px;font-weight:900;color:var(--gold);line-height:1.05;letter-spacing:-1px;margin-top:2px;}
   .fee .tag{font-size:10px;color:var(--ppd);background:var(--goldl);border-radius:4px;padding:2px 8px;display:inline-block;margin-top:5px;font-weight:800;align-self:flex-start;}
   .fee .inc{font-size:9px;color:#CFC0E2;margin-top:6px;line-height:1.5;}
-  /* 五天：编号块 */
   .days{display:flex;flex-direction:column;gap:7px;}
   .dy{display:flex;gap:11px;background:#FBFAFE;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:9px 13px;}
   .dy .n{flex:0 0 26px;height:26px;border-radius:50%;background:var(--ppd);color:var(--gold);font-size:11.5px;font-weight:900;display:flex;align-items:center;justify-content:center;}
   .dy h4{font-size:12px;color:var(--ppd);font-weight:900;}
   .dy p{font-size:10.5px;color:var(--soft);line-height:1.5;margin-top:1px;}
-  /* 老师通栏 */
   .tband{border-top:1px solid var(--line);background:#FAF8FD;padding:13px 30px 14px;}
   .teachers{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;}
   .t{background:#fff;border:1px solid var(--line);border-top:2.5px solid var(--gold);border-radius:9px;padding:8px 6px;text-align:center;display:flex;flex-direction:column;height:100%;}
@@ -56,12 +52,9 @@
   .foot .qr img{width:68px;height:68px;display:block;margin:0 auto;background:#fff;border-radius:8px;padding:3px;}
   .foot .qr span{display:block;font-size:9px;color:#D9CBEC;margin-top:2px;}
   @media print{@page{size:A4 portrait;margin:0;} body{background:#fff;} .poster{box-shadow:none;max-width:none;}}
-  /* 手机适配 */
   @media(max-width:640px){
-    .banner{height:230px;}
-    .bin{padding:14px 20px;}
-    .body{padding:0 20px 2px;}
-    .strip{grid-template-columns:1fr;}
+    .banner{height:240px;} .bin{padding:14px 20px;}
+    .body{padding:0 20px 2px;} .strip{grid-template-columns:1fr;}
     .tband{padding:12px 20px;}
     .teachers{grid-template-columns:repeat(2,1fr);}
     .t{flex-direction:row;align-items:center;text-align:left;gap:8px;padding:8px;}
@@ -74,13 +67,13 @@
 <body>
 <div class="poster">
   <div class="banner">
-    <img src="open-day-photos/hero-middle-camp.jpg" alt="冬令营">
+    <img src="open-day-photos/hero-middle-camp.jpg" alt="模拟联合国">
     <div class="bin">
       <div class="brand"><span class="mk">C</span>成都康礼学校 · COGDEL SCHOOL CHENGDU</div>
       <div class="bh">
-        <div class="k">WINTER GROWTH ACADEMY</div>
-        <h1>康礼冬日成长学院</h1>
-        <span class="th">五天，看见孩子的五种可能</span>
+        <div class="k">MODEL UNITED NATIONS · WINTER CAMP</div>
+        <h1>模拟联合国冬令营</h1>
+        <span class="th">五天，代表一个国家说话</span>
       </div>
     </div>
   </div>
@@ -94,12 +87,12 @@
         <div class="inc">费用含：精品课程 · 三餐 · 住宿</div>
       </div>
     </div>
-    <div class="sl"><h2>五天怎么过</h2><span class="en">Five Days</span><span class="ln"></span></div>
-    <div class="days"><div class="dy"><div class="n">1</div><div><h4>设计思维</h4><p>像设计师一样发现问题、定义问题，把想法画成可执行的方案</p></div></div>
-<div class="dy"><div class="n">2</div><div><h4>创意 AI 与工程</h4><p>动手做出自己的作品原型，把「想法」变成「看得见的东西」</p></div></div>
-<div class="dy"><div class="n">3</div><div><h4>商业实践</h4><p>用商业思维算成本、定价格、做决策，理解真实世界的运行逻辑</p></div></div>
-<div class="dy"><div class="n">4</div><div><h4>音乐公共演讲</h4><p>站上舞台，用中英双语把自己的项目讲给所有人听</p></div></div>
-<div class="dy"><div class="n">5</div><div><h4>运动</h4><p>团队竞技练体能与协作，在赛场上收获勇气与友谊</p></div></div></div>
+    <div class="sl"><h2>五天，做一名少年外交官</h2><span class="en">Five Days as a Diplomat</span><span class="ln"></span></div>
+    <div class="days"><div class="dy"><div class="n">1</div><div><h4>选定你的国家</h4><p>抽签拿到一个国家，像外交官一样开始做功课：它是谁、它要什么</p></div></div>
+<div class="dy"><div class="n">2</div><div><h4>写出你的立场</h4><p>查阅资料、提炼观点，用中英双语写下一份正式的立场文件</p></div></div>
+<div class="dy"><div class="n">3</div><div><h4>站上会场发言</h4><p>穿上正装走上讲台，为自己的国家争取利益，学会被质疑也学会反驳</p></div></div>
+<div class="dy"><div class="n">4</div><div><h4>谈判与结盟</h4><p>走出会场找盟友：沟通、妥协、交换条件，最后共同起草一份决议草案</p></div></div>
+<div class="dy"><div class="n">5</div><div><h4>大会表决 · 结营</h4><p>全体大会表决，向家长展示五天的成果——你的国家因为你而改变了什么</p></div></div></div>
   </div>
   <div class="tband">
     <div class="sl" style="margin-top:0"><h2>带营老师（部分）</h2><span class="en">Our Teachers</span><span class="ln"></span></div>
@@ -107,11 +100,11 @@
 <div class="t"><img src="open-day-images/adam.png" alt="Adam"><b>Adam</b><span class="role">教师</span><span class="bio">英国诺丁汉大学 PGCE · 超 15 年跨学段教学</span></div>
 <div class="t"><img src="open-day-images/wendyc.png" alt="Wendy"><b>Wendy</b><span class="role">教师</span><span class="bio">重庆大学绘画专业硕士 · 剑桥 IGCSE/A-Level 认证</span></div>
 <div class="t"><img src="open-day-images/chris.png" alt="Chris"><b>Chris</b><span class="role">教师</span><span class="bio">教育管理与规划博士 / 数学教学硕士</span></div>
-<div class="t"><img src="open-day-images/sergei.png" alt="Sergei"><b>Sergei</b><span class="role">数字媒体教师</span><span class="bio">莫斯科国立文化艺术大学 · 13 年影像创作</span></div>
+<div class="t"><img src="open-day-images/chanelsong.png" alt="Chanel"><b>Chanel</b><span class="role">经济商务</span><span class="bio">法国 ESC DIJON 学院管理硕士 · 教学超十年</span></div>
 <div class="t"><img src="open-day-images/marko.png" alt="Marko"><b>Marko</b><span class="role">音乐教师</span><span class="bio">成都大学钢琴表演硕士 · 6 年教学</span></div></div>
   </div>
   <div class="foot">
-    <div class="c">中学 · 康礼冬日成长学院 · 1.25–1.29 · 早鸟 ¥4000<br><b>400-803-6661</b>成都市大邑县安仁古镇迎宾路二段247号</div>
+    <div class="c">中学 · 模拟联合国冬令营 · 1.25–1.29 · 早鸟 ¥4000<br><b>400-803-6661</b>成都市大邑县安仁古镇迎宾路二段247号</div>
     <div class="qr"><img src="open-day-photos/qr.png" alt="扫码预约"><span>扫码预约</span></div>
   </div>
 </div>
