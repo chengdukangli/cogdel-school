@@ -16,7 +16,7 @@
   .head{position:relative;z-index:3;padding:14px 0 4px;}
   .head .k{font-size:12px;letter-spacing:3px;color:#f7dfae;font-weight:700;}
   .head h1{font-size:clamp(23px,4.8vw,33px);font-weight:900;line-height:1.24;margin-top:7px;text-shadow:0 3px 14px rgba(0,0,0,.3);}
-  .head .theme{display:inline-block;margin-top:10px;font-size:15px;font-weight:800;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(247,223,174,.5);padding:5px 16px;border-radius:20px;}
+  .head .theme{display:inline-block;margin-top:10px;font-size:14.5px;font-weight:800;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(247,223,174,.5);padding:5px 16px;border-radius:20px;}
   .head .slogan{display:inline-block;margin-top:10px;margin-left:8px;background:linear-gradient(135deg,rgba(240,163,94,.95),rgba(232,90,138,.95));color:#fff;font-size:13px;font-weight:800;padding:6px 16px;border-radius:20px;}
   .hero{position:relative;z-index:2;margin:14px -34px 0;}
   .hero img{width:100%;display:block;}
@@ -30,6 +30,15 @@
   .d .lb{font-size:11.5px;color:var(--goldl);letter-spacing:1px;}
   .d b{display:block;font-size:20px;font-weight:900;margin-top:3px;}
   .d span{font-size:11.5px;color:#d8cdea;}
+  /* 价格 */
+  .price{margin-top:14px;background:linear-gradient(135deg,#fff8ec,#fff);border:2px solid var(--gold);border-radius:16px;padding:16px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+  .price .pl{font-size:13px;color:var(--soft);line-height:1.6;}
+  .price .pl b{display:block;font-size:15px;color:var(--pp);font-weight:900;}
+  .price .pv{margin-left:auto;text-align:right;}
+  .price .pv .cur{font-size:16px;color:#e85a8a;font-weight:900;vertical-align:top;}
+  .price .pv b{font-size:40px;color:#e85a8a;font-weight:900;letter-spacing:-1px;line-height:1;}
+  .price .pv span{font-size:13px;color:var(--soft);margin-left:4px;}
+  .price .pn{margin-top:4px;font-size:11.5px;color:var(--goldd);text-align:right;}
   .feats{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
   .feat{background:linear-gradient(150deg,#f8f5ff,#fff);border:1px solid rgba(90,53,128,.11);border-radius:13px;padding:13px 14px;display:flex;gap:10px;}
   .feat .ic{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--goldl),var(--gold));display:flex;align-items:center;justify-content:center;font-size:17px;flex:none;}
@@ -40,7 +49,6 @@
   .fr:last-child{border-bottom:none;}
   .fr .tx{font-size:12.5px;color:var(--soft);line-height:1.7;}
   .fr .tx b{display:inline-block;min-width:112px;color:var(--pp);font-weight:900;}
-  .courseline{margin-top:10px;font-size:12.5px;color:var(--pp);background:#f4f0fd;border-radius:10px;padding:9px 12px;line-height:1.7;}
   .eca-wrap{background:linear-gradient(150deg,#fbf8ff,#fff);border:1px solid rgba(90,53,128,.12);border-radius:14px;padding:14px 14px 10px;}
   .eca-num{font-size:13px;color:var(--soft);margin-bottom:9px;}
   .eca-num b{color:#e85a8a;font-size:20px;font-weight:900;}
@@ -67,11 +75,11 @@
   <div class="top">
     <div class="brand"><span class="mk">C</span>成都康礼学校 · COGDEL SCHOOL CHENGDU</div>
     <div class="head">
-      <div class="k">PRIMARY · BRITISH CLASSROOM EXPERIENCE</div>
-      <h1>成都康礼小学 · 英式学堂体验</h1>
-      <div><span class="theme">小小探索者 · Little Explorers</span><span class="slogan">中外教中英双语授课 · 65 门课程任选</span></div>
+      <div class="k">PRIMARY · THREE-DAY PREMIUM CLASSROOM</div>
+      <h1>成都康礼小学 · 三天精品课堂体验</h1>
+      <div><span class="theme">三天，让孩子遇见更好的课堂</span><span class="slogan">中外教中英双语授课 · 65 门课程任选</span></div>
     </div>
-    <div class="hero"><img src="open-day-photos/hero-primary.jpg" alt="康礼课堂"></div>
+    <div class="hero"><img src="open-day-photos/hero-primary-camp.jpg" alt="康礼课堂"></div>
   </div>
   <div class="body">
     <div class="sl"><h2>两期 · 每期三天</h2><span class="en">Two Sessions</span><span class="ln"></span></div>
@@ -79,21 +87,24 @@
       <div class="d"><div class="lb">第一期</div><b>10.5–10.7</b><span>周一至周三 · 三天</span></div>
       <div class="d"><div class="lb">第二期</div><b>11.11–11.13</b><span>周三至周五 · 三天</span></div>
     </div>
+    <div class="price">
+      <div class="pl"><b>三天精品课堂体验</b>每期 3 天，含精品课程 · ECA 选修 · 午餐 · 晚间辅导</div>
+      <div class="pv"><span class="cur">¥</span><b>1599</b><span>/ 期</span><div class="pn">三天全含 · 名额有限</div></div>
+    </div>
 
     <div class="sl"><h2>为什么值得来</h2><span class="en">Why This Camp</span><span class="ln"></span></div>
     <div class="feats">
       <div class="feat"><div class="ic">🎓</div><div><h4>专属精品课程</h4><p>为营地学生单独准备的精品课堂，中英双语授课，不同英文水平的孩子都能跟上。</p></div></div>
       <div class="feat"><div class="ic">🧩</div><div><h4>65 门 ECA 选修课任选</h4><p>科学、艺术、运动、语言、人文……按自己的兴趣走班选课，找到热爱。</p></div></div>
-      <div class="feat"><div class="ic">🇬🇧</div><div><h4>沉浸式英式课堂氛围</h4><p>走进康礼真实的英式课堂环境，中外教联合授课，用英语学、也在英语里思考。</p></div></div>
+      <div class="feat"><div class="ic">🇬🇧</div><div><h4>沉浸式国际课堂氛围</h4><p>走进康礼真实的国际课堂环境，中外教联合授课，用英语学、也在英语里思考。</p></div></div>
       <div class="feat"><div class="ic">📋</div><div><h4>结营「兴趣信号报告」</h4><p>记录专注时长、提问质量与方向建议，帮家长看懂孩子的兴趣所在。</p></div></div>
     </div>
 
     <div class="sl"><h2>三天怎么过</h2><span class="en">Three Days at Camp</span><span class="ln"></span></div>
-    <div class="flow"><div class="fr"><span class="tx"><b>专属精品课堂</b> · 为营地学生单独准备的精品课程，主要涵盖英语、数学、科学、艺术、体育、UOI 探究等学科</span></div>
+    <div class="flow"><div class="fr"><span class="tx"><b>专属精品课堂</b> · 为营地学生单独准备的精品课程，主要涵盖英语、新加坡数学、科学、艺术、体育、UOI 探究等学科</span></div>
 <div class="fr"><span class="tx"><b>中英双语授课</b> · 中外教中英双语授课，无论孩子英文基础如何，都能听得懂、跟得上</span></div>
 <div class="fr"><span class="tx"><b>ECA 选修</b> · 傍晚开设 65 门 ECA 选修课，按兴趣走班，找到自己的热爱</span></div>
 <div class="fr"><span class="tx"><b>结营展示</b> · 学生展示学习成果，家长获得一份「兴趣信号报告」</span></div></div>
-    <div class="courseline">主要课程：<b>英语 · 数学 · 科学 · 艺术 · 体育 · UOI 探究</b>，中外教中英双语授课。</div>
 
     <div class="sl"><h2>可以选的 ECA 选修课</h2><span class="en">ECA Electives</span><span class="ln"></span></div>
     <div class="eca-wrap">
@@ -157,7 +168,7 @@
 <div class="t"><img src="open-day-images/bishoy.png" alt="Bishoy"><b>Bishoy</b><span class="role">英语教师</span><span class="bio">英国北安普顿大学毕业 · 十余年教学经验</span></div></div>
   </div>
   <div class="foot">
-    <div class="c">小学 · 英式学堂体验 · 10.5–10.7 / 11.11–11.13<br><b>400-803-6661</b>成都市大邑县安仁古镇迎宾路二段247号</div>
+    <div class="c">小学 · 三天精品课堂体验 · 10.5–10.7 / 11.11–11.13 · ¥1599/期<br><b>400-803-6661</b>成都市大邑县安仁古镇迎宾路二段247号</div>
     <div class="qr"><img src="open-day-photos/qr.png" alt="扫码预约访校"><span>扫码预约访校</span></div>
   </div>
 </div>
