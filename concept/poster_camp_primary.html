@@ -15,8 +15,9 @@
   .brand .mk{width:25px;height:25px;border-radius:7px;background:linear-gradient(135deg,var(--goldl),var(--gold));color:var(--ppd);font-weight:900;font-size:13px;display:flex;align-items:center;justify-content:center;}
   .head{position:relative;z-index:3;padding:14px 0 4px;}
   .head .k{font-size:12px;letter-spacing:3px;color:#f7dfae;font-weight:700;}
-  .head h1{font-size:clamp(24px,5vw,35px);font-weight:900;line-height:1.22;margin-top:7px;text-shadow:0 3px 14px rgba(0,0,0,.3);}
-  .head .slogan{display:inline-block;margin-top:12px;background:linear-gradient(135deg,rgba(240,163,94,.95),rgba(232,90,138,.95));color:#fff;font-size:13.5px;font-weight:800;padding:6px 18px;border-radius:22px;}
+  .head h1{font-size:clamp(23px,4.8vw,33px);font-weight:900;line-height:1.24;margin-top:7px;text-shadow:0 3px 14px rgba(0,0,0,.3);}
+  .head .theme{display:inline-block;margin-top:10px;font-size:15px;font-weight:800;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(247,223,174,.5);padding:5px 16px;border-radius:20px;}
+  .head .slogan{display:inline-block;margin-top:10px;margin-left:8px;background:linear-gradient(135deg,rgba(240,163,94,.95),rgba(232,90,138,.95));color:#fff;font-size:13px;font-weight:800;padding:6px 16px;border-radius:20px;}
   .hero{position:relative;z-index:2;margin:14px -34px 0;}
   .hero img{width:100%;display:block;}
   .body{padding:2px 34px 0;background:#fff;}
@@ -35,11 +36,12 @@
   .feat h4{font-size:13.5px;color:var(--pp);font-weight:900;margin-bottom:2px;}
   .feat p{font-size:12px;color:var(--soft);line-height:1.6;}
   .flow{background:linear-gradient(150deg,#f7f9ff,#fff);border:1px solid rgba(90,53,128,.11);border-radius:13px;padding:12px 16px;}
-  .fr{display:flex;gap:12px;padding:7px 0;border-bottom:1px dashed rgba(90,53,128,.12);}
+  .fr{display:flex;gap:12px;padding:9px 0;border-bottom:1px dashed rgba(90,53,128,.12);align-items:baseline;}
   .fr:last-child{border-bottom:none;}
-  .fr .tm{flex:0 0 100px;font-size:12px;font-weight:800;color:var(--pp);}
-  .fr .tx{font-size:12px;color:var(--soft);}
+  .fr .tm{flex:0 0 66px;font-size:12.5px;font-weight:800;color:var(--pp);}
+  .fr .tx{font-size:12.5px;color:var(--soft);}
   .fr .tx b{color:var(--ink);}
+  .courseline{margin-top:10px;font-size:12.5px;color:var(--pp);background:#f4f0fd;border-radius:10px;padding:9px 12px;line-height:1.7;}
   .eca-wrap{background:linear-gradient(150deg,#fbf8ff,#fff);border:1px solid rgba(90,53,128,.12);border-radius:14px;padding:14px 14px 10px;}
   .eca-num{font-size:13px;color:var(--soft);margin-bottom:9px;}
   .eca-num b{color:#e85a8a;font-size:20px;font-weight:900;}
@@ -50,7 +52,7 @@
   .t img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:3px solid var(--goldl);display:block;margin:0 auto;}
   .t b{display:block;font-size:12.5px;color:var(--pp);margin-top:6px;}
   .t .role{display:block;font-size:10.5px;color:var(--goldd);font-weight:800;line-height:1.35;}
-  .t .bio{display:block;font-size:9.5px;color:#7a6f85;line-height:1.45;margin-top:4px;}
+  .t .bio{display:block;font-size:9.5px;color:#7a6f85;line-height:1.45;margin-top:4px;text-align:left;}
   .foot{margin-top:22px;background:linear-gradient(135deg,#2e1a44,#6a3f96);color:#fff;padding:20px 34px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
   .foot .c{font-size:12px;color:#ded4f0;line-height:1.75;}
   .foot .c b{display:block;font-size:21px;color:var(--goldl);letter-spacing:1px;}
@@ -65,8 +67,8 @@
     <div class="brand"><span class="mk">C</span>成都康礼学校 · COGDEL SCHOOL CHENGDU</div>
     <div class="head">
       <div class="k">PRIMARY · BRITISH CLASSROOM EXPERIENCE</div>
-      <h1>成都康礼小学<br>英式学堂体验 · 三天走进英式课堂</h1>
-      <span class="slogan">65 门 ECA 选修课任你选 · 纯正沉浸式英式课堂</span>
+      <h1>成都康礼小学 · 英式学堂体验</h1>
+      <div><span class="theme">小小探索者 · Little Explorers</span><span class="slogan">65 门课程任选 · 纯正英式课堂</span></div>
     </div>
     <div class="hero"><img src="open-day-photos/hero-primary.jpg" alt="康礼课堂"></div>
   </div>
@@ -80,21 +82,18 @@
     <div class="sl"><h2>为什么值得来</h2><span class="en">Why This Camp</span><span class="ln"></span></div>
     <div class="feats">
       <div class="feat"><div class="ic">🇬🇧</div><div><h4>纯正的沉浸式英式学堂</h4><p>跟真实班级一起上课，全英文浸润的英式课堂，用英语学、用英语想。</p></div></div>
-      <div class="feat"><div class="ic">🧩</div><div><h4>65 门 ECA 选修课任选</h4><p>科学、艺术、运动、语言、人文……按自己的课表走班选课，找到热爱。</p></div></div>
-      <div class="feat"><div class="ic">📚</div><div><h4>完整的课堂节奏</h4><p>上午下午跟课堂，傍晚 ECA 选课，晚自习有学科辅导——跟真实上学一样。</p></div></div>
+      <div class="feat"><div class="ic">🧩</div><div><h4>65 门 ECA 选修课任选</h4><p>科学、艺术、运动、语言、人文……按自己的兴趣走班选课，找到热爱。</p></div></div>
+      <div class="feat"><div class="ic">📚</div><div><h4>完整的一天校园节奏</h4><p>上午下午跟课堂，傍晚 ECA 选课，还有晚间辅导——和真实上学一样。</p></div></div>
       <div class="feat"><div class="ic">📋</div><div><h4>结营「兴趣信号报告」</h4><p>记录专注时长、提问质量与方向建议，帮家长看懂孩子的兴趣所在。</p></div></div>
     </div>
 
     <div class="sl"><h2>三天怎么过</h2><span class="en">A Day at Camp</span><span class="ln"></span></div>
-    <div class="flow"><div class="fr"><span class="tm">08:15–08:35</span><span class="tx"><b>晨读</b> · 英文晨读，一天从英语开始</span></div>
-<div class="fr"><span class="tm">08:40–10:00</span><span class="tx"><b>上午 第 1–2 节</b> · 英语（外教分层）· 语文 · 数学 / 新加坡数学</span></div>
-<div class="fr"><span class="tm">10:50–12:10</span><span class="tx"><b>上午 第 3–4 节</b> · UOI 探究课 · 英语 · 双语体育</span></div>
-<div class="fr"><span class="tm">12:10–13:20</span><span class="tx"><b>午餐 &amp; 休息</b></span></div>
-<div class="fr"><span class="tm">13:20–14:40</span><span class="tx"><b>下午 第 5–6 节</b> · 科学 · 数学 · 音乐 · 美术</span></div>
-<div class="fr"><span class="tm">14:55–16:15</span><span class="tx"><b>下午 第 7–8 节</b> · UOI 探究课 · 写作 · 英语分层 · CCA</span></div>
-<div class="fr"><span class="tm">16:20–17:15</span><span class="tx"><b>ECA 选修课</b> · 按自己的课表走班选课（65 门任选）</span></div>
-<div class="fr"><span class="tm">17:15–18:15</span><span class="tx"><b>晚餐</b></span></div>
-<div class="fr"><span class="tm">18:15–19:30</span><span class="tx"><b>晚自习</b> · 作业辅导与自主学习</span></div></div>
+    <div class="flow"><div class="fr"><span class="tm">上午</span><span class="tx"><b>跟着课堂</b> · 和真实班级一起上课，全英文浸润的英式课堂</span></div>
+<div class="fr"><span class="tm">下午</span><span class="tx"><b>继续跟班</b> · 更多课堂与动手实践，一天都在真实的学习节奏里</span></div>
+<div class="fr"><span class="tm">傍晚</span><span class="tx"><b>ECA 选修课</b> · 65 门课程任选，按自己的兴趣走班</span></div>
+<div class="fr"><span class="tm">晚间</span><span class="tx"><b>晚间辅导</b> · 学科辅导与自主学习</span></div>
+      <div class="fr"><span class="tm">结营</span><span class="tx"><b>成果展示</b> · 孩子讲收获，家长拿到一份「兴趣信号报告」</span></div></div>
+    <div class="courseline">课堂覆盖 <b>英语 · 数学 · 科学 · 艺术 · 体育 · UOI 探究</b> 等多个方向，全部由中外教全英文授课。</div>
 
     <div class="sl"><h2>可以选的 ECA 选修课</h2><span class="en">ECA Electives</span><span class="ln"></span></div>
     <div class="eca-wrap">
@@ -115,7 +114,7 @@
 <span class="eca">基础数学</span>
 <span class="eca">卓越数学</span>
 <span class="eca">数学竞赛</span>
-<span class="eca">Frisco 飞盘</span>
+<span class="eca">Frisbee 飞盘</span>
 <span class="eca">KET 预备</span>
 <span class="eca">基础英语</span>
 <span class="eca">韩语入门</span>
@@ -149,13 +148,13 @@
 <span class="eca">线描绘画</span></div>
     </div>
 
-    <div class="sl"><h2>带营的老师</h2><span class="en">Our Teachers</span><span class="ln"></span></div>
-    <div class="teachers"><div class="t"><img src="open-day-images/elisha.png" alt="Elisha"><b>Elisha</b><span class="role">英语</span><span class="bio">伦敦政治经济学院学士 · 剑桥 CELTA</span></div>
-<div class="t"><img src="open-day-images/rita.png" alt="Rita"><b>Rita</b><span class="role">英语</span><span class="bio">宾夕法尼亚大学 TESOL 硕士</span></div>
-<div class="t"><img src="open-day-images/yvonne.png" alt="Yvonne"><b>Yvonne</b><span class="role">英语</span><span class="bio">伦敦大学学院（UCL）硕士</span></div>
-<div class="t"><img src="open-day-images/dimos.png" alt="Dimos"><b>Dimos</b><span class="role">艺体</span><span class="bio">福尔哈雷大学教育学学士 · 英语母语</span></div>
-<div class="t"><img src="open-day-images/grace.png" alt="Grace"><b>Grace</b><span class="role">英语</span><span class="bio">8 年多国际教育教学经验</span></div>
-<div class="t"><img src="open-day-images/bishoy.png" alt="Bishoy"><b>Bishoy</b><span class="role">英语</span><span class="bio">英国北安普顿大学 · 十余年教学</span></div></div>
+    <div class="sl"><h2>带营老师（部分）</h2><span class="en">Our Teachers</span><span class="ln"></span></div>
+    <div class="teachers"><div class="t"><img src="open-day-images/elisha.png" alt="Elisha"><b>Elisha</b><span class="role">英语教师</span><span class="bio">伦敦政治经济学院社会人类学学士 · 剑桥 CELTA · 6 年国际教育经验</span></div>
+<div class="t"><img src="open-day-images/rita.png" alt="Rita"><b>Rita</b><span class="role">英语教师</span><span class="bio">宾夕法尼亚大学 TESOL 专业硕士 · 1 年美国小学教学经验</span></div>
+<div class="t"><img src="open-day-images/yvonne.png" alt="Yvonne"><b>Yvonne</b><span class="role">英语教师</span><span class="bio">伦敦大学学院（UCL）早期教育学硕士 · 剑桥 CELTA</span></div>
+<div class="t"><img src="open-day-images/dimos.png" alt="Dimos"><b>Dimos</b><span class="role">艺体教师</span><span class="bio">福尔哈雷大学教育学学士 · 7 年 ESL 教学 · 英语母语</span></div>
+<div class="t"><img src="open-day-images/grace.png" alt="Grace"><b>Grace</b><span class="role">英语教师</span><span class="bio">8 年多幼儿园至中学国际教育教学经验 · 横跨三地国际学校</span></div>
+<div class="t"><img src="open-day-images/bishoy.png" alt="Bishoy"><b>Bishoy</b><span class="role">英语教师</span><span class="bio">英国北安普顿大学毕业 · 十余年教学经验</span></div></div>
   </div>
   <div class="foot">
     <div class="c">小学 · 英式学堂体验 · 10.5–10.7 / 11.11–11.13<br><b>400-803-6661</b>成都市大邑县安仁古镇迎宾路二段247号</div>
