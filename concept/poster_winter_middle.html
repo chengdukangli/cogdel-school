@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>__TITLE__</title>
+<style>
+  :root{--pp:#5A3580;--ppd:#3f2360;--gold:#c9a84c;--goldl:#e6cf8f;--goldd:#a8892f;--blue:#5b8def;--org:#f0a35e;--pink:#e85a8a;--ink:#2b2333;--soft:#6b5d78;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:#e8e5f0;color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .poster{max-width:800px;margin:0 auto;background:#fff;box-shadow:0 24px 70px rgba(40,25,80,.3);overflow:hidden;}
+  .top{background:linear-gradient(165deg,#2e1a44,#4a2a6e 40%,#6a3f96 72%,#f3f0fa);padding:24px 34px 0;color:#fff;position:relative;overflow:hidden;}
+  .top::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 90% 4%,rgba(240,163,94,.5),transparent 42%),radial-gradient(circle at 4% 30%,rgba(91,141,239,.45),transparent 42%);}
+  .brand{position:relative;z-index:3;display:flex;align-items:center;gap:9px;font-size:12.5px;letter-spacing:1px;color:#ded4f0;}
+  .brand .mk{width:25px;height:25px;border-radius:7px;background:linear-gradient(135deg,var(--goldl),var(--gold));color:var(--ppd);font-weight:900;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .head{position:relative;z-index:3;padding:14px 0 4px;}
+  .head .k{font-size:12px;letter-spacing:3px;color:#f7dfae;font-weight:700;}
+  .head h1{font-size:clamp(23px,4.8vw,33px);font-weight:900;line-height:1.24;margin-top:7px;text-shadow:0 3px 14px rgba(0,0,0,.3);}
+  .head .theme{display:inline-block;margin-top:10px;font-size:14.5px;font-weight:800;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(247,223,174,.5);padding:5px 16px;border-radius:20px;}
+  .head .slogan{display:inline-block;margin-top:10px;margin-left:8px;background:linear-gradient(135deg,rgba(240,163,94,.95),rgba(232,90,138,.95));color:#fff;font-size:13px;font-weight:800;padding:6px 16px;border-radius:20px;}
+  .hero{position:relative;z-index:2;margin:14px -34px 0;}
+  .hero img{width:100%;display:block;}
+  .body{padding:2px 34px 0;background:#fff;}
+  .sl{display:flex;align-items:center;gap:10px;margin:22px 0 11px;}
+  .sl h2{font-size:17.5px;color:var(--pp);font-weight:900;}
+  .sl .en{font-family:Georgia,serif;font-style:italic;color:#a99fb8;font-size:12px;}
+  .sl .ln{flex:1;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--gold),transparent);}
+  .dates{display:grid;grid-template-columns:1fr;gap:12px;}
+  .d{background:linear-gradient(145deg,#2e1a44,#6a3f96);border-radius:14px;color:#fff;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+  .d .lb{font-size:11.5px;color:var(--goldl);letter-spacing:1px;}
+  .d b{display:block;font-size:22px;font-weight:900;margin-top:2px;}
+  .d span{font-size:12px;color:#d8cdea;}
+  .price{margin-top:14px;background:linear-gradient(135deg,#fff8ec,#fff);border:2px solid var(--gold);border-radius:16px;padding:16px 20px;}
+  .price .row1{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .price .pl{font-size:13px;color:var(--soft);line-height:1.6;}
+  .price .pl b{display:block;font-size:15px;color:var(--pp);font-weight:900;}
+  .price .pv{margin-left:auto;text-align:right;display:flex;align-items:baseline;gap:12px;}
+  .price .old{font-size:15px;color:#a99fb8;text-decoration:line-through;}
+  .price .cur{font-size:16px;color:#e85a8a;font-weight:900;vertical-align:top;}
+  .price .pv b{font-size:40px;color:#e85a8a;font-weight:900;letter-spacing:-1px;line-height:1;}
+  .price .pv span{font-size:13px;color:var(--soft);margin-left:3px;}
+  .price .pn{margin-top:6px;font-size:12px;color:#c0392b;font-weight:800;}
+  .price .inc{margin-top:8px;font-size:11.5px;color:var(--goldd);border-top:1px dashed rgba(201,168,76,.5);padding-top:8px;}
+  .feats{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+  .feat{background:linear-gradient(150deg,#f8f5ff,#fff);border:1px solid rgba(90,53,128,.11);border-radius:13px;padding:13px 14px;display:flex;gap:10px;}
+  .feat .ic{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--goldl),var(--gold));display:flex;align-items:center;justify-content:center;font-size:17px;flex:none;}
+  .feat h4{font-size:13.5px;color:var(--pp);font-weight:900;margin-bottom:2px;}
+  .feat p{font-size:12px;color:var(--soft);line-height:1.6;}
+  .flow{background:linear-gradient(150deg,#f7f9ff,#fff);border:1px solid rgba(90,53,128,.11);border-radius:13px;padding:12px 16px;}
+  .fr{padding:9px 0;border-bottom:1px dashed rgba(90,53,128,.12);}
+  .fr:last-child{border-bottom:none;}
+  .fr .tx{font-size:12.5px;color:var(--soft);line-height:1.7;}
+  .fr .tx b{display:inline-block;min-width:96px;color:var(--pp);font-weight:900;}
+  .eca-wrap{background:linear-gradient(150deg,#fbf8ff,#fff);border:1px solid rgba(90,53,128,.12);border-radius:14px;padding:14px 14px 10px;}
+  .eca-num{font-size:13px;color:var(--soft);margin-bottom:9px;}
+  .eca-num b{color:#e85a8a;font-size:20px;font-weight:900;}
+  .ecas{display:flex;flex-wrap:wrap;gap:6px;}
+  .eca{font-size:11px;color:var(--pp);background:#f2ecfb;border:1px solid rgba(90,53,128,.1);padding:4px 9px;border-radius:12px;}
+  .teachers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .t{background:#fff;border:1px solid rgba(90,53,128,.12);border-radius:13px;padding:11px 8px;text-align:center;box-shadow:0 5px 14px rgba(90,53,128,.06);}
+  .t img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:3px solid var(--goldl);display:block;margin:0 auto;}
+  .t b{display:block;font-size:12.5px;color:var(--pp);margin-top:6px;}
+  .t .role{display:block;font-size:10.5px;color:var(--goldd);font-weight:800;line-height:1.35;}
+  .t .bio{display:block;font-size:9.5px;color:#7a6f85;line-height:1.45;margin-top:4px;text-align:left;}
+  .foot{margin-top:22px;background:linear-gradient(135deg,#2e1a44,#6a3f96);color:#fff;padding:20px 34px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .foot .c{font-size:12px;color:#ded4f0;line-height:1.75;}
+  .foot .c b{display:block;font-size:21px;color:var(--goldl);letter-spacing:1px;}
+  .foot .qr{width:96px;text-align:center;}
+  .foot .qr img{width:88px;height:88px;display:block;background:#fff;border-radius:10px;padding:4px;}
+  .foot .qr span{display:block;font-size:10.5px;color:#ded4f0;margin-top:4px;}
+  @media print{@page{size:A4 portrait;margin:0;} body{background:#fff;} .poster{box-shadow:none;max-width:none;}}
+  @media(max-width:560px){.feats{grid-template-columns:1fr;} .teachers{grid-template-columns:repeat(2,1fr);}}
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="top">
+    <div class="brand"><span class="mk">C</span>成都康礼学校 · COGDEL SCHOOL CHENGDU</div>
+    <div class="head">
+      <div class="k">MIDDLE WINTER CAMP · AI INNOVATORS</div>
+      <h1>成都康礼中学 · AI 创变者冬令营</h1>
+      <div><span class="theme">5 天，用 AI 造出一个自己的产品</span><span class="slogan">五天四晚 · 全寄宿 · 作品可用于升学材料</span></div>
+    </div>
+    <div class="hero"><img src="open-day-photos/hero-middle-camp.jpg" alt="康礼课堂"></div>
+  </div>
+  <div class="body">
+    <div class="sl"><h2>营期 · 五天四晚</h2><span class="en">5 Days &amp; 4 Nights</span><span class="ln"></span></div>
+    <div class="dates"><div class="d">
+      <div><div class="lb">WINTER CAMP · 2027</div><b>1.25–1.29</b><span>周一至周五 · 五天四晚 · 全寄宿</span></div>
+      <div style="text-align:right"><div class="lb">报名截止</div><b>12.31</b><span>早鸟优惠截止日</span></div>
+    </div></div>
+    <div class="price">
+      <div class="row1">
+        <div class="pl"><b>冬令营 · 五天四晚</b>课程 · ECA 选修 · 三餐 · 住宿 · 晚间辅导</div>
+        <div class="pv"><span class="old">原价 ¥5000</span><span class="cur">¥</span><b>4000</b><span>早鸟价</span></div>
+      </div>
+      <div class="pn">早鸟价截止 12.31，之后恢复原价 ¥5000</div>
+      <div class="inc">费用含：精品课程 · ECA 选修 · 三餐 · 住宿 · 晚间辅导 · 结营成果发布</div>
+    </div>
+
+    <div class="sl"><h2>为什么值得来</h2><span class="en">Why This Camp</span><span class="ln"></span></div>
+    <div class="feats"><div class="feat"><div class="ic">🤖</div><div><h4>5 天造出自己的 AI 产品</h4><p>从想法到原型：孩子用 AI 工具做出一个真正属于自己的产品，不是听课，是交付。</p></div></div>
+      <div class="feat"><div class="ic">🎤</div><div><h4>中英双语路演</h4><p>把产品讲成一场路演，练表达、练逻辑、练自信——这是课堂上学不到的能力。</p></div></div>
+      <div class="feat"><div class="ic">🎓</div><div><h4>成果可用于升学材料</h4><p>结营产出个人作品与项目报告，可作为升学文书、面试与作品集的真实素材。</p></div></div>
+      <div class="feat"><div class="ic">🏠</div><div><h4>全寄宿 · 五天四晚</h4><p>三餐与住宿全含，五天里和同伴一起做项目、一起生活，收获友谊与独立。</p></div></div></div>
+
+    <div class="sl"><h2>五天怎么过</h2><span class="en">Five Days at Camp</span><span class="ln"></span></div>
+    <div class="flow"><div class="fr"><span class="tx"><b>AI 启蒙</b> · 用英语理解 AI 能做什么，找到自己想做的那一个产品方向</span></div>
+<div class="fr"><span class="tx"><b>设计思维</b> · 像产品经理一样调研、定义问题、画原型，把想法变成可执行的方案</span></div>
+<div class="fr"><span class="tx"><b>AI 造物</b> · 用 AI 工具做出自己的第一个产品原型：网站、小应用或影像作品</span></div>
+<div class="fr"><span class="tx"><b>商业路演</b> · 把作品讲成一场路演：中英双语演讲，练表达、练逻辑、练自信</span></div>
+<div class="fr"><span class="tx"><b>成果发布</b> · 面向家长的成果发布会 +「成长与兴趣报告」，作品可写入升学材料</span></div></div>
+
+    <div class="sl"><h2>可以选的 ECA 选修课</h2><span class="en">ECA Electives</span><span class="ln"></span></div>
+    <div class="eca-wrap">
+      <div class="eca-num">共 <b>37</b> 门选修课，按课表自由走班选择（以下为部分）</div>
+      <div class="ecas"><span class="eca">A-Level 计算机科学</span>
+<span class="eca">艺术·作品集</span>
+<span class="eca">模拟数字经营沙盘</span>
+<span class="eca">乐高创想社</span>
+<span class="eca">学校乐队</span>
+<span class="eca">甲骨文拓片识读</span>
+<span class="eca">侦探文学探索</span>
+<span class="eca">数字媒体（摄影与电影）</span>
+<span class="eca">CISA 校队训练</span>
+<span class="eca">多元运动（板球·羽毛球）</span>
+<span class="eca">A-Level 数学</span>
+<span class="eca">英语阅读俱乐部</span>
+<span class="eca">天文社团</span>
+<span class="eca">EconX 经济学实战</span>
+<span class="eca">3D 打印与设计思维</span>
+<span class="eca">投资基础</span>
+<span class="eca">化学竞赛社</span>
+<span class="eca">艺术史</span>
+<span class="eca">韩语与韩国大众文化</span>
+<span class="eca">歌单制作</span>
+<span class="eca">流行演唱</span>
+<span class="eca">游泳</span>
+<span class="eca">雪城大学设计思维课</span>
+<span class="eca">NEC 经济竞赛备赛</span>
+<span class="eca">AI 共创实验室</span>
+<span class="eca">AMC 10/12 备赛</span>
+<span class="eca">世界电影欣赏</span>
+<span class="eca">诗歌鉴赏</span>
+<span class="eca">从小说到舞台</span>
+<span class="eca">中国近现代史俱乐部</span>
+<span class="eca">歌曲写作与制作</span>
+<span class="eca">羽毛球</span>
+<span class="eca">跑步俱乐部</span>
+<span class="eca">躲避球与三分球</span></div>
+    </div>
+
+    <div class="sl"><h2>带营老师（部分）</h2><span class="en">Our Teachers</span><span class="ln"></span></div>
+    <div class="teachers"><div class="t"><img src="open-day-images/lukun.png" alt="陆琨 Amy"><b>陆琨 Amy</b><span class="role">执行校长 · AI教师</span><span class="bio">清华大学航天航空工程本科 · 中欧国际工商学院 MBA</span></div>
+<div class="t"><img src="open-day-images/warren.png" alt="Warren"><b>Warren</b><span class="role">英语教师</span><span class="bio">英国利物浦约翰·摩尔大学硕士 · TESOL 资质 · 7 年以上跨国教学</span></div>
+<div class="t"><img src="open-day-images/adam.png" alt="Adam"><b>Adam</b><span class="role">PBL 导师 · 生物教师</span><span class="bio">英国诺丁汉大学 PGCE · 超 15 年跨学段教学 · 10 年研究督导</span></div>
+<div class="t"><img src="open-day-images/sergei.png" alt="Sergei"><b>Sergei</b><span class="role">数字媒体教师</span><span class="bio">莫斯科国立文化艺术大学电影制作与摄影学士 · 13 年影像创作</span></div>
+<div class="t"><img src="open-day-images/jeffy.png" alt="Jeffy"><b>Jeffy</b><span class="role">计算机教师</span><span class="bio">信息技术管理硕士（南昌大学软件学院）· 13 年大学及高中教学</span></div>
+<div class="t"><img src="open-day-images/marko.png" alt="Marko"><b>Marko</b><span class="role">音乐教师</span><span class="bio">成都大学钢琴表演硕士 · 6 年教学经验 · 以音乐实践激发艺术表达</span></div></div>
+  </div>
+  <div class="foot">
+    <div class="c">中学 · AI 创变者冬令营 · 1.25–1.29 · 早鸟 ¥4000<br><b>400-803-6661</b>成都市大邑县安仁古镇迎宾路二段247号</div>
+    <div class="qr"><img src="open-day-photos/qr.png" alt="扫码预约访校"><span>扫码预约</span></div>
+  </div>
+</div>
+</body>
+</html>
