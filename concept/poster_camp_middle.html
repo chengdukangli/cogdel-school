@@ -8,62 +8,79 @@
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:#EFEAF6;color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;}
   .poster{max-width:800px;margin:0 auto;background:#fff;box-shadow:0 20px 50px rgba(46,26,68,.24);overflow:hidden;}
-  /* 杂志页头：左标题 + 右大数字 */
+  /* 页头：左标题 + 右大数字 */
   .masthead{display:grid;grid-template-columns:1.55fr 1fr;border-bottom:3px solid var(--ppd);}
-  .mh-l{padding:20px 26px 16px;}
+  .mh-l{padding:18px 26px 14px;}
   .mh-l .k{font-size:10px;letter-spacing:3px;color:var(--goldd);font-weight:800;}
   .mh-l h1{font-size:clamp(21px,4.3vw,29px);font-weight:900;line-height:1.16;margin-top:6px;letter-spacing:-.5px;}
   .mh-l .th{margin-top:9px;font-size:12.5px;font-weight:800;color:var(--pp);}
-  .mh-r{background:var(--ppd);color:#fff;padding:16px 18px;display:flex;flex-direction:column;justify-content:center;}
-  .mh-r .n{font-size:56px;font-weight:900;line-height:.95;color:var(--gold);letter-spacing:-2px;}
-  .mh-r .t{font-size:11.5px;color:#D9CBEC;font-weight:700;letter-spacing:1px;margin-top:4px;}
-  .mh-r .u{font-size:10px;color:#B9A6D4;margin-top:8px;line-height:1.6;}
+  .mh-r{background:var(--ppd);color:#fff;padding:14px 18px;display:flex;flex-direction:column;justify-content:center;}
+  .mh-r .n{font-size:52px;font-weight:900;line-height:.95;color:var(--gold);letter-spacing:-2px;}
+  .mh-r .t{font-size:11px;color:#D9CBEC;font-weight:700;letter-spacing:1px;margin-top:3px;}
+  .mh-r .u{font-size:10px;color:#B9A6D4;margin-top:7px;line-height:1.6;}
   .hero{position:relative;}
   .hero img{width:100%;display:block;}
-  .hero .cap{position:absolute;left:0;bottom:0;background:var(--ppd);color:#fff;font-size:11px;font-weight:800;padding:6px 14px;letter-spacing:.5px;}
-  /* 双栏网格主体 */
-  .grid{display:grid;grid-template-columns:1.35fr 1fr;gap:0;}
-  .col{padding:16px 20px;}
+  .hero .cap{position:absolute;left:0;bottom:0;background:var(--ppd);color:#fff;font-size:10.5px;font-weight:800;padding:5px 13px;letter-spacing:.5px;}
+  /* 双栏：课程 + 营期营费 */
+  .grid{display:grid;grid-template-columns:1.4fr 1fr;}
+  .col{padding:14px 20px;}
   .col.l{border-right:1px solid var(--line);}
-  .sec-h{display:flex;align-items:baseline;gap:7px;margin-bottom:9px;}
-  .sec-h .no{font-size:20px;font-weight:900;color:var(--gold);line-height:1;letter-spacing:-1px;}
-  .sec-h h2{font-size:13px;color:var(--ppd);font-weight:900;letter-spacing:.5px;}
+  .sec-h{display:flex;align-items:baseline;gap:7px;margin-bottom:8px;}
+  .sec-h .no{font-size:19px;font-weight:900;color:var(--gold);line-height:1;letter-spacing:-1px;}
+  .sec-h h2{font-size:12.5px;color:var(--ppd);font-weight:900;letter-spacing:.5px;}
   .sec-h .en{font-size:9px;color:#A79CB8;font-style:italic;margin-left:auto;}
-  /* 课程：编号块 */
-  .blk{border-top:1px solid var(--line);padding:8px 0;}
+  .blk{border-top:1px solid var(--line);padding:7px 0;}
   .blk:last-child{border-bottom:1px solid var(--line);}
   .blk h4{font-size:11.5px;color:var(--ppd);font-weight:900;}
   .blk p{font-size:10px;color:var(--soft);line-height:1.45;margin-top:1px;}
-  /* 日期块 */
-  .dl{display:flex;flex-direction:column;gap:8px;}
-  .dl .row{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:8px;padding:8px 11px;}
-  .dl .row b{font-size:15px;color:var(--pp);font-weight:900;letter-spacing:-.5px;}
-  .dl .row span{font-size:10px;color:var(--soft);margin-left:auto;}
-  .dl .row i{font-style:normal;font-size:9.5px;color:var(--goldd);font-weight:800;}
-  /* 价格块 */
-  .fee{margin-top:11px;background:var(--ppd);border-radius:10px;padding:12px 14px;color:#fff;}
-  .fee .t1{font-size:10px;color:#B9A6D4;letter-spacing:1px;}
-  .fee .amt{font-size:29px;font-weight:900;color:var(--gold);line-height:1.05;margin-top:2px;letter-spacing:-1px;}
+  .dl{display:flex;flex-direction:column;gap:7px;}
+  .dl .row{display:flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:8px;padding:7px 10px;}
+  .dl .row b{font-size:14.5px;color:var(--pp);font-weight:900;letter-spacing:-.5px;}
+  .dl .row span{font-size:9.5px;color:var(--soft);margin-left:auto;}
+  .dl .row i{font-style:normal;font-size:9px;color:var(--goldd);font-weight:800;}
+  .fee{margin-top:10px;background:var(--ppd);border-radius:10px;padding:11px 13px;color:#fff;}
+  .fee .t1{font-size:9.5px;color:#B9A6D4;letter-spacing:1px;}
+  .fee .amt{font-size:27px;font-weight:900;color:var(--gold);line-height:1.05;margin-top:2px;letter-spacing:-1px;}
   .fee .inc{font-size:9.5px;color:#D9CBEC;margin-top:5px;line-height:1.55;}
-  /* ECA 网格 */
-  .pills{display:flex;flex-wrap:wrap;gap:4px;}
-  .eca{font-size:8.8px;color:var(--ppd);background:#F4F0FA;border:1px solid rgba(90,53,128,.14);border-radius:6px;padding:2.5px 6px;}
+  /* 通栏：ECA */
+  .band{border-top:1px solid var(--line);padding:13px 20px 12px;}
   .cnt{font-size:9.5px;color:var(--soft);margin-bottom:7px;}
   .cnt b{color:var(--pp);font-size:14px;font-weight:900;}
-  /* 老师横排 */
-  .teachers{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;}
-  .t{text-align:center;padding:5px 2px;border-top:2px solid var(--gold);}
-  .t img{width:34px;height:34px;border-radius:50%;object-fit:cover;display:block;margin:0 auto;}
-  .t b{display:block;font-size:9px;color:var(--ppd);margin-top:4px;}
-  .t .role{display:block;font-size:7.2px;color:var(--goldd);font-weight:800;}
-  .t .bio{display:block;font-size:6.5px;color:var(--soft);line-height:1.3;margin-top:2px;text-align:left;}
-  .foot{border-top:3px solid var(--ppd);padding:13px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;background:#FAF8FD;}
+  .pills{display:flex;flex-wrap:wrap;gap:4px;}
+  .eca{font-size:8.8px;color:var(--ppd);background:#F4F0FA;border:1px solid rgba(90,53,128,.14);border-radius:6px;padding:2.5px 6px;}
+  /* 通栏：老师（卡片加履历，填满不留白） */
+  .tband{border-top:1px solid var(--line);background:#FAF8FD;padding:13px 20px 14px;}
+  .teachers{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;}
+  .t{background:#fff;border:1px solid var(--line);border-top:2.5px solid var(--gold);border-radius:9px;padding:8px 6px;text-align:center;display:flex;flex-direction:column;height:100%;}
+  .t img{width:38px;height:38px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 4px;}
+  .t b{display:block;font-size:10px;color:var(--ppd);line-height:1.2;}
+  .t .role{display:block;font-size:8px;color:var(--goldd);font-weight:800;margin-bottom:3px;}
+  .t .bio{display:block;font-size:7.2px;color:var(--soft);line-height:1.35;text-align:left;margin-top:auto;}
+  .foot{border-top:3px solid var(--ppd);padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;background:#fff;}
   .foot .c{font-size:10.5px;color:var(--soft);line-height:1.7;}
   .foot .c b{display:block;font-size:17px;color:var(--ppd);letter-spacing:1px;}
   .foot .qr{width:66px;text-align:center;}
-  .foot .qr img{width:62px;height:62px;display:block;}
+  .foot .qr img{width:62px;height:62px;display:block;margin:0 auto;}
   .foot .qr span{display:block;font-size:9px;color:var(--soft);margin-top:2px;}
   @media print{@page{size:A4 portrait;margin:0;} body{background:#fff;} .poster{box-shadow:none;max-width:none;}}
+  /* 手机适配：单栏堆叠 */
+  @media(max-width:640px){
+    .masthead{grid-template-columns:1fr;border-bottom:2px solid var(--ppd);}
+    .mh-l{padding:14px 18px 10px;}
+    .mh-r{flex-direction:row;align-items:center;gap:12px;padding:10px 18px;}
+    .mh-r .n{font-size:34px;}
+    .mh-r .t{margin-top:0;}
+    .mh-r .u{margin-top:0;font-size:9.5px;}
+    .grid{grid-template-columns:1fr;}
+    .col.l{border-right:none;border-bottom:1px solid var(--line);}
+    .col{padding:12px 18px;}
+    .band,.tband{padding:12px 18px;}
+    .teachers{grid-template-columns:repeat(2,1fr);}
+    .t{flex-direction:row;align-items:center;text-align:left;gap:8px;padding:8px;}
+    .t img{margin:0;flex:none;width:34px;height:34px;}
+    .t .bio{text-align:left;margin-top:1px;}
+    .foot{padding:11px 18px;}
+  }
 </style>
 </head>
 <body>
@@ -83,15 +100,30 @@
   <div class="hero"><img src="open-day-photos/hero-middle-camp.jpg" alt="康礼课堂"><span class="cap">中外教中英双语授课 · 37 门 ECA 任选</span></div>
   <div class="grid">
     <div class="col l">
-      <div class="sec-h"><span class="no">01</span><h2>三天怎么过</h2><span class="en">Three Days</span></div>
-      <div class="blk"><h4>专属精品课堂</h4><p>为营地学生单独准备的精品课程，覆盖数学、英语、物理、化学、生物、艺术、计算机、PBL 等多个学科方向</p></div>
+      <div class="sec-h"><span class="no">01</span><h2>三天怎么过</h2><span class="en">Schedule</span></div>
+      <div class="blk"><h4>专属精品课堂</h4><p>为营地学生单独准备的精品课程，覆盖数学、英语、物理、化学、生物、艺术、计算机、PBL 等学科方向</p></div>
 <div class="blk"><h4>中英双语授课</h4><p>中外教中英双语授课，确保不同英文水平的学生都能听得懂、跟得上</p></div>
 <div class="blk"><h4>英文与 ECA 双主线</h4><p>英文贯穿全程；傍晚开设 37 门 ECA 选修课，按兴趣走班</p></div>
 <div class="blk"><h4>晚间辅导</h4><p>晚间安排学科辅导与自主学习，当日所学当日消化</p></div>
 <div class="blk"><h4>结营展示</h4><p>学生展示学习成果，家长获得一份「兴趣信号报告」</p></div>
-      <div class="sec-h" style="margin-top:14px"><span class="no">03</span><h2>可以选的 ECA 选修课</h2></div>
-      <div class="cnt">共 <b>37</b> 门任选，同类已合并（部分方向）</div>
-      <div class="pills"><span class="eca">学科辅导（A-Level 数学·英语·化学·生物·计算机）</span>
+    </div>
+    <div class="col">
+      <div class="sec-h"><span class="no">02</span><h2>营期与营费</h2></div>
+      <div class="dl">
+        <div class="row"><i>第一期</i><b>10.5–10.7</b><span>周一至周三</span></div>
+        <div class="row"><i>第二期</i><b>11.11–11.13</b><span>周三至周五</span></div>
+      </div>
+      <div class="fee">
+        <div class="t1">三天成长体验营</div>
+        <div class="amt">¥1599 / 期</div>
+        <div class="inc">费用含：精品课程 · ECA 选修 · 晚间辅导 · 三餐 · 住宿</div>
+      </div>
+    </div>
+  </div>
+  <div class="band">
+    <div class="sec-h"><span class="no">03</span><h2>可以选的 ECA 选修课</h2><span class="en">ECA Electives</span></div>
+    <div class="cnt">共 <b>37</b> 门选修课任选，同类已合并（以下为部分方向）</div>
+    <div class="pills"><span class="eca">学科辅导（A-Level 数学·英语·化学·生物·计算机）</span>
 <span class="eca">AMC 10/12 数学竞赛备赛</span>
 <span class="eca">NEC 全美经济学竞赛备赛</span>
 <span class="eca">化学竞赛社</span>
@@ -121,26 +153,15 @@
 <span class="eca">跑步俱乐部</span>
 <span class="eca">躲避球与三分球</span>
 <span class="eca">CISA 校队训练</span></div>
-    </div>
-    <div class="col">
-      <div class="sec-h"><span class="no">02</span><h2>营期与营费</h2></div>
-      <div class="dl">
-        <div class="row"><i>第一期</i><b>10.5–10.7</b><span>周一至周三</span></div>
-        <div class="row"><i>第二期</i><b>11.11–11.13</b><span>周三至周五</span></div>
-      </div>
-      <div class="fee">
-        <div class="t1">三天成长体验营</div>
-        <div class="amt">¥1599 / 期</div>
-        <div class="inc">费用含：精品课程 · ECA 选修 · 晚间辅导 · 三餐 · 住宿</div>
-      </div>
-      <div class="sec-h" style="margin-top:14px"><span class="no">04</span><h2>带营老师</h2><span class="en">部分</span></div>
-      <div class="teachers"><div class="t"><img src="open-day-images/lukun.png" alt="陆琨 Amy"><b>陆琨 Amy</b><span class="role">执行校长</span><span class="bio">清华大学航天航空工程本科 · 中欧国际工商学院 MBA</span></div>
+  </div>
+  <div class="tband">
+    <div class="sec-h"><span class="no">04</span><h2>带营老师</h2><span class="en">部分</span></div>
+    <div class="teachers"><div class="t"><img src="open-day-images/lukun.png" alt="陆琨 Amy"><b>陆琨 Amy</b><span class="role">执行校长</span><span class="bio">清华航天航空工程本科 · 中欧国际工商学院 MBA</span></div>
 <div class="t"><img src="open-day-images/adam.png" alt="Adam"><b>Adam</b><span class="role">教师</span><span class="bio">英国诺丁汉大学 PGCE · 超 15 年跨学段教学</span></div>
-<div class="t"><img src="open-day-images/wendyc.png" alt="Wendy"><b>Wendy</b><span class="role">教师</span><span class="bio">重庆大学绘画专业硕士 · 剑桥 IGCSE / A-Level 认证</span></div>
-<div class="t"><img src="open-day-images/chris.png" alt="Chris"><b>Chris</b><span class="role">教师</span><span class="bio">教育管理与规划博士 / 数学教学硕士</span></div>
-<div class="t"><img src="open-day-images/sergei.png" alt="Sergei"><b>Sergei</b><span class="role">数字媒体教师</span><span class="bio">莫斯科国立文化艺术大学 · 13 年影像创作</span></div>
-<div class="t"><img src="open-day-images/marko.png" alt="Marko"><b>Marko</b><span class="role">音乐教师</span><span class="bio">成都大学钢琴表演硕士 · 6 年教学</span></div></div>
-    </div>
+<div class="t"><img src="open-day-images/wendyc.png" alt="Wendy"><b>Wendy</b><span class="role">教师</span><span class="bio">重庆大学绘画专业硕士 · 剑桥 IGCSE/A-Level 认证</span></div>
+<div class="t"><img src="open-day-images/chris.png" alt="Chris"><b>Chris</b><span class="role">教师</span><span class="bio">教育管理与规划博士 / 数学教学硕士 · 深耕 30 年</span></div>
+<div class="t"><img src="open-day-images/chanelsong.png" alt="Chanel"><b>Chanel</b><span class="role">经济商务</span><span class="bio">法国 ESC DIJON 学院管理硕士 · 教学超十年</span></div>
+<div class="t"><img src="open-day-images/vuka.png" alt="Vuka"><b>Vuka</b><span class="role">教师</span><span class="bio">桑德兰大学 PGCE · 塞尔维亚篮球教练资质</span></div></div>
   </div>
   <div class="foot">
     <div class="c">中学 · 三天成长体验营 · 10.5–10.7 / 11.11–11.13 · ¥1599/期<br><b>400-803-6661</b>成都市大邑县安仁古镇迎宾路二段247号</div>
