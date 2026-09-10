@@ -2,33 +2,40 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>成都康礼小学 · 三天成长体验营</title>
+<title>成都康礼小学 · 三天 · 遇见我的热爱</title>
 <style>
-  :root{--pp:#5A3580;--ppd:#2E1A44;--gold:#C9A84C;--goldd:#8A6F2C;--ink:#1F1729;--soft:#665C74;--line:rgba(90,53,128,.18);}
+  :root{--pp:#5A3580;--ppd:#2E1A44;--gold:#C9A84C;--goldl:#EFE3C4;--goldd:#8A6F2C;--ink:#1F1729;--soft:#665C74;--line:rgba(90,53,128,.18);}
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:#EFEAF6;color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;}
   .poster{max-width:800px;margin:0 auto;background:#fff;box-shadow:0 20px 50px rgba(46,26,68,.24);overflow:hidden;}
-  /* 页头：左标题 + 右大数字 */
-  .masthead{display:grid;grid-template-columns:1.55fr 1fr;border-bottom:3px solid var(--ppd);}
+  /* 页头：左标题 + 右大数字（大数字=ECA门数，突出选课） */
+  .masthead{display:grid;grid-template-columns:1.5fr 1fr;border-bottom:3px solid var(--ppd);}
   .mh-l{padding:18px 26px 14px;}
   .mh-l .k{font-size:10px;letter-spacing:3px;color:var(--goldd);font-weight:800;}
   .mh-l h1{font-size:clamp(21px,4.3vw,29px);font-weight:900;line-height:1.16;margin-top:6px;letter-spacing:-.5px;}
-  .mh-l .th{margin-top:9px;font-size:12.5px;font-weight:800;color:var(--pp);}
+  .mh-l .th{margin-top:9px;font-size:13px;font-weight:900;color:var(--pp);}
+  .mh-l .th2{font-size:10.5px;color:var(--soft);margin-top:3px;}
   .mh-r{background:var(--ppd);color:#fff;padding:14px 18px;display:flex;flex-direction:column;justify-content:center;}
-  .mh-r .n{font-size:52px;font-weight:900;line-height:.95;color:var(--gold);letter-spacing:-2px;}
-  .mh-r .t{font-size:11px;color:#D9CBEC;font-weight:700;letter-spacing:1px;margin-top:3px;}
+  .mh-r .n{font-size:50px;font-weight:900;line-height:.95;color:var(--gold);letter-spacing:-2px;}
+  .mh-r .t{font-size:11px;color:#D9CBEC;font-weight:800;letter-spacing:1px;margin-top:3px;}
   .mh-r .u{font-size:10px;color:#B9A6D4;margin-top:7px;line-height:1.6;}
   .hero{position:relative;}
   .hero img{width:100%;display:block;}
   .hero .cap{position:absolute;left:0;bottom:0;background:var(--ppd);color:#fff;font-size:10.5px;font-weight:800;padding:5px 13px;letter-spacing:.5px;}
-  /* 双栏：课程 + 营期营费 */
-  .grid{display:grid;grid-template-columns:1.4fr 1fr;}
-  .col{padding:14px 20px;}
-  .col.l{border-right:1px solid var(--line);}
+  /* 01 ECA（通栏、置顶，核心区域） */
+  .ecaband{padding:13px 20px 12px;background:linear-gradient(180deg,#FBF9FE,#fff);border-bottom:1px solid var(--line);}
   .sec-h{display:flex;align-items:baseline;gap:7px;margin-bottom:8px;}
   .sec-h .no{font-size:19px;font-weight:900;color:var(--gold);line-height:1;letter-spacing:-1px;}
   .sec-h h2{font-size:12.5px;color:var(--ppd);font-weight:900;letter-spacing:.5px;}
   .sec-h .en{font-size:9px;color:#A79CB8;font-style:italic;margin-left:auto;}
+  .cnt{font-size:10px;color:var(--soft);margin-bottom:7px;}
+  .cnt b{color:var(--pp);font-size:15px;font-weight:900;}
+  .pills{display:flex;flex-wrap:wrap;gap:4px;}
+  .eca{font-size:8.8px;color:var(--ppd);background:#F4F0FA;border:1px solid rgba(90,53,128,.14);border-radius:6px;padding:2.5px 6px;}
+  /* 双栏：02 三天怎么过 + 03 营期营费 */
+  .grid{display:grid;grid-template-columns:1.4fr 1fr;}
+  .col{padding:13px 20px;}
+  .col.l{border-right:1px solid var(--line);}
   .blk{border-top:1px solid var(--line);padding:7px 0;}
   .blk:last-child{border-bottom:1px solid var(--line);}
   .blk h4{font-size:11.5px;color:var(--ppd);font-weight:900;}
@@ -42,13 +49,7 @@
   .fee .t1{font-size:9.5px;color:#B9A6D4;letter-spacing:1px;}
   .fee .amt{font-size:27px;font-weight:900;color:var(--gold);line-height:1.05;margin-top:2px;letter-spacing:-1px;}
   .fee .inc{font-size:9.5px;color:#D9CBEC;margin-top:5px;line-height:1.55;}
-  /* 通栏：ECA */
-  .band{border-top:1px solid var(--line);padding:13px 20px 12px;}
-  .cnt{font-size:9.5px;color:var(--soft);margin-bottom:7px;}
-  .cnt b{color:var(--pp);font-size:14px;font-weight:900;}
-  .pills{display:flex;flex-wrap:wrap;gap:4px;}
-  .eca{font-size:8.8px;color:var(--ppd);background:#F4F0FA;border:1px solid rgba(90,53,128,.14);border-radius:6px;padding:2.5px 6px;}
-  /* 通栏：老师（卡片加履历，填满不留白） */
+  /* 老师通栏 */
   .tband{border-top:1px solid var(--line);background:#FAF8FD;padding:13px 20px 14px;}
   .teachers{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;}
   .t{background:#fff;border:1px solid var(--line);border-top:2.5px solid var(--gold);border-radius:9px;padding:8px 6px;text-align:center;display:flex;flex-direction:column;height:100%;}
@@ -63,18 +64,16 @@
   .foot .qr img{width:62px;height:62px;display:block;margin:0 auto;}
   .foot .qr span{display:block;font-size:9px;color:var(--soft);margin-top:2px;}
   @media print{@page{size:A4 portrait;margin:0;} body{background:#fff;} .poster{box-shadow:none;max-width:none;}}
-  /* 手机适配：单栏堆叠 */
   @media(max-width:640px){
     .masthead{grid-template-columns:1fr;border-bottom:2px solid var(--ppd);}
     .mh-l{padding:14px 18px 10px;}
     .mh-r{flex-direction:row;align-items:center;gap:12px;padding:10px 18px;}
-    .mh-r .n{font-size:34px;}
-    .mh-r .t{margin-top:0;}
-    .mh-r .u{margin-top:0;font-size:9.5px;}
+    .mh-r .n{font-size:32px;} .mh-r .t{margin-top:0;} .mh-r .u{margin-top:0;font-size:9.5px;}
+    .ecaband{padding:12px 18px;}
     .grid{grid-template-columns:1fr;}
     .col.l{border-right:none;border-bottom:1px solid var(--line);}
     .col{padding:12px 18px;}
-    .band,.tband{padding:12px 18px;}
+    .tband{padding:12px 18px;}
     .teachers{grid-template-columns:repeat(2,1fr);}
     .t{flex-direction:row;align-items:center;text-align:left;gap:8px;padding:8px;}
     .t img{margin:0;flex:none;width:34px;height:34px;}
@@ -88,40 +87,20 @@
   <div class="masthead">
     <div class="mh-l">
       <div class="k">COGDEL SCHOOL CHENGDU</div>
-      <h1>成都康礼小学<br>三天成长体验营</h1>
-      <div class="th">三天，像康礼学生一样学习与生活</div>
+      <h1>成都康礼小学<br>三天 · 遇见我的热爱</h1>
+      <div class="th">遇见我的热爱</div>
+      <div class="th2">65 门 ECA 任选，三天走班试课，找到孩子真正热爱的那一门</div>
     </div>
     <div class="mh-r">
-      <div class="n">03</div>
-      <div class="t">DAYS</div>
+      <div class="n">65</div>
+      <div class="t">门 ECA 选修课</div>
       <div class="u">两期可选<br>10.5–10.7 / 11.11–11.13<br>全寄宿 · 含三餐与住宿</div>
     </div>
   </div>
-  <div class="hero"><img src="open-day-photos/hero-primary-camp.jpg" alt="康礼课堂"><span class="cap">中外教中英双语授课 · 65 门 ECA 任选</span></div>
-  <div class="grid">
-    <div class="col l">
-      <div class="sec-h"><span class="no">01</span><h2>三天怎么过</h2><span class="en">Schedule</span></div>
-      <div class="blk"><h4>专属精品课堂</h4><p>为营地学生单独准备的精品课程，主要涵盖英语、新加坡数学、科学、艺术、体育、UOI 探究等学科</p></div>
-<div class="blk"><h4>中英双语授课</h4><p>中外教中英双语授课，无论孩子英文基础如何，都能听得懂、跟得上</p></div>
-<div class="blk"><h4>ECA 选修课</h4><p>傍晚开设 65 门 ECA 选修课，按兴趣走班，找到自己的热爱</p></div>
-<div class="blk"><h4>结营展示</h4><p>学生展示学习成果，家长获得一份「兴趣信号报告」</p></div>
-    </div>
-    <div class="col">
-      <div class="sec-h"><span class="no">02</span><h2>营期与营费</h2></div>
-      <div class="dl">
-        <div class="row"><i>第一期</i><b>10.5–10.7</b><span>周一至周三</span></div>
-        <div class="row"><i>第二期</i><b>11.11–11.13</b><span>周三至周五</span></div>
-      </div>
-      <div class="fee">
-        <div class="t1">三天成长体验营</div>
-        <div class="amt">¥1599 / 期</div>
-        <div class="inc">费用含：精品课程 · ECA 选修 · 晚间辅导 · 三餐 · 住宿</div>
-      </div>
-    </div>
-  </div>
-  <div class="band">
-    <div class="sec-h"><span class="no">03</span><h2>可以选的 ECA 选修课</h2><span class="en">ECA Electives</span></div>
-    <div class="cnt">共 <b>65</b> 门选修课任选，同类已合并（以下为部分方向）</div>
+  <div class="hero"><img src="open-day-photos/hero-primary-camp.jpg" alt="康礼课堂"><span class="cap">中外教中英双语授课 · 65 门 ECA 选修课任选</span></div>
+  <div class="ecaband">
+    <div class="sec-h"><span class="no">01</span><h2>可以选的 ECA 选修课</h2><span class="en">ECA Electives · 三天营地核心</span></div>
+    <div class="cnt">共 <b>65</b> 门选修课，按自己的课表走班任选，同类已合并（以下为部分方向）</div>
     <div class="pills"><span class="eca">语文素养（口语·诵读·写作·国学）</span>
 <span class="eca">绘本故事</span>
 <span class="eca">深度阅读思辨</span>
@@ -153,6 +132,27 @@
 <span class="eca">探秘世界奇观</span>
 <span class="eca">读史见人</span></div>
   </div>
+  <div class="grid">
+    <div class="col l">
+      <div class="sec-h"><span class="no">02</span><h2>三天怎么过</h2><span class="en">Three Days</span></div>
+      <div class="blk"><h4>选我所爱</h4><p>从 65 门 ECA 选修课里，挑出自己最想上的那几门</p></div>
+<div class="blk"><h4>走班上课</h4><p>按自己排出来的课表在不同课堂间走班，一天换几个方向</p></div>
+<div class="blk"><h4>跟班浸润</h4><p>上午下午跟真实课堂，中外教中英双语授课，人人跟得上</p></div>
+<div class="blk"><h4>结营报告</h4><p>生成一份「兴趣信号报告」，告诉家长孩子的热爱究竟在哪</p></div>
+    </div>
+    <div class="col">
+      <div class="sec-h"><span class="no">03</span><h2>营期与营费</h2></div>
+      <div class="dl">
+        <div class="row"><i>第一期</i><b>10.5–10.7</b><span>周一至周三</span></div>
+        <div class="row"><i>第二期</i><b>11.11–11.13</b><span>周三至周五</span></div>
+      </div>
+      <div class="fee">
+        <div class="t1">三天 · 遇见我的热爱</div>
+        <div class="amt">¥1599 / 期</div>
+        <div class="inc">费用含：ECA 选修 · 精品课程 · 晚间辅导 · 三餐 · 住宿</div>
+      </div>
+    </div>
+  </div>
   <div class="tband">
     <div class="sec-h"><span class="no">04</span><h2>带营老师</h2><span class="en">部分</span></div>
     <div class="teachers"><div class="t"><img src="open-day-images/elisha.png" alt="Elisha"><b>Elisha</b><span class="role">英语教师</span><span class="bio">伦敦政治经济学院学士 · 剑桥 CELTA</span></div>
@@ -163,7 +163,7 @@
 <div class="t"><img src="open-day-images/bishoy.png" alt="Bishoy"><b>Bishoy</b><span class="role">英语教师</span><span class="bio">英国北安普顿大学毕业 · 十余年教学经验</span></div></div>
   </div>
   <div class="foot">
-    <div class="c">小学 · 三天成长体验营 · 10.5–10.7 / 11.11–11.13 · ¥1599/期<br><b>400-803-6661</b>成都市大邑县安仁古镇迎宾路二段247号</div>
+    <div class="c">小学 · 三天 · 遇见我的热爱 · 10.5–10.7 / 11.11–11.13 · ¥1599/期<br><b>400-803-6661</b>成都市大邑县安仁古镇迎宾路二段247号</div>
     <div class="qr"><img src="open-day-photos/qr.png" alt="扫码预约"><span>扫码预约</span></div>
   </div>
 </div>
