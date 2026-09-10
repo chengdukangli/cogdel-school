@@ -4,112 +4,114 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>成都康礼小学 · 霍格沃茨魔法冬令营</title>
 <style>
-  :root{--pp:#5A3580;--ppd:#2e1a44;--night:#1B0F2E;--night2:#2B1747;--gold:#C9A84C;--goldl:#F0DCA0;--ink:#2b2333;--soft:#6b5d78;}
+  :root{--pp:#5A3580;--ppd:#2E1A44;--gold:#C9A84C;--goldl:#EFE3C4;--ink:#241B31;--soft:#6B6079;--line:rgba(90,53,128,.18);}
   *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:#EDE7F5;color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;}
-  .poster{max-width:800px;margin:0 auto;background:var(--night);box-shadow:0 22px 60px rgba(27,15,46,.45);overflow:hidden;position:relative;}
-  /* 星空层 */
-  .stars{position:absolute;inset:0;pointer-events:none;z-index:1;
-    background-image:radial-gradient(1.6px 1.6px at 12% 8%,#fff,transparent),radial-gradient(1.4px 1.4px at 28% 16%,#F0DCA0,transparent),radial-gradient(1.8px 1.8px at 46% 6%,#fff,transparent),radial-gradient(1.3px 1.3px at 63% 14%,#F0DCA0,transparent),radial-gradient(1.7px 1.7px at 79% 9%,#fff,transparent),radial-gradient(1.4px 1.4px at 91% 18%,#fff,transparent),radial-gradient(1.2px 1.2px at 6% 26%,#F0DCA0,transparent),radial-gradient(1.5px 1.5px at 38% 24%,#fff,transparent),radial-gradient(1.3px 1.3px at 71% 26%,#fff,transparent),radial-gradient(1.6px 1.6px at 22% 34%,#fff,transparent);}
-  .sky{position:relative;z-index:2;padding:18px 30px 0;
-    background:radial-gradient(120% 90% at 50% 0%,#3A1F5C 0%,#1B0F2E 62%,#150B25 100%);}
-  .brand{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:1px;color:#C9B7DE;}
-  .brand .mk{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--goldl),var(--gold));color:var(--ppd);font-weight:900;font-size:11px;display:flex;align-items:center;justify-content:center;}
-  .kicker{margin-top:14px;font-size:11px;letter-spacing:4px;color:var(--goldl);font-weight:700;text-align:center;}
-  h1{font-size:clamp(23px,4.8vw,33px);font-weight:900;color:#fff;text-align:center;line-height:1.25;margin-top:6px;
-     text-shadow:0 0 18px rgba(201,168,76,.75),0 2px 10px rgba(0,0,0,.5);}
-  .hsub{text-align:center;margin-top:7px;font-size:13.5px;color:#E4D6F5;}
-  .castle{margin:12px -30px 0;position:relative;}
-  .castle img{width:100%;display:block;}
-  /* 卷轴卡片 */
-  .body{position:relative;z-index:2;padding:0 30px 2px;background:linear-gradient(180deg,#1B0F2E,#241238 55%,#1B0F2E);}
-  .scroll{margin-top:12px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));
-    border:1px solid rgba(201,168,76,.5);border-radius:14px;padding:13px 16px;position:relative;}
-  .scroll::before,.scroll::after{content:"";position:absolute;left:14px;right:14px;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.6),transparent);}
-  .scroll::before{top:5px}.scroll::after{bottom:5px}
-  .st{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
-  .st .ic{font-size:15px;}
-  .st h2{font-size:14.5px;color:var(--goldl);font-weight:900;letter-spacing:1px;}
-  .dates2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-  .d2{border:1px dashed rgba(201,168,76,.55);border-radius:11px;padding:10px 13px;text-align:center;}
-  .d2 .lb{font-size:10px;color:#B9A6D4;letter-spacing:1px;}
-  .d2 b{display:block;font-size:19px;color:#fff;font-weight:900;margin-top:2px;}
-  .d2 span{font-size:10.5px;color:#C9B7DE;}
-  .price{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
-  .price .lft{font-size:11px;color:#C9B7DE;line-height:1.6;}
-  .price .lft b{display:block;font-size:13px;color:#fff;font-weight:900;}
-  .price .rgt{margin-left:auto;text-align:right;}
-  .price .old{font-size:27px;color:#8E7CA8;text-decoration:line-through;font-weight:900;}
-  .price .new{font-size:36px;color:var(--goldl);font-weight:900;line-height:1;text-shadow:0 0 14px rgba(201,168,76,.6);}
-  .price .tag{font-size:11px;color:#fff;background:rgba(201,168,76,.25);border:1px solid rgba(201,168,76,.6);border-radius:20px;padding:2px 10px;display:inline-block;margin-top:5px;}
-  .flow li{list-style:none;position:relative;padding:6px 0 6px 16px;border-bottom:1px dotted rgba(201,168,76,.28);font-size:11.5px;color:#D6C9E8;line-height:1.5;}
-  .flow li:last-child{border-bottom:none;}
-  .flow li::before{content:"✦";position:absolute;left:0;top:6px;color:var(--gold);font-size:9px;}
-  .flow li b{color:var(--goldl);font-weight:900;margin-right:5px;}
-  .teachers{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;}
-  .t{background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.35);border-radius:10px;padding:7px 4px;text-align:center;}
-  .t img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);display:block;margin:0 auto;}
-  .t b{display:block;font-size:10px;color:#fff;margin-top:4px;}
-  .t .role{display:block;font-size:8px;color:var(--goldl);font-weight:800;}
-  .t .bio{display:block;font-size:7px;color:#B9A6D4;line-height:1.3;margin-top:3px;text-align:left;}
-  .foot{position:relative;z-index:2;background:#150B25;border-top:1px solid rgba(201,168,76,.4);color:#fff;padding:14px 30px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
-  .foot .c{font-size:11px;color:#B9A6D4;line-height:1.7;}
-  .foot .c b{display:block;font-size:19px;color:var(--goldl);letter-spacing:1px;}
-  .foot .qr{width:78px;text-align:center;}
-  .foot .qr img{width:72px;height:72px;display:block;background:#fff;border-radius:8px;padding:3px;}
-  .foot .qr span{display:block;font-size:9.5px;color:#B9A6D4;margin-top:3px;}
+  body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:#EDE8F4;color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .poster{max-width:800px;margin:0 auto;background:#fff;box-shadow:0 22px 56px rgba(46,26,68,.28);overflow:hidden;}
+  /* 整幅大图 + 压字（冬令营专属骨架） */
+  .banner{position:relative;height:320px;overflow:hidden;}
+  .banner img{width:100%;height:100%;object-fit:cover;display:block;}
+  .banner::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(46,26,68,.78) 0%,rgba(46,26,68,.32) 45%,rgba(255,255,255,.96) 100%);}
+  .bin{position:absolute;inset:0;z-index:2;padding:18px 30px;display:flex;flex-direction:column;color:#fff;}
+  .brand{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:1.5px;color:#E0D3F2;}
+  .brand .mk{width:21px;height:21px;border-radius:6px;background:var(--gold);color:var(--ppd);font-weight:900;font-size:11px;display:flex;align-items:center;justify-content:center;}
+  .bh{margin-top:auto;}
+  .bh .k{font-size:10.5px;letter-spacing:3px;color:var(--goldl);font-weight:800;}
+  .bh h1{font-size:clamp(22px,4.7vw,31px);font-weight:900;line-height:1.2;margin-top:5px;text-shadow:0 2px 14px rgba(0,0,0,.5);}
+  .bh .th{display:inline-block;margin-top:9px;font-size:13px;font-weight:800;color:var(--ppd);background:var(--goldl);padding:4px 14px;border-radius:5px;}
+  .body{padding:0 30px 2px;background:#fff;}
+  .sl{display:flex;align-items:center;gap:9px;margin:13px 0 8px;}
+  .sl h2{font-size:15px;color:var(--ppd);font-weight:900;}
+  .sl .en{font-size:9.5px;color:#A79CB8;font-style:italic;}
+  .sl .ln{flex:1;height:2px;background:linear-gradient(90deg,var(--gold),transparent);}
+  /* 营期 + 费用一条带 */
+  .strip{display:grid;grid-template-columns:1.35fr 1fr;gap:10px;margin-top:12px;}
+  .sd{border:1.5px solid var(--line);border-radius:11px;padding:11px 14px;}
+  .sd .lb{font-size:9.5px;color:var(--goldd);font-weight:800;letter-spacing:1px;}
+  .sd b{display:block;font-size:19px;color:var(--ppd);font-weight:900;margin-top:2px;letter-spacing:-.5px;}
+  .sd span{font-size:10.5px;color:var(--soft);}
+  .fee{background:var(--ppd);border-radius:11px;padding:11px 15px;color:#fff;display:flex;flex-direction:column;justify-content:center;}
+  .fee .old{font-size:24px;font-weight:900;color:#C4B4D8;text-decoration:line-through;line-height:1.1;}
+  .fee .new{font-size:33px;font-weight:900;color:var(--gold);line-height:1.05;letter-spacing:-1px;margin-top:2px;}
+  .fee .tag{font-size:10px;color:var(--ppd);background:var(--goldl);border-radius:4px;padding:2px 8px;display:inline-block;margin-top:5px;font-weight:800;align-self:flex-start;}
+  .fee .inc{font-size:9px;color:#CFC0E2;margin-top:6px;line-height:1.5;}
+  /* 五天：编号块 */
+  .days{display:flex;flex-direction:column;gap:7px;}
+  .dy{display:flex;gap:11px;background:#FBFAFE;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:9px 13px;}
+  .dy .n{flex:0 0 26px;height:26px;border-radius:50%;background:var(--ppd);color:var(--gold);font-size:11.5px;font-weight:900;display:flex;align-items:center;justify-content:center;}
+  .dy h4{font-size:12px;color:var(--ppd);font-weight:900;}
+  .dy p{font-size:10.5px;color:var(--soft);line-height:1.5;margin-top:1px;}
+  /* 老师通栏 */
+  .tband{border-top:1px solid var(--line);background:#FAF8FD;padding:13px 30px 14px;}
+  .teachers{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;}
+  .t{background:#fff;border:1px solid var(--line);border-top:2.5px solid var(--gold);border-radius:9px;padding:8px 6px;text-align:center;display:flex;flex-direction:column;height:100%;}
+  .t img{width:38px;height:38px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 4px;}
+  .t b{display:block;font-size:10px;color:var(--ppd);line-height:1.2;}
+  .t .role{display:block;font-size:8px;color:var(--goldd);font-weight:800;margin-bottom:3px;}
+  .t .bio{display:block;font-size:7.2px;color:var(--soft);line-height:1.35;text-align:left;margin-top:auto;}
+  .foot{margin-top:14px;background:var(--ppd);color:#fff;padding:13px 30px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+  .foot .c{font-size:10.5px;color:#D9CBEC;line-height:1.7;}
+  .foot .c b{display:block;font-size:18px;color:var(--goldl);letter-spacing:1px;}
+  .foot .qr{width:72px;text-align:center;}
+  .foot .qr img{width:68px;height:68px;display:block;margin:0 auto;background:#fff;border-radius:8px;padding:3px;}
+  .foot .qr span{display:block;font-size:9px;color:#D9CBEC;margin-top:2px;}
   @media print{@page{size:A4 portrait;margin:0;} body{background:#fff;} .poster{box-shadow:none;max-width:none;}}
+  /* 手机适配 */
+  @media(max-width:640px){
+    .banner{height:230px;}
+    .bin{padding:14px 20px;}
+    .body{padding:0 20px 2px;}
+    .strip{grid-template-columns:1fr;}
+    .tband{padding:12px 20px;}
+    .teachers{grid-template-columns:repeat(2,1fr);}
+    .t{flex-direction:row;align-items:center;text-align:left;gap:8px;padding:8px;}
+    .t img{margin:0;flex:none;width:34px;height:34px;}
+    .t .bio{text-align:left;margin-top:1px;}
+    .foot{padding:11px 20px;}
+  }
 </style>
 </head>
 <body>
 <div class="poster">
-  <div class="stars"></div>
-  <div class="sky">
-    <div class="brand"><span class="mk">C</span>成都康礼学校 · COGDEL SCHOOL CHENGDU</div>
-    <div class="kicker">HOGWARTS WINTER CAMP</div>
-    <h1>霍格沃茨魔法冬令营</h1>
-    <div class="hsub">穿上魔法袍，用英语闯荡魔法世界</div>
-    <div class="castle"><img src="open-day-photos/winter-primary.jpg" alt="魔法城堡"></div>
+  <div class="banner">
+    <img src="open-day-photos/winter-primary.jpg" alt="冬令营">
+    <div class="bin">
+      <div class="brand"><span class="mk">C</span>成都康礼学校 · COGDEL SCHOOL CHENGDU</div>
+      <div class="bh">
+        <div class="k">HOGWARTS WINTER CAMP</div>
+        <h1>霍格沃茨魔法冬令营</h1>
+        <span class="th">穿上魔法袍，用英语闯荡魔法世界</span>
+      </div>
+    </div>
   </div>
   <div class="body">
-    <div class="scroll">
-      <div class="st"><span class="ic">🕯️</span><h2>营期 · 五天四晚 · 全寄宿</h2></div>
-      <div class="dates2">
-        <div class="d2"><div class="lb">WINTER CAMP</div><b>1.25–1.29</b><span>周一至周五</span></div>
-        <div class="d2"><div class="lb">形式</div><b>全寄宿</b><span>三餐与住宿全含</span></div>
+    <div class="strip">
+      <div class="sd"><div class="lb">WINTER CAMP · 营期</div><b>1.25–1.29</b><span>周一至周五 · 五天四晚 · 全寄宿</span></div>
+      <div class="fee">
+        <div class="old">原价 ¥5000</div>
+        <div class="new">¥4000</div>
+        <span class="tag">早鸟价 · 12.31 前</span>
+        <div class="inc">费用含：精品课程 · 三餐 · 住宿</div>
       </div>
     </div>
-    <div class="scroll">
-      <div class="st"><span class="ic">💰</span><h2>营费</h2></div>
-      <div class="price">
-        <div class="lft"><b>冬令营 · 五天四晚</b>费用含：精品课程 · 三餐 · 住宿</div>
-        <div class="rgt">
-          <div class="old">原价 ¥5000</div>
-          <div class="new">¥4000</div>
-          <span class="tag">早鸟价 · 12.31 前</span>
-        </div>
-      </div>
-    </div>
-    <div class="scroll">
-      <div class="st"><span class="ic">🪄</span><h2>五天怎么过</h2></div>
-      <ul class="flow"><li><b>魔法开营</b>穿上魔法袍、分院仪式，领取属于自己的学院任务</li>
-<li><b>魔法英语</b>外教带着孩子用英语念咒语、读魔法故事，在魔法世界里开口说英语</li>
-<li><b>魔法实验</b>动手做魔法实验与小手工，把科学变成看得见的「魔法」</li>
-<li><b>学院活动</b>运动、艺术、音乐与社团活动，五天里结交同伴、学会相处</li>
-<li><b>结营仪式</b>学院成果展示，颁发结营证书，家长见证孩子的成长</li></ul>
-    </div>
-    <div class="scroll">
-      <div class="st"><span class="ic">🎓</span><h2>带营老师（部分）</h2></div>
-      <div class="teachers"><div class="t"><img src="open-day-images/elisha.png" alt="Elisha"><b>Elisha</b><span class="role">英语教师</span><span class="bio">伦敦政治经济学院学士 · 剑桥 CELTA</span></div>
+    <div class="sl"><h2>五天怎么过</h2><span class="en">Five Days</span><span class="ln"></span></div>
+    <div class="days"><div class="dy"><div class="n">1</div><div><h4>魔法开营</h4><p>穿上魔法袍、分院仪式，领取属于自己的学院任务</p></div></div>
+<div class="dy"><div class="n">2</div><div><h4>魔法英语</h4><p>外教带着孩子用英语念咒语、读魔法故事，在魔法世界里开口说英语</p></div></div>
+<div class="dy"><div class="n">3</div><div><h4>魔法实验</h4><p>动手做魔法实验与小手工，把科学变成看得见的「魔法」</p></div></div>
+<div class="dy"><div class="n">4</div><div><h4>学院活动</h4><p>运动、艺术、音乐与社团活动，五天里结交同伴、学会相处</p></div></div>
+<div class="dy"><div class="n">5</div><div><h4>结营仪式</h4><p>学院成果展示，颁发结营证书，家长见证孩子的成长</p></div></div></div>
+  </div>
+  <div class="tband">
+    <div class="sl" style="margin-top:0"><h2>带营老师（部分）</h2><span class="en">Our Teachers</span><span class="ln"></span></div>
+    <div class="teachers"><div class="t"><img src="open-day-images/elisha.png" alt="Elisha"><b>Elisha</b><span class="role">英语教师</span><span class="bio">伦敦政治经济学院学士 · 剑桥 CELTA</span></div>
 <div class="t"><img src="open-day-images/rita.png" alt="Rita"><b>Rita</b><span class="role">英语教师</span><span class="bio">宾夕法尼亚大学 TESOL 硕士</span></div>
 <div class="t"><img src="open-day-images/yvonne.png" alt="Yvonne"><b>Yvonne</b><span class="role">英语教师</span><span class="bio">伦敦大学学院（UCL）硕士</span></div>
 <div class="t"><img src="open-day-images/dimos.png" alt="Dimos"><b>Dimos</b><span class="role">艺体教师</span><span class="bio">福尔哈雷大学教育学学士 · 英语母语</span></div>
 <div class="t"><img src="open-day-images/grace.png" alt="Grace"><b>Grace</b><span class="role">英语教师</span><span class="bio">8 年多国际教育教学经验</span></div>
 <div class="t"><img src="open-day-images/bishoy.png" alt="Bishoy"><b>Bishoy</b><span class="role">英语教师</span><span class="bio">英国北安普顿大学 · 十余年教学</span></div></div>
-    </div>
   </div>
   <div class="foot">
-    <div class="c">小学 · 霍格沃茨魔法冬令营 · 1.25–1.29<br><b>400-803-6661</b>成都市大邑县安仁古镇迎宾路二段247号</div>
+    <div class="c">小学 · 霍格沃茨魔法冬令营 · 1.25–1.29 · 早鸟 ¥4000<br><b>400-803-6661</b>成都市大邑县安仁古镇迎宾路二段247号</div>
     <div class="qr"><img src="open-day-photos/qr.png" alt="扫码预约"><span>扫码预约</span></div>
   </div>
 </div>
