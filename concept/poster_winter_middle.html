@@ -7,17 +7,20 @@
   :root{--pp:#5A3580;--ppd:#2E1A44;--gold:#C9A84C;--goldl:#EFE3C4;--goldd:#8A6F2C;--ink:#241B31;--soft:#6B6079;--line:rgba(90,53,128,.18);}
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:#EDE8F4;color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;}
-  .poster{max-width:800px;margin:0 auto;background:#fff;box-shadow:0 22px 56px rgba(46,26,68,.28);overflow:hidden;}
-  .banner{position:relative;height:330px;overflow:hidden;}
-  .banner img{width:100%;height:100%;object-fit:cover;display:block;}
-  .banner::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(46,26,68,.84) 0%,rgba(46,26,68,.36) 45%,rgba(255,255,255,.96) 100%);}
-  .bin{position:absolute;inset:0;z-index:2;padding:18px 30px;display:flex;flex-direction:column;color:#fff;}
-  .brand{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:1.5px;color:#E0D3F2;}
-  .brand .mk{width:21px;height:21px;border-radius:6px;background:var(--gold);color:var(--ppd);font-weight:900;font-size:11px;display:flex;align-items:center;justify-content:center;}
-  .bh{margin-top:auto;}
-  .bh .k{font-size:10.5px;letter-spacing:3px;color:var(--goldl);font-weight:800;}
-  .bh h1{font-size:clamp(22px,4.7vw,31px);font-weight:900;line-height:1.2;margin-top:5px;text-shadow:0 2px 14px rgba(0,0,0,.5);}
-  .bh .th{display:inline-block;margin-top:9px;font-size:13.5px;font-weight:800;color:var(--ppd);background:var(--goldl);padding:4px 14px;border-radius:5px;}
+  .poster{max-width:800px;margin:0 auto;background:#fff;box-shadow:0 22px 56px rgba(46,26,68,.3);overflow:hidden;}
+  /* 左图右文（适配竖版大图） */
+  .banner{display:grid;grid-template-columns:336px 1fr;}
+  .art{position:relative;overflow:hidden;}
+  .art img{width:100%;height:100%;object-fit:cover;display:block;}
+  .art::after{content:"";position:absolute;inset:0;box-shadow:inset -22px 0 26px -14px rgba(46,26,68,.55);}
+  .txt{background:linear-gradient(150deg,#2E1A44 0%,#5A3580 60%,#7B4FA5 100%);color:#fff;padding:20px 24px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
+  .txt::before{content:"";position:absolute;right:-50px;top:-50px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.32),transparent 65%);}
+  .brand{position:relative;z-index:2;display:flex;align-items:center;gap:8px;font-size:10.5px;letter-spacing:1.5px;color:#E0D3F2;}
+  .brand .mk{width:20px;height:20px;border-radius:6px;background:var(--gold);color:var(--ppd);font-weight:900;font-size:11px;display:flex;align-items:center;justify-content:center;}
+  .kicker{position:relative;z-index:2;margin-top:14px;font-size:10px;letter-spacing:2.5px;color:var(--goldl);font-weight:800;}
+  .txt h1{position:relative;z-index:2;font-size:clamp(21px,3.6vw,28px);font-weight:900;line-height:1.22;margin-top:6px;text-shadow:0 2px 12px rgba(0,0,0,.35);}
+  .txt .th{position:relative;z-index:2;display:inline-block;align-self:flex-start;margin-top:11px;font-size:12.5px;font-weight:800;color:var(--ppd);background:var(--goldl);padding:4px 13px;border-radius:5px;}
+  .txt .tier{position:relative;z-index:2;margin-top:12px;font-size:10px;color:#C9B7DE;letter-spacing:.5px;}
   .body{padding:0 30px 2px;background:#fff;}
   .sl{display:flex;align-items:center;gap:9px;margin:13px 0 8px;}
   .sl h2{font-size:15px;color:var(--ppd);font-weight:900;}
@@ -53,7 +56,10 @@
   .foot .qr span{display:block;font-size:9px;color:#D9CBEC;margin-top:2px;}
   @media print{@page{size:A4 portrait;margin:0;} body{background:#fff;} .poster{box-shadow:none;max-width:none;}}
   @media(max-width:640px){
-    .banner{height:240px;} .bin{padding:14px 20px;}
+    .banner{grid-template-columns:1fr;}
+    .art{height:300px;}
+    .art::after{box-shadow:inset 0 -24px 26px -14px rgba(46,26,68,.6);}
+    .txt{padding:14px 20px 16px;}
     .body{padding:0 20px 2px;} .strip{grid-template-columns:1fr;}
     .tband{padding:12px 20px;}
     .teachers{grid-template-columns:repeat(2,1fr);}
@@ -67,14 +73,13 @@
 <body>
 <div class="poster">
   <div class="banner">
-    <img src="open-day-photos/hero-middle-camp.jpg" alt="少年电影人">
-    <div class="bin">
-      <div class="brand"><span class="mk">C</span>成都康礼学校 · COGDEL SCHOOL CHENGDU</div>
-      <div class="bh">
-        <div class="k">AI EXPLORERS · WINTER CAMP</div>
-        <h1>AI 探索者科创营</h1>
-        <span class="th">五天，把想法变成真的东西</span>
-      </div>
+    <div class="art"><img src="open-day-photos/winter-middle.jpg" alt="冬令营"></div>
+    <div class="txt">
+      <div class="brand"><span class="mk">C</span>成都康礼学校 · COGDEL SCHOOL</div>
+      <div class="kicker">AI EXPLORERS · STEM CAMP</div>
+      <h1>AI 探索者科创营</h1>
+      <span class="th">五天，把想法变成真的东西</span>
+      <div class="tier">1.25–1.29 · 五天四晚 · 全寄宿</div>
     </div>
   </div>
   <div class="body">
@@ -88,11 +93,20 @@
       </div>
     </div>
     <div class="sl"><h2>五天，从想法到一个真作品</h2><span class="en">From Idea to a Real Thing</span><span class="ln"></span></div>
-    <div class="days"><div class="dy"><div class="n">1</div><div><h4>认识 AI</h4><p>看清 AI 到底能做什么、不能做什么，找到自己想动手做的那个方向</p></div></div><div class="dy"><div class="n">2</div><div><h4>设计你的作品</h4><p>画原型、定功能、分工组队——先把要做的东西想清楚</p></div></div><div class="dy"><div class="n">3</div><div><h4>动手造物</h4><p>用 AI 工具搭配硬件、3D 打印与编程，把原型真正做出来</p></div></div><div class="dy"><div class="n">4</div><div><h4>调试与迭代</h4><p>测试、找问题、改方案，让作品真的能跑起来、真的有用</p></div></div><div class="dy"><div class="n">5</div><div><h4>成果发布 · 结营</h4><p>向家长展示你的作品，讲清它解决了一个什么问题</p></div></div></div>
+    <div class="days"><div class="dy"><div class="n">1</div><div><h4>认识 AI</h4><p>看清 AI 到底能做什么、不能做什么，找到自己想动手做的那个方向</p></div></div>
+<div class="dy"><div class="n">2</div><div><h4>设计你的作品</h4><p>画原型、定功能、分工组队——先把要做的东西想清楚</p></div></div>
+<div class="dy"><div class="n">3</div><div><h4>动手造物</h4><p>用 AI 工具搭配硬件、3D 打印与编程，把原型真正做出来</p></div></div>
+<div class="dy"><div class="n">4</div><div><h4>调试与迭代</h4><p>测试、找问题、改方案，让作品真的能跑起来、真的有用</p></div></div>
+<div class="dy"><div class="n">5</div><div><h4>成果发布 · 结营</h4><p>向家长展示你的作品，讲清它解决了一个什么问题</p></div></div></div>
   </div>
   <div class="tband">
     <div class="sl" style="margin-top:0"><h2>带营老师（部分）</h2><span class="en">Our Teachers</span><span class="ln"></span></div>
-    <div class="teachers"><div class="t"><img src="open-day-images/lukun.png" alt="陆琨 Amy"><b>陆琨 Amy</b><span class="role">执行校长 · AI教师</span><span class="bio">清华航天航空工程本科 · 中欧国际工商学院 MBA</span></div><div class="t"><img src="open-day-images/jeffy.png" alt="Jeffy"><b>Jeffy</b><span class="role">计算机教师</span><span class="bio">信息技术管理硕士 · 13 年大学及高中教学</span></div><div class="t"><img src="open-day-images/adam.png" alt="Adam"><b>Adam</b><span class="role">教师</span><span class="bio">英国诺丁汉大学 PGCE · 超 15 年跨学段教学</span></div><div class="t"><img src="open-day-images/sergei.png" alt="Sergei"><b>Sergei</b><span class="role">数字媒体教师</span><span class="bio">莫斯科国立文化艺术大学 · 13 年影像创作</span></div><div class="t"><img src="open-day-images/chris.png" alt="Chris"><b>Chris</b><span class="role">教师</span><span class="bio">教育管理与规划博士 / 数学教学硕士</span></div><div class="t"><img src="open-day-images/wendyc.png" alt="Wendy"><b>Wendy</b><span class="role">教师</span><span class="bio">重庆大学绘画专业硕士 · 剑桥 IGCSE/A-Level 认证</span></div></div>
+    <div class="teachers"><div class="t"><img src="open-day-images/lukun.png" alt="陆琨 Amy"><b>陆琨 Amy</b><span class="role">执行校长 · AI教师</span><span class="bio">清华航天航空工程本科 · 中欧国际工商学院 MBA</span></div>
+<div class="t"><img src="open-day-images/jeffy.png" alt="Jeffy"><b>Jeffy</b><span class="role">计算机教师</span><span class="bio">信息技术管理硕士 · 13 年大学及高中教学</span></div>
+<div class="t"><img src="open-day-images/adam.png" alt="Adam"><b>Adam</b><span class="role">教师</span><span class="bio">英国诺丁汉大学 PGCE · 超 15 年跨学段教学</span></div>
+<div class="t"><img src="open-day-images/sergei.png" alt="Sergei"><b>Sergei</b><span class="role">数字媒体教师</span><span class="bio">莫斯科国立文化艺术大学 · 13 年影像创作</span></div>
+<div class="t"><img src="open-day-images/chris.png" alt="Chris"><b>Chris</b><span class="role">教师</span><span class="bio">教育管理与规划博士 / 数学教学硕士</span></div>
+<div class="t"><img src="open-day-images/wendyc.png" alt="Wendy"><b>Wendy</b><span class="role">教师</span><span class="bio">重庆大学绘画专业硕士 · 剑桥 IGCSE/A-Level 认证</span></div></div>
   </div>
   <div class="foot">
     <div class="c">中学 · AI 探索者科创营 · 1.25–1.29 · 早鸟 ¥4000<br><b>400-803-6661</b>成都市大邑县安仁古镇迎宾路二段247号</div>
