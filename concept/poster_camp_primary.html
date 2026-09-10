@@ -5,17 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>__TITLE__</title>
 <style>
-  :root{--pp:#5A3580;--ppd:#3f2360;--gold:#c9a84c;--goldl:#e6cf8f;--goldd:#a8892f;--blue:#5b8def;--org:#f0a35e;--ink:#2b2333;--soft:#6b5d78;}
+  :root{--pp:#5A3580;--ppd:#3f2360;--gold:#c9a84c;--goldl:#e6cf8f;--goldd:#a8892f;--blue:#5b8def;--org:#f0a35e;--pink:#e85a8a;--ink:#2b2333;--soft:#6b5d78;}
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:#e8e5f0;color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;}
-  .poster{max-width:780px;margin:0 auto;background:#fff;box-shadow:0 24px 70px rgba(40,25,80,.3);overflow:hidden;}
+  .poster{max-width:800px;margin:0 auto;background:#fff;box-shadow:0 24px 70px rgba(40,25,80,.3);overflow:hidden;}
   .top{background:linear-gradient(165deg,#2e1a44,#4a2a6e 40%,#6a3f96 72%,#f3f0fa);padding:24px 34px 0;color:#fff;position:relative;overflow:hidden;}
   .top::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 90% 4%,rgba(240,163,94,.5),transparent 42%),radial-gradient(circle at 4% 30%,rgba(91,141,239,.45),transparent 42%);}
   .brand{position:relative;z-index:3;display:flex;align-items:center;gap:9px;font-size:12.5px;letter-spacing:1px;color:#ded4f0;}
   .brand .mk{width:25px;height:25px;border-radius:7px;background:linear-gradient(135deg,var(--goldl),var(--gold));color:var(--ppd);font-weight:900;font-size:13px;display:flex;align-items:center;justify-content:center;}
   .head{position:relative;z-index:3;padding:14px 0 4px;}
   .head .k{font-size:12px;letter-spacing:3px;color:#f7dfae;font-weight:700;}
-  .head h1{font-size:clamp(24px,5vw,35px);font-weight:900;line-height:1.2;margin-top:7px;text-shadow:0 3px 14px rgba(0,0,0,.3);}
+  .head h1{font-size:clamp(24px,5vw,35px);font-weight:900;line-height:1.22;margin-top:7px;text-shadow:0 3px 14px rgba(0,0,0,.3);}
   .head .slogan{display:inline-block;margin-top:12px;background:linear-gradient(135deg,rgba(240,163,94,.95),rgba(232,90,138,.95));color:#fff;font-size:13.5px;font-weight:800;padding:6px 18px;border-radius:22px;}
   .hero{position:relative;z-index:2;margin:14px -34px 0;}
   .hero img{width:100%;display:block;}
@@ -24,37 +24,33 @@
   .sl h2{font-size:17.5px;color:var(--pp);font-weight:900;}
   .sl .en{font-family:Georgia,serif;font-style:italic;color:#a99fb8;font-size:12px;}
   .sl .ln{flex:1;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--gold),transparent);}
-  /* 日期 */
   .dates{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
   .d{background:linear-gradient(145deg,var(--ppd),#6a3f96);border-radius:14px;color:#fff;padding:14px 16px;text-align:center;}
   .d .lb{font-size:11.5px;color:var(--goldl);letter-spacing:1px;}
   .d b{display:block;font-size:20px;font-weight:900;margin-top:3px;}
   .d span{font-size:11.5px;color:#d8cdea;}
-  /* 卖点 */
   .feats{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
   .feat{background:linear-gradient(150deg,#f8f5ff,#fff);border:1px solid rgba(90,53,128,.11);border-radius:13px;padding:13px 14px;display:flex;gap:10px;}
   .feat .ic{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--goldl),var(--gold));display:flex;align-items:center;justify-content:center;font-size:17px;flex:none;}
   .feat h4{font-size:13.5px;color:var(--pp);font-weight:900;margin-bottom:2px;}
   .feat p{font-size:12px;color:var(--soft);line-height:1.6;}
-  /* ECA */
+  .flow{background:linear-gradient(150deg,#f7f9ff,#fff);border:1px solid rgba(90,53,128,.11);border-radius:13px;padding:12px 16px;}
+  .fr{display:flex;gap:12px;padding:7px 0;border-bottom:1px dashed rgba(90,53,128,.12);}
+  .fr:last-child{border-bottom:none;}
+  .fr .tm{flex:0 0 100px;font-size:12px;font-weight:800;color:var(--pp);}
+  .fr .tx{font-size:12px;color:var(--soft);}
+  .fr .tx b{color:var(--ink);}
   .eca-wrap{background:linear-gradient(150deg,#fbf8ff,#fff);border:1px solid rgba(90,53,128,.12);border-radius:14px;padding:14px 14px 10px;}
   .eca-num{font-size:13px;color:var(--soft);margin-bottom:9px;}
   .eca-num b{color:#e85a8a;font-size:20px;font-weight:900;}
   .ecas{display:flex;flex-wrap:wrap;gap:6px;}
   .eca{font-size:11px;color:var(--pp);background:#f2ecfb;border:1px solid rgba(90,53,128,.1);padding:4px 9px;border-radius:12px;}
-  /* 日程 */
-  .flow{background:linear-gradient(150deg,#f7f9ff,#fff);border:1px solid rgba(90,53,128,.11);border-radius:13px;padding:14px 16px;}
-  .fr{display:flex;gap:12px;padding:8px 0;border-bottom:1px dashed rgba(90,53,128,.12);}
-  .fr:last-child{border-bottom:none;}
-  .fr .tm{flex:0 0 92px;font-size:12.5px;font-weight:800;color:var(--pp);}
-  .fr .tx{font-size:12.5px;color:var(--soft);}
-  .fr .tx b{color:var(--ink);}
-  /* 老师 */
-  .teachers{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;}
-  .t{background:#fff;border:1px solid rgba(90,53,128,.12);border-radius:13px;padding:12px 10px;text-align:center;box-shadow:0 5px 14px rgba(90,53,128,.06);}
-  .t img{width:62px;height:62px;border-radius:50%;object-fit:cover;border:3px solid var(--goldl);display:block;margin:0 auto;}
-  .t b{display:block;font-size:13px;color:var(--pp);margin-top:7px;}
-  .t span{display:block;font-size:11px;color:var(--goldd);font-weight:700;}
+  .teachers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .t{background:#fff;border:1px solid rgba(90,53,128,.12);border-radius:13px;padding:11px 8px;text-align:center;box-shadow:0 5px 14px rgba(90,53,128,.06);}
+  .t img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:3px solid var(--goldl);display:block;margin:0 auto;}
+  .t b{display:block;font-size:12.5px;color:var(--pp);margin-top:6px;}
+  .t .role{display:block;font-size:10.5px;color:var(--goldd);font-weight:800;line-height:1.35;}
+  .t .bio{display:block;font-size:9.5px;color:#7a6f85;line-height:1.45;margin-top:4px;}
   .foot{margin-top:22px;background:linear-gradient(135deg,#2e1a44,#6a3f96);color:#fff;padding:20px 34px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
   .foot .c{font-size:12px;color:#ded4f0;line-height:1.75;}
   .foot .c b{display:block;font-size:21px;color:var(--goldl);letter-spacing:1px;}
@@ -68,8 +64,8 @@
   <div class="top">
     <div class="brand"><span class="mk">C</span>成都康礼学校 · COGDEL SCHOOL CHENGDU</div>
     <div class="head">
-      <div class="k">PRIMARY MINI BRITISH SCHOOL · 3-DAY CAMP</div>
-      <h1>成都康礼小学<br>三天英式学堂 · 插班营地</h1>
+      <div class="k">PRIMARY · BRITISH CLASSROOM EXPERIENCE</div>
+      <h1>成都康礼小学<br>英式学堂体验 · 三天走进英式课堂</h1>
       <span class="slogan">65 门 ECA 选修课任你选 · 纯正沉浸式英式课堂</span>
     </div>
     <div class="hero"><img src="open-day-photos/hero-primary.jpg" alt="康礼课堂"></div>
@@ -83,16 +79,27 @@
 
     <div class="sl"><h2>为什么值得来</h2><span class="en">Why This Camp</span><span class="ln"></span></div>
     <div class="feats">
-      <div class="feat"><div class="ic">🇬🇧</div><div><h4>纯正沉浸式英式学堂</h4><p>孩子插进真实班级，全英文浸润的英式课堂，用英语学、用英语想。</p></div></div>
-      <div class="feat"><div class="ic">🧩</div><div><h4>65 门 ECA 选修课任你选</h4><p>科学、艺术、运动、语言、人文……走进真实走班选课，找到自己的热爱。</p></div></div>
-      <div class="feat"><div class="ic">👫</div><div><h4>插班走班 · 学伴陪伴</h4><p>2–4 人一组插进真实班级，按课表走班，每组配 1 名在读学伴或导师。</p></div></div>
+      <div class="feat"><div class="ic">🇬🇧</div><div><h4>纯正的沉浸式英式学堂</h4><p>跟真实班级一起上课，全英文浸润的英式课堂，用英语学、用英语想。</p></div></div>
+      <div class="feat"><div class="ic">🧩</div><div><h4>65 门 ECA 选修课任选</h4><p>科学、艺术、运动、语言、人文……按自己的课表走班选课，找到热爱。</p></div></div>
+      <div class="feat"><div class="ic">📚</div><div><h4>完整的课堂节奏</h4><p>上午下午跟课堂，傍晚 ECA 选课，晚自习有学科辅导——跟真实上学一样。</p></div></div>
       <div class="feat"><div class="ic">📋</div><div><h4>结营「兴趣信号报告」</h4><p>记录专注时长、提问质量与方向建议，帮家长看懂孩子的兴趣所在。</p></div></div>
     </div>
+
+    <div class="sl"><h2>三天怎么过</h2><span class="en">A Day at Camp</span><span class="ln"></span></div>
+    <div class="flow"><div class="fr"><span class="tm">08:15–08:35</span><span class="tx"><b>晨读</b> · 英文晨读，一天从英语开始</span></div>
+<div class="fr"><span class="tm">08:40–10:00</span><span class="tx"><b>上午 第 1–2 节</b> · 英语（外教分层）· 语文 · 数学 / 新加坡数学</span></div>
+<div class="fr"><span class="tm">10:50–12:10</span><span class="tx"><b>上午 第 3–4 节</b> · UOI 探究课 · 英语 · 双语体育</span></div>
+<div class="fr"><span class="tm">12:10–13:20</span><span class="tx"><b>午餐 &amp; 休息</b></span></div>
+<div class="fr"><span class="tm">13:20–14:40</span><span class="tx"><b>下午 第 5–6 节</b> · 科学 · 数学 · 音乐 · 美术</span></div>
+<div class="fr"><span class="tm">14:55–16:15</span><span class="tx"><b>下午 第 7–8 节</b> · UOI 探究课 · 写作 · 英语分层 · CCA</span></div>
+<div class="fr"><span class="tm">16:20–17:15</span><span class="tx"><b>ECA 选修课</b> · 按自己的课表走班选课（65 门任选）</span></div>
+<div class="fr"><span class="tm">17:15–18:15</span><span class="tx"><b>晚餐</b></span></div>
+<div class="fr"><span class="tm">18:15–19:30</span><span class="tx"><b>晚自习</b> · 作业辅导与自主学习</span></div></div>
 
     <div class="sl"><h2>可以选的 ECA 选修课</h2><span class="en">ECA Electives</span><span class="ln"></span></div>
     <div class="eca-wrap">
       <div class="eca-num">共 <b>65</b> 门选修课，按课表自由走班选择（以下为部分）</div>
-      <div class="ecas"><span class="eca">童说童语·口语表达</span>
+      <div class="ecas"><span class="eca">口语表达</span>
 <span class="eca">绘本故事</span>
 <span class="eca">诗歌写作</span>
 <span class="eca">趣味识字</span>
@@ -108,14 +115,13 @@
 <span class="eca">基础数学</span>
 <span class="eca">卓越数学</span>
 <span class="eca">数学竞赛</span>
-<span class="eca">童玩感知与协调</span>
-<span class="eca">Frisbee 飞盘</span>
+<span class="eca">Frisco 飞盘</span>
 <span class="eca">KET 预备</span>
 <span class="eca">基础英语</span>
 <span class="eca">韩语入门</span>
 <span class="eca">法语入门</span>
 <span class="eca">Story Teller</span>
-<span class="eca">英语戏剧：哈利波特</span>
+<span class="eca">英语戏剧·哈利波特</span>
 <span class="eca">高级英语</span>
 <span class="eca">日语入门</span>
 <span class="eca">自然拼读</span>
@@ -143,24 +149,16 @@
 <span class="eca">线描绘画</span></div>
     </div>
 
-    <div class="sl"><h2>三天怎么过</h2><span class="en">Daily Flow</span><span class="ln"></span></div>
-    <div class="flow">
-      <div class="fr"><span class="tm">上午</span><span class="tx"><b>英式课堂</b> 外教英语 + 学科课，全英文浸润</span></div>
-      <div class="fr"><span class="tm">午后</span><span class="tx"><b>ECA 走班选课</b> 按自己选的课表走班，尝试不同方向</span></div>
-      <div class="fr"><span class="tm">傍晚</span><span class="tx"><b>运动与社团</b> 游泳、球类、乐队、创客等，动静结合</span></div>
-      <div class="fr"><span class="tm">结营</span><span class="tx"><b>成果展示 + 兴趣信号报告</b> 孩子讲收获，家长拿到建议</span></div>
-    </div>
-
     <div class="sl"><h2>带营的老师</h2><span class="en">Our Teachers</span><span class="ln"></span></div>
-    <div class="teachers"><div class="t"><img src="open-day-images/elisha.png" alt="Elisha"><b>Elisha</b><span>英语</span></div>
-<div class="t"><img src="open-day-images/bishoy.png" alt="Bishoy"><b>Bishoy</b><span>英语</span></div>
-<div class="t"><img src="open-day-images/grace.png" alt="Grace"><b>Grace</b><span>英语</span></div>
-<div class="t"><img src="open-day-images/dimos.png" alt="Dimos"><b>Dimos</b><span>艺体</span></div>
-<div class="t"><img src="open-day-images/rita.png" alt="Rita"><b>Rita</b><span>英语</span></div>
-<div class="t"><img src="open-day-images/yvonne.png" alt="Yvonne"><b>Yvonne</b><span>英语</span></div></div>
+    <div class="teachers"><div class="t"><img src="open-day-images/elisha.png" alt="Elisha"><b>Elisha</b><span class="role">英语</span><span class="bio">伦敦政治经济学院学士 · 剑桥 CELTA</span></div>
+<div class="t"><img src="open-day-images/rita.png" alt="Rita"><b>Rita</b><span class="role">英语</span><span class="bio">宾夕法尼亚大学 TESOL 硕士</span></div>
+<div class="t"><img src="open-day-images/yvonne.png" alt="Yvonne"><b>Yvonne</b><span class="role">英语</span><span class="bio">伦敦大学学院（UCL）硕士</span></div>
+<div class="t"><img src="open-day-images/dimos.png" alt="Dimos"><b>Dimos</b><span class="role">艺体</span><span class="bio">福尔哈雷大学教育学学士 · 英语母语</span></div>
+<div class="t"><img src="open-day-images/grace.png" alt="Grace"><b>Grace</b><span class="role">英语</span><span class="bio">8 年多国际教育教学经验</span></div>
+<div class="t"><img src="open-day-images/bishoy.png" alt="Bishoy"><b>Bishoy</b><span class="role">英语</span><span class="bio">英国北安普顿大学 · 十余年教学</span></div></div>
   </div>
   <div class="foot">
-    <div class="c">小学插班营地 · 10.5–10.7 / 11.11–11.13 · 插班走班 · 外教全程<br><b>400-803-6661</b>成都市大邑县安仁古镇迎宾路二段247号</div>
+    <div class="c">小学 · 英式学堂体验 · 10.5–10.7 / 11.11–11.13<br><b>400-803-6661</b>成都市大邑县安仁古镇迎宾路二段247号</div>
     <div class="qr">扫码<br>预约访校</div>
   </div>
 </div>
