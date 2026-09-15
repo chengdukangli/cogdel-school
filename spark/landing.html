@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>火花计划 · Cogdel Spark</title>
+<style>
+  :root{--bg:#FFFFFF; --card:#F5F5F7; --ink:#1D1D1F; --muted:#6E6E73; --purple:#4A3B72; --gold:#D9B45B; --line:#E5E5EA;}
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{height:100%;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;}
+  .page{width:100%;max-width:430px;margin:0 auto;min-height:100vh;padding:64px 28px 56px;position:relative;}
+  .eyebrow{font-size:13px;letter-spacing:.12em;color:var(--muted);font-weight:600;}
+  h1{font-size:38px;line-height:1.15;font-weight:700;letter-spacing:-.02em;color:var(--ink);}
+  .en{display:block;font-size:.62em;color:var(--muted);font-weight:400;letter-spacing:normal;margin-top:5px;line-height:1.45;}
+  .sub{font-size:17px;color:var(--muted);line-height:1.6;margin-top:14px;}
+  .mascot{width:100%;height:auto;display:block;}
+  .section{margin-top:56px;}
+  .section h2{font-size:26px;font-weight:700;letter-spacing:-.01em;line-height:1.25;}
+  .section .lead{font-size:16px;line-height:1.75;color:var(--ink);margin-top:14px;}
+  .dims{margin-top:24px;display:flex;flex-direction:column;gap:14px;}
+  .dim{background:var(--card);border-radius:18px;padding:18px 20px;}
+  .dim .nm{font-size:15px;font-weight:700;color:var(--ink);}
+  .dim .nm .en{display:inline;font-size:.72em;margin-left:6px;color:var(--muted);font-weight:500;}
+  .dim .ds{font-size:13.5px;line-height:1.65;color:var(--muted);margin-top:5px;}
+  .dim .ds .en{display:block;font-size:.88em;margin-top:3px;}
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:22px 8px;margin-top:28px;}
+  .g-item{text-align:center;}
+  .g-item .gm{width:72px;margin:0 auto;}
+  .g-item .gl{font-size:12.5px;color:var(--ink);margin-top:6px;font-weight:600;}
+  .g-item .gl .en{display:block;font-size:.82em;font-weight:400;color:var(--muted);margin-top:1px;}
+  .examples{margin-top:20px;display:flex;flex-direction:column;gap:14px;}
+  .card{background:var(--card);border-radius:22px;padding:22px;}
+  .card .quote{font-size:16px;line-height:1.7;color:var(--ink);}
+  .card .quote .en{font-size:.82em;margin-top:6px;}
+  .card .tag{font-size:12px;letter-spacing:.05em;color:var(--purple);margin-top:10px;font-weight:600;}
+  .cta{margin-top:64px;text-align:center;}
+  .cta h2{font-size:28px;}
+  .cta .qrslot{width:230px;margin:28px auto 18px;display:flex;align-items:center;justify-content:center;}
+  .cta .qrslot img{width:100%;height:auto;display:block;border-radius:16px;}
+  .qr-fallback{flex-direction:column;gap:10px;text-align:center;padding:40px 24px;background:var(--card);border-radius:20px;width:100%;}
+  .qr-fallback .big{font-size:15px;color:var(--muted);font-weight:600;}
+  .qr-fallback .small{font-size:12px;color:#b0b0b8;}
+  .cta .tip{font-size:15px;color:var(--muted);line-height:1.6;}
+  .cta .tip b{color:var(--ink);}
+  footer{margin-top:64px;padding-top:28px;border-top:1px solid var(--line);text-align:center;}
+  footer .brand{font-size:14px;color:var(--ink);font-weight:700;}
+  footer .addr{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="eyebrow">成都康礼学校 · Cogdel School Chengdu</div>
+  <h1 style="margin-top:10px;">每个孩子的火花，<br>都值得被看见。<span class="en">Every child's spark<br>deserves to be seen.</span></h1>
+  <p class="sub">康礼的老师，随手记录孩子的闪光时刻。不是为了打分——是为了让每个孩子知道：你的光，被看见了。<span class="en">Our teachers capture a child's shining moments every day. Not to grade — so every child knows: your light is seen.</span></p>
+
+  <div class="section">
+    <h2>什么是「康礼火花」<span class="en">What is Cogdel Spark</span></h2>
+    <p class="lead">康礼火花，是老师随手记录孩子闪光时刻的方式。每一束火花都对应全人成长的某个维度，也正是这些日常的「被看见」，构成了每周与您见面的周记。<span class="en">Cogdel Spark is how our teachers capture a child's shining moments. Each spark maps to a dimension of whole-person growth.</span></p>
+    <div class="examples" id="examples"></div>
+  </div>
+
+  <div class="section">
+    <h2>八维能力模型<span class="en">The 8 Dimensions</span></h2>
+    <p class="lead">康礼以「全人教育」为核，把成长落在身心、学习、创新、内驱、领导、协作、视野与责任八个维度。<span class="en">Rooted in whole-person education, we trace growth across eight dimensions.</span></p>
+    <div class="dims" id="dims"></div>
+  </div>
+
+  <div class="section">
+    <h2>九种火花人格<span class="en">Nine Spark Types</span></h2>
+    <p class="lead">每个孩子，都是八维能力的独特组合。我们把这些「配方」，提炼成九种典型的火花人格。<span class="en">Every child is a unique mix of the 8 dimensions — we distilled these into nine archetypal spark types.</span></p>
+    <div class="gallery" id="gallery"></div>
+  </div>
+
+  <div class="cta">
+    <h2>想了解火花计划？<span class="en">Want to learn about the Spark Program?</span></h2>
+    <div class="qrslot">
+      <img src="qrcode.jpg" alt="陆琨校长微信二维码" onerror="this.style.display='none';document.getElementById('qrFallback').style.display='flex';">
+      <div class="qr-fallback" id="qrFallback" style="display:none;">
+        <span class="big">微信二维码</span>
+        <span class="small">请将二维码图片保存为 qrcode.jpg<br>与本页面放在同一目录</span>
+      </div>
+    </div>
+    <p class="tip">长按识别二维码，添加<b>陆琨校长</b><br>聊聊你的孩子，或预约一次访校。<span class="en">Long-press to scan and add <b>Principal Lu Kun</b>. Talk about your child, or book a school visit.</span></p>
+  </div>
+
+  <footer>
+    <div class="brand">成都康礼学校 · Cogdel School Chengdu</div>
+    <div class="addr">成都市大邑县安仁古镇迎宾路二段 247 号<br>电话 400-803-6661 · 官网 www.en.cogdelschool.com<br><span style="font-size:.9em;">No.247, Yingbin Rd, Anren Ancient Town, Dayi, Chengdu · Tel 400-803-6661</span></div>
+  </footer>
+</div>
+
+<script>
+const DIMS8=[
+  {zh:'身心健康',en:'Well-being',d:["了解并照顾自己的身心状态，在压力与变化中保持稳定与从容。","Understands and cares for their own well-being, staying steady under pressure and change."]},
+  {zh:'学习力',en:'Learning',d:["主动构建并拓展自己的知识体系，把所学内化为真正的理解，养成终身学习的习惯。","Actively builds knowledge, turns learning into understanding — and grows into a lifelong learner."]},
+  {zh:'创新力',en:'Innovation',d:["在理解现有方法的基础上，敢于提出新想法、尝试新做法，创造性地解决问题。","Builds on existing methods, daring to propose new ideas and solve problems creatively."]},
+  {zh:'内驱力',en:'Agency',d:["由内而外地设定目标、主动行动，持续推动自己前进，而不依赖外部催促。","Sets goals from within, takes initiative and drives forward without external prompting."]},
+  {zh:'领导力',en:'Leadership',d:["描绘共同方向、做出关键判断，并带动他人一起把事情做成。","Paints a shared direction, makes sound judgments and brings others together to get things done."]},
+  {zh:'团队协作',en:'Collaboration',d:["清晰沟通、换位思考、主动补位，在合作中建立信任、发挥合力。","Communicates clearly, thinks from others' perspectives, and builds trust to create synergy."]},
+  {zh:'国际视野',en:'Vision',d:["从更广阔的视角、更长远的维度理解世界，整合资源、预见趋势。","Understands the world from broader perspectives and a longer horizon, integrating resources and anticipating trends."]},
+  {zh:'社会责任',en:'Stewardship',d:["把自己的选择与他人和社会长远福祉的影响联系起来，并担起这份责任。","Connects choices to the long-term wellbeing of others and society, and takes responsibility for that impact."]},
+];
+const MASCS=[
+  {key:'agency',c1:'#FF7A45',hair:'spiky',expr:'determined',acc:'flame',label:["自燃型","Self-Starter"]},
+  {key:'learning',c1:'#5B9BD5',hair:'slick',expr:'curious',acc:'glasses',label:["终身学习者","Lifelong Learner"]},
+  {key:'innovation',c1:'#F2B33D',hair:'curly',expr:'grin',acc:'bulb',label:["破壁选手","Rule-Breaker"]},
+  {key:'collaboration',c1:'#8BC34A',hair:'bob',expr:'smile',acc:'hearts',label:["人间润滑剂","The Glue"]},
+  {key:'leadership',c1:'#E0555A',hair:'quiff',expr:'smirk',acc:'crown',label:["组局王者","The Decider"]},
+  {key:'wellbeing',c1:'#3FBF9E',hair:'bun',expr:'calm',acc:'anchor',label:["定海神针","The Anchor"]},
+  {key:'vision',c1:'#9B6BD6',hair:'long',expr:'dreamy',acc:'star',label:["抬头看天的人","The Stargazer"]},
+  {key:'stewardship',c1:'#5C6B8A',hair:'crew',expr:'steady',acc:'shield',label:["默默兜底的人","The Backbone"]},
+  {key:'balanced',c1:'#D9B45B',hair:'bob',expr:'smile',acc:'hex',label:["六边形战士","All-Rounder"]},
+];
+const EXAMPLES=[
+  {zh:"三个学生，在物理课上测出了8年来最接近真实值的重力加速度——9.88，离标准值9.81只差0.07。",en:"Three students measured gravity's acceleration at 9.88 — the closest to the real value (9.81) in 8 years.",tag:"学习力 · Learning"},
+  {zh:"一个之前背单词总卡壳的孩子，这周听写考了16/25。对他来说，这是一个真正的转折点。",en:"A child who once struggled with vocabulary scored 16/25 on dictation this week — a real turning point.",tag:"学习力 · Learning"},
+  {zh:"一个孩子，坦然聊起自己对美的追求，眼睛里有光。周末，她要去爬青城山。",en:"A child spoke openly about her pursuit of beauty, with light in her eyes. This weekend, she's hiking Qingcheng Mountain.",tag:"身心健康 · Well-being"},
+  {zh:"一个孩子，勇敢走上数学课的讲台，讲清楚了自己的解题思路。",en:"A child bravely stepped up in math class and clearly explained their solution.",tag:"学习力 · Learning"},
+  {zh:"一个孩子在咖啡厅跑前跑后地帮忙——'眼里有活、心中有主'。",en:"A child bustled around the café helping everyone — 'sees the work and holds people in her heart'.",tag:"团队协作 · Collaboration"},
+  {zh:"一个孩子，午休时间也在图书馆安静自习，不需要任何人催促。",en:"A child studies quietly in the library even during the lunch break — no one needs to push them.",tag:"内驱力 · Agency"},
+  {zh:"一个孩子，在'校园二手循环小店'项目里，主动牵头讨论、记录大家的想法。",en:"In the 'Campus Second-hand Store' project, a child naturally led the discussion and recorded the group's ideas.",tag:"领导力 · Leadership"},
+  {zh:"一个孩子，怕新同学找不到保健室，每次都陪着去，还主动帮忙找人。",en:"Worried a new student couldn't find the health room, a child accompanied them every time and helped look for them.",tag:"社会责任 · Stewardship"},
+];
+function hairSVG(style,c){const H={spiky:'<path d="M41 48 Q41 14 70 14 Q99 14 99 48 Q91 30 85 36 Q79 22 72 28 Q70 18 68 28 Q61 22 55 36 Q49 30 41 48Z" fill="'+c+'"/>',slick:'<path d="M40 48 A30 30 0 0 1 100 48 Q100 26 70 24 Q40 26 40 48Z" fill="'+c+'"/>',curly:'<path d="M40 48 Q38 20 54 16 Q50 26 58 30 Q56 16 70 16 Q84 16 82 30 Q90 26 86 16 Q102 20 100 48 Q94 32 88 38 Q80 28 74 34 Q66 28 60 34 Q52 28 46 38 Q40 32 40 48Z" fill="'+c+'"/>',bob:'<path d="M40 48 A30 30 0 0 1 100 48 L100 40 Q100 24 70 24 Q40 24 40 40 Z" fill="'+c+'"/>',bun:'<circle cx="70" cy="19" r="11" fill="'+c+'"/><path d="M40 48 A30 30 0 0 1 100 48 Q100 32 70 32 Q40 32 40 48Z" fill="'+c+'"/>',long:'<path d="M40 48 A30 30 0 0 1 100 48 L100 48 Q100 66 90 72 Q84 56 70 58 Q56 56 50 72 Q40 66 40 48Z" fill="'+c+'"/>',quiff:'<path d="M40 48 A30 30 0 0 1 100 48 Q100 30 88 20 Q86 14 78 18 Q80 26 72 24 Q64 14 56 20 Q58 26 52 30 Q42 30 40 48Z" fill="'+c+'"/>',crew:'<path d="M40 48 A30 30 0 0 1 100 48 Q100 34 70 34 Q40 34 40 48Z" fill="'+c+'"/>'};return H[style]||H.slick;}
+function faceSVG(expr){const eyes=expr==='calm'?'<path d="M52 46 Q60 40 68 46" stroke="#3a3a3a" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M72 46 Q80 40 88 46" stroke="#3a3a3a" stroke-width="2.5" fill="none" stroke-linecap="round"/>':'<circle cx="59" cy="46" r="6" fill="#fff"/><circle cx="81" cy="46" r="6" fill="#fff"/><circle cx="60" cy="47" r="3" fill="#3a3a3a"/><circle cx="80" cy="47" r="3" fill="#3a3a3a"/><circle cx="61" cy="45" r="1.3" fill="#fff"/><circle cx="81" cy="45" r="1.3" fill="#fff"/>';let m='';switch(expr){case 'determined':m='<path d="M64 60 L76 60" stroke="#3a3a3a" stroke-width="2.5" stroke-linecap="round"/>';break;case 'grin':m='<path d="M63 56 Q70 66 77 56 Z" fill="#3a3a3a"/>';break;case 'smirk':m='<path d="M63 58 Q70 62 77 57" stroke="#3a3a3a" stroke-width="2.2" fill="none" stroke-linecap="round"/>';break;case 'curious':m='<ellipse cx="70" cy="59" rx="3.5" ry="4.5" fill="#3a3a3a"/>';break;case 'calm':m='<path d="M65 59 Q70 62 75 59" stroke="#3a3a3a" stroke-width="2.2" fill="none" stroke-linecap="round"/>';break;case 'steady':m='<path d="M64 59 Q70 62 76 59" stroke="#3a3a3a" stroke-width="2.2" fill="none" stroke-linecap="round"/>';break;default:m='<path d="M64 58 Q70 63 76 58" stroke="#3a3a3a" stroke-width="2.2" fill="none" stroke-linecap="round"/>';}return eyes+m;}
+function accSVG(type){switch(type){case 'flame':return '<path d="M70 0 Q77 9 77 15 Q77 21 70 21 Q63 21 63 15 Q63 9 70 0Z" fill="#FFB84D"/><path d="M70 12 Q73 14 70 18 Q67 14 70 12Z" fill="#FF8A3D"/>';case 'crown':return '<path d="M50 15 L54 5 L62 12 L70 2 L78 12 L86 5 L90 15 Z" fill="#F6C445" stroke="#D9A520" stroke-width="1.5" stroke-linejoin="round"/>';case 'bulb':return '<circle cx="70" cy="8" r="7" fill="#FFF3C4" stroke="#E0A93D" stroke-width="1.5"/><path d="M67 14 h6" stroke="#E0A93D" stroke-width="1.5"/>';case 'hearts':return '<path d="M30 34 q-5 -7 -10 0 q-5 7 0 12 q4 4 10 9 q6 -5 10 -9 q5 -5 0 -12 q-5 -7 -10 0Z" fill="#FF8A9E"/><path d="M102 28 q-4 -5 -8 0 q-4 5 0 10 q3 3 8 7 q5 -4 8 -7 q4 -4 0 -10 q-4 -5 -8 0Z" fill="#FFB3C0"/>';case 'glasses':return '<circle cx="59" cy="46" r="9" fill="none" stroke="#3a3a3a" stroke-width="2"/><circle cx="81" cy="46" r="9" fill="none" stroke="#3a3a3a" stroke-width="2"/><path d="M68 46 h4" stroke="#3a3a3a" stroke-width="2"/>';case 'anchor':return '<g stroke="#2C7A6B" stroke-width="2.5" fill="none" stroke-linecap="round"><line x1="70" y1="92" x2="70" y2="108"/><line x1="63" y1="100" x2="77" y2="100"/><path d="M65 108 a5 5 0 0 0 10 0"/><line x1="70" y1="113" x2="70" y2="116"/></g>';case 'star':return '<path d="M70 0 l3 7 7 1 -5.5 5 1.5 7.5 -6 -4 -6 4 1.5 -7.5 -5.5 -5 7 -1Z" fill="#FFE08A"/>';case 'shield':return '<path d="M70 90 L86 95 V105 Q86 115 70 122 Q54 115 54 105 V95 Z" fill="#8A9DC0" stroke="#5C6B8A" stroke-width="1.5" stroke-linejoin="round"/>';case 'hex':return '<path d="M70 2 L86 11 V29 L70 38 L54 29 V11 Z" fill="#EBD49B" stroke="#D9B45B" stroke-width="2" stroke-linejoin="round"/>';}return '';}
+function mascotSVG(cfg){const skin='#F8DCC0';return '<svg class="mascot" viewBox="0 0 140 150">'
+  +'<ellipse cx="52" cy="143" rx="11" ry="5.5" fill="#3a3a3a"/><ellipse cx="88" cy="143" rx="11" ry="5.5" fill="#3a3a3a"/>'
+  +'<rect x="46" y="116" width="12" height="26" rx="5" fill="'+cfg.c1+'"/><rect x="82" y="116" width="12" height="26" rx="5" fill="'+cfg.c1+'"/>'
+  +'<path d="M44 78 Q70 70 96 78 L96 122 Q70 130 44 122 Z" fill="'+cfg.c1+'"/>'
+  +'<path d="M46 82 Q30 88 27 102 Q33 108 43 98 Z" fill="'+cfg.c1+'"/><path d="M94 82 Q110 88 113 102 Q107 108 97 98 Z" fill="'+cfg.c1+'"/>'
+  +'<circle cx="29" cy="104" r="5" fill="'+skin+'"/><circle cx="111" cy="104" r="5" fill="'+skin+'"/>'
+  +'<circle cx="70" cy="48" r="30" fill="'+skin+'"/>'
+  +'<circle cx="41" cy="50" r="4.5" fill="'+skin+'"/><circle cx="99" cy="50" r="4.5" fill="'+skin+'"/>'
+  + hairSVG(cfg.hair,cfg.c1)+ faceSVG(cfg.expr||'smile')
+  +'<ellipse cx="55" cy="56" rx="5" ry="3" fill="#F6A0B0" opacity="0.6"/><ellipse cx="85" cy="56" rx="5" ry="3" fill="#F6A0B0" opacity="0.6"/>'
+  + accSVG(cfg.acc)+'</svg>';}
+function charHTML(cfg){const svg=encodeURIComponent(mascotSVG(cfg));return '<img class="mascot" src="'+cfg.key+'.png" onerror="this.outerHTML=decodeURIComponent(\''+svg+'\')">';}
+(function(){
+  const ex=document.getElementById('examples');
+  EXAMPLES.forEach(e=>{const d=document.createElement('div');d.className='card';
+    d.innerHTML='<div class="quote">'+e.zh+'<span class="en">'+e.en+'</span></div><div class="tag">'+e.tag+'</div>';ex.appendChild(d);});
+  const dm=document.getElementById('dims');
+  DIMS8.forEach(x=>{const d=document.createElement('div');d.className='dim';
+    d.innerHTML='<div class="nm">'+x.zh+'<span class="en" style="display:inline;">'+x.en+'</span></div>'
+      +'<div class="ds">'+x.d[0]+'<span class="en">'+x.d[1]+'</span></div>';dm.appendChild(d);});
+  const g=document.getElementById('gallery');
+  MASCS.forEach(m=>{const d=document.createElement('div');d.className='g-item';
+    d.innerHTML='<div class="gm">'+charHTML(m)+'</div><div class="gl">'+m.label[0]+'<span class="en">'+m.label[1]+'</span></div>';g.appendChild(d);});
+})();
+</script>
+</body>
+</html>

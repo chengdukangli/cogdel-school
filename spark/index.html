@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>测测你的八维火花 · 8-Dimension Spark</title>
+<style>
+  :root{--bg:#FFFFFF; --card:#F5F5F7; --ink:#1D1D1F; --muted:#6E6E73; --purple:#4A3B72; --gold:#D9B45B; --line:#E5E5EA;}
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{height:100%;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;}
+  .app{width:100%;max-width:430px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;position:relative;}
+  .screen{display:none;flex-direction:column;flex:1;padding:60px 28px 40px;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+  .screen.active{display:flex;animation:fadein .5s ease;}
+  @keyframes fadein{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .eyebrow{font-size:13px;letter-spacing:.12em;color:var(--muted);font-weight:600;}
+  h1{font-size:40px;line-height:1.1;font-weight:700;letter-spacing:-.02em;color:var(--ink);}
+  .en{display:block;font-size:.62em;color:var(--muted);font-weight:400;letter-spacing:normal;margin-top:5px;line-height:1.4;}
+  .en-i{font-size:.68em;color:var(--muted);font-weight:400;}
+  .sub{font-size:17px;color:var(--muted);line-height:1.55;margin-top:14px;}
+  .btn{display:inline-flex;align-items:center;justify-content:center;width:100%;text-align:center;padding:17px 28px;border:none;border-radius:999px;font-size:17px;font-weight:600;cursor:pointer;background:var(--purple);color:#fff;transition:.18s;}
+  .btn:active{opacity:.75;transform:scale(.99);}
+  .btn.secondary{background:var(--card);color:var(--purple);}
+  .link{display:inline-block;font-size:16px;color:var(--purple);font-weight:500;cursor:pointer;text-decoration:none;}
+  .link:after{content:" ›";}
+  .mascot{width:100%;height:auto;display:block;}
+  .float{animation:fl 4s ease-in-out infinite;}
+  @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  #intro{justify-content:center;text-align:left;padding-top:70px;}
+  .mascot-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px 8px;margin:36px 0 12px;}
+  .mascot-row .m{width:70px;margin:0 auto;}
+  #intro h1{margin-top:10px;}
+  #intro .btn{margin-top:40px;}
+  #intro .foot{margin-top:22px;font-size:13px;color:var(--muted);}
+  #quiz .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
+  .qnum{font-size:14px;color:var(--muted);font-weight:600;letter-spacing:.05em;}
+  .bar{height:4px;background:#EDEDF0;border-radius:2px;overflow:hidden;margin-bottom:36px;}
+  .bar>div{height:100%;background:var(--purple);transition:width .3s;border-radius:2px;}
+  #quiz h2{font-size:24px;line-height:1.4;font-weight:700;letter-spacing:-.01em;color:var(--ink);margin-bottom:26px;}
+  .opts{display:flex;flex-direction:column;gap:13px;}
+  .opt{text-align:left;padding:16px 18px;border-radius:18px;border:1px solid var(--line);background:#fff;font-size:15.5px;line-height:1.45;cursor:pointer;transition:.15s;display:flex;align-items:flex-start;}
+  .opt:active{background:var(--card);transform:scale(.99);}
+  .opt .key{flex:none;width:26px;height:26px;line-height:26px;text-align:center;background:var(--card);color:var(--purple);border-radius:50%;font-size:13px;font-weight:700;margin-right:13px;margin-top:2px;}
+  #result{padding:52px 28px 44px;align-items:center;}
+  .reveal{text-align:center;width:100%;}
+  .reveal .mm{width:110px;margin:0 auto 18px;}
+  .reveal h2{font-size:32px;}
+  .reveal .oneliner{font-size:15px;color:var(--muted);margin-top:8px;}
+  .meta{margin-top:14px;display:inline-block;background:var(--card);border-radius:999px;padding:10px 18px;font-size:14px;font-weight:600;color:var(--purple);}
+  .lukun{margin-top:12px;font-size:12.5px;color:var(--muted);}
+  .radar-wrap{margin:34px 0;display:flex;justify-content:center;}
+  canvas#radar{width:280px;height:280px;}
+  .insight{width:100%;background:var(--card);border-radius:22px;padding:22px;}
+  .insight p{font-size:15.5px;line-height:1.7;color:var(--ink);}
+  .duo{width:100%;display:flex;gap:14px;margin-top:14px;}
+  .duo .card{flex:1;background:var(--card);border-radius:20px;padding:16px;}
+  .duo .card .t{font-size:12px;letter-spacing:.08em;margin-bottom:6px;font-weight:600;}
+  .duo .card .v{font-size:14px;line-height:1.6;color:var(--ink);}
+  .duo .card.power .t{color:#B8860B;}
+  .duo .card.soft .t{color:var(--purple);}
+  .gentle{width:100%;margin-top:14px;background:var(--card);border-radius:20px;padding:16px 18px;}
+  .gentle .t{font-size:12px;letter-spacing:.08em;color:var(--muted);margin-bottom:6px;font-weight:600;}
+  .gentle .v{font-size:14px;line-height:1.6;color:var(--ink);}
+  .actions{width:100%;margin-top:38px;display:flex;flex-direction:column;gap:15px;align-items:center;}
+  .kangli-block{width:100%;margin-top:44px;padding-top:30px;border-top:1px solid var(--line);text-align:center;}
+  .kangli-block .logo{font-size:14px;color:var(--ink);font-weight:700;}
+  .kangli-block p{font-size:14px;color:var(--muted);line-height:1.7;margin:10px 0 18px;}
+  .kangli-block .btn{font-size:16px;}
+  #shareCard{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
+  #shareCard.show{display:flex;}
+  .card-inner{width:100%;max-width:350px;max-height:92vh;overflow-y:auto;background:#fff;border-radius:28px;padding:26px 22px;text-align:center;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.2);transition:background .4s;}
+  .card-inner .close{position:absolute;top:14px;right:18px;font-size:22px;color:var(--muted);cursor:pointer;}
+  .card-inner .cm{width:92px;margin:0 auto;}
+  .card-inner h3{font-size:24px;color:var(--ink);font-weight:700;letter-spacing:-.01em;margin-top:4px;}
+  .card-inner .c-one{font-size:13.5px;color:var(--muted);margin-top:6px;}
+  .card-inner .c-meta{margin-top:12px;font-size:14px;font-weight:600;color:var(--purple);}
+  canvas#radar2{width:220px;height:220px;margin:12px auto;display:block;}
+  .card-inner .c-line{font-size:14.5px;line-height:1.6;color:var(--ink);}
+  .card-inner .c-invite{margin-top:16px;font-size:15px;color:var(--purple);font-weight:700;line-height:1.5;}
+  .c-kangli{margin-top:13px;font-size:12px;color:var(--muted);font-weight:600;}
+  .card-inner .hint{margin-top:8px;font-size:12px;color:var(--muted);}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="screen active" id="intro">
+    <div class="eyebrow" id="i-eyebrow"></div>
+    <h1 id="i-title"></h1>
+    <div class="mascot-row" id="mascotRow"></div>
+    <p class="sub" id="i-sub"></p>
+    <button class="btn" id="i-start" onclick="start()"></button>
+    <p class="foot" id="i-foot"></p>
+  </div>
+  <div class="screen" id="quiz">
+    <div class="top"><span class="qnum" id="qnum"></span></div>
+    <div class="bar"><div id="barfill" style="width:0%"></div></div>
+    <h2 id="qtext"></h2>
+    <div class="opts" id="opts"></div>
+  </div>
+  <div class="screen" id="result">
+    <div class="reveal">
+      <div class="mm float" id="r-mascot"></div>
+      <h2 id="r-label"></h2>
+      <div class="oneliner" id="r-oneliner"></div>
+      <div class="meta" id="r-meta"></div>
+      <div class="lukun" id="r-lukun"></div>
+    </div>
+    <div class="radar-wrap"><canvas id="radar" width="540" height="540"></canvas></div>
+    <div class="insight" id="r-insight"></div>
+    <div class="duo">
+      <div class="card power"><div class="t" id="r-power-t"></div><div class="v" id="r-power"></div></div>
+      <div class="card soft"><div class="t" id="r-soft-t"></div><div class="v" id="r-soft"></div></div>
+    </div>
+    <div class="gentle"><div class="t" id="r-gentle-t"></div><div class="v" id="r-gentle"></div></div>
+    <div class="actions">
+      <button class="btn" id="r-share" onclick="showShareCard()"></button>
+      <span class="link" id="r-copy" onclick="copyShare()"></span>
+      <span class="link" id="r-retake" onclick="restart()"></span>
+    </div>
+    <div class="kangli-block">
+      <div class="logo" id="r-klogo"></div>
+      <p id="r-kp"></p>
+      <button class="btn secondary" id="r-kbtn" onclick="window.open('landing.html','_blank')"></button>
+    </div>
+  </div>
+</div>
+<div id="shareCard">
+  <div class="card-inner" id="cardInner">
+    <span class="close" onclick="hideShareCard()">×</span>
+    <div class="cm float" id="c-mascot"></div>
+    <h3 id="c-label"></h3>
+    <div class="c-one" id="c-one"></div>
+    <div class="c-meta" id="c-meta"></div>
+    <canvas id="radar2" width="460" height="460"></canvas>
+    <div class="c-line" id="c-line"></div>
+    <div class="c-invite" id="c-invite"></div>
+    <div class="c-kangli" id="c-kangli"></div>
+    <div class="hint" id="c-hint"></div>
+  </div>
+</div>
+<script>
+const DIMS=[
+  {id:'wellbeing',zh:'身心',en:'Wellbeing',color:'#3FBF9E'},
+  {id:'learning',zh:'学习力',en:'Learning',color:'#5B9BD5'},
+  {id:'innovation',zh:'创新力',en:'Innovation',color:'#F2B33D'},
+  {id:'agency',zh:'内驱力',en:'Agency',color:'#FF7A45'},
+  {id:'leadership',zh:'领导力',en:'Leadership',color:'#E0555A'},
+  {id:'collaboration',zh:'协作',en:'Collaboration',color:'#8BC34A'},
+  {id:'vision',zh:'视野',en:'Vision',color:'#9B6BD6'},
+  {id:'stewardship',zh:'责任',en:'Stewardship',color:'#5C6B8A'},
+];
+const POOL=[
+  {t:["一个没人监督的周六，你本来计划做点正事。你最后会？","On an unsupervised Saturday, you planned to get something done. What actually happens?"],o:[
+    {d:'agency',k:'A',x:["按计划做完，心里才踏实","Finish it as planned — then I can relax"]},
+    {d:'collaboration',k:'B',x:["拉个人一起，有人陪才做得动","Grab a buddy; I work better with company"]},
+    {d:'wellbeing',k:'C',x:["先睡饱、吃好，状态对了再动手","Sleep and eat first; start when I'm in the right state"]},
+    {d:'innovation',k:'D',x:["突然冒出个新点子，正事扔一边先搞它","A new idea pops up — I drop the plan and chase it"]}]},
+  {t:["聚餐点菜，所有人齐声“随便”。你会？","Dinner ordering, everyone says \"whatever\". You?"],o:[
+    {d:'leadership',k:'A',x:["直接拍板一家，不好吃再换","Just decide on one; if it's bad, we switch"]},
+    {d:'collaboration',k:'B',x:["挨个问一圈，折中出大家能接受的","Ask around, find what everyone accepts"]},
+    {d:'agency',k:'C',x:["心里有家想去的，但没好意思说","I have a place in mind, but I don't say it"]},
+    {d:'vision',k:'D',x:["想的是：这顿饭之后，大家还能一起做点啥","Thinking: what can we do together after this meal?"]}]},
+  {t:["家里多了个快递纸箱，你的第一反应是？","A delivery box shows up at home. Your first thought?"],o:[
+    {d:'stewardship',k:'A',x:["拿来收纳，物尽其用","Use it for storage — waste not"]},
+    {d:'innovation',k:'B',x:["想它能改造成个啥","What can I turn this into?"]},
+    {d:'wellbeing',k:'C',x:["先放着，等猫去玩","Leave it for the cat to play with"]},
+    {d:'learning',k:'D',x:["研究下这箱子的承重和结构","Check its load capacity and structure"]}]},
+  {t:["遇到一个完全没接触过的新东西，你的第一动作是？","Faced with something totally new, your first move?"],o:[
+    {d:'learning',k:'A',x:["自己搜资料、翻教程，先搞懂","Search and read up; figure it out myself"]},
+    {d:'collaboration',k:'B',x:["逮住一个懂的人直接问","Find someone who knows and ask"]},
+    {d:'innovation',k:'C',x:["先上手瞎试，错了再改","Just try it, fix mistakes as I go"]},
+    {d:'agency',k:'D',x:["先收藏，四舍五入等于学会了","Bookmark it — that basically counts as learning it"]}]},
+  {t:["老师宣布“下周交小组作业”，你脑子里第一个声音是？","Teacher says \"group project due next week\". First voice in your head?"],o:[
+    {d:'leadership',k:'A',x:["“我来组队分任务”","\"I'll organize the team and tasks\""]},
+    {d:'collaboration',k:'B',x:["“别让我当组长就行”","\"Just don't make me the leader\""]},
+    {d:'wellbeing',k:'C',x:["“完了，又要拖 / 又要被拖”","\"Oh no — I'll drag or get dragged\""]},
+    {d:'stewardship',k:'D',x:["“我先把我的那部分想清楚”","\"Let me think through my part first\""]}]},
+  {t:["最近压力很大，你的真实状态更接近？","Under heavy stress, you're more like?"],o:[
+    {d:'wellbeing',k:'A',x:["身体先抗议：失眠 / 胃痛 / 头痛","My body complains first: insomnia / stomach / headache"]},
+    {d:'agency',k:'B',x:["越压越清醒，反而更想做事","Pressure wakes me up; I want to do more"]},
+    {d:'vision',k:'C',x:["退一步想：这事放在三年后还重要吗","Step back: will this matter in three years?"]},
+    {d:'innovation',k:'D',x:["躲进一个新领域 / 新爱好里缓缓","Escape into a new interest to recharge"]}]},
+  {t:["刷到一个全网吵翻的热搜，你的第一反应是？","A hot topic is blowing up online. Your first reaction?"],o:[
+    {d:'vision',k:'A',x:["“这事背后是什么逻辑”","\"What's the logic behind this?\""]},
+    {d:'learning',k:'B',x:["“他们到底在吵什么，我去查查”","\"What are they fighting about? Let me look it up\""]},
+    {d:'stewardship',k:'C',x:["“这会不会影响到谁，该不该发声”","\"Who might this affect? Should I speak up?\""]},
+    {d:'collaboration',k:'D',x:["顺手转给朋友，看TA怎么说","Forward it to a friend, see what they think"]}]},
+  {t:["地上有个空瓶，周围没人，你会？","An empty bottle on the ground, no one around. You?"],o:[
+    {d:'stewardship',k:'A',x:["捡起来扔了","Pick it up and bin it"]},
+    {d:'wellbeing',k:'B',x:["看一眼，继续走","Glance at it, keep walking"]},
+    {d:'leadership',k:'C',x:["拍下来，发群里“谁干的”","Take a photo and ask \"who did this?\" in the group"]},
+    {d:'learning',k:'D',x:["顺手记下：这附近该加个垃圾桶","Note: this area needs a trash can"]}]},
+  {t:["想象十年后的自己，你的画面更可能是？","Imagine yourself in ten years. Closer to which picture?"],o:[
+    {d:'leadership',k:'A',x:["在某个领域成了“能说了算的人”","Someone who \"calls the shots\" in their field"]},
+    {d:'learning',k:'B',x:["还在学新东西，停不下来","Still learning new things, never stopping"]},
+    {d:'vision',k:'C',x:["去了很多地方，见过更大的世界","Been to many places, seen a bigger world"]},
+    {d:'collaboration',k:'D',x:["有一群处得来、彼此照应的人","A circle of friends who truly have each other"]}]},
+  {t:["你更受不了哪种“队友”？","Which \"teammate\" do you hate most?"],o:[
+    {d:'leadership',k:'A',x:["什么都不管、等别人安排","One who does nothing and waits for orders"]},
+    {d:'stewardship',k:'B',x:["不守时、答应的事老掉链子","One who's never on time and breaks promises"]},
+    {d:'innovation',k:'C',x:["只会照做、没有自己的想法","One who just follows orders, no ideas"]},
+    {d:'agency',k:'D',x:["一遇困难就躺平、没人推就不动","One who gives up and won't move without a push"]}]},
+  {t:["深夜11点，你明天的任务还没做完。你会？","11pm, tomorrow's task isn't done. You?"],o:[
+    {d:'agency',k:'A',x:["熬夜做完，睡不踏实更难受","Stay up — leaving it undone feels worse"]},
+    {d:'wellbeing',k:'B',x:["先睡，明天早起赶","Sleep first, wake early and rush it"]},
+    {d:'collaboration',k:'C',x:["叫个朋友一起肝","Call a friend to grind together"]},
+    {d:'innovation',k:'D',x:["边做边想：有没有更省事的办法","Work while thinking: is there a smarter way?"]}]},
+  {t:["群里有人发了个拼团链接，你的第一反应是？","Someone posts a group-buy link in chat. Your first reaction?"],o:[
+    {d:'stewardship',k:'A',x:["顺手帮点一下","Tap to help them out"]},
+    {d:'wellbeing',k:'B',x:["假装没看见","Pretend I didn't see it"]},
+    {d:'learning',k:'C',x:["研究下这东西到底值不值","Research whether it's actually worth it"]},
+    {d:'collaboration',k:'D',x:["问他“还差几个，我帮你转”","Ask \"how many more do you need? I'll share it\""]}]},
+  {t:["临时被拉去主持一个活动，你会？","You're suddenly asked to host an event. You?"],o:[
+    {d:'leadership',k:'A',x:["硬着头皮上，边做边学","Take it on, learn as I go"]},
+    {d:'collaboration',k:'B',x:["先拉个人一起商量流程","Pull someone in to plan together"]},
+    {d:'wellbeing',k:'C',x:["心里慌，但表面稳","Panic inside, calm outside"]},
+    {d:'innovation',k:'D',x:["趁机加点自己的创意环节","Add my own creative twist to it"]}]},
+  {t:["到一个陌生城市旅行，你会？","Traveling to a new city. You?"],o:[
+    {d:'learning',k:'A',x:["提前做攻略，按计划走","Plan ahead, follow the itinerary"]},
+    {d:'collaboration',k:'B',x:["先找当地人问哪里好玩","Ask a local what's good"]},
+    {d:'vision',k:'C',x:["专挑博物馆 / 老城区，看历史","Head to museums / old town, soak up history"]},
+    {d:'innovation',k:'D',x:["走一条没人的小路，看能发现啥","Take an empty path, see what I discover"]}]},
+  {t:["朋友心情不好找你，你的第一反应是？","A friend is upset and comes to you. Your first response?"],o:[
+    {d:'stewardship',k:'A',x:["先听TA说完，不急着给建议","Just listen, no rush to advise"]},
+    {d:'learning',k:'B',x:["帮TA把问题一层层捋清楚","Help them untangle it layer by layer"]},
+    {d:'wellbeing',k:'C',x:["拉TA出去散心、吃顿好的","Take them out for food / fresh air"]},
+    {d:'vision',k:'D',x:["问TA“最坏会怎样”，帮TA换个角度","Ask \"what's the worst that could happen?\" to shift their view"]}]},
+  {t:["你的手机 / 电脑桌面，通常是？","Your phone / computer desktop is usually?"],o:[
+    {d:'stewardship',k:'A',x:["分门别类，井井有条","Tidy, everything categorized"]},
+    {d:'agency',k:'B',x:["随手放，但我知道东西在哪","Scattered, but I know where everything is"]},
+    {d:'innovation',k:'C',x:["常换各种好看的壁纸 / 主题","Always changing wallpapers / themes"]},
+    {d:'wellbeing',k:'D',x:["有点乱，但“乱中有序”","A bit messy, but \"organized chaos\""]}]},
+  {t:["面对一件“必须做但很不想做”的事，你会？","Faced with a \"must-do but really don't want to\" task. You?"],o:[
+    {d:'learning',k:'A',x:["拆成小步骤，一个个啃","Break it into small steps, chew through them"]},
+    {d:'agency',k:'B',x:["设个奖励，做完才兑现","Set a reward, only after I finish"]},
+    {d:'collaboration',k:'C',x:["找人监督 / 一起做","Get someone to supervise / do it with me"]},
+    {d:'wellbeing',k:'D',x:["先做5分钟，做着做着就进去了","Just do 5 minutes — I'll get into the flow"]}]},
+  {t:["你理想中的“朋友”，更接近？","Your ideal \"friend\" is closer to?"],o:[
+    {d:'leadership',k:'A',x:["能一起搞事情、互相成就的","Someone to build things with, achieving together"]},
+    {d:'collaboration',k:'B',x:["能随时说话、彼此接住的","Someone I can talk to anytime, who has my back"]},
+    {d:'vision',k:'C',x:["能带我看更大世界、长见识的","Someone who shows me a bigger world"]},
+    {d:'stewardship',k:'D',x:["不用常联系、但一直在的","Someone who stays, even without constant contact"]}]},
+  {t:["排队时，前面有人插队，你会？","Someone cuts in line ahead of you. You?"],o:[
+    {d:'leadership',k:'A',x:["直接说“请排队”","Say directly: \"please queue up\""]},
+    {d:'wellbeing',k:'B',x:["心里不爽，但忍了","Annoyed inside, but let it go"]},
+    {d:'learning',k:'C',x:["观察下他是不是真有急事","Observe whether they really have an emergency"]},
+    {d:'collaboration',k:'D',x:["和旁边的人对视一眼，找共识","Exchange a look with the person next to me"]}]},
+  {t:["你更喜欢哪种“充电”方式？","Your preferred way to \"recharge\"?"],o:[
+    {d:'learning',k:'A',x:["系统性地看课、读书、做笔记","Systematically study, read, take notes"]},
+    {d:'collaboration',k:'B',x:["找个领域的大牛聊一聊","Chat with an expert in the field"]},
+    {d:'innovation',k:'C',x:["动手做个东西，边做边学","Build something, learn by doing"]},
+    {d:'vision',k:'D',x:["去个没去过的地方，边看边想","Go somewhere new, watch and think"]}]},
+  {t:["别人夸你的时候，你的第一反应是？","When someone praises you, your first reaction?"],o:[
+    {d:'agency',k:'A',x:["“谢谢，但我觉得还能更好”","\"Thanks, but I think I can do better\""]},
+    {d:'collaboration',k:'B',x:["“没有啦，都是大家一起做的”","\"No no, it was a team effort\""]},
+    {d:'wellbeing',k:'C',x:["表面淡定，心里开心半天","Calm outside, secretly happy for days"]},
+    {d:'vision',k:'D',x:["会想“TA是不是有事要求我”","Wonder \"do they want something from me?\""]}]},
+  {t:["你更愿意把时间花在？","You'd rather spend time on?"],o:[
+    {d:'agency',k:'A',x:["把一件事做到极致","Perfecting one thing"]},
+    {d:'innovation',k:'B',x:["尝试没做过的新鲜事","Trying something brand new"]},
+    {d:'stewardship',k:'C',x:["陪重要的人","Being with people who matter"]},
+    {d:'vision',k:'D',x:["想清楚自己到底要什么","Figuring out what I really want"]}]},
+  {t:["团队项目遇到卡点，你会？","The team hits a wall on a project. You?"],o:[
+    {d:'leadership',k:'A',x:["站出来牵头找办法","Step up and lead the search for a way"]},
+    {d:'collaboration',k:'B',x:["召集大家头脑风暴","Call everyone to brainstorm"]},
+    {d:'agency',k:'C',x:["自己先闷头研究，再拿出方案","Research quietly, then present a plan"]},
+    {d:'vision',k:'D',x:["退一步看：是不是方向本身有问题","Step back: is the direction itself wrong?"]}]},
+  {t:["你身上最像哪种“动物”？","Which \"animal\" are you most like?"],o:[
+    {d:'vision',k:'A',x:["鹰——盯住目标，飞得高看得远","Eagle — focused, flying high and far"]},
+    {d:'stewardship',k:'B',x:["蜜蜂——勤勤恳恳，各司其职","Bee — diligent, each in our role"]},
+    {d:'innovation',k:'C',x:["狐狸——点子多，灵活应变","Fox — full of ideas, quick to adapt"]},
+    {d:'leadership',k:'D',x:["头狼——带队冲在前面","Wolf — leads the pack from the front"]}]},
+  {t:["你走进一个陌生的聚会，你的第一反应是？","You walk into a party full of strangers. Your first move?"],o:[
+    {d:'collaboration',k:'A',x:["找认识的人先融入","Find someone I know to blend in"]},
+    {d:'vision',k:'B',x:["观察大家怎么相处","Observe how people interact"]},
+    {d:'wellbeing',k:'C',x:["找个角落先待着","Find a corner and settle in"]},
+    {d:'leadership',k:'D',x:["主动把气氛带起来","Take the lead and liven things up"]}]},
+  {t:["你被分到和一个完全不认识的人一起做任务，你会？","You're paired with a total stranger on a task. You?"],o:[
+    {d:'collaboration',k:'A',x:["先聊几句，了解对方的强项","Chat first to learn their strengths"]},
+    {d:'agency',k:'B',x:["各自分工，做好自己的部分","Split the work, do my part"]},
+    {d:'learning',k:'C',x:["边做边观察，学对方怎么做","Work while learning from them"]},
+    {d:'innovation',k:'D',x:["试试能不能换个新玩法配合","Try a fresh way to collaborate"]}]},
+  {t:["购物看到「买一送一」，你的第一反应是？","You see a 'buy one get one free' deal. Your first thought?"],o:[
+    {d:'stewardship',k:'A',x:["需要就买，物尽其用","If I need it, buy — waste not"]},
+    {d:'learning',k:'B',x:["先算算是不是真划算","Check if it's actually a good deal"]},
+    {d:'wellbeing',k:'C',x:["先囤着，以后用得上","Stock up, I'll use it later"]},
+    {d:'collaboration',k:'D',x:["发给朋友问要不要拼","Send it to a friend to split"]}]},
+  {t:["在团队里，你更常扮演什么角色？","In a team, what role do you usually play?"],o:[
+    {d:'innovation',k:'A',x:["出主意的人","The idea person"]},
+    {d:'leadership',k:'B',x:["拍板的人","The decider"]},
+    {d:'agency',k:'C',x:["落地执行的人","The one who gets it done"]},
+    {d:'collaboration',k:'D',x:["调和关系的人","The peacemaker"]}]},
+  {t:["遇到一个观点和你完全相反的人，你会？","You meet someone who holds the exact opposite view. You?"],o:[
+    {d:'vision',k:'A',x:["想听听他为什么这么想","Want to hear why they think so"]},
+    {d:'leadership',k:'B',x:["跟他辩论到底","Argue it out with them"]},
+    {d:'collaboration',k:'C',x:["求同存异，不影响关系","Agree to disagree"]},
+    {d:'learning',k:'D',x:["自己再想想谁更有道理","Think again about who's right"]}]},
+  {t:["你的「休息」通常是？","How do you usually rest?"],o:[
+    {d:'wellbeing',k:'A',x:["睡一觉、发发呆","Sleep or just zone out"]},
+    {d:'learning',k:'B',x:["看本书、学点新东西","Read or learn something new"]},
+    {d:'collaboration',k:'C',x:["找朋友聚一聚","Hang out with friends"]},
+    {d:'innovation',k:'D',x:["搞点创作或小项目","Tinker with a creative project"]}]},
+  {t:["你买东西，更看重什么？","What matters most when you buy something?"],o:[
+    {d:'stewardship',k:'A',x:["实用耐用","Practical and durable"]},
+    {d:'learning',k:'B',x:["性价比","Value for money"]},
+    {d:'innovation',k:'C',x:["新奇有趣","Novel and fun"]},
+    {d:'collaboration',k:'D',x:["朋友推荐","Recommended by friends"]}]},
+  {t:["别人给你提意见，你会？","When someone gives you feedback, you?"],o:[
+    {d:'wellbeing',k:'A',x:["先谢谢，回去再消化","Thank them, digest it later"]},
+    {d:'learning',k:'B',x:["当场问清楚哪里能改","Ask right away what to improve"]},
+    {d:'agency',k:'C',x:["觉得我的想法也不错","Defend my own idea"]},
+    {d:'collaboration',k:'D',x:["拉上别人一起讨论","Bring others in to discuss"]}]},
+  {t:["你理想的工作状态是？","Your ideal way of working is?"],o:[
+    {d:'agency',k:'A',x:["自己定目标，自己推进","Set my own goals, drive myself"]},
+    {d:'collaboration',k:'B',x:["团队一起，有氛围","Work as a team, good vibe"]},
+    {d:'leadership',k:'C',x:["有方向有授权，我带队","Clear direction, I lead"]},
+    {d:'innovation',k:'D',x:["能不断尝试新东西","Always trying new things"]}]},
+  {t:["看到新出的 app 或功能，你会？","You see a new app or feature. You?"],o:[
+    {d:'innovation',k:'A',x:["马上下载试试","Download it right away"]},
+    {d:'collaboration',k:'B',x:["等别人都说好再试","Wait until others vouch for it"]},
+    {d:'learning',k:'C',x:["研究它到底解决什么问题","Study what problem it solves"]},
+    {d:'wellbeing',k:'D',x:["不追新，够用就行","Skip it, what I have works"]}]},
+  {t:["你做决定的风格是？","How do you make decisions?"],o:[
+    {d:'leadership',k:'A',x:["快速决定，错了再改","Decide fast, fix later"]},
+    {d:'learning',k:'B',x:["反复权衡利弊","Weigh the pros and cons"]},
+    {d:'collaboration',k:'C',x:["多听大家的意见","Listen to everyone first"]},
+    {d:'wellbeing',k:'D',x:["跟着感觉走","Follow my gut"]}]},
+  {t:["你更怕哪种情况？","Which do you fear more?"],o:[
+    {d:'agency',k:'A',x:["没有目标，不知道往哪走","No goal, no direction"]},
+    {d:'collaboration',k:'B',x:["一个人，没人支持","Being alone, unsupported"]},
+    {d:'innovation',k:'C',x:["一成不变，没有新鲜感","Monotony, no novelty"]},
+    {d:'vision',k:'D',x:["看不清未来的趋势","Can't see future trends"]}]},
+  {t:["你学一项新技能的动机，通常是？","What usually drives you to learn a new skill?"],o:[
+    {d:'learning',k:'A',x:["就是想会","Just want to know it"]},
+    {d:'agency',k:'B',x:["为了达成某个目标","To reach a goal"]},
+    {d:'collaboration',k:'C',x:["朋友在学，一起","Friends are learning it too"]},
+    {d:'innovation',k:'D',x:["好奇它到底怎么回事","Curious how it works"]}]},
+  {t:["你处理冲突的方式是？","How do you handle conflict?"],o:[
+    {d:'leadership',k:'A',x:["直面，把话说开","Face it head-on"]},
+    {d:'wellbeing',k:'B',x:["先冷静，再谈","Cool down first, then talk"]},
+    {d:'collaboration',k:'C',x:["找第三方调解","Find someone to mediate"]},
+    {d:'vision',k:'D',x:["想想冲突背后的原因","Look at the root cause"]}]},
+  {t:["你更喜欢哪种表扬？","Which praise do you prefer?"],o:[
+    {d:'leadership',k:'A',x:["在大家面前被夸","Praised in front of everyone"]},
+    {d:'wellbeing',k:'B',x:["私下被真心肯定","Sincerely appreciated in private"]},
+    {d:'innovation',k:'C',x:["被夸「有想法」","Praised as 'creative'"]},
+    {d:'stewardship',k:'D',x:["被夸「靠谱」","Praised as 'reliable'"]}]},
+  {t:["给你一天完全自由的时间，你会？","Given a completely free day, you would?"],o:[
+    {d:'agency',k:'A',x:["做一件一直想做没做的事","Do something I've long wanted to"]},
+    {d:'collaboration',k:'B',x:["约上朋友好好玩","Hang out with friends"]},
+    {d:'learning',k:'C',x:["学点一直想学的东西","Learn something I've meant to"]},
+    {d:'vision',k:'D',x:["去个没去过的地方","Go somewhere new"]}]},
+];
+const PERSONAS={
+  agency:{key:'agency',c1:'#FF7A45',c2:'#FFD8C2',acc:'flame',hair:'spiky',expr:'determined',rarity:["稀有一型","a rare type"],label:["自燃型选手","The Self-Starter"],one:["没人盯着，你也能往前冲","You move forward even when nobody's watching"],ins:["你不是那种需要别人推着走的人。你心里有个小火堆，自己就能烧起来。最舒服的状态，是目标在前头，你一个人闷头往前。","You're not someone who needs to be pushed. There's a little fire inside you that burns on its own. You're happiest with a goal ahead and the road to yourself."],power:["别人靠闹钟，你靠心里那口气。","Others need an alarm; you have an inner fire."],soft:["你太习惯一个人扛了，有时会忘了——“求助”也是一种本事。","You're too used to carrying it alone — sometimes \"asking for help\" is a skill too."],line:["没人盯着也能往前冲","moves forward with no one watching"]},
+  learning:{key:'learning',c1:'#5B9BD5',c2:'#D7E8F7',acc:'glasses',hair:'slick',expr:'curious',rarity:["较常见一型","a common type"],label:["终身学习者","The Lifelong Learner"],one:["你对这个世界，永远保持着“为什么”","You never stop asking \"why\""],ins:["别人刷手机是消磨，你刷手机是“顺便学点啥”。一个不懂的东西，能在你脑子里待很久，直到你搞明白。你未必最聪明，但你是停不下来的那个。","Others scroll to kill time; you scroll and \"learn something by the way\". A thing you don't understand can stay in your head until you figure it out. You may not be the smartest, but you're the one who never stops."],power:["时间在你这里会“利滚利”。","Time compounds for you."],soft:["想太多、动太少，学了一堆，落地的不多。","You think a lot, act a little — learned a lot, landed a little."],line:["对世界永远有“为什么”","always asking why"]},
+  innovation:{key:'innovation',c1:'#F2B33D',c2:'#FFEFC7',acc:'bulb',hair:'curly',expr:'grin',rarity:["稀有一型","a rare type"],label:["破壁选手","The Rule-Breaker"],one:["你天生想改点啥，把“这样就行”改成“还能更好”","You always want to turn \"fine\" into \"better\""],ins:["别人看到纸箱想“能装啥”，你想的是“能变成啥”。你不太服“规矩就是规矩”，总想试试有没有别的路。你点子多，但有时候，多了也会乱。","Others see a box and think \"what fits in it\"; you think \"what can it become\". You don't accept \"rules are rules\" — you always look for another way. You're full of ideas; sometimes too many."],power:["你眼里没有死路。","You see no dead ends."],soft:["你开很多头，收尾要靠别人拉一把。","You start many things; someone else has to help you finish."],line:["眼里没有死路","sees no dead ends"]},
+  collaboration:{key:'collaboration',c1:'#8BC34A',c2:'#E2F2CF',acc:'hearts',hair:'bob',expr:'smile',rarity:["较常见一型","a common type"],label:["人间润滑剂","The Glue"],one:["有你在的地方，事情会顺一点","Things just flow smoother around you"],ins:["你天生会读空气，谁尴尬了、谁被冷落了，你一眼就看见。你不是最出风头的，但你是让一桌人都舒服的那个。别人记不清你说了啥，只记得“跟TA在一起很轻松”。","You read the room naturally — you spot who's awkward, who's left out. You're not the loudest, but you're the one who makes everyone comfortable. People forget what you said, only remember \"being with them feels easy\"."],power:["你是团队的“隐形黏合剂”。","You're the team's invisible bond."],soft:["你太照顾别人了，自己的需求，常常排在最后。","You look after everyone; your own needs come last."],line:["有我在，就顺一点","makes everything flow"]},
+  leadership:{key:'leadership',c1:'#E0555A',c2:'#F8D4D5',acc:'crown',hair:'quiff',expr:'smirk',rarity:["较稀有一型","a fairly rare type"],label:["组局王者","The Decider"],one:["关键时刻，你敢拍板","You call the shots when it counts"],ins:["一群人“随便”的时候，你是那个说出“就这家”的人。你不怕做决定，也扛得住决定之后的后果。你未必嗓门最大，但你一开口，大家会听。","When everyone says \"whatever\", you're the one who says \"this one\". You're not afraid to decide, and you can carry the consequences. You may not be the loudest, but when you speak, people listen."],power:["你是主心骨，也是定盘星。","You're the anchor and the compass."],soft:["你习惯扛事，有时会忘了——团队是大家的，不是你的。","You're used to carrying it — but a team belongs to everyone."],line:["关键时刻敢拍板","calls the shots when it counts"]},
+  wellbeing:{key:'wellbeing',c1:'#3FBF9E',c2:'#D0F0E8',acc:'anchor',hair:'bun',expr:'calm',rarity:["较常见一型","a common type"],label:["定海神针","The Anchor"],one:["你稳。稳到别人待在你身边，心就定","You're steady — and it steadies everyone around you"],ins:["你未必情绪最外露，但你是最会照顾自己的那个。你知道什么时候该停、该睡、该缓一缓。别人乱成一团的时候，你的节奏不乱。","You may not show your feelings most, but you're the best at taking care of yourself. You know when to stop, to sleep, to slow down. When everyone's in chaos, your rhythm holds."],power:["你是自己的“情绪收纳师”，也是别人的。","You're the keeper of your own calm, and others' too."],soft:["你太会扛了，扛到自己身体先报警，也不说。","You hold on so hard your body signals first — and you still don't say."],line:["稳得住全场","steady as an anchor"]},
+  vision:{key:'vision',c1:'#9B6BD6',c2:'#E7DCF6',acc:'star',hair:'long',expr:'dreamy',rarity:["传说级稀有","a legendary rare type"],label:["抬头看天的人","The Stargazer"],one:["别人看眼前，你想的是更远的地方","Others see the present; you see farther"],ins:["一个热搜，别人看热闹，你想的是“背后是什么”。你不容易被眼前的鸡毛蒜皮困住，因为你想得远。你未必合群，因为你在乎的东西，常常和别人不一样。","A hot topic — others watch the drama, you ask \"what's behind it\". You're not easily trapped by small stuff, because you think far. You may not fit in, because what you care about is often different."],power:["你有一双“望远镜”。","You have a telescope."],soft:["想得太远，容易忽略脚下正在发生的小确幸。","You look so far you miss the little joys underfoot."],line:["想得比别人远","sees farther than most"]},
+  stewardship:{key:'stewardship',c1:'#5C6B8A',c2:'#D8DFEC',acc:'shield',hair:'crew',expr:'steady',rarity:["较常见一型","a common type"],label:["默默兜底的人","The Backbone"],one:["靠谱到你身边的人，都敢把后背交给你","So reliable, people trust you with their backs"],ins:["地上的空瓶，你会捡；答应的事，你会记。你不是冲在最前面喊口号的人，你是最后留下来收尾的人。别人未必看见你，但出事的时候，第一个想到的一定是你。","You pick up the empty bottle; you keep every promise. You're not the one shouting at the front — you're the one who stays to finish. People may not notice you, but when trouble comes, you're the first they think of."],power:["你是“最后一道防线”。","You're the last line of defense."],soft:["你默默扛了太多，别人以为你不需要被照顾。","You carry so much quietly, people think you don't need care."],line:["靠谱到让人安心","reliable to the core"]},
+};
+const BALANCED={key:'balanced',c1:'#D9B45B',c2:'#F4E9CB',acc:'hex',hair:'bob',expr:'smile',rarity:["稀有·六边形","a rare all-rounder"],label:["六边形战士","The All-Rounder"],one:["你什么都能来一点，是“哪里需要哪里搬”的人","A bit of everything — the \"fill any gap\" person"],ins:["你没有特别偏科的能力，但这本身，就是一种稀缺。你不是某一型的专才，你是能把不同的人接起来的那种人。","You have no extreme strengths — and that itself is rare. You're not a specialist of one type; you're the person who connects different people."],power:["你什么都能来一点。","You can do a bit of everything."],soft:["有时候，什么都行，也意味着难以下定决心。","Sometimes \"anything goes\" makes it hard to decide."],line:["啥都行","good at everything"]};
+const GENTLE={
+  agency:["你的发动机，需要别人点个火。你不是懒，是还没找到那件让你自己烧起来的事。","Your engine needs someone to light the spark. You're not lazy — you just haven't found what sets you on fire."],
+  learning:["你学东西，靠兴趣，不靠计划。你不是学不会，是还没遇到让你“上头”的那件事。","You learn by interest, not by plan. You're not slow — you just haven't met the thing that hooks you."],
+  innovation:["你更擅长把事做对，而不是做新。把一件对的事做到底，也是了不起的本事。","You'd rather do things right than do new things. Finishing one thing well is also a gift."],
+  collaboration:["你是孤勇者：一个人能扛，但心里会累。学会说“帮我一下”，不丢人。","You're a lone warrior: you can carry it alone, but it wears you out. Saying \"help me\" isn't weakness."],
+  leadership:["你不爱出头，但喜欢成全。把别人往前推，也是一种领导力。","You don't love the spotlight, but you love lifting others up. Pushing others forward is leadership too."],
+  wellbeing:["你的身体，总在替你扛情绪。下次它报警，停下来抱抱自己。","Your body keeps carrying your emotions. Next time it signals, stop and hold yourself."],
+  vision:["你活得很当下，这很难得。别人忙着焦虑未来，你在认真过今天。","You live in the present — that's rare. While others worry about tomorrow, you're truly living today."],
+  stewardship:["你不是没担当，是还没找到想扛的事。等你想扛了，你会比谁都靠得住。","You're not irresponsible — you just haven't found what you want to carry. When you do, you'll be the most reliable of all."],
+};
+const SHARE_URL='https://www.en.cogdelschool.com/spark/';
+function hairSVG(style,c){const H={spiky:'<path d="M41 48 Q41 14 70 14 Q99 14 99 48 Q91 30 85 36 Q79 22 72 28 Q70 18 68 28 Q61 22 55 36 Q49 30 41 48Z" fill="'+c+'"/>',slick:'<path d="M40 48 A30 30 0 0 1 100 48 Q100 26 70 24 Q40 26 40 48Z" fill="'+c+'"/>',curly:'<path d="M40 48 Q38 20 54 16 Q50 26 58 30 Q56 16 70 16 Q84 16 82 30 Q90 26 86 16 Q102 20 100 48 Q94 32 88 38 Q80 28 74 34 Q66 28 60 34 Q52 28 46 38 Q40 32 40 48Z" fill="'+c+'"/>',bob:'<path d="M40 48 A30 30 0 0 1 100 48 L100 40 Q100 24 70 24 Q40 24 40 40 Z" fill="'+c+'"/>',bun:'<circle cx="70" cy="19" r="11" fill="'+c+'"/><path d="M40 48 A30 30 0 0 1 100 48 Q100 32 70 32 Q40 32 40 48Z" fill="'+c+'"/>',long:'<path d="M40 48 A30 30 0 0 1 100 48 L100 48 Q100 66 90 72 Q84 56 70 58 Q56 56 50 72 Q40 66 40 48Z" fill="'+c+'"/>',quiff:'<path d="M40 48 A30 30 0 0 1 100 48 Q100 30 88 20 Q86 14 78 18 Q80 26 72 24 Q64 14 56 20 Q58 26 52 30 Q42 30 40 48Z" fill="'+c+'"/>',crew:'<path d="M40 48 A30 30 0 0 1 100 48 Q100 34 70 34 Q40 34 40 48Z" fill="'+c+'"/>'};return H[style]||H.slick;}
+function faceSVG(expr){const eyes=expr==='calm'?'<path d="M52 46 Q60 40 68 46" stroke="#3a3a3a" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M72 46 Q80 40 88 46" stroke="#3a3a3a" stroke-width="2.5" fill="none" stroke-linecap="round"/>':'<circle cx="59" cy="46" r="6" fill="#fff"/><circle cx="81" cy="46" r="6" fill="#fff"/><circle cx="60" cy="47" r="3" fill="#3a3a3a"/><circle cx="80" cy="47" r="3" fill="#3a3a3a"/><circle cx="61" cy="45" r="1.3" fill="#fff"/><circle cx="81" cy="45" r="1.3" fill="#fff"/>';let m='';switch(expr){case 'determined':m='<path d="M64 60 L76 60" stroke="#3a3a3a" stroke-width="2.5" stroke-linecap="round"/>';break;case 'grin':m='<path d="M63 56 Q70 66 77 56 Z" fill="#3a3a3a"/>';break;case 'smirk':m='<path d="M63 58 Q70 62 77 57" stroke="#3a3a3a" stroke-width="2.2" fill="none" stroke-linecap="round"/>';break;case 'curious':m='<ellipse cx="70" cy="59" rx="3.5" ry="4.5" fill="#3a3a3a"/>';break;case 'calm':m='<path d="M65 59 Q70 62 75 59" stroke="#3a3a3a" stroke-width="2.2" fill="none" stroke-linecap="round"/>';break;case 'steady':m='<path d="M64 59 Q70 62 76 59" stroke="#3a3a3a" stroke-width="2.2" fill="none" stroke-linecap="round"/>';break;default:m='<path d="M64 58 Q70 63 76 58" stroke="#3a3a3a" stroke-width="2.2" fill="none" stroke-linecap="round"/>';}return eyes+m;}
+function accSVG(type){switch(type){case 'flame':return '<path d="M70 0 Q77 9 77 15 Q77 21 70 21 Q63 21 63 15 Q63 9 70 0Z" fill="#FFB84D"/><path d="M70 12 Q73 14 70 18 Q67 14 70 12Z" fill="#FF8A3D"/>';case 'crown':return '<path d="M50 15 L54 5 L62 12 L70 2 L78 12 L86 5 L90 15 Z" fill="#F6C445" stroke="#D9A520" stroke-width="1.5" stroke-linejoin="round"/>';case 'bulb':return '<circle cx="70" cy="8" r="7" fill="#FFF3C4" stroke="#E0A93D" stroke-width="1.5"/><path d="M67 14 h6" stroke="#E0A93D" stroke-width="1.5"/>';case 'hearts':return '<path d="M30 34 q-5 -7 -10 0 q-5 7 0 12 q4 4 10 9 q6 -5 10 -9 q5 -5 0 -12 q-5 -7 -10 0Z" fill="#FF8A9E"/><path d="M102 28 q-4 -5 -8 0 q-4 5 0 10 q3 3 8 7 q5 -4 8 -7 q4 -4 0 -10 q-4 -5 -8 0Z" fill="#FFB3C0"/>';case 'glasses':return '<circle cx="59" cy="46" r="9" fill="none" stroke="#3a3a3a" stroke-width="2"/><circle cx="81" cy="46" r="9" fill="none" stroke="#3a3a3a" stroke-width="2"/><path d="M68 46 h4" stroke="#3a3a3a" stroke-width="2"/>';case 'anchor':return '<g stroke="#2C7A6B" stroke-width="2.5" fill="none" stroke-linecap="round"><line x1="70" y1="92" x2="70" y2="108"/><line x1="63" y1="100" x2="77" y2="100"/><path d="M65 108 a5 5 0 0 0 10 0"/><line x1="70" y1="113" x2="70" y2="116"/></g>';case 'star':return '<path d="M70 0 l3 7 7 1 -5.5 5 1.5 7.5 -6 -4 -6 4 1.5 -7.5 -5.5 -5 7 -1Z" fill="#FFE08A"/>';case 'shield':return '<path d="M70 90 L86 95 V105 Q86 115 70 122 Q54 115 54 105 V95 Z" fill="#8A9DC0" stroke="#5C6B8A" stroke-width="1.5" stroke-linejoin="round"/>';case 'hex':return '<path d="M70 2 L86 11 V29 L70 38 L54 29 V11 Z" fill="#EBD49B" stroke="#D9B45B" stroke-width="2" stroke-linejoin="round"/>';}return '';}
+function mascotSVG(cfg){const skin='#F8DCC0';return '<svg class="mascot" viewBox="0 0 140 150">'
+  +'<ellipse cx="52" cy="143" rx="11" ry="5.5" fill="#3a3a3a"/><ellipse cx="88" cy="143" rx="11" ry="5.5" fill="#3a3a3a"/>'
+  +'<rect x="46" y="116" width="12" height="26" rx="5" fill="'+cfg.c1+'"/><rect x="82" y="116" width="12" height="26" rx="5" fill="'+cfg.c1+'"/>'
+  +'<path d="M44 78 Q70 70 96 78 L96 122 Q70 130 44 122 Z" fill="'+cfg.c1+'"/>'
+  +'<path d="M46 82 Q30 88 27 102 Q33 108 43 98 Z" fill="'+cfg.c1+'"/><path d="M94 82 Q110 88 113 102 Q107 108 97 98 Z" fill="'+cfg.c1+'"/>'
+  +'<circle cx="29" cy="104" r="5" fill="'+skin+'"/><circle cx="111" cy="104" r="5" fill="'+skin+'"/>'
+  +'<circle cx="70" cy="48" r="30" fill="'+skin+'"/>'
+  +'<circle cx="41" cy="50" r="4.5" fill="'+skin+'"/><circle cx="99" cy="50" r="4.5" fill="'+skin+'"/>'
+  + hairSVG(cfg.hair,cfg.c1)+ faceSVG(cfg.expr||'smile')
+  +'<ellipse cx="55" cy="56" rx="5" ry="3" fill="#F6A0B0" opacity="0.6"/><ellipse cx="85" cy="56" rx="5" ry="3" fill="#F6A0B0" opacity="0.6"/>'
+  + accSVG(cfg.acc)+'</svg>';}
+function charHTML(cfg){const svg=encodeURIComponent(mascotSVG(cfg));return '<img class="mascot" src="'+cfg.key+'.png" onerror="this.outerHTML=decodeURIComponent(\''+svg+'\')">';}
+let selected=[],appear={},score={},qi=0,shareText='',resultData=null;
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
+function pickQuestions(n){const shuffled=[...POOL].sort(()=>Math.random()-0.5);const cnt={};DIMS.forEach(d=>cnt[d.id]=0);const picked=[];const rest=[...shuffled];while(picked.length<n&&rest.length){let bi=0,bs=Infinity;rest.forEach((q,idx)=>{let need=0;q.o.forEach(o=>need+=cnt[o.d]);if(need<bs){bs=need;bi=idx;}});const q=rest.splice(bi,1)[0];q.o.forEach(o=>cnt[o.d]++);picked.push(q);}const ap={};DIMS.forEach(d=>ap[d.id]=0);picked.forEach(q=>q.o.forEach(o=>ap[o.d]++));return{picked,ap};}
+function start(){DIMS.forEach(d=>score[d.id]=0);const r=pickQuestions(12);selected=r.picked;appear=r.ap;qi=0;renderQ();show('quiz');}
+function renderQ(){const q=selected[qi];document.getElementById('qnum').textContent=(qi+1)+' / '+selected.length;document.getElementById('barfill').style.width=(qi/selected.length*100)+'%';document.getElementById('qtext').innerHTML=q.t[0]+'<span class="en">'+q.t[1]+'</span>';const box=document.getElementById('opts');box.innerHTML='';q.o.forEach(op=>{const b=document.createElement('div');b.className='opt';b.innerHTML='<span class="key">'+op.k+'</span><span>'+op.x[0]+' <span class="en-i">'+op.x[1]+'</span></span>';b.onclick=()=>answer(op.d);box.appendChild(b);});}
+function answer(dim){score[dim]+=2;qi++;if(qi<selected.length){renderQ();}else{compute();}}
+function compute(){const arr=DIMS.map(d=>({id:d.id,s:score[d.id]})).sort((a,b)=>b.s-a.s);let p;if(arr[0].s-arr[7].s<=2){p=BALANCED;}else{p=PERSONAS[arr[0].id];}const bottom=arr[arr.length-1];const pct=DIMS.map(d=>appear[d.id]>0?Math.round(score[d.id]/(appear[d.id]*2)*100):0);resultData={p,bottomId:bottom.id,pct};renderResult();show('result');}
+function renderResult(){const{p,bottomId,pct}=resultData;
+  document.getElementById('r-mascot').innerHTML=charHTML(p);
+  document.getElementById('r-label').innerHTML=p.label[0]+'<span class="en">'+p.label[1]+'</span>';
+  document.getElementById('r-oneliner').innerHTML=p.one[0]+'<span class="en">'+p.one[1]+'</span>';
+  document.getElementById('r-meta').innerHTML='🌠 '+p.rarity[0]+'<span class="en">'+p.rarity[1]+'</span>';
+  document.getElementById('r-lukun').innerHTML='陆琨校长也测了，她是「自燃型」。你呢？<span class="en">Principal Lu Kun took it too — she\'s a Self-Starter. You?</span>';
+  document.getElementById('r-insight').innerHTML='<p>'+p.ins[0]+'</p><p class="en">'+p.ins[1]+'</p>';
+  document.getElementById('r-power-t').textContent='你的超能力 Your superpower';
+  document.getElementById('r-soft-t').textContent='你的软肋 Your soft spot';
+  document.getElementById('r-gentle-t').textContent='悄悄说一句 A little note';
+  document.getElementById('r-power').innerHTML=p.power[0]+'<span class="en">'+p.power[1]+'</span>';
+  document.getElementById('r-soft').innerHTML=p.soft[0]+'<span class="en">'+p.soft[1]+'</span>';
+  document.getElementById('r-gentle').innerHTML=GENTLE[bottomId][0]+'<span class="en">'+GENTLE[bottomId][1]+'</span>';
+  document.getElementById('r-share').textContent='晒出我的火花图 · Share';
+  document.getElementById('r-copy').textContent='复制结果文案 Copy';
+  document.getElementById('r-retake').textContent='再测一次 Retake';
+  document.getElementById('r-klogo').textContent='成都康礼学校 · Cogdel School Chengdu';
+  document.getElementById('r-kp').innerHTML='每个孩子的火花，都值得被看见。<span class="en">Every child\'s spark deserves to be seen.</span>';
+  document.getElementById('r-kbtn').textContent='了解火花计划 Learn More';
+  drawRadar('radar',pct);
+  document.getElementById('cardInner').style.background=p.c2;
+  document.getElementById('c-mascot').innerHTML=charHTML(p);
+  document.getElementById('c-label').innerHTML=p.label[0]+'<span class="en">'+p.label[1]+'</span>';
+  document.getElementById('c-one').innerHTML=p.one[0]+'<span class="en">'+p.one[1]+'</span>';
+  document.getElementById('c-meta').innerHTML='🌠 '+p.rarity[0]+'<span class="en">'+p.rarity[1]+'</span>';
+  document.getElementById('c-line').innerHTML=p.ins[0].split('。')[0]+'。<span class="en">'+p.ins[1].split('.')[0]+'.</span>';
+  document.getElementById('c-invite').innerHTML='你的火花是什么形状？来测，看我们合不合<span class="en">What shape is your spark? Take it and see if we match</span>';
+  document.getElementById('c-kangli').textContent='成都康礼学校 · Cogdel School Chengdu';
+  document.getElementById('c-hint').textContent='长按或截图保存这张图 · Long-press or screenshot to save';
+  drawRadar('radar2',pct);
+  shareText='我居然是「'+p.label[0]+'」——'+p.rarity[0]+'！你的八维火花是什么形状？来测，看看我们的火花合不合 → '+SHARE_URL;
+}
+function drawRadar(cid,pct){const c=document.getElementById(cid),ctx=c.getContext('2d');const W=c.width,H=c.height,cx=W/2,cy=H/2,R=Math.min(W,H)*0.32,n=DIMS.length;ctx.clearRect(0,0,W,H);const ang=i=>-Math.PI/2+i*(2*Math.PI/n);const pt=(i,r)=>[cx+r*Math.cos(ang(i)),cy+r*Math.sin(ang(i))];ctx.strokeStyle='#E5E5EA';ctx.lineWidth=1;for(let l=1;l<=4;l++){const r=R*l/4;ctx.beginPath();for(let i=0;i<n;i++){const[x,y]=pt(i,r);i?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.closePath();ctx.stroke();}for(let i=0;i<n;i++){const[x,y]=pt(i,R);ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(x,y);ctx.stroke();}ctx.beginPath();for(let i=0;i<n;i++){const r=R*pct[i]/100;const[x,y]=pt(i,r);i?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.closePath();ctx.fillStyle='rgba(217,180,91,0.30)';ctx.fill();ctx.strokeStyle='#D9B45B';ctx.lineWidth=2.5;ctx.stroke();for(let i=0;i<n;i++){const r=R*pct[i]/100;const[x,y]=pt(i,r);ctx.beginPath();ctx.arc(x,y,4,0,2*Math.PI);ctx.fillStyle='#D9B45B';ctx.fill();}ctx.fillStyle='#6E6E73';ctx.font='600 20px PingFang SC, Microsoft YaHei';ctx.textAlign='center';ctx.textBaseline='middle';for(let i=0;i<n;i++){const d=DIMS[i];const[x,y]=pt(i,R+30);ctx.fillText(d.zh,x,y);}}
+function showShareCard(){document.getElementById('shareCard').classList.add('show');}
+function hideShareCard(){document.getElementById('shareCard').classList.remove('show');}
+function copyShare(){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(shareText).then(()=>alert('已复制 · Copied'));}else{const ta=document.createElement('textarea');ta.value=shareText;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);alert('已复制 · Copied');}}
+function restart(){start();}
+(function(){
+  document.getElementById('i-eyebrow').textContent='成都康礼学校 · Cogdel School Chengdu';
+  document.getElementById('i-title').innerHTML='测测你的<br>八维火花<span class="en">Discover Your<br>8-Dimension Spark</span>';
+  document.getElementById('i-sub').innerHTML='你不是"某一型"的人，但你身上，一定藏着一种最亮的光。<span class="en">You\'re not just one "type" — but there\'s a light in you that shines the brightest.</span>';
+  document.getElementById('i-start').textContent='开始测试 · Start';
+  document.getElementById('i-foot').innerHTML='随机 12 题 · 约 1 分钟 · 没有对错<span class="en">12 random questions · ~1 min · no right or wrong</span>';
+  const mr=document.getElementById('mascotRow');const ALL=[PERSONAS.agency,PERSONAS.learning,PERSONAS.innovation,PERSONAS.collaboration,PERSONAS.leadership,PERSONAS.wellbeing,PERSONAS.vision,PERSONAS.stewardship,BALANCED];ALL.forEach(p=>{const d=document.createElement('div');d.className='m float';d.innerHTML=charHTML(p);mr.appendChild(d);});
+})();
+</script>
+</body>
+</html>
