@@ -276,7 +276,20 @@
   .q-sub{display:inline-block;background:var(--purple-deep);color:#fff;font-size:11.5px;
     font-weight:800;border-radius:6px;padding:2px 10px;letter-spacing:1px;margin-bottom:7px;}
 </style>
-</style></head>
+</style><style id="tl-fix">
+  /* 时间轴圆点：白色数字，圆圈加大，去掉原来的白色小点 */
+  .timeline{padding-left:32px;}
+  .timeline::before{left:12px;}
+  .tl-marker{left:-32px;top:12px;width:25px;height:25px;border-radius:50%;
+             background:var(--purple);border:2px solid var(--gold);
+             display:flex;align-items:center;justify-content:center;
+             box-shadow:0 2px 7px rgba(90,53,128,.28);}
+  .tl-marker::after{display:none;}
+  .tl-marker .wk{display:block;background:none;color:#fff;font-size:13px;font-weight:900;
+                 line-height:1;padding:0;margin:0;border-radius:0;letter-spacing:0;}
+  @media print{ .tl-marker{-webkit-print-color-adjust:exact;print-color-adjust:exact;} }
+</style>
+</head>
 
 
 
@@ -491,22 +504,22 @@
   </ul>
 
   <h3 class="sub">② 四周怎么走（每周都在做什么）</h3>
-  <div class="timeline"><div class="tl"><div class="tl-marker"><span class="wk">第1周</span></div><div class="tl-card">
+  <div class="timeline"><div class="tl"><div class="tl-marker"><span class="wk">1</span></div><div class="tl-card">
       <div class="wk-line"><span class="wdate">第1周 · 9/1–9/5</span><span class="wsub">侧重：经济 · 语文</span></div>
       <div class="theme">提问 + 做调查</div>
       <ul><li>老师发布任务：我们想在校园里开一家"零浪费小店"，把还能用的东西回收再利用。</li><li>孩子先写下自己猜的 3 个"如果……会……"，再去班里做一份二手闲置小调查，问大家都有什么不用的东西。</li><li>周末前数一数：收回来至少 30 份问卷，看看校园里到底闲置了什么。</li></ul>
     </div></div>
-<div class="tl"><div class="tl-marker"><span class="wk">第2周</span></div><div class="tl-card">
+<div class="tl"><div class="tl-marker"><span class="wk">2</span></div><div class="tl-card">
       <div class="wk-line"><span class="wdate">第2周 · 9/8–9/12</span><span class="wsub">侧重：经济 · 商科 · 语文</span></div>
       <div class="theme">定模式 + 交申请</div>
       <ul><li>孩子把问卷结果整理成图表，看清"大家送什么、想要什么"。</li><li>商量小店到底怎么开：是同学拿东西免费换，还是用小学分，还是便宜卖？投票定一种。</li><li>动手把怎么收、怎么定价、谁值班、几点开门写成一页纸，并写好一张申请单交给学校审批。</li></ul>
     </div></div>
-<div class="tl"><div class="tl-marker"><span class="wk">第3周</span></div><div class="tl-card">
+<div class="tl"><div class="tl-marker"><span class="wk">3</span></div><div class="tl-card">
       <div class="wk-line"><span class="wdate">第3周 · 9/15–9/19</span><span class="wsub">侧重：商科 · 经济</span></div>
       <div class="theme">真开店 + 记账复盘</div>
       <ul><li>店还没开，先"演练"一遍全部流程：收东西→登记→消毒→摆好→卖掉→记账。</li><li>小店真开张了！孩子在课间轮流当店员，收东西、标价、算钱、记账。</li><li>每天记清卖了什么、收了多少、哪些没人要，晚上一起说"哪里卡住了"，商量怎么改。</li></ul>
     </div></div>
-<div class="tl"><div class="tl-marker"><span class="wk">第4周</span></div><div class="tl-card">
+<div class="tl"><div class="tl-marker"><span class="wk">4</span></div><div class="tl-card">
       <div class="wk-line"><span class="wdate">第4周 · 9/22–9/26</span><span class="wsub">侧重：经济 · 商科 · 语文</span></div>
       <div class="theme">比数据 + 做报告</div>
       <ul><li>按上礼拜的办法再开一轮，看看这轮是不是更顺、卖得更多。</li><li>把两轮数据放在一起比，算出"流转率、多少人参与"。</li><li>写成一份简单的小报告，说清：赚了/省了多少、什么问题、怎么改、要不要一直开。9/26 在成果展上开个迷你小店，让大家现场换。</li></ul>
