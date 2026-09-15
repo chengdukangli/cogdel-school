@@ -268,18 +268,22 @@
   @media print{ .subj-grid,.mile-grid{grid-template-columns:1fr 1fr;gap:8px;} .sv,.mile{box-shadow:none;page-break-inside:avoid;} }
 
 <style id="quest-css">
-  .q-month{margin-top:16px;}
+  .q-month{margin-top:18px;}
   .q-month .qm-h{font-size:14px;color:var(--purple);font-weight:800;padding-left:10px;
-                 border-left:4px solid var(--gold);margin-bottom:9px;}
+                 border-left:4px solid var(--gold);margin-bottom:10px;}
   .q-month .qm-h span{font-size:11.5px;color:var(--inc-soft);font-weight:400;margin-left:8px;}
-  .q-tbl{width:100%;border-collapse:collapse;font-size:12.5px;}
+  .q-tbl{width:100%;border-collapse:collapse;table-layout:fixed;font-size:12.5px;}
+  .q-tbl col.c1{width:58px;} .q-tbl col.c2{width:calc((100% - 58px)/2);} .q-tbl col.c3{width:calc((100% - 58px)/2);}
   .q-tbl th{background:var(--purple-deep);color:#fff;font-weight:800;font-size:12px;
-            padding:8px 11px;text-align:left;border:1px solid var(--purple-deep);}
-  .q-tbl th.sub{width:66px;}
-  .q-tbl td{border:1px solid var(--line);padding:7px 11px;vertical-align:middle;line-height:1.5;}
+            padding:8px 12px;text-align:left;border:1px solid var(--purple-deep);}
+  .q-tbl td{border:1px solid var(--line);padding:9px 12px;vertical-align:top;line-height:1.45;}
   .q-tbl tbody tr:nth-child(even){background:#FAF8FD;}
-  .q-tbl td.sub{font-weight:800;color:var(--purple);white-space:nowrap;background:#F4F0FA;}
-  @media print{ .q-tbl{font-size:11.5px;} .q-tbl tr{page-break-inside:avoid;} }
+  .q-tbl td.sub{font-weight:800;color:var(--purple);background:#F4F0FA;text-align:center;
+                white-space:nowrap;line-height:1.9;letter-spacing:1px;}
+  .q-tbl td .cn{display:block;font-weight:800;color:var(--ink);font-size:12.5px;line-height:1.45;}
+  .q-tbl td .en2{display:block;font-size:10.5px;color:var(--gold-deep);font-style:italic;
+                 margin-top:3px;line-height:1.35;}
+  @media print{ .q-tbl{font-size:11.5px;} .q-tbl td{padding:7px 10px;} .q-tbl tr{page-break-inside:avoid;} }
 </style>
 </style></head>
 
@@ -462,36 +466,45 @@
 
 
 
-<!-- 问源学院 -->
+<!-- 问源学院（Quest Academy） -->
 <div class="block" id="wenyuan">
 <div class="acad"><h3>问源学院</h3><span class="en">Quest Academy</span><span class="brief">科学 · 探究 · 实验</span></div>
 <div class="blk-head"><h2>本学期项目</h2><span class="en">Projects</span><span class="cnt">24 个项目</span></div>
 <div class="lead">问源学院用<b>实验与证据</b>说话：水、材料、能源、健康、安全——每个项目都从一个真实问题出发，学生动手做实验、收集数据、拿出能用的成果。</div>
-<div class="q-month"><div class="qm-h">第 1 个月<span>Month 1 · 2026-2027 学年第一学期</span></div>
-<table class="q-tbl"><thead><tr><th class="sub">学科</th><th>P7 项目</th><th>P8 项目</th></tr></thead><tbody>
-<tr><td class="sub">化学</td><td>Clean Water Challenge</td><td>Materials for a Better School Products</td></tr>
-<tr><td class="sub">生物</td><td>Uncovering Evidence of Living Things</td><td>School Lunch Improvement Proposal</td></tr>
-<tr><td class="sub">物理</td><td>Current electricity – Low-Energy Classroom Challenge</td><td>Hydraulic Machine Builder</td></tr>
+<div class="q-month">
+<div class="qm-h">第 1 个月<span>Month 1 · 2026-2027 学年第一学期</span></div>
+<table class="q-tbl"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup>
+<thead><tr><th>学科</th><th>P7 项目（七年级）</th><th>P8 项目（八年级）</th></tr></thead><tbody>
+<tr><td class="sub">化学</td><td><span class="cn">净水挑战</span><span class="en2">Clean Water Challenge</span></td><td><span class="cn">材料升级：为校园做更好的产品</span><span class="en2">Materials for a Better School Products</span></td></tr>
+<tr><td class="sub">生物</td><td><span class="cn">寻找生命的证据</span><span class="en2">Uncovering Evidence of Living Things</span></td><td><span class="cn">校园午餐改进方案</span><span class="en2">School Lunch Improvement Proposal</span></td></tr>
+<tr><td class="sub">物理</td><td><span class="cn">电流与低能耗教室挑战</span><span class="en2">Current electricity – Low-Energy Classroom Challenge</span></td><td><span class="cn">液压机械搭建</span><span class="en2">Hydraulic Machine Builder</span></td></tr>
 </tbody></table></div>
-<div class="q-month"><div class="qm-h">第 2 个月<span>Month 2 · 2026-2027 学年第一学期</span></div>
-<table class="q-tbl"><thead><tr><th class="sub">学科</th><th>P7 项目</th><th>P8 项目</th></tr></thead><tbody>
-<tr><td class="sub">化学</td><td>Design a low-cost water filter model</td><td>Evidence-based Material Selection Challenge</td></tr>
-<tr><td class="sub">生物</td><td>Body Building: From Cells to Body Systems</td><td>Gut Health Public Health Poster / Leaflet</td></tr>
-<tr><td class="sub">物理</td><td>Campus Renewable Energy Micro-Grid</td><td>Water-Tower & Plumbing Pressure Lab</td></tr>
+<div class="q-month">
+<div class="qm-h">第 2 个月<span>Month 2 · 2026-2027 学年第一学期</span></div>
+<table class="q-tbl"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup>
+<thead><tr><th>学科</th><th>P7 项目（七年级）</th><th>P8 项目（八年级）</th></tr></thead><tbody>
+<tr><td class="sub">化学</td><td><span class="cn">设计低成本净水过滤器模型</span><span class="en2">Design a low-cost water filter model</span></td><td><span class="cn">基于证据的材料选择挑战</span><span class="en2">Evidence-based Material Selection Challenge</span></td></tr>
+<tr><td class="sub">生物</td><td><span class="cn">身体的建造：从细胞到身体系统</span><span class="en2">Body Building: From Cells to Body Systems</span></td><td><span class="cn">肠道健康科普海报／折页</span><span class="en2">Gut Health Public Health Poster / Leaflet</span></td></tr>
+<tr><td class="sub">物理</td><td><span class="cn">校园可再生能源微电网</span><span class="en2">Campus Renewable Energy Micro-Grid</span></td><td><span class="cn">水塔与管道压力实验</span><span class="en2">Water-Tower & Plumbing Pressure Lab</span></td></tr>
 </tbody></table></div>
-<div class="q-month"><div class="qm-h">第 3 个月<span>Month 3 · 2026-2027 学年第一学期</span></div>
-<table class="q-tbl"><thead><tr><th class="sub">学科</th><th>P7 项目</th><th>P8 项目</th></tr></thead><tbody>
-<tr><td class="sub">化学</td><td>Safer Homes and School Chemical Awareness Campaign</td><td>Safer, Low-Carbon School Audit</td></tr>
-<tr><td class="sub">生物</td><td>Adolescent Puberty Health Science Manual</td><td>Campus Seed Dispersal Designer</td></tr>
-<tr><td class="sub">物理</td><td>Assistive Electrical Device</td><td>Safer Light and Visibility Audit</td></tr>
+<div class="q-month">
+<div class="qm-h">第 3 个月<span>Month 3 · 2026-2027 学年第一学期</span></div>
+<table class="q-tbl"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup>
+<thead><tr><th>学科</th><th>P7 项目（七年级）</th><th>P8 项目（八年级）</th></tr></thead><tbody>
+<tr><td class="sub">化学</td><td><span class="cn">家庭与校园化学品安全宣传行动</span><span class="en2">Safer Homes and School Chemical Awareness Campaign</span></td><td><span class="cn">校园安全与低碳审查</span><span class="en2">Safer, Low-Carbon School Audit</span></td></tr>
+<tr><td class="sub">生物</td><td><span class="cn">青春期健康科普手册</span><span class="en2">Adolescent Puberty Health Science Manual</span></td><td><span class="cn">校园种子传播设计师</span><span class="en2">Campus Seed Dispersal Designer</span></td></tr>
+<tr><td class="sub">物理</td><td><span class="cn">辅助生活电器设计</span><span class="en2">Assistive Electrical Device</span></td><td><span class="cn">光照与可视安全审查</span><span class="en2">Safer Light and Visibility Audit</span></td></tr>
 </tbody></table></div>
-<div class="q-month"><div class="qm-h">第 4 个月<span>Month 4 · 2026-2027 学年第一学期</span></div>
-<table class="q-tbl"><thead><tr><th class="sub">学科</th><th>P7 项目</th><th>P8 项目</th></tr></thead><tbody>
-<tr><td class="sub">化学</td><td>Chemical Safety Improvement Proposal for One School Area</td><td>Low-Carbon Behaviour Campaign</td></tr>
-<tr><td class="sub">生物</td><td>Endangered Animal Conservation & Breeding Proposal</td><td>Campus Habitat Improvement Proposal</td></tr>
-<tr><td class="sub">物理</td><td>Mains-Safe Appliance Audit & Redesign</td><td>Lighting & Solar Reflector Lab</td></tr>
+<div class="q-month">
+<div class="qm-h">第 4 个月<span>Month 4 · 2026-2027 学年第一学期</span></div>
+<table class="q-tbl"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup>
+<thead><tr><th>学科</th><th>P7 项目（七年级）</th><th>P8 项目（八年级）</th></tr></thead><tbody>
+<tr><td class="sub">化学</td><td><span class="cn">校园区域化学品安全改进方案</span><span class="en2">Chemical Safety Improvement Proposal for One School Area</span></td><td><span class="cn">低碳行为倡导行动</span><span class="en2">Low-Carbon Behaviour Campaign</span></td></tr>
+<tr><td class="sub">生物</td><td><span class="cn">濒危动物保护与繁育方案</span><span class="en2">Endangered Animal Conservation & Breeding Proposal</span></td><td><span class="cn">校园栖息地改善方案</span><span class="en2">Campus Habitat Improvement Proposal</span></td></tr>
+<tr><td class="sub">物理</td><td><span class="cn">市电安全电器审查与再设计</span><span class="en2">Mains-Safe Appliance Audit & Redesign</span></td><td><span class="cn">采光与太阳能反光板实验</span><span class="en2">Lighting & Solar Reflector Lab</span></td></tr>
 </tbody></table></div>
 </div>
+
 <!-- 案例 -->
 
 
