@@ -68,16 +68,20 @@
   .kangli-block .btn{font-size:16px;}
   #shareCard{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
   #shareCard.show{display:flex;}
-  .card-inner{width:100%;max-width:350px;max-height:92vh;overflow-y:auto;background:#fff;border-radius:28px;padding:26px 22px;text-align:center;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.2);transition:background .4s;}
-  .card-inner .close{position:absolute;top:14px;right:18px;font-size:22px;color:var(--muted);cursor:pointer;}
-  .card-inner .cm{width:92px;margin:0 auto;}
-  .card-inner h3{font-size:24px;color:var(--ink);font-weight:700;letter-spacing:-.01em;margin-top:4px;}
-  .card-inner .c-one{font-size:13.5px;color:var(--muted);margin-top:6px;}
-  .card-inner .c-meta{margin-top:12px;font-size:14px;font-weight:600;color:var(--purple);}
-  canvas#radar2{width:220px;height:220px;margin:12px auto;display:block;}
-  .card-inner .c-line{font-size:14.5px;line-height:1.6;color:var(--ink);}
-  .card-inner .c-invite{margin-top:16px;font-size:15px;color:var(--purple);font-weight:700;line-height:1.5;}
-  .c-kangli{margin-top:13px;font-size:12px;color:var(--muted);font-weight:600;}
+  .card-inner{width:100%;max-width:352px;max-height:94vh;overflow-y:auto;background:#fff;border-radius:28px;padding:22px 20px;text-align:center;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.2);transition:background .4s;}
+  .card-inner .close{position:absolute;top:12px;right:16px;font-size:22px;color:var(--muted);cursor:pointer;}
+  .card-inner .cm{width:84px;margin:0 auto;}
+  .card-inner h3{font-size:23px;color:var(--ink);font-weight:700;letter-spacing:-.01em;margin-top:4px;}
+  .card-inner .c-one{font-size:13px;color:var(--muted);margin-top:5px;}
+  .card-inner .c-meta{margin-top:10px;font-size:14px;font-weight:600;color:var(--purple);}
+  canvas#radar2{width:186px;height:186px;margin:8px auto;display:block;}
+  .card-inner .c-line{font-size:14px;line-height:1.55;color:var(--ink);}
+  .card-inner .c-invite{margin-top:13px;font-size:15px;color:var(--purple);font-weight:700;line-height:1.45;}
+  .c-qr{margin-top:13px;padding-top:12px;border-top:1px dashed rgba(0,0,0,.12);display:flex;align-items:center;gap:14px;text-align:left;}
+  .c-qr img{width:112px;height:112px;flex:none;display:block;border-radius:10px;background:#fff;padding:5px;box-shadow:0 2px 10px rgba(0,0,0,.08);}
+  .c-qr .c-qr-t{font-size:15px;font-weight:700;color:var(--purple);line-height:1.35;}
+  .c-qr .c-qr-en{font-size:11.5px;color:var(--muted);margin-top:3px;line-height:1.4;}
+  .c-kangli{margin-top:11px;font-size:12px;color:var(--muted);font-weight:600;}
   .card-inner .hint{margin-top:8px;font-size:12px;color:var(--muted);}
 
   /* ---------- 平板：加宽但仍是单列 ---------- */
@@ -178,6 +182,13 @@
     <canvas id="radar2" width="460" height="460"></canvas>
     <div class="c-line" id="c-line"></div>
     <div class="c-invite" id="c-invite"></div>
+    <div class="c-qr">
+      <img src="spark-qr.png" alt="扫码测测你的火花类型" width="112" height="112" loading="lazy">
+      <div>
+        <div class="c-qr-t">快来测测你的火花类型</div>
+        <div class="c-qr-en">Scan to discover your spark type</div>
+      </div>
+    </div>
     <div class="c-kangli" id="c-kangli"></div>
     <div class="hint" id="c-hint"></div>
   </div>
