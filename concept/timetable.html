@@ -42,6 +42,21 @@
     .tt-table tr.break td{background:#f6efdd!important;color:var(--gold-deep)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
   }
 </style>
+<style id="cal-css">
+  .cal-box{background:linear-gradient(150deg,#FBF9FE,#fff);border:1px solid rgba(90,53,128,.18);
+           border-radius:14px;padding:18px 20px;margin:14px 0 4px;}
+  .cal-box .cb-h{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .cal-box .cb-t .k{font-size:11px;letter-spacing:2px;color:#8A6F2C;font-weight:800;}
+  .cal-box .cb-t h3{font-size:19px;color:#2E1A44;font-weight:900;margin-top:4px;}
+  .cal-box .cb-t .d{font-size:13px;color:#5F546E;margin-top:5px;line-height:1.7;}
+  .cal-btn{display:inline-block;background:linear-gradient(135deg,#5A3580,#7B4FA5);color:#fff;
+           font-weight:800;font-size:14px;padding:11px 26px;border-radius:999px;text-decoration:none;
+           white-space:nowrap;box-shadow:0 5px 14px rgba(90,53,128,.25);}
+  .cal-btn:hover{background:linear-gradient(135deg,#2E1A44,#5A3580);}
+  .cal-view{margin-top:14px;background:#EDEAF2;border-radius:10px;padding:10px;}
+  .cal-view iframe{width:100%;height:520px;border:0;border-radius:8px;background:#fff;display:block;}
+  @media(max-width:700px){ .cal-view iframe{height:340px;} }
+</style>
 </head>
 <body>
 <header class="hero"><div class="hero-inner">
@@ -50,6 +65,18 @@
   <div class="en">Cogdel School Chengdu · Timetable</div>
 </div></header>
 <div class="wrap">
+<div class="cal-box" id="calendar">
+  <div class="cb-h">
+    <div class="cb-t">
+      <div class="k">ACADEMIC CALENDAR · 2026-2027</div>
+      <h3>2026-2027 学年校历</h3>
+      <div class="d">中文版学年校历：含开学、国际大考月（10 月考季等）、节假日与重要教学节点，一页看清整学年安排。</div>
+    </div>
+    <a class="cal-btn" href="files/academic-calendar-2026-2027.pdf" target="_blank" rel="noopener">打开 / 下载校历 PDF →</a>
+  </div>
+  <div class="cal-view"><iframe src="files/academic-calendar-2026-2027.pdf#view=FitH" title="2026-2027 学年校历"></iframe></div>
+</div>
+
 <section class="tt">
   <div class="tt-head"><h3>一年级</h3></div>
   <table class="tt-table">
