@@ -46,6 +46,29 @@
   footer{margin-top:64px;padding-top:28px;border-top:1px solid var(--line);text-align:center;}
   footer .brand{font-size:14px;color:var(--ink);font-weight:700;}
   footer .addr{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.8;}
+
+  /* ---------- 平板：加宽但仍是单列 ---------- */
+  @media (min-width:640px){
+    .page{max-width:600px;}
+  }
+  /* ---------- 桌面：宽版多列 ---------- */
+  @media (min-width:900px){
+    .page{max-width:1120px;padding:88px 64px 64px;}
+    h1{font-size:54px;}
+    .sub{font-size:19px;max-width:760px;}
+    .section{margin-top:78px;}
+    .section h2{font-size:32px;}
+    .section .lead{font-size:17px;max-width:860px;}
+    .examples{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+    .dims{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+    .gallery{grid-template-columns:repeat(9,minmax(0,1fr));gap:16px 10px;margin-top:34px;}
+    .g-item .gm{width:86px;}
+    .g-item .gl{font-size:12px;}
+    .cta{margin-top:82px;}
+    .cta h2{font-size:32px;}
+    .cta .qrslot{width:250px;}
+    footer{margin-top:82px;}
+  }
 </style>
 </head>
 <body>

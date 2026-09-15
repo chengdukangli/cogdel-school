@@ -79,6 +79,50 @@
   .card-inner .c-invite{margin-top:16px;font-size:15px;color:var(--purple);font-weight:700;line-height:1.5;}
   .c-kangli{margin-top:13px;font-size:12px;color:var(--muted);font-weight:600;}
   .card-inner .hint{margin-top:8px;font-size:12px;color:var(--muted);}
+
+  /* ---------- 平板：加宽但仍是单列 ---------- */
+  @media (min-width:640px){
+    .app{max-width:600px;}
+  }
+  /* ---------- 桌面：开场双栏 / 结果双栏 ---------- */
+  @media (min-width:900px){
+    .app{max-width:1120px;}
+    .screen{padding:60px 64px 56px;}
+
+    #intro.active{
+      display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
+      grid-template-areas:"eyebrow mascots" "title mascots" "sub mascots" "btn mascots" "foot mascots";
+      column-gap:60px;align-content:center;min-height:100vh;padding-top:64px;
+    }
+    #intro .eyebrow{grid-area:eyebrow;}
+    #intro h1{grid-area:title;font-size:54px;}
+    #intro .sub{grid-area:sub;max-width:540px;font-size:18px;}
+    #intro .btn{grid-area:btn;width:auto;max-width:300px;}
+    #intro .foot{grid-area:foot;margin-top:16px;}
+    #intro .mascot-row{grid-area:mascots;align-self:center;gap:22px 14px;margin:0;}
+    #intro .mascot-row .m{width:104px;}
+
+    #quiz{justify-content:center;align-items:center;}
+    #quiz .top,#quiz .bar,#quiz h2,#quiz .opts{width:100%;max-width:760px;}
+    #quiz h2{font-size:30px;margin-bottom:30px;}
+    #quiz .opt{font-size:17px;padding:20px 22px;}
+
+    #result.active{
+      display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);
+      grid-template-areas:"reveal radar" "reveal insight" "reveal duo" "reveal gentle" "actions kangli";
+      column-gap:56px;align-items:start;padding:64px;
+    }
+    #result .reveal{grid-area:reveal;}
+    #result .reveal .mm{width:150px;}
+    #result .radar-wrap{grid-area:radar;margin:0 0 28px;}
+    #result canvas#radar{width:320px;height:320px;}
+    #result .insight{grid-area:insight;}
+    #result .duo{grid-area:duo;}
+    #result .gentle{grid-area:gentle;}
+    #result .actions{grid-area:actions;align-self:end;}
+    #result .kangli-block{grid-area:kangli;margin-top:26px;}
+    .card-inner{max-width:400px;}
+  }
 </style>
 </head>
 <body>
