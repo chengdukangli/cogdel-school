@@ -160,7 +160,7 @@
   <!-- 表单 -->
   <div id="formCard" class="form-card">
     <div class="form-title">营地报名登记</div>
-    <div class="form-sub">填写后直接进入学校招生系统，招生老师会尽快与您联系</div>
+    <div class="form-sub">请填写学生信息，招生老师会尽快与您联系</div>
     <div id="err" class="err"></div>
     <form id="f">
       <div class="field">
@@ -201,7 +201,7 @@
   <div id="okCard" class="success">
     <div class="ok">✓</div>
     <h2>登记成功</h2>
-    <p>您已进入成都康礼学校招生潜客库<br>招生老师会尽快与您联系</p>
+    <p>招生老师会尽快与您联系</p>
     <div class="recap" id="recap"></div>
     <p style="font-weight:700;color:var(--green)">营地时间：10.5 — 10.7 · 康礼营地等你来</p>
   </div>
@@ -215,21 +215,38 @@
   <a class="back-home" href="/zh/index.html">← 返回成都康礼学校官网</a>
 
 <script>
-// 提交地址：先直连招生系统（HTTP 环境/无代理时可用），失败再走同源代理（HTTPS 代理版可用）
+// 提交链路：
+// 1) 转发服务（HTTPS，本页可直接调用）→ 服务端转招生系统
+// 2) 直连招生系统（本地 / HTTP 环境可用）
+// 3) 同源代理（若本页部署在带代理的服务器上）
 var ENDPOINTS = [
+  'https://kangli-camp-signup.app.workbuddy.host/api/submit',
   'http://118.24.139.114:4001/api/parent/leads',
   '/api/submit'
 ];
+var TIMEOUT = 12000;
 function $(i){return document.getElementById(i)}
 
 function postLead(url, payload){
-  return fetch(url, {
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify(payload)
-  }).then(function(r){
-    if(!r.ok) throw new Error('HTTP '+r.status);
-    return r.json();
+  return new Promise(function(resolve, reject){
+    var ctl = ('AbortController' in window) ? new AbortController() : null;
+    var timer = setTimeout(function(){
+      if(ctl) ctl.abort();
+      reject(new Error('timeout'));
+    }, TIMEOUT);
+    fetch(url, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload),
+      signal: ctl ? ctl.signal : undefined
+    }).then(function(r){
+      clearTimeout(timer);
+      if(!r.ok) throw new Error('HTTP '+r.status);
+      return r.json();
+    }).then(resolve).catch(function(e){
+      clearTimeout(timer);
+      reject(e);
+    });
   });
 }
 
@@ -247,7 +264,7 @@ $('f').addEventListener('submit',function(e){
   var i=0;
   function tryNext(){
     if(i>=ENDPOINTS.length){
-      err.textContent='网络异常，请稍后再试';
+      err.textContent='提交未成功，请稍后重试或致电 400-803-6661';
       err.classList.add('show');
       btn.disabled=false; btn.textContent='提交报名';
       return;
