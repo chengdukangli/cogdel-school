@@ -79,6 +79,7 @@
 <!-- Banner轮播 -->
 <div class="hero-slider">
   <div class="hero-slide active"><img src="../images/banner2.jpg" alt="成都康礼学校"></div>
+  <a class="hero-slide" href="camp-apply.html" aria-label="国庆营地报名"><img src="../images/banner-camp.png" alt="国庆营地 10月5日—7日，3天2夜全寄宿，扫码报名"></a>
 </div>
 
 <!-- 核心数据 -->
@@ -318,7 +319,7 @@ function currentSlide(n){
   document.querySelectorAll(".hero-slide").forEach(function(s,i){s.classList.toggle("active",i===n)});
   document.querySelectorAll(".hero-dot").forEach(function(d,i){d.classList.toggle("active",i===n)});
 }
-setInterval(function(){si=(si+1)%1;currentSlide(si)},4500);
+setInterval(function(){si=(si+1)%2;currentSlide(si)},4500);
 </script>
 
 <!-- 在线客服 -->
