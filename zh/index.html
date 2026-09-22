@@ -329,16 +329,33 @@
 <script>
 let si=0;
 const HERO_TOTAL=document.querySelectorAll(".hero-slide").length;
+const HERO_DELAY=5000;
+let heroTimer=null;
 function currentSlide(n){
   si=(n+HERO_TOTAL)%HERO_TOTAL;
   document.querySelectorAll(".hero-slide").forEach(function(s,i){s.classList.toggle("active",i===si)});
   document.querySelectorAll(".hero-dot").forEach(function(d,i){d.classList.toggle("active",i===si)});
 }
-function heroGo(step){currentSlide(si+step)}
+function heroGo(step){currentSlide(si+step);heroRestart()}
+function heroStart(){heroStop();heroTimer=setInterval(function(){currentSlide(si+1)},HERO_DELAY)}
+function heroStop(){if(heroTimer){clearInterval(heroTimer);heroTimer=null}}
+function heroRestart(){heroStart()}
+/* 鼠标停在轮播区（含箭头/圆点）时暂停，移开继续 */
+var hs=document.getElementById("heroSlider");
+if(hs){
+  hs.addEventListener("mouseenter",heroStop);
+  hs.addEventListener("mouseleave",heroStart);
+  /* 触摸设备：按下时暂停，抬起后继续 */
+  hs.addEventListener("touchstart",heroStop,{passive:true});
+  hs.addEventListener("touchend",heroStart,{passive:true});
+}
+/* 页面切到后台时停表，回来继续 */
+document.addEventListener("visibilitychange",function(){document.hidden?heroStop():heroStart()});
 document.addEventListener("keydown",function(e){
   if(e.key==="ArrowLeft")heroGo(-1);
   if(e.key==="ArrowRight")heroGo(1);
 });
+heroStart();
 </script>
 
 <!-- 在线客服 -->
