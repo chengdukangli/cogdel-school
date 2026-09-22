@@ -77,10 +77,24 @@
 </header>
 
 <!-- Banner轮播 -->
-<div class="hero-slider">
+<div class="hero-slider" id="heroSlider">
   <div class="hero-slide active"><img src="../images/banner2.jpg" alt="成都康礼学校"></div>
   <a class="hero-slide" href="camp-apply.html" aria-label="国庆营地报名"><img src="../images/banner-camp.png" alt="国庆营地 10月5日—7日，3天2夜全寄宿，扫码报名"></a>
+  <button class="hero-arrow prev" type="button" aria-label="上一张" onclick="heroGo(-1)"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 5 8 12 15 19"/></svg></button>
+  <button class="hero-arrow next" type="button" aria-label="下一张" onclick="heroGo(1)"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 5 16 12 9 19"/></svg></button>
+  <div class="hero-dots">
+    <span class="hero-dot active" role="button" tabindex="0" aria-label="第1张" onclick="currentSlide(0)"></span>
+    <span class="hero-dot" role="button" tabindex="0" aria-label="第2张" onclick="currentSlide(1)"></span>
+  </div>
 </div>
+<style>
+.hero-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:4;width:52px;height:52px;border-radius:50%;border:0;background:rgba(43,42,38,.42);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.25s;padding:0}
+.hero-arrow:hover{background:rgba(43,42,38,.72)}
+.hero-arrow.prev{left:24px}
+.hero-arrow.next{right:24px}
+.hero-dot{cursor:pointer}
+@media (max-width:768px){.hero-arrow{width:40px;height:40px}.hero-arrow.prev{left:10px}.hero-arrow.next{right:10px}}
+</style>
 
 <!-- 核心数据 -->
 <div class="stats-bar">
@@ -314,12 +328,17 @@
 <script src="../js/main.js?v=1783100000"></script>
 <script>
 let si=0;
+const HERO_TOTAL=document.querySelectorAll(".hero-slide").length;
 function currentSlide(n){
-  si=n;
-  document.querySelectorAll(".hero-slide").forEach(function(s,i){s.classList.toggle("active",i===n)});
-  document.querySelectorAll(".hero-dot").forEach(function(d,i){d.classList.toggle("active",i===n)});
+  si=(n+HERO_TOTAL)%HERO_TOTAL;
+  document.querySelectorAll(".hero-slide").forEach(function(s,i){s.classList.toggle("active",i===si)});
+  document.querySelectorAll(".hero-dot").forEach(function(d,i){d.classList.toggle("active",i===si)});
 }
-setInterval(function(){si=(si+1)%2;currentSlide(si)},4500);
+function heroGo(step){currentSlide(si+step)}
+document.addEventListener("keydown",function(e){
+  if(e.key==="ArrowLeft")heroGo(-1);
+  if(e.key==="ArrowRight")heroGo(1);
+});
 </script>
 
 <!-- 在线客服 -->
