@@ -76,25 +76,26 @@
   </div>
 </header>
 
-<!-- Banner轮播 -->
-<div class="hero-slider" id="heroSlider">
-  <div class="hero-slide active"><img src="../images/banner2.jpg" alt="成都康礼学校"></div>
-  <a class="hero-slide" href="camp-apply.html" aria-label="国庆营地报名"><img src="../images/banner-camp.png" alt="国庆营地 10月5日—7日，3天2夜全寄宿，扫码报名"></a>
-  <button class="hero-arrow prev" type="button" aria-label="上一张" onclick="heroGo(-1)"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 5 8 12 15 19"/></svg></button>
-  <button class="hero-arrow next" type="button" aria-label="下一张" onclick="heroGo(1)"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 5 16 12 9 19"/></svg></button>
-  <div class="hero-dots">
-    <span class="hero-dot active" role="button" tabindex="0" aria-label="第1张" onclick="currentSlide(0)"></span>
-    <span class="hero-dot" role="button" tabindex="0" aria-label="第2张" onclick="currentSlide(1)"></span>
+<!-- 品牌主视觉 -->
+<section class="hero-brand">
+  <div class="hero-brand-inner">
+    <div class="hero-copy">
+      <div class="hero-eyebrow">COGDEL SCHOOL CHENGDU · 成都康礼学校</div>
+      <h1 class="hero-title">知其所长<br>成其所是<span class="hero-dot">。</span></h1>
+      <p class="hero-en">We see the child first.</p>
+      <p class="hero-desc">K12 全寄宿国际化学校 · 安仁古镇 5A 景区 · 80 年文脉<br>IB-PYP · IGCSE · A-Level · 1:3 师生比 · 97% 世界百强录取</p>
+      <div class="hero-ctas">
+        <a class="hero-btn hero-btn-gold" href="apply.html">预约访校</a>
+        <a class="hero-btn hero-btn-ghost" href="curriculum.html">看课程体系</a>
+        <span class="hero-tel">&#9742; 400-803-6661</span>
+      </div>
+    </div>
+    <figure class="hero-figure">
+      <img src="../images/banner2.jpg" alt="成都康礼学校校园">
+      <figcaption>Anren Ancient Town · Chengdu</figcaption>
+    </figure>
   </div>
-</div>
-<style>
-.hero-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:4;width:52px;height:52px;border-radius:50%;border:0;background:rgba(43,42,38,.42);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.25s;padding:0}
-.hero-arrow:hover{background:rgba(43,42,38,.72)}
-.hero-arrow.prev{left:24px}
-.hero-arrow.next{right:24px}
-.hero-dot{cursor:pointer}
-@media (max-width:768px){.hero-arrow{width:40px;height:40px}.hero-arrow.prev{left:10px}.hero-arrow.next{right:10px}}
-</style>
+</section>
 
 <!-- 核心数据 -->
 <div class="stats-bar">
@@ -162,7 +163,7 @@
 </section>
 
 <!-- 6个快速入口板块 -->
-<section class="section section-alt">
+<section class="section section-ink">
   <div class="section-inner">
     <div class="section-title">
       <h2>探索康礼</h2>
