@@ -65,7 +65,7 @@ h1,h2,h3,h4,h5,h6{font-family:var(--font-serif);font-weight:600;color:var(--navy
 .nav>li>a.active{color:var(--navy);font-weight:700}
 .nav>li>a.active::after{content:'';position:absolute;left:15px;right:15px;bottom:0;height:1px;background:var(--gold)}
 .nav .dropdown{display:none;position:absolute;top:100%;left:0;background:var(--wh);border:1px solid var(--line);border-top:1px solid var(--gold);border-radius:0 0 var(--rd) var(--rd);min-width:210px;padding:10px 0;z-index:99;box-shadow:0 18px 40px rgba(27,42,68,.1)}
-.nav li:hover .dropdown{display:block}
+.nav li:hover .dropdown,.nav li:focus-within .dropdown{display:block}
 .nav .dropdown a{display:block;padding:10px 22px;font-size:14px;color:var(--tx);transition:.15s}
 .nav .dropdown a:hover{color:var(--navy);background:var(--gp)}
 .nav-cta{background:var(--navy)!important;color:var(--ivory)!important;border-radius:2px!important;padding:9px 22px!important;font-weight:600!important;letter-spacing:.08em;margin-left:10px}
@@ -75,26 +75,23 @@ h1,h2,h3,h4,h5,h6{font-family:var(--font-serif);font-weight:600;color:var(--navy
 .menu-toggle{display:none;background:none;border:none;font-size:26px;cursor:pointer;color:var(--navy);padding:4px}
 
 /* === HERO：品牌主视觉（墨蓝底 + 大字句） === */
-.hero-brand{position:relative;background:var(--ink);color:var(--ivory);overflow:hidden}
-.hero-brand::before{content:'';position:absolute;right:-140px;top:50%;transform:translateY(-50%);width:620px;height:620px;background:url('../images/brand/crest-ivory.svg') center/contain no-repeat;opacity:.045;pointer-events:none}
+.hero-brand{position:relative;background:var(--ink) url('../images/banner2.jpg') center/cover no-repeat;color:var(--ivory);overflow:hidden;min-height:620px;display:flex;align-items:center}
+.hero-brand::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,22,38,.95) 0%,rgba(15,22,38,.8) 42%,rgba(15,22,38,.34) 100%);pointer-events:none}
 .hero-brand::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(202,164,123,.5),transparent)}
-.hero-brand-inner{max-width:var(--mw);margin:0 auto;padding:104px 24px 96px;display:grid;grid-template-columns:1.08fr .92fr;gap:72px;align-items:center;position:relative;z-index:1}
+.hero-brand-inner{max-width:var(--mw);width:100%;margin:0 auto;padding:110px 24px 100px;position:relative;z-index:1}
+.hero-copy{max-width:720px}
 .hero-eyebrow{font-family:var(--font-caps);font-size:11px;letter-spacing:.34em;color:var(--gl);margin-bottom:30px;text-transform:uppercase}
 .hero-title{font-family:var(--font-serif);font-weight:600;font-size:clamp(42px,5.4vw,76px);line-height:1.2;color:var(--ivory);letter-spacing:.02em}
 .hero-dot{color:var(--gold)}
 .hero-en{font-family:var(--font-en);font-style:italic;font-size:clamp(20px,2.3vw,30px);color:var(--gl);margin-top:20px;letter-spacing:.01em}
-.hero-desc{margin-top:28px;font-size:15px;line-height:2.05;color:rgba(251,248,243,.62);letter-spacing:.05em}
+.hero-desc{margin-top:28px;font-size:15px;line-height:2.05;color:rgba(251,248,243,.7);letter-spacing:.05em}
 .hero-ctas{display:flex;align-items:center;gap:16px;margin-top:40px;flex-wrap:wrap}
 .hero-btn{display:inline-block;padding:15px 34px;border-radius:2px;font-size:15px;font-weight:600;letter-spacing:.1em;text-decoration:none;transition:.3s}
 .hero-btn-gold{background:var(--gold);color:var(--navy);border:1px solid var(--gold)}
 .hero-btn-gold:hover{background:var(--gl);border-color:var(--gl);color:var(--navy)}
-.hero-btn-ghost{border:1px solid rgba(251,248,243,.4);color:var(--ivory)}
-.hero-btn-ghost:hover{background:rgba(251,248,243,.08);border-color:var(--ivory);color:var(--ivory)}
-.hero-tel{font-family:var(--font-caps);font-size:13px;letter-spacing:.16em;color:rgba(251,248,243,.55);margin-left:6px}
-.hero-figure{margin:0;position:relative}
-.hero-figure img{width:100%;height:470px;object-fit:cover;display:block}
-.hero-figure::before{content:'';position:absolute;left:-16px;top:-16px;right:16px;bottom:16px;border:1px solid rgba(202,164,123,.42);pointer-events:none}
-.hero-figure figcaption{font-family:var(--font-caps);font-size:10.5px;letter-spacing:.3em;color:rgba(251,248,243,.45);margin-top:16px;text-transform:uppercase}
+.hero-btn-ghost{border:1px solid rgba(251,248,243,.42);color:var(--ivory)}
+.hero-btn-ghost:hover{background:rgba(251,248,243,.1);border-color:var(--ivory);color:var(--ivory)}
+.hero-tel{font-family:var(--font-caps);font-size:13px;letter-spacing:.16em;color:rgba(251,248,243,.6);margin-left:6px}
 
 /* 旧版照片轮播（保留给历史页面，首页已改用品牌主视觉） */
 .hero-slider{position:relative;width:100%;max-width:1920px;height:85vh;min-height:520px;overflow:hidden;background:var(--ink);margin:0 auto}
@@ -257,6 +254,19 @@ h1,h2,h3,h4,h5,h6{font-family:var(--font-serif);font-weight:600;color:var(--navy
 .cta-visit{background:transparent;color:var(--ivory);border:1px solid rgba(251,248,243,.5)}
 .cta-visit:hover{background:var(--ivory);color:var(--navy);border-color:var(--ivory)}
 
+/* === 扫码区 === */
+.qr-band{background:var(--ivory);border-top:1px solid var(--line);padding:84px 24px}
+.qr-band-inner{max-width:var(--mw);margin:0 auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.qr-eyebrow{font-family:var(--font-caps);font-size:11px;letter-spacing:.36em;color:var(--bronze);text-transform:uppercase;margin-bottom:14px}
+.qr-head h2{font-size:clamp(24px,3vw,34px);letter-spacing:.04em;margin-bottom:12px}
+.qr-head p{font-size:15px;color:var(--tx2);line-height:1.9}
+.qr-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.qr-card{display:block;background:#fff;border:1px solid var(--line);border-radius:4px;padding:26px 22px;text-align:center;text-decoration:none;transition:.3s}
+.qr-card:hover{border-color:var(--line-gold);box-shadow:0 18px 44px rgba(27,42,68,.1);transform:translateY(-3px)}
+.qr-card img{width:150px;height:150px;object-fit:contain;margin:0 auto 16px;background:#fff}
+.qr-t{font-family:var(--font-serif);font-size:16px;color:var(--navy);letter-spacing:.04em}
+.qr-d{font-size:12.5px;color:var(--tx2);margin-top:6px;letter-spacing:.04em}
+
 /* === FOOTER === */
 .footer{background:var(--ink);color:rgba(251,248,243,.66);padding:84px 24px 30px;position:relative}
 .footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(202,164,123,.55),transparent)}
@@ -279,14 +289,18 @@ hr{border:none;border-top:1px solid var(--line);margin:32px 0}
   .logo::before{width:32px;height:32px;flex-basis:32px}
   .logo-img{height:34px;padding-left:12px;margin-left:12px}
 }
-/* 1120px 以下收起导航（9 个一级项 + 电话在窄屏会挤爆，改用抽屉菜单） */
-@media(max-width:900px){
-  .hero-brand-inner{grid-template-columns:1fr;gap:40px;padding:64px 20px 56px}
-  .hero-figure img{height:300px}
-  .hero-figure::before{left:-10px;top:-10px;right:10px;bottom:10px}
-  .hero-title{font-size:clamp(34px,9vw,46px)}
+/* 中屏紧凑：缩小导航间距、隐藏电话胶囊 */
+@media(max-width:1320px){
+  .nav>li>a{padding:10px 12px;font-size:14.5px}
+  .nav-phone{padding:7px 12px;font-size:12px;letter-spacing:.02em}
 }
-@media(max-width:1120px){
+@media(max-width:1240px){
+  .nav-phone{display:none}
+  .logo::after{width:132px;height:36px;flex-basis:132px}
+}
+
+/* 1000px 以下收起导航，改用抽屉菜单 */
+@media(max-width:1000px){
   .nav{display:none;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:var(--wh);border-bottom:1px solid var(--line);box-shadow:0 16px 32px rgba(27,42,68,.1);padding:8px 0;align-items:stretch}
   .nav.open{display:flex}
   .nav>li>a{padding:13px 24px}
