@@ -3,6 +3,8 @@
    与主站同一套：藏青 #1B2A44 / 墨蓝 #0F1626 / 象牙白 #FBF8F3 / 康礼金 #CAA47B / 古铜 #8A6A43
    ========================================================================== */
 
+@font-face{font-family:'Noto Serif SC';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/noto-serif-sc-400.woff2) format('woff2')}
+@font-face{font-family:'Noto Serif SC';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/noto-serif-sc-600.woff2) format('woff2')}
 :root{
   --navy:#1B2A44; --ink:#0F1626; --slate:#3A4456;
   --ivory:#FBF8F3; --gold:#CAA47B; --bronze:#8A6A43;

@@ -5,6 +5,8 @@
    注意：本文件必须在各页原有样式之后引入。
    ========================================================================== */
 
+@font-face{font-family:'Noto Serif SC';font-style:normal;font-weight:400;font-display:swap;src:url(../css/fonts/noto-serif-sc-400.woff2) format('woff2')}
+@font-face{font-family:'Noto Serif SC';font-style:normal;font-weight:600;font-display:swap;src:url(../css/fonts/noto-serif-sc-600.woff2) format('woff2')}
 @font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:400;font-display:swap;src:url('../css/fonts/cormorant-400.woff2') format('woff2')}
 @font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:400;font-display:swap;src:url('../css/fonts/cormorant-italic-400.woff2') format('woff2')}
 @font-face{font-family:'Cinzel';font-style:normal;font-weight:400;font-display:swap;src:url('../css/fonts/cinzel-400.woff2') format('woff2')}

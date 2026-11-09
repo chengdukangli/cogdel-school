@@ -1,0 +1,76 @@
+/* ==========================================================================
+   康礼资料库 · 子页品牌外壳（分批重构 · 第 1、2 批）
+   覆盖：课表 / ECA 总表 / 竞赛表（第 1 批）、师资团队（第 2 批）
+   说明：本文件在各页原有内联样式之后引入，只覆盖「外壳 + 表格 + 标题」，
+        不动各页特有的课程格、海报等组件。
+   ========================================================================== */
+
+@font-face{font-family:'Noto Serif SC';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/noto-serif-sc-400.woff2) format('woff2')}
+@font-face{font-family:'Noto Serif SC';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/noto-serif-sc-600.woff2) format('woff2')}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:400;font-display:swap;src:url(fonts/cormorant-italic-400.woff2) format('woff2')}
+@font-face{font-family:'Cinzel';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/cinzel-400.woff2) format('woff2')}
+
+:root{
+  --navy:#1B2A44; --ink:#0F1626; --slate:#3A4456;
+  --ivory:#FBF8F3; --gold:#CAA47B; --bronze:#8A6A43;
+  --k-line:rgba(27,42,68,.12); --k-line-gold:rgba(202,164,123,.5);
+  --k-serif:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong","SimSun",serif;
+  --k-sans:"Noto Sans SC","Source Han Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --k-en:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --k-caps:"Cinzel",Georgia,"Times New Roman",serif;
+}
+
+body{background:var(--ivory);color:#1F2430;font-family:var(--k-sans);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--k-serif);font-weight:600;color:var(--navy)}
+a{color:var(--bronze)}
+a:hover{color:var(--navy)}
+
+/* 首屏 */
+header.hero,.hero{position:relative;background:var(--ink);color:var(--ivory);overflow:hidden;border-bottom:1px solid rgba(202,164,123,.25)}
+header.hero::before,.hero::before{content:'';position:absolute;right:-110px;top:50%;transform:translateY(-50%);width:480px;height:480px;background:url('../images/brand/crest-ivory.svg') center/contain no-repeat;opacity:.05}
+header.hero .hero-inner,.hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:72px 24px 64px;text-align:center}
+header.hero .crest,.hero .crest{width:58px;height:58px;margin:0 auto 22px;background:url('../images/brand/crest-ivory.svg') center/contain no-repeat;color:transparent;font-size:0;line-height:0;overflow:hidden}
+header.hero h1,.hero h1{color:var(--ivory);font-size:clamp(24px,3.4vw,38px);letter-spacing:.06em;line-height:1.4;margin:0 0 12px}
+header.hero .en,.hero .en{font-family:var(--k-caps);font-size:11px;letter-spacing:.34em;color:#E0CBAF;text-transform:uppercase}
+header.hero .sub,header.hero .slogan,.hero .sub,.hero .slogan{font-family:var(--k-en);font-style:italic;font-size:clamp(16px,1.8vw,20px);color:rgba(251,248,243,.68);margin-top:14px}
+
+/* 内容容器 */
+.wrap{max-width:1240px;margin:0 auto;padding:44px 24px 80px}
+
+/* 标题层级 */
+.wrap h2{font-size:clamp(22px,2.6vw,30px);letter-spacing:.04em;margin:0 0 8px;padding-left:14px;border-left:2px solid var(--gold);line-height:1.5}
+.wrap h3{font-size:18px;letter-spacing:.02em;margin:0 0 10px}
+.wrap .en{font-family:var(--k-caps);font-size:10.5px;letter-spacing:.3em;color:var(--bronze);text-transform:uppercase}
+
+/* 表格：品牌化（课表 / ECA / 竞赛） */
+table{width:100%;border-collapse:collapse;background:#fff;font-size:13.5px;line-height:1.7;box-shadow:0 10px 30px rgba(27,42,68,.06)}
+table thead th,table th{background:var(--ink);color:var(--ivory);font-family:var(--k-sans);font-weight:600;letter-spacing:.08em;padding:12px 10px;border:1px solid rgba(251,248,243,.12);text-align:center;font-size:12.5px}
+td{padding:10px;border:1px solid var(--k-line);color:#2A2F3A;vertical-align:middle}
+tbody tr:nth-child(even) td{background:#FBF8F3}
+tbody tr:hover td{background:rgba(202,164,123,.1)}
+td.time,.tt-table td.time{font-family:var(--k-caps);font-size:11.5px;letter-spacing:.08em;color:var(--slate);white-space:nowrap;background:#F6F2EA}
+td.slot,.tt-table td.slot{font-weight:600;color:var(--navy);white-space:nowrap;background:#F6F2EA}
+.tt-table td .t{font-size:11.5px;color:#7A7A74;letter-spacing:.02em}
+tr.break td{background:rgba(202,164,123,.14)!important;color:var(--bronze);font-weight:600;letter-spacing:.1em}
+
+/* 小标签 */
+.tag,.badge,.chip{display:inline-block;border:1px solid var(--k-line-gold);color:var(--bronze);border-radius:2px;padding:2px 9px;font-size:11px;letter-spacing:.12em;background:transparent}
+
+/* 师资卡（第 2 批） */
+.staff-card,.person,.member{background:#fff;border:1px solid var(--k-line);border-radius:4px;transition:.3s}
+.staff-card:hover,.person:hover,.member:hover{border-color:var(--k-line-gold);box-shadow:0 16px 40px rgba(27,42,68,.1);transform:translateY(-3px)}
+.staff-card h3,.person h3,.member h3{color:var(--navy);font-size:16px}
+.staff-card .role,.person .role,.member .role{font-family:var(--k-caps);font-size:10.5px;letter-spacing:.2em;color:var(--bronze);text-transform:uppercase}
+
+@media(max-width:900px){
+  .hero-inner{padding:56px 20px 48px}
+  .wrap{padding:32px 16px 56px}
+  table{font-size:12px}
+  thead th,th,td{padding:8px 6px}
+}
+
+@media print{
+  .hero{background:var(--ink)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  thead th{background:var(--ink)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .wrap{max-width:none;padding:0}
+}
