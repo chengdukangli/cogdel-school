@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>成都康礼学校 师资团队 | Cogdel School Chengdu Faculty</title>
 <style>
-  :root{--purple:#5A3580;--purple-dark:#43265f;--purple-deep:#2e1a44;--gold:#c9a84c;--gold-light:#e6cf8f;--gold-deep:#a8892f;--bg:#f7f4ef;--card:#fff;--ink:#2b2333;--line:rgba(90,53,128,.14);}
+  :root{--purple:#1b2a44;--purple-dark:#1b2a44;--purple-deep:#0f1626;--gold:#caa47b;--gold-light:#e0cbaf;--gold-deep:#8a6a43;--bg:#fbf8f3;--card:#fff;--ink:#1f2430;--line:rgba(27,42,68,.14);}
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;}
   .wrap{max-width:1440px;margin:0 auto;padding:0 28px 80px;}
   header.hero{background:linear-gradient(135deg,var(--purple-deep),var(--purple) 52%,var(--purple-dark));color:#fff;padding:50px 26px 42px;text-align:center;position:relative;overflow:hidden;margin-bottom:34px;}
-  header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 84% 16%,rgba(201,168,76,.45),transparent 42%),radial-gradient(circle at 10% 88%,rgba(230,207,143,.25),transparent 42%);}
+  header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 84% 16%,rgba(202,164,123,.45),transparent 42%),radial-gradient(circle at 10% 88%,rgba(230,207,143,.25),transparent 42%);}
   .hero-inner{position:relative;z-index:2;max-width:900px;margin:0 auto;}
   .hero .crest{width:50px;height:50px;margin:0 auto 12px;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--purple-deep);font-weight:800;font-size:23px;line-height:50px;box-shadow:0 6px 18px rgba(0,0,0,.25);}
   .hero h1{font-size:clamp(25px,3.6vw,36px);font-weight:800;letter-spacing:1.5px;}
@@ -22,13 +22,13 @@
   .sec-head{display:flex;align-items:baseline;gap:14px;padding:0 2px 14px;border-bottom:2px solid var(--gold);margin-bottom:20px;}
   .sec-head h2{font-size:26px;color:var(--purple);font-weight:800;letter-spacing:1px;}
   .sec-head .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-deep);font-size:15px;}
-  .sec-head .cnt{margin-left:auto;color:#9b8fb0;font-size:14px;white-space:nowrap;}
+  .sec-head .cnt{margin-left:auto;color:#8c98ac;font-size:14px;white-space:nowrap;}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px;}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 6px 20px rgba(90,53,128,.06);break-inside:avoid;cursor:zoom-in;transition:transform .15s,box-shadow .15s;}
-  .card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(90,53,128,.14);}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 6px 20px rgba(27,42,68,.06);break-inside:avoid;cursor:zoom-in;transition:transform .15s,box-shadow .15s;}
+  .card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(27,42,68,.14);}
   .card img{display:block;width:100%;height:auto;}
   /* 放大查看 lightbox */
-  .lightbox{position:fixed;inset:0;background:rgba(30,18,44,.86);display:none;align-items:center;justify-content:center;z-index:999;padding:28px;cursor:zoom-out;}
+  .lightbox{position:fixed;inset:0;background:rgba(22,33,55,.86);display:none;align-items:center;justify-content:center;z-index:999;padding:28px;cursor:zoom-out;}
   .lightbox.show{display:flex;}
   .lightbox .box{position:relative;max-width:92vw;max-height:94vh;display:flex;align-items:center;justify-content:center;}
   .lightbox img{max-width:92vw;max-height:94vh;border-radius:12px;box-shadow:0 18px 60px rgba(0,0,0,.5);object-fit:contain;}
@@ -48,10 +48,11 @@
     .card img{width:100%;height:auto;}
   }
 </style>
+  <link rel="stylesheet" href="../css/brand.css">
 </head>
 <body>
 <header class="hero"><div class="hero-inner">
-  <div class="crest">C</div>
+  <div class="crest" role="img" aria-label="成都康礼学校校徽"></div>
   <h1>成都康礼学校 · 师资团队</h1>
   <div class="en">Cogdel School Chengdu · Faculty &amp; Staff</div>
   <div class="hero-tip" style="margin-top:12px;font-size:12.5px;color:rgba(255,255,255,.8)">如需查看教师详细资料，点击任一张卡片放大</div>
@@ -160,5 +161,6 @@
   document.getElementById('lbclose').addEventListener('click',function(e){e.stopPropagation();closed();});
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') closed(); });
 </script>
+<link rel="stylesheet" href="../css/concept-sub.css">
 </body>
 </html>

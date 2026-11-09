@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UOI 探究单元 · 小学部 | 成都康礼学校</title>
 <style>
-  :root{--purple:#5A3580;--purple-dark:#43265f;--purple-deep:#2e1a44;--gold:#c9a84c;--gold-light:#e6cf8f;--gold-deep:#a8892f;--bg:#f7f4ef;--card:#fff;--ink:#2b2333;--inc-soft:#6b6475;--line:rgba(90,53,128,.14);}
+  :root{--purple:#1b2a44;--purple-dark:#1b2a44;--purple-deep:#0f1626;--gold:#caa47b;--gold-light:#e0cbaf;--gold-deep:#8a6a43;--bg:#fbf8f3;--card:#fff;--ink:#1f2430;--inc-soft:#6a6a66;--line:rgba(27,42,68,.14);}
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
   .wrap{max-width:1080px;margin:0 auto;padding:0 28px 90px;}
   header.hero{background:linear-gradient(135deg,var(--purple-deep),var(--purple) 52%,var(--purple-dark));color:#fff;padding:50px 26px 42px;text-align:center;position:relative;overflow:hidden;margin-bottom:34px;}
-  header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 84% 16%,rgba(201,168,76,.45),transparent 42%),radial-gradient(circle at 10% 88%,rgba(230,207,143,.25),transparent 42%);}
+  header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 84% 16%,rgba(202,164,123,.45),transparent 42%),radial-gradient(circle at 10% 88%,rgba(230,207,143,.25),transparent 42%);}
   .hero-inner{position:relative;z-index:2;max-width:920px;margin:0 auto;}
   .crest{width:50px;height:50px;margin:0 auto 12px;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--purple-deep);font-weight:800;font-size:23px;line-height:50px;box-shadow:0 6px 18px rgba(0,0,0,.25);}
   .hero h1{font-size:clamp(24px,3.4vw,34px);font-weight:800;letter-spacing:1.5px;}
@@ -21,40 +21,41 @@
   .blk-head{display:flex;align-items:baseline;gap:12px;padding:0 2px 14px;border-bottom:2px solid var(--gold);margin-bottom:12px;}
   .blk-head h2{font-size:25px;color:var(--purple);font-weight:800;letter-spacing:1px;}
   .blk-head .en{font-family:Georgia,serif;font-style:italic;color:var(--gold-deep);font-size:14px;}
-  .blk-head .cnt{margin-left:auto;color:#9b8fb0;font-size:13px;white-space:nowrap;}
+  .blk-head .cnt{margin-left:auto;color:#8c98ac;font-size:13px;white-space:nowrap;}
   .block{margin-bottom:40px;}
   .unit{background:linear-gradient(135deg,var(--purple-deep),var(--purple) 60%,var(--purple-dark));border-radius:16px;color:#fff;padding:20px 22px;margin-bottom:20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;}
   .unit .t{font-size:18px;font-weight:800;}
   .unit .e{font-family:Georgia,serif;font-style:italic;color:var(--gold-light);font-size:12.5px;margin-top:3px;}
   .unit .q{background:rgba(255,255,255,.12);border:1px solid rgba(230,207,143,.4);border-radius:10px;padding:8px 14px;font-size:13.5px;color:#f3ecd9;max-width:420px;}
-  .understand{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:0 6px 18px rgba(90,53,128,.06);}
+  .understand{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:0 6px 18px rgba(27,42,68,.06);}
   .understand h5{font-size:15.5px;color:var(--purple);font-weight:800;margin-bottom:6px;}
   .understand p{font-size:14px;color:var(--inc-soft);line-height:1.8;}
   .timeline{position:relative;margin:14px 0 0;padding-left:26px;}
-  .timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--gold),rgba(201,168,76,.25));}
+  .timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--gold),rgba(202,164,123,.25));}
   .step{position:relative;margin-bottom:16px;}
   .s-marker{position:absolute;left:-26px;top:14px;width:20px;height:20px;border-radius:50%;background:var(--purple);display:flex;align-items:center;justify-content:center;}
   .s-marker::after{content:"";width:8px;height:8px;border-radius:50%;background:#fff;}
-  .s-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;box-shadow:0 5px 16px rgba(90,53,128,.06);}
+  .s-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;box-shadow:0 5px 16px rgba(27,42,68,.06);}
   .s-head{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
   .s-head h4{font-size:16px;color:var(--ink);font-weight:800;}
   .s-head .num{display:inline-block;background:var(--gold);color:var(--purple-deep);font-size:12px;font-weight:800;padding:2px 9px;border-radius:12px;}
   .s-head .tag{font-size:13px;color:var(--gold-deep);font-weight:700;}
   .s-card p{font-size:13.5px;color:var(--inc-soft);line-height:1.8;}
   figure.ev{margin:12px 0 4px;}
-  figure.ev img{width:100%;max-width:420px;height:auto;display:block;border-radius:10px;border:1px solid var(--line);box-shadow:0 5px 16px rgba(90,53,128,.08);}
+  figure.ev img{width:100%;max-width:420px;height:auto;display:block;border-radius:10px;border:1px solid var(--line);box-shadow:0 5px 16px rgba(27,42,68,.08);}
   figure.ev figcaption{font-size:12px;color:var(--inc-soft);margin-top:6px;}
   .s-foot{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
-  .s-foot .sub{font-size:12px;color:var(--purple);background:rgba(90,53,128,.07);border-radius:7px;padding:3px 9px;font-weight:700;}
-  .s-foot .prod{font-size:12px;color:#7a6a3a;background:rgba(201,168,76,.12);border-radius:7px;padding:3px 9px;}
+  .s-foot .sub{font-size:12px;color:var(--purple);background:rgba(27,42,68,.07);border-radius:7px;padding:3px 9px;font-weight:700;}
+  .s-foot .prod{font-size:12px;color:#7a6a3a;background:rgba(202,164,123,.12);border-radius:7px;padding:3px 9px;}
   .subj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;}
-  .sv{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;border-top:4px solid var(--purple);box-shadow:0 5px 16px rgba(90,53,128,.05);}
+  .sv{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;border-top:4px solid var(--purple);box-shadow:0 5px 16px rgba(27,42,68,.05);}
   .sv-k{font-size:11.5px;color:var(--gold-deep);font-weight:800;letter-spacing:.5px;}
   .sv-b h4{font-size:15px;color:var(--purple);font-weight:800;margin:6px 0 5px;}
   .sv-b p{font-size:12.5px;color:var(--inc-soft);line-height:1.6;}
-  .note{background:rgba(201,168,76,.12);border-left:4px solid var(--gold);border-radius:8px;padding:14px 16px;font-size:13px;color:#7a6a3a;line-height:1.7;margin-top:16px;}
+  .note{background:rgba(202,164,123,.12);border-left:4px solid var(--gold);border-radius:8px;padding:14px 16px;font-size:13px;color:#7a6a3a;line-height:1.7;margin-top:16px;}
   @media print{ @page{size:A4 landscape;margin:9mm;} body{background:#fff;} header.hero{display:none!important;} .wrap{max-width:none;padding:0;} .subj-grid{grid-template-columns:1fr 1fr;gap:8px;} .s-card,.sv{box-shadow:none;page-break-inside:avoid;} figure.ev img{max-width:100%;max-height:340px;} }
 </style>
+  <link rel="stylesheet" href="../css/brand.css">
 </head>
 <body>
 <header class="hero"><div class="hero-inner">

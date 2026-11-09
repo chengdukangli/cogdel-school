@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>开放日 &amp; 营地 | 成都康礼学校</title>
 <style>
-  :root{--purple:#5A3580;--purple-dark:#43265f;--purple-deep:#2e1a44;--gold:#c9a84c;--gold-light:#e6cf8f;--gold-deep:#a8892f;--bg:#faf7f2;--card:#fff;--ink:#2b2333;--inc:#5f5a6b;--line:rgba(90,53,128,.14);}
+  :root{--purple:#1b2a44;--purple-dark:#1b2a44;--purple-deep:#0f1626;--gold:#caa47b;--gold-light:#e0cbaf;--gold-deep:#8a6a43;--bg:#faf7f2;--card:#fff;--ink:#1f2430;--inc:#5f5a6b;--line:rgba(27,42,68,.14);}
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
   .wrap{max-width:1200px;margin:0 auto;padding:0 24px 80px;}
   header.hero{background:linear-gradient(135deg,var(--purple-deep),var(--purple) 55%,var(--purple-dark));color:#fff;padding:52px 24px 56px;text-align:center;position:relative;overflow:hidden;}
-  header.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 20%,rgba(201,168,76,.45),transparent 45%),radial-gradient(circle at 12% 85%,rgba(230,207,143,.25),transparent 40%);pointer-events:none;}
+  header.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 20%,rgba(202,164,123,.45),transparent 45%),radial-gradient(circle at 12% 85%,rgba(230,207,143,.25),transparent 40%);pointer-events:none;}
   .hero-inner{position:relative;z-index:1;max-width:940px;margin:0 auto;}
   .crest{font-size:36px;margin-bottom:8px;}
   .hero h1{font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:1px;}
@@ -23,7 +23,7 @@
   .sec-head .en{font-family:Georgia,serif;font-style:italic;color:var(--inc);font-size:15px;margin-top:6px;}
   .sec-head .lead{max-width:760px;margin:14px auto 0;color:var(--inc);font-size:15px;}
   .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
-  .cd{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 6px 22px rgba(90,53,128,.06);border-top:5px solid var(--purple);display:flex;flex-direction:column;}
+  .cd{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 6px 22px rgba(27,42,68,.06);border-top:5px solid var(--purple);display:flex;flex-direction:column;}
   .top{display:flex;align-items:baseline;gap:10px;}
   .cd .date{font-size:26px;color:var(--purple);font-weight:800;line-height:1.1;}
   .cd .week{font-size:13px;color:var(--inc);}
@@ -33,7 +33,7 @@
   .cd .sub{font-size:13px;color:var(--gold-deep);margin:3px 0 10px;}
   .cd .topic{font-size:13px;color:var(--inc);background:#f6f1e9;border-radius:8px;padding:8px 10px;margin-top:auto;}
   /* 流程 */
-  .flow-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:0 6px 22px rgba(90,53,128,.06);}
+  .flow-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:0 6px 22px rgba(27,42,68,.06);}
   table{width:100%;border-collapse:collapse;}
   th,td{text-align:left;padding:15px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
   thead th{background:var(--purple);color:#fff;font-size:14px;letter-spacing:1px;}
@@ -43,7 +43,7 @@
   /* 老师 */
   .teachers{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:16px;}
   .t{text-align:center;}
-  .t img{width:88px;height:88px;border-radius:50%;object-fit:cover;border:3px solid var(--gold);box-shadow:0 6px 16px rgba(90,53,128,.15);}
+  .t img{width:88px;height:88px;border-radius:50%;object-fit:cover;border:3px solid var(--gold);box-shadow:0 6px 16px rgba(27,42,68,.15);}
   .t b{display:block;font-size:13.5px;color:var(--purple);margin-top:8px;}
   .t span{font-size:12px;color:var(--inc);}
   /* 海报入口 */
@@ -52,11 +52,12 @@
   .poster-link:hover{transform:translateY(-3px);}
   .poster-link .k{font-size:13px;letter-spacing:2px;color:var(--gold-light);}
   .poster-link h3{font-size:20px;font-weight:800;margin:8px 0 4px;}
-  .poster-link p{font-size:13px;color:#efe8f6;}
+  .poster-link p{font-size:13px;color:#ebebeb;}
   .poster-link .go{display:inline-block;margin-top:12px;background:var(--gold);color:var(--purple-deep);padding:6px 18px;border-radius:20px;font-size:13px;font-weight:800;}
   @media(max-width:640px){.cards{grid-template-columns:1fr;}}
   @media print{@page{size:A4 landscape;margin:8mm;} body{background:#fff;} header.hero{display:none!important;} .wrap{max-width:none;padding:0;} .cards{grid-template-columns:1fr 1fr;gap:10px;} .cd,.fd{box-shadow:none;page-break-inside:avoid;} .teachers{grid-template-columns:repeat(5,1fr);}}
 </style>
+  <link rel="stylesheet" href="../css/brand.css">
 </head>
 <body>
 <header class="hero"><div class="hero-inner">
