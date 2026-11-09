@@ -5,19 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>成都康礼 2026-2027 开放日 &amp; 营地宣传页</title>
 <style>
-  :root{--pp:#5A3580;--ppd:#2E1A44;--ppl:#F4F0FA;--gold:#C9A84C;--goldl:#EFE3C4;--goldd:#8A6F2C;
-        --ink:#241B31;--soft:#6B6079;--line:rgba(90,53,128,.16);--bg:#F2EEF8;}
+  :root{--pp:#1b2a44;--ppd:#0f1626;--ppl:#F4F0FA;--gold:#caa47b;--goldl:#EFE3C4;--goldd:#8A6F2C;
+        --ink:#17243a;--soft:#495467;--line:rgba(27,42,68,.16);--bg:#efeeed;}
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
   .wrap{max-width:880px;margin:0 auto;padding:0 0 60px;}
   /* 页头 */
-  header{background:linear-gradient(150deg,#2E1A44,#5A3580 55%,#7B4FA5);color:#fff;padding:38px 34px 34px;position:relative;overflow:hidden;}
-  header::before{content:"";position:absolute;right:-70px;top:-70px;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.35),transparent 65%);}
+  header{background:linear-gradient(150deg,#0f1626,#1b2a44 55%,#34445f);color:#fff;padding:38px 34px 34px;position:relative;overflow:hidden;}
+  header::before{content:"";position:absolute;right:-70px;top:-70px;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle,rgba(202,164,123,.35),transparent 65%);}
   header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:linear-gradient(90deg,var(--gold),var(--goldl),var(--gold));}
-  .brand{position:relative;z-index:2;display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:1.5px;color:#E4D8F4;background:rgba(255,255,255,.14);border-radius:20px;padding:5px 14px;}
+  .brand{position:relative;z-index:2;display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:1.5px;color:#e2e4e6;background:rgba(255,255,255,.14);border-radius:20px;padding:5px 14px;}
   .brand .mk{width:20px;height:20px;border-radius:50%;background:var(--goldl);color:var(--ppd);font-weight:900;font-size:11px;display:flex;align-items:center;justify-content:center;}
   header h1{position:relative;z-index:2;font-size:clamp(24px,4.6vw,34px);font-weight:900;margin-top:16px;line-height:1.25;letter-spacing:-.5px;}
-  header .sub{position:relative;z-index:2;margin-top:10px;font-size:14px;color:#DCCFEC;max-width:620px;}
+  header .sub{position:relative;z-index:2;margin-top:10px;font-size:14px;color:#dadde2;max-width:620px;}
   header .meta{position:relative;z-index:2;display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
   header .meta span{font-size:12px;font-weight:800;color:var(--ppd);background:var(--goldl);border-radius:20px;padding:5px 14px;}
   /* 分组 */
@@ -25,24 +25,24 @@
   .gsec{display:flex;align-items:baseline;gap:10px;margin-bottom:16px;}
   .no{font-size:22px;font-weight:900;color:var(--gold);line-height:1;letter-spacing:-1px;}
   .gsec h2{font-size:19px;color:var(--ppd);font-weight:900;letter-spacing:.3px;}
-  .gsec .en{font-size:11.5px;color:#A79CB8;font-style:italic;margin-left:auto;}
+  .gsec .en{font-size:11.5px;color:#9aa5b6;font-style:italic;margin-left:auto;}
   .gsec .ln{flex:1;height:2.5px;background:linear-gradient(90deg,var(--gold),transparent);}
   .cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;box-shadow:0 6px 20px rgba(90,53,128,.07);
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;box-shadow:0 6px 20px rgba(27,42,68,.07);
         display:flex;flex-direction:column;transition:transform .15s ease,box-shadow .15s ease;}
-  .card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(90,53,128,.14);}
+  .card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(27,42,68,.14);}
   .card .tag{font-size:11px;font-weight:900;color:var(--goldd);letter-spacing:1px;}
   .card h3{font-size:17px;color:var(--ppd);font-weight:900;margin-top:5px;line-height:1.3;}
   .card .desc{font-size:13px;color:var(--soft);margin-top:9px;line-height:1.7;flex:1;}
   .card .desc b{color:var(--pp);font-weight:800;}
   .card .desc ul{margin:6px 0 0 18px;}
   .card .desc li{font-size:12.5px;margin-top:2px;}
-  .btn{display:inline-block;margin-top:15px;align-self:flex-start;background:linear-gradient(135deg,var(--pp),#7B4FA5);color:#fff;
-       font-weight:800;font-size:13.5px;padding:10px 22px;border-radius:999px;text-decoration:none;box-shadow:0 4px 12px rgba(90,53,128,.28);}
+  .btn{display:inline-block;margin-top:15px;align-self:flex-start;background:linear-gradient(135deg,var(--pp),#34445f);color:#fff;
+       font-weight:800;font-size:13.5px;padding:10px 22px;border-radius:999px;text-decoration:none;box-shadow:0 4px 12px rgba(27,42,68,.28);}
   .btn:hover{background:linear-gradient(135deg,var(--ppd),var(--pp));}
   .btn.ghost{background:#fff;color:var(--pp);border:1.5px solid var(--pp);box-shadow:none;}
   .btn.ghost:hover{background:var(--ppl);}
-  .url{margin-top:8px;font-size:10.5px;color:#A79CB8;word-break:break-all;}
+  .url{margin-top:8px;font-size:10.5px;color:#9aa5b6;word-break:break-all;}
   /* 底部 */
   footer{margin:40px 34px 0;border-top:1px solid var(--line);padding-top:22px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center;}
   footer .c{font-size:12.5px;color:var(--soft);line-height:1.8;}
@@ -56,6 +56,7 @@
     footer{margin:30px 20px 0;}
   }
 </style>
+  <link rel="stylesheet" href="../css/brand.css">
 </head>
 <body>
 <div class="wrap">

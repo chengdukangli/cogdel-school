@@ -222,7 +222,8 @@ hr{border:none;border-top:1px solid var(--line);margin:32px 0}
   .logo::before{width:32px;height:32px;flex-basis:32px}
   .logo-img{height:34px;padding-left:12px;margin-left:12px}
 }
-@media(max-width:768px){
+/* 1120px 以下收起导航（9 个一级项 + 电话在窄屏会挤爆，改用抽屉菜单） */
+@media(max-width:1120px){
   .nav{display:none;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:var(--wh);border-bottom:1px solid var(--line);box-shadow:0 16px 32px rgba(27,42,68,.1);padding:8px 0;align-items:stretch}
   .nav.open{display:flex}
   .nav>li>a{padding:13px 24px}
@@ -230,6 +231,8 @@ hr{border:none;border-top:1px solid var(--line);margin:32px 0}
   .nav-cta,.nav-phone{margin:8px 20px;text-align:center}
   .nav .dropdown{position:static;box-shadow:none;border:none;padding-left:16px}
   .menu-toggle{display:block}
+}
+@media(max-width:768px){
   .hero-slider{height:430px}
   .stats-inner{gap:24px}
   .stat-num{font-size:24px}

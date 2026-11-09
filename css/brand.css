@@ -1,0 +1,31 @@
+/* ==========================================================================
+   康礼品牌基础层 · 只做「字体 + 基础色」的统一
+   用途：给不使用 css/style.css 的独立页面（资料库 / 校长说 / 营地页 / 政策页 等）
+        补一层品牌字体与基础色，不改变各页自己的版式。
+   注意：本文件必须在各页原有样式之后引入。
+   ========================================================================== */
+
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:400;font-display:swap;src:url('../css/fonts/cormorant-400.woff2') format('woff2')}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:400;font-display:swap;src:url('../css/fonts/cormorant-italic-400.woff2') format('woff2')}
+@font-face{font-family:'Cinzel';font-style:normal;font-weight:400;font-display:swap;src:url('../css/fonts/cinzel-400.woff2') format('woff2')}
+@font-face{font-family:'Cinzel';font-style:normal;font-weight:600;font-display:swap;src:url('../css/fonts/cinzel-600.woff2') format('woff2')}
+
+:root{
+  --k-navy:#1B2A44; --k-ink:#0F1626; --k-slate:#3A4456;
+  --k-ivory:#FBF8F3; --k-gold:#CAA47B; --k-bronze:#8A6A43;
+  --k-serif:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong","SimSun",serif;
+  --k-sans:"Noto Sans SC","Source Han Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --k-en:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --k-caps:"Cinzel",Georgia,"Times New Roman",serif;
+}
+
+body{font-family:var(--k-sans);-webkit-font-smoothing:antialiased}
+
+h1,h2,h3,h4,h5,h6{font-family:var(--k-serif);font-weight:600;letter-spacing:.01em}
+
+/* 英文副标 / 小标签：有 .en / .eyebrow / .kicker 的页面统一成品牌字体 */
+.en,.eyebrow,.kicker,.subtitle-en{font-family:var(--k-en)}
+.k-caps{font-family:var(--k-caps);letter-spacing:.28em;text-transform:uppercase}
+
+::selection{background:rgba(202,164,123,.28);color:var(--k-navy)}
+:focus-visible{outline:2px solid var(--k-gold);outline-offset:3px}
