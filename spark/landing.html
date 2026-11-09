@@ -117,14 +117,14 @@
 
 <script>
 const DIMS8=[
-  {zh:'身心健康',en:'Well-being',d:["了解并照顾自己的身心状态，在压力与变化中保持稳定与从容。","Understands and cares for their own well-being, staying steady under pressure and change."]},
-  {zh:'学习力',en:'Learning',d:["主动构建并拓展自己的知识体系，把所学内化为真正的理解，养成终身学习的习惯。","Actively builds knowledge, turns learning into understanding — and grows into a lifelong learner."]},
-  {zh:'创新力',en:'Innovation',d:["在理解现有方法的基础上，敢于提出新想法、尝试新做法，创造性地解决问题。","Builds on existing methods, daring to propose new ideas and solve problems creatively."]},
-  {zh:'内驱力',en:'Agency',d:["由内而外地设定目标、主动行动，持续推动自己前进，而不依赖外部催促。","Sets goals from within, takes initiative and drives forward without external prompting."]},
-  {zh:'领导力',en:'Leadership',d:["描绘共同方向、做出关键判断，并带动他人一起把事情做成。","Paints a shared direction, makes sound judgments and brings others together to get things done."]},
-  {zh:'团队协作',en:'Collaboration',d:["清晰沟通、换位思考、主动补位，在合作中建立信任、发挥合力。","Communicates clearly, thinks from others' perspectives, and builds trust to create synergy."]},
-  {zh:'国际视野',en:'Vision',d:["从更广阔的视角、更长远的维度理解世界，整合资源、预见趋势。","Understands the world from broader perspectives and a longer horizon, integrating resources and anticipating trends."]},
-  {zh:'社会责任',en:'Stewardship',d:["把自己的选择与他人和社会长远福祉的影响联系起来，并担起这份责任。","Connects choices to the long-term wellbeing of others and society, and takes responsibility for that impact."]},
+  {zh:'身心',en:'Well-being',d:["通过持续的自我觉察与调适，维持身心稳定与可靠运作，从而为长期价值实现奠定基础的能力。","The ability to maintain stable and reliable physical and mental functioning through continuous self-awareness and regulation, forming the foundation for long-term value creation."]},
+  {zh:'学习',en:'Learning',d:["主动构建并不断拓展自身知识框架，将知识与技能内化为系统性理解，并持续更新认知结构以适应变化的能力。","The ability to actively construct and extend one’s knowledge framework, internalising knowledge and skills into structured understanding, and continuously evolving mental models to adapt to change."]},
+  {zh:'创新',en:'Innovation',d:["在深入理解既有框架的基础上，主动挑战并重构框架，洞察问题本质，并创造性地提出与实践新方法，从而实现突破性发展的能力。","The ability to challenge and reshape existing frameworks based on deep understanding, identify underlying patterns, and creatively develop and apply new approaches that drive breakthrough progress."]},
+  {zh:'内驱',en:'Agency',d:["基于对自身目标与价值的理解，自主启动并持续推进行动，通过自我反思与激励驱动持续成长的能力。","The ability to initiate and sustain action independently based on an understanding of one’s goals and values, driving continuous growth through self-reflection and self-motivation."]},
+  {zh:'领导',en:'Leadership',d:["通过描绘共同方向、做出关键判断并激发他人潜能与行动，将个体能力放大为集体成果，从而引领团队达成目标的能力。","The ability to set direction, make key judgments, and mobilise others’ potential and action, amplifying individual capability into collective outcomes."]},
+  {zh:'协作',en:'Collaboration',d:["通过清晰沟通、换位思考与主动补位，建立信任并整合多方优势，降低内耗并提升整体效能的能力。","The ability to integrate diverse strengths, reduce friction, and enhance collective effectiveness through communication, empathy, trust-building, and proactive support."]},
+  {zh:'视野',en:'Vision',d:["能够从不同视角与更广阔的时空维度理解问题，整合资源并预见趋势，从而拓展个人与组织能力边界的能力。","The ability to understand issues from multiple perspectives across broader contexts, integrate resources, and anticipate long-term trends to expand individual and organisational capacity."]},
+  {zh:'责任',en:'Stewardship',d:["在追求成就的过程中，将自身决策与对他人及社会长期福祉的影响相连接，并在行动中纳入这些影响与责任，从而实现可持续发展的能力。","The ability to pursue achievement while accounting for the long-term impact of one’s decisions on others and society, integrating this responsibility into action to enable sustainable outcomes."]},
 ];
 const MASCS=[
   {key:'agency',c1:'#FF7A45',hair:'spiky',expr:'determined',acc:'flame',label:["自燃型","Self-Starter"]},
@@ -138,14 +138,14 @@ const MASCS=[
   {key:'balanced',c1:'#caa47b',hair:'bob',expr:'smile',acc:'hex',label:["六边形战士","All-Rounder"]},
 ];
 const EXAMPLES=[
-  {zh:"三个学生，在物理课上测出了8年来最接近真实值的重力加速度——9.88，离标准值9.81只差0.07。",en:"Three students measured gravity's acceleration at 9.88 — the closest to the real value (9.81) in 8 years.",tag:"学习力 · Learning"},
-  {zh:"一个之前背单词总卡壳的孩子，这周听写考了16/25。对他来说，这是一个真正的转折点。",en:"A child who once struggled with vocabulary scored 16/25 on dictation this week — a real turning point.",tag:"学习力 · Learning"},
-  {zh:"一个孩子，坦然聊起自己对美的追求，眼睛里有光。周末，她要去爬青城山。",en:"A child spoke openly about her pursuit of beauty, with light in her eyes. This weekend, she's hiking Qingcheng Mountain.",tag:"身心健康 · Well-being"},
-  {zh:"一个孩子，勇敢走上数学课的讲台，讲清楚了自己的解题思路。",en:"A child bravely stepped up in math class and clearly explained their solution.",tag:"学习力 · Learning"},
-  {zh:"一个孩子在咖啡厅跑前跑后地帮忙——'眼里有活、心中有主'。",en:"A child bustled around the café helping everyone — 'sees the work and holds people in her heart'.",tag:"团队协作 · Collaboration"},
-  {zh:"一个孩子，午休时间也在图书馆安静自习，不需要任何人催促。",en:"A child studies quietly in the library even during the lunch break — no one needs to push them.",tag:"内驱力 · Agency"},
-  {zh:"一个孩子，在'校园二手循环小店'项目里，主动牵头讨论、记录大家的想法。",en:"In the 'Campus Second-hand Store' project, a child naturally led the discussion and recorded the group's ideas.",tag:"领导力 · Leadership"},
-  {zh:"一个孩子，怕新同学找不到保健室，每次都陪着去，还主动帮忙找人。",en:"Worried a new student couldn't find the health room, a child accompanied them every time and helped look for them.",tag:"社会责任 · Stewardship"},
+  {zh:"三个学生，在物理课上测出了8年来最接近真实值的重力加速度——9.88，离标准值9.81只差0.07。",en:"Three students measured gravity's acceleration at 9.88 — the closest to the real value (9.81) in 8 years.",tag:"学习 · Learning"},
+  {zh:"一个之前背单词总卡壳的孩子，这周听写考了16/25。对他来说，这是一个真正的转折点。",en:"A child who once struggled with vocabulary scored 16/25 on dictation this week — a real turning point.",tag:"学习 · Learning"},
+  {zh:"一个孩子，坦然聊起自己对美的追求，眼睛里有光。周末，她要去爬青城山。",en:"A child spoke openly about her pursuit of beauty, with light in her eyes. This weekend, she's hiking Qingcheng Mountain.",tag:"身心 · Well-being"},
+  {zh:"一个孩子，勇敢走上数学课的讲台，讲清楚了自己的解题思路。",en:"A child bravely stepped up in math class and clearly explained their solution.",tag:"学习 · Learning"},
+  {zh:"一个孩子在咖啡厅跑前跑后地帮忙——'眼里有活、心中有主'。",en:"A child bustled around the café helping everyone — 'sees the work and holds people in her heart'.",tag:"协作 · Collaboration"},
+  {zh:"一个孩子，午休时间也在图书馆安静自习，不需要任何人催促。",en:"A child studies quietly in the library even during the lunch break — no one needs to push them.",tag:"内驱 · Agency"},
+  {zh:"一个孩子，在'校园二手循环小店'项目里，主动牵头讨论、记录大家的想法。",en:"In the 'Campus Second-hand Store' project, a child naturally led the discussion and recorded the group's ideas.",tag:"领导 · Leadership"},
+  {zh:"一个孩子，怕新同学找不到保健室，每次都陪着去，还主动帮忙找人。",en:"Worried a new student couldn't find the health room, a child accompanied them every time and helped look for them.",tag:"责任 · Stewardship"},
 ];
 function hairSVG(style,c){const H={spiky:'<path d="M41 48 Q41 14 70 14 Q99 14 99 48 Q91 30 85 36 Q79 22 72 28 Q70 18 68 28 Q61 22 55 36 Q49 30 41 48Z" fill="'+c+'"/>',slick:'<path d="M40 48 A30 30 0 0 1 100 48 Q100 26 70 24 Q40 26 40 48Z" fill="'+c+'"/>',curly:'<path d="M40 48 Q38 20 54 16 Q50 26 58 30 Q56 16 70 16 Q84 16 82 30 Q90 26 86 16 Q102 20 100 48 Q94 32 88 38 Q80 28 74 34 Q66 28 60 34 Q52 28 46 38 Q40 32 40 48Z" fill="'+c+'"/>',bob:'<path d="M40 48 A30 30 0 0 1 100 48 L100 40 Q100 24 70 24 Q40 24 40 40 Z" fill="'+c+'"/>',bun:'<circle cx="70" cy="19" r="11" fill="'+c+'"/><path d="M40 48 A30 30 0 0 1 100 48 Q100 32 70 32 Q40 32 40 48Z" fill="'+c+'"/>',long:'<path d="M40 48 A30 30 0 0 1 100 48 L100 48 Q100 66 90 72 Q84 56 70 58 Q56 56 50 72 Q40 66 40 48Z" fill="'+c+'"/>',quiff:'<path d="M40 48 A30 30 0 0 1 100 48 Q100 30 88 20 Q86 14 78 18 Q80 26 72 24 Q64 14 56 20 Q58 26 52 30 Q42 30 40 48Z" fill="'+c+'"/>',crew:'<path d="M40 48 A30 30 0 0 1 100 48 Q100 34 70 34 Q40 34 40 48Z" fill="'+c+'"/>'};return H[style]||H.slick;}
 function faceSVG(expr){const eyes=expr==='calm'?'<path d="M52 46 Q60 40 68 46" stroke="#1f2430" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M72 46 Q80 40 88 46" stroke="#1f2430" stroke-width="2.5" fill="none" stroke-linecap="round"/>':'<circle cx="59" cy="46" r="6" fill="#fff"/><circle cx="81" cy="46" r="6" fill="#fff"/><circle cx="60" cy="47" r="3" fill="#1f2430"/><circle cx="80" cy="47" r="3" fill="#1f2430"/><circle cx="61" cy="45" r="1.3" fill="#fff"/><circle cx="81" cy="45" r="1.3" fill="#fff"/>';let m='';switch(expr){case 'determined':m='<path d="M64 60 L76 60" stroke="#1f2430" stroke-width="2.5" stroke-linecap="round"/>';break;case 'grin':m='<path d="M63 56 Q70 66 77 56 Z" fill="#1f2430"/>';break;case 'smirk':m='<path d="M63 58 Q70 62 77 57" stroke="#1f2430" stroke-width="2.2" fill="none" stroke-linecap="round"/>';break;case 'curious':m='<ellipse cx="70" cy="59" rx="3.5" ry="4.5" fill="#1f2430"/>';break;case 'calm':m='<path d="M65 59 Q70 62 75 59" stroke="#1f2430" stroke-width="2.2" fill="none" stroke-linecap="round"/>';break;case 'steady':m='<path d="M64 59 Q70 62 76 59" stroke="#1f2430" stroke-width="2.2" fill="none" stroke-linecap="round"/>';break;default:m='<path d="M64 58 Q70 63 76 58" stroke="#1f2430" stroke-width="2.2" fill="none" stroke-linecap="round"/>';}return eyes+m;}
